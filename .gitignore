@@ -3,3 +3,5 @@ dockerised-mulval/*
 
 mulval
 dockerised-mulval
+
+.gitignore
