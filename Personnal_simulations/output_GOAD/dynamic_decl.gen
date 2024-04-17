@@ -34,8 +34,6 @@
 
 :-(dynamic(isUserMachine(_h3142))).
 
-:-(dynamic(vulExists(_h3142,_h3143,_h3144,_h3145,_h3146))).
-
 :-(dynamic(canAccessFile(_h3142,_h3143,_h3144,_h3145))).
 
 :-(dynamic(userDefined(_h3142,_h3143,_h3144))).

@@ -34,7 +34,7 @@ hostProperty(castelblack, automaticDNS, true). /* part4 */
 hostDefined(dc02, dc02).
 vulExists(dc02, 'CVE-2021-42287', Active_Directory). /* part5 samAccountName */
 vulProperty('CVE-2021-42287', remoteExploit, fileAccess). /* part5 */
-cvssScore('CVE-2021-42287', h). /* part5 */
+cvss('CVE-2021-42287', 'l'). /* part5 */
 fileOnHost(ntdsdit, dc02). /* part5 */
 
 /* exterior host */

@@ -36,7 +36,6 @@ primitive(dependsOn(_h, _program, _library)).
 primitive(installed(_h, _program)).
 primitive(isWebServer(_host)).
 primitive(isUserMachine(_host)).
-primitive(vulExists(_machine,_vulID,_program,_range,_consequence)).
 primitive(canAccessFile(_host, _user, _access, _path)).
 primitive(userDefined(_user, _dc, _perm)).
 primitive(hostDefined(_host, _dc)).
@@ -67,7 +66,7 @@ derived(accessFile(_machine,_access,_filepath)).
 derived(logInService(_host, _protocol, _port)).
 derived(accessMaliciousInput(_host, _principal, _program)).
 derived(userFound(_user)).
-derived(vuln_exists(_host, _cve, _prog, _rangeList, _losstype, _severity, _ac )).
+derived(vulnExists(_machine,_vulID,_program,_range,_consequence)).
 
 
 %meta(cvss(_vulID, _ac)).
@@ -85,7 +84,7 @@ meta(advances(_, _)).
 :- table canAccessHost/1.
 :- table canAccessFile/4.
 :- table accessFile/3.
-:- table vulExists/5.
+:- table vulnExists/5.
 :- table logInService/3.
 
 /* Add more tabled predicates here */
@@ -123,14 +122,14 @@ interaction_rule(
 interaction_rule(
   (execCode(Host, root) :-
 	execCode(Host, _Perm2),
-	vulExists(Host, VulID, Software, localExploit, privEscalation),
+	vulnExists(Host, VulID, Software, localExploit, privEscalation),
 	cvss(VulID, AC)),
   rule_desc('local exploit',
             cvss_ac(AC))).
 
 interaction_rule(
   (execCode(H, Perm) :-
-	vulExists(H, VulID, Software, remoteExploit, privEscalation),
+	vulnExists(H, VulID, Software, remoteExploit, privEscalation),
         cvss(VulID, AC),
 	networkServiceInfo(H, Software, Protocol, Port, Perm),
 	netAccess(H, Protocol, Port)),
@@ -139,7 +138,7 @@ interaction_rule(
 
 interaction_rule(
   (execCode(H, Perm) :-
-        vulExists(H, VulID, Software, remoteClient, privEscalation),
+        vulnExists(H, VulID, Software, remoteClient, privEscalation),
 	cvss(VulID, AC),
 	hasAccount(Victim, H, Perm),
         accessMaliciousInput(H, Victim, Software)),
@@ -273,13 +272,13 @@ interaction_rule(
   rule_desc('file system access control', 'certain')).
 
 
-interaction_rule((vulExists(H, ID, Sw, Range, Consequence):-
+interaction_rule((vulnExists(H, ID, Sw, Range, Consequence):-
 	        vulExists(H, ID, Sw),
 		vulProperty(ID, Range, Consequence)),
-             rule_desc('La vulnérabilité a été déclarée manuellement', 'certain')).
+             rule_desc('Vuln declared', 'certain')).
 
-interaction_rule((vulExists(H, ID, Sw, Range, Consequence):-
-	        vulExists(H, ID, Library, Range, Consequence),
+interaction_rule((vulnExists(H, ID, Sw, Range, Consequence):-
+	        vulnExists(H, ID, Library, Range, Consequence),
 		dependsOn(H, Sw, Library)),
              rule_desc('Library bug', 'certain')).
 
@@ -432,6 +431,8 @@ interaction_rule(
 
 interaction_rule(
     (accessFile(File, Host) :-
-      vulExists(Host, VulID, _program, remoteExploit, fileAccess),
-      fileOnHost(File, Host)),
-    rule_desc('Remote access file', 'likely')).
+      vulnExists(Host, VulID, _program, remoteExploit, fileAccess),
+      fileOnHost(File, Host),
+      cvss(VulID, AC)),
+    rule_desc('remote access file exploit',
+            cvss_ac(AC))).
