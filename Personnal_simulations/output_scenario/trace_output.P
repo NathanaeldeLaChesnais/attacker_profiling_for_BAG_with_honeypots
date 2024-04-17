@@ -1,0 +1,88 @@
+primitive(inCompetent,1).
+primitive(competent,1).
+primitive(clientProgram,2).
+primitive(vuln_exists,7).
+primitive(vulExists,3).
+primitive(vulProperty,3).
+primitive(vulProperty,5).
+primitive(hacl,4).
+primitive(attackerLocated,1).
+primitive(hasAccount,3).
+primitive(networkServiceInfo,5).
+primitive(setuidProgramInfo,3).
+primitive(nfsExportInfo,4).
+primitive(nfsMounted,5).
+primitive(localFileProtection,4).
+primitive(dependsOn,3).
+primitive(installed,2).
+primitive(isWebServer,1).
+primitive(isUserMachine,1).
+primitive(vulExists,5).
+primitive(canAccessFile,4).
+primitive(cvss,2).
+derived(execCode,2).
+derived(netAccess,3).
+derived(canAccessHost,1).
+derived(accessFile,3).
+derived(principalCompromised,1).
+derived(logInService,3).
+derived(accessMaliciousInput,3).
+meta(attackGoal,1).
+meta(advances,2).
+
+attack(execCode(serveur_2,root)).
+
+possible_duplicate_trace_step(because(12,rule_desc('incompetent user',possible),principalCompromised(user1),[inCompetent(user1)])).
+
+possible_duplicate_trace_step(because(14,rule_desc('VPN is a login service',certain),logInService(serveur_2,_h3884,_h3885),[networkServiceInfo(serveur_2,vpnService,_h3884,_h3885,_h3930)])).
+
+possible_duplicate_trace_step(because(7,rule_desc('direct on-host access',certain),netAccess(serveur_2,_h3884,_h3885),[attackerLocated(serveur_2)])).
+
+possible_duplicate_trace_step(because(9,rule_desc('Access a host through a log-in service',certain),canAccessHost(serveur_2),[netAccess(serveur_2,_h3884,_h3885),logInService(serveur_2,_h3884,_h3885)])).
+
+possible_duplicate_trace_step(because(0,rule_desc('When a principal is compromised any machine he has an account on will also be compromised',likely),execCode(serveur_2,user),[canAccessHost(serveur_2),hasAccount(user1,serveur_2,user),principalCompromised(user1)])).
+
+possible_duplicate_trace_step(because(0,rule_desc('When a principal is compromised any machine he has an account on will also be compromised',likely),execCode(serveur_2,user),[canAccessHost(serveur_2),hasAccount(user1,serveur_2,user),principalCompromised(user1)])).
+
+possible_duplicate_trace_step(because(1,rule_desc('local exploit',cvss_ac(h)),execCode(serveur_2,root),[cvss('CVE-2021-42287',h),vulExists(serveur_2,'CVE-2021-42287',_h4081,localExploit,privEscalation),execCode(serveur_2,user)])).
+
+possible_duplicate_trace_step(because(1,rule_desc('local exploit',cvss_ac(none)),execCode(serveur_2,root),[cvss('CVE-2021-42287',none),vulExists(serveur_2,'CVE-2021-42287',_h4081,localExploit,privEscalation),execCode(serveur_2,user)])).
+
+possible_duplicate_trace_step(because(1,rule_desc('local exploit',cvss_ac(h)),execCode(serveur_2,root),[cvss('CVE-2021-42287',h),vulExists(serveur_2,'CVE-2021-42287',_h4081,localExploit,privEscalation),execCode(serveur_2,root)])).
+
+possible_duplicate_trace_step(because(1,rule_desc('local exploit',cvss_ac(none)),execCode(serveur_2,root),[cvss('CVE-2021-42287',none),vulExists(serveur_2,'CVE-2021-42287',_h4081,localExploit,privEscalation),execCode(serveur_2,root)])).
+
+possible_duplicate_trace_step(because(1,rule_desc('local exploit',cvss_ac(h)),execCode(serveur_2,root),[cvss('CVE-2021-42287',h),vulExists(serveur_2,'CVE-2021-42287',_h3757,localExploit,privEscalation),execCode(serveur_2,user)])).
+
+possible_duplicate_trace_step(because(1,rule_desc('local exploit',cvss_ac(none)),execCode(serveur_2,root),[cvss('CVE-2021-42287',none),vulExists(serveur_2,'CVE-2021-42287',_h3757,localExploit,privEscalation),execCode(serveur_2,user)])).
+
+possible_duplicate_trace_step(because(1,rule_desc('local exploit',cvss_ac(h)),execCode(serveur_2,root),[cvss('CVE-2021-42287',h),vulExists(serveur_2,'CVE-2021-42287',_h4272,localExploit,privEscalation),execCode(serveur_2,user)])).
+
+possible_duplicate_trace_step(because(1,rule_desc('local exploit',cvss_ac(none)),execCode(serveur_2,root),[cvss('CVE-2021-42287',none),vulExists(serveur_2,'CVE-2021-42287',_h4272,localExploit,privEscalation),execCode(serveur_2,user)])).
+
+possible_duplicate_trace_step(because(1,rule_desc('local exploit',cvss_ac(h)),execCode(serveur_2,root),[cvss('CVE-2021-42287',h),vulExists(serveur_2,'CVE-2021-42287',_h4272,localExploit,privEscalation),execCode(serveur_2,root)])).
+
+possible_duplicate_trace_step(because(1,rule_desc('local exploit',cvss_ac(none)),execCode(serveur_2,root),[cvss('CVE-2021-42287',none),vulExists(serveur_2,'CVE-2021-42287',_h4272,localExploit,privEscalation),execCode(serveur_2,root)])).
+
+possible_duplicate_trace_step(because(8,rule_desc('Access a host through executing code on the machine',certain),canAccessHost(serveur_2),[execCode(serveur_2,user)])).
+
+possible_duplicate_trace_step(because(8,rule_desc('Access a host through executing code on the machine',certain),canAccessHost(serveur_2),[execCode(serveur_2,root)])).
+
+possible_duplicate_trace_step(because(11,rule_desc('password sniffing',likely),principalCompromised(user1),[execCode(serveur_2,root),hasAccount(user1,serveur_2,user)])).
+
+possible_duplicate_trace_step(because(0,rule_desc('When a principal is compromised any machine he has an account on will also be compromised',likely),execCode(serveur_2,user),[canAccessHost(serveur_2),hasAccount(user1,serveur_2,user),principalCompromised(user1)])).
+
+possible_duplicate_trace_step(because(0,rule_desc('When a principal is compromised any machine he has an account on will also be compromised',likely),execCode(serveur_2,user),[canAccessHost(serveur_2),hasAccount(user1,serveur_2,user),principalCompromised(user1)])).
+
+possible_duplicate_trace_step(because(1,rule_desc('local exploit',cvss_ac(h)),execCode(serveur_2,root),[cvss('CVE-2021-42287',h),vulExists(serveur_2,'CVE-2021-42287',_h3757,localExploit,privEscalation),execCode(serveur_2,root)])).
+
+possible_duplicate_trace_step(because(1,rule_desc('local exploit',cvss_ac(none)),execCode(serveur_2,root),[cvss('CVE-2021-42287',none),vulExists(serveur_2,'CVE-2021-42287',_h3757,localExploit,privEscalation),execCode(serveur_2,root)])).
+
+possible_duplicate_trace_step(because(0,rule_desc('When a principal is compromised any machine he has an account on will also be compromised',likely),execCode(serveur_2,user),[canAccessHost(serveur_2),hasAccount(user1,serveur_2,user),principalCompromised(user1)])).
+
+possible_duplicate_trace_step(because(0,rule_desc('When a principal is compromised any machine he has an account on will also be compromised',likely),execCode(serveur_2,user),[canAccessHost(serveur_2),hasAccount(user1,serveur_2,user),principalCompromised(user1)])).
+
+possible_duplicate_trace_step(because(0,rule_desc('When a principal is compromised any machine he has an account on will also be compromised',likely),execCode(serveur_2,user),[canAccessHost(serveur_2),hasAccount(user1,serveur_2,user),principalCompromised(user1)])).
+
+possible_duplicate_trace_step(because(0,rule_desc('When a principal is compromised any machine he has an account on will also be compromised',likely),execCode(serveur_2,user),[canAccessHost(serveur_2),hasAccount(user1,serveur_2,user),principalCompromised(user1)])).
+

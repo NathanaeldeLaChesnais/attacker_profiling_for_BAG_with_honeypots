@@ -1,0 +1,34 @@
+attackerLocated(internet).
+attackGoal(execCode(workStation,_)).
+
+hacl(internet, webServer, tcp, 80).
+hacl(webServer, _, _, _).
+hacl(honeyPot, _,  _, _).
+hacl(honeyFileServer, _, _, _).
+hacl(workStation, _, _, _).
+hacl(H,H,_,_).
+
+/* configuration information of fileServer */
+networkServiceInfo(fileServer, mountd, rpc, 100005, root).
+nfsExportInfo(fileServer, '/export', _anyAccess, workStation).
+nfsExportInfo(fileServer, '/export', _anyAccess, honeyPot).
+vulExists(fileServer, vulID, mountd).
+vulProperty(vulID, remoteExploit, privEscalation).
+localFileProtection(fileServer, root, _, _).
+
+/* configuration information of honeyFileServer */
+networkServiceInfo(honeyFileServer, mountd, rpc, 100005, root).
+nfsExportInfo(honeyFileServer, '/export', _anyAccess, workStation).
+nfsExportInfo(honeyFileServer, '/export', _anyAccess, honeyPot).
+vulExists(honeyFileServer, vulID, mountd).
+vulProperty(vulID, remoteExploit, privEscalation).
+localFileProtection(honeyFileServer, root, _, _).
+
+/* configuration information of webServer */
+vulExists(webServer, 'CAN-2002-0392', httpd).
+vulProperty('CAN-2002-0392', remoteExploit, privEscalation).
+networkServiceInfo(webServer , httpd, tcp , 80 , apache).
+
+/* configuration information of workStation */
+nfsMounted(workStation, '/usr/local/share', fileServer, '/export', read).
+nfsMounted(workStation, '/usr/local/share', honeyFileServer, '/export', read).

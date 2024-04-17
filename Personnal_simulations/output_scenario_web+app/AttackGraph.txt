@@ -1,0 +1,24 @@
+1,"execCode(hA,apacheRole)","OR",0
+2,"RULE 2 (remote exploit of a server program)","AND",0.2
+3,"netAccess(hA,tcp,80)","OR",0
+4,"RULE 6 (direct network access)","AND",1
+5,"hacl(internet,hA,tcp,80)","LEAF",1
+4,5,-1
+6,"attackerLocated(internet)","LEAF",1
+4,6,-1
+3,4,-1
+2,3,-1
+7,"networkServiceInfo(hA,apache,tcp,80,apacheRole)","LEAF",1
+2,7,-1
+8,"cvss(log4j,h)","LEAF",1
+2,8,-1
+9,"vulExists(hA,log4j,apache,remoteExploit,privEscalation)","LEAF",1
+2,9,-1
+1,2,-1
+10,"RULE 2 (remote exploit of a server program)","AND",0
+10,3,-1
+10,7,-1
+11,"cvss(log4j,none)","LEAF",1
+10,11,-1
+10,9,-1
+1,10,-1

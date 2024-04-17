@@ -1,0 +1,31 @@
+attackerLocated(initialAccess).
+attackGoal(execCode(honeyPot,_)).
+
+hacl(initialAccess, _, _, _).
+hacl(win10, _, _, _).
+hacl(sensitiveServer, _, _, _).
+hacl(logger, _, _, _).
+hacl(wef, _, _, _).
+hacl(dc, _, _, _).
+hacl(honeyPot, _, _, _).
+
+/* configuration information of initialAccess */
+networkServiceInfo(initialAccess, smb, tcp, 445, _).
+
+/* configuration information of honeyPot */
+
+/* configuration information of win10 */
+vulExists(win10, 'CVE-2019-0708', rdp).
+vulProperty('CVE-2019-0708', remoteExploit, privEscalation).
+networkServiceInfo(win10, rdp, tcp, 3389, _).
+
+/* configuration information of sensitiveServer */
+
+/* configuration information of logger */
+vulExists(logger, 'CVE-2023-40267', localApplication).
+vulProperty('CVE-2023-40267', localExploit, privEscalation).
+cvssScore('CVE-2023-40267', 9.8).
+
+/* configuration information of wef */
+
+/* configuration information of dc */

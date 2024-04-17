@@ -1,0 +1,27 @@
+attackerLocated(internet).
+/* attackGoal(accessFile(hG, _, _)). */
+attackGoal(execCode(hA, apacheRole)).
+
+/* hacl(X,Y,_,_):-
+	inSubnet(X,S),
+	inSubnet(Y,S).
+
+inSubnet(hA, web).
+inSubnet(hB, web).
+
+inSubnet(hC, app).
+inSubnet(hD, app).
+
+inSubnet(hE, corporate).
+inSubnet(hF, corporate).
+inSubnet(hG, corporate). */
+
+hacl(internet, hA, tcp, 80).
+
+
+/* configuration information of hA */
+networkServiceInfo(hA , apache, tcp , 80 , apacheRole).
+/* setuidProgramInfo(hA, apache, root). */
+vulExists(hA, log4j, apache).
+vulProperty(log4j, remoteExploit, privEscalation).
+cvss(log4j, h).
