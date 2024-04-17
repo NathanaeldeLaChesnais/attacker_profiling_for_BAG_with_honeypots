@@ -1,40 +1,40 @@
 
 attackerLocated(intranet).
-attackGoal(stolenCredential(_, _)).
-attackGoal(accessFile(_, _)).
+/* attackGoal(stolenCredential(_, _)). */
+attackGoal(accessFile(_, _, _)).
 /* attackGoal(hostDefined(_, _)).
 attackGoal(stolenHash(jon_snow, windows)). */
 
 /* Users and their properties */
-userDefined(eddard_stark, dc02, domain_admin).
+userDefined(eddard_stark, north_sevenkingdoms_local, domain_admin).
 userPartOf(eddard_stark, runNTLMBot).
 
-userDefined(jon_snow, dc02, user).
-accessibleHash(jon_snow, windows). /* part 3 kerberoasting */
+userDefined(jon_snow, north_sevenkingdoms_local, user).
+accessibleHash(jon_snow, north_sevenkingdoms_local). /* part 3 kerberoasting */
 halfCompetent(jon_snow). /* part 3 */
 
-userDefined(catelyn_stark, dc02, user).
+userDefined(catelyn_stark, north_sevenkingdoms_local, user).
 
-userDefined(robb_stark, dc02, user).
+userDefined(robb_stark, north_sevenkingdoms_local, user).
 userPartOf(robb_stark, runNTLMBot).
 weakPassword(robb_stark).
 
-userDefined(jeor_mormont, dc02, user).
+userDefined(jeor_mormont, north_sevenkingdoms_local, user).
 
-userDefined(hodor, dc02, user).
+userDefined(hodor, north_sevenkingdoms_local, user).
 inCompetent(hodor).
 
 userDefined(localAdmin, castelblack, local_admin).
 
 /* Hosts and their properties */
-hostDefined(castelblack, dc02).
+hostDefined(castelblack, north_sevenkingdoms_local).
 hostProperty(castelblack, signedSMB, false).
 hostProperty(castelblack, automaticDNS, true). /* part4 */
 
-hostDefined(dc02, dc02).
+hostDefined(dc02, north_sevenkingdoms_local).
 vulExists(dc02, 'CVE-2021-42287', Active_Directory). /* part5 samAccountName */
 vulProperty('CVE-2021-42287', remoteExploit, fileAccess). /* part5 */
-cvss('CVE-2021-42287', 'l'). /* part5 */
+cvss('CVE-2021-42287', 'h'). /* part5 */
 fileOnHost(ntdsdit, dc02). /* part5 */
 
 /* exterior host */
@@ -48,7 +48,7 @@ isRuning(ntlmBot, dc02). /* part4 */
 
 /* Credentials */
 credentialInClear(sql_svc, castelblack, mssql). /* part4 */
-credentialInClear(robb_stark, castelblack, windows). /* part4 */
+credentialInClear(robb_stark, castelblack, north_sevenkingdoms_local). /* part4 */
 
 
 vulExists(mereen, 'CVE-2019-1040', removeTheMic).

@@ -50,8 +50,6 @@
 
 :-(dynamic(credentialInClear(_h3142,_h3143,_h3144))).
 
-:-(dynamic(stolenCredential(_h3142,_h3143))).
-
 :-(dynamic(isRuning(_h3142,_h3143))).
 
 :-(dynamic(stolenHash(_h3142,_h3143))).
@@ -71,8 +69,6 @@
 :-(dynamic(accessibleHash(_h3142,_h3143))).
 
 :-(dynamic(halfCompetent(_h3142))).
-
-:-(dynamic(accessFile(_h3142,_h3143))).
 
 :-(dynamic(fileOnHost(_h3142,_h3143))).
 

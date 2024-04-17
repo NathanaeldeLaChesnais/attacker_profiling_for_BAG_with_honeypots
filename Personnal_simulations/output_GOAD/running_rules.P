@@ -44,7 +44,6 @@ primitive(userPartOf(_user, _group)).
 primitive(hashFoundNTLM(_user)).
 primitive(weakPassword(_user)).
 primitive(credentialInClear(_user, _host, _service)).
-primitive(stolenCredential(_user, _service)).
 primitive(isRuning(_service, _host)).
 primitive(stolenHash(_user, _service)).
 primitive(hostProperty(_host, _property, _value)).
@@ -55,7 +54,6 @@ primitive(relayWPAD(_host)).
 primitive(dnsPoisoning(_host)).
 primitive(accessibleHash(_user, _service)).
 primitive(halfCompetent(_user)).
-primitive(accessFile(_file, _host)).
 primitive(fileOnHost(_file, _host)).
 
 
@@ -67,6 +65,7 @@ derived(logInService(_host, _protocol, _port)).
 derived(accessMaliciousInput(_host, _principal, _program)).
 derived(userFound(_user)).
 derived(vulnExists(_machine,_vulID,_program,_range,_consequence)).
+derived(stolenCredential(_user, _service)).
 
 
 /* %meta(cvss(_vulID, _ac)). */
@@ -430,9 +429,11 @@ interaction_rule(
     rule_desc('Use of Hashcat', 'likely')).
 
 interaction_rule(
-    (accessFile(File, Host) :-
+    (accessFile(Host, _Access, File) :-
       vulnExists(Host, VulID, _program, remoteExploit, fileAccess),
       fileOnHost(File, Host),
-      cvss(VulID, AC)),
+      cvss(VulID, AC),
+      stolenCredential(User, DC),
+      hostDefined(Host, DC)),
     rule_desc('remote access file exploit',
             cvss_ac(AC))).

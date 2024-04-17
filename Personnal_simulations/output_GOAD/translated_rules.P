@@ -1,4 +1,4 @@
-:-(mvTrc(execCode(_h3473,_h3474,0)),','(stolenCredential(_h3479,windows),','(hasAccount(_h3479,_h3473,_h3474),','(mvTrc(canAccessHost(_h3473,_h3543)),assert_trace(because(0,rule_desc('When a principal is compromised any machine he has an account on will also be compromised',likely),execCode(_h3473,_h3474),[canAccessHost(_h3473),hasAccount(_h3479,_h3473,_h3474),stolenCredential(_h3479,windows)])))))).
+:-(mvTrc(execCode(_h3473,_h3474,0)),','(mvTrc(stolenCredential(_h3479,windows,_h3524)),','(hasAccount(_h3479,_h3473,_h3474),','(mvTrc(canAccessHost(_h3473,_h3567)),assert_trace(because(0,rule_desc('When a principal is compromised any machine he has an account on will also be compromised',likely),execCode(_h3473,_h3474),[canAccessHost(_h3473),hasAccount(_h3479,_h3473,_h3474),stolenCredential(_h3479,windows)])))))).
 
 :-(mvTrc(execCode(_h3473,root,1)),','(mvTrc(execCode(_h3473,_h3480,_h3529)),','(mvTrc(vulnExists(_h3473,_h3486,_h3487,localExploit,privEscalation,_h3558)),','(cvss(_h3486,_h3492),assert_trace(because(1,rule_desc('local exploit',cvss_ac(_h3492)),execCode(_h3473,root),[cvss(_h3486,_h3492),vulnExists(_h3473,_h3486,_h3487,localExploit,privEscalation),execCode(_h3473,_h3480)])))))).
 
@@ -52,7 +52,7 @@
 
 :-(mvTrc(hasAccount(_h3473,_h3474,_h3475,26)),','(userDefined(_h3473,_h3481,_h3475),','(hostDefined(_h3474,_h3481),assert_trace(because(26,rule_desc('User defined',certain),hasAccount(_h3473,_h3474,_h3475),[hostDefined(_h3474,_h3481),userDefined(_h3473,_h3481,_h3475)]))))).
 
-:-(mvTrc(execCode(_h3473,_h3474,_h3475,27)),','(hasAccount(_h3473,_h3474,_h3475),','(stolenCredential(_h3487,windows),','(hostDefined(_h3474,_h3494),','(mvTrc(netAccess(_h3494,_h3500,_h3501,_h3553)),','(rdpEnabled(_h3474),assert_trace(because(27,rule_desc('RDP access',certain),execCode(_h3473,_h3474,_h3475),[rdpEnabled(_h3474),netAccess(_h3494,_h3500,_h3501),hostDefined(_h3474,_h3494),stolenCredential(_h3487,windows),hasAccount(_h3473,_h3474,_h3475)])))))))).
+:-(mvTrc(execCode(_h3473,_h3474,_h3475,27)),','(hasAccount(_h3473,_h3474,_h3475),','(mvTrc(stolenCredential(_h3487,windows,_h3543)),','(hostDefined(_h3474,_h3494),','(mvTrc(netAccess(_h3494,_h3500,_h3501,_h3577)),','(rdpEnabled(_h3474),assert_trace(because(27,rule_desc('RDP access',certain),execCode(_h3473,_h3474,_h3475),[rdpEnabled(_h3474),netAccess(_h3494,_h3500,_h3501),hostDefined(_h3474,_h3494),stolenCredential(_h3487,windows),hasAccount(_h3473,_h3474,_h3475)])))))))).
 
 :-(mvTrc(hashFoundNTLM(_h3473,28)),','(userPartOf(_h3473,runNTLMBot),','(isRuning(ntlmBot,_h3485),','(mvTrc(netAccess(_h3485,_h3488,_h3489,_h3543)),assert_trace(because(28,rule_desc('NTLM hash found',likely),hashFoundNTLM(_h3473),[netAccess(_h3485,_h3488,_h3489),isRuning(ntlmBot,_h3485),userPartOf(_h3473,runNTLMBot)])))))).
 
@@ -76,5 +76,5 @@
 
 :-(mvTrc(halfCompetent(_h3473,38)),','(userDefined(_h3473,_h3476,_h3477),assert_trace(because(38,rule_desc('Use of Hashcat',likely),halfCompetent(_h3473),[userDefined(_h3473,_h3476,_h3477)])))).
 
-:-(mvTrc(accessFile(_h3473,_h3474,39)),','(mvTrc(vulnExists(_h3474,_h3480,_h3481,remoteExploit,fileAccess,_h3529)),','(fileOnHost(_h3473,_h3474),','(cvss(_h3480,_h3492),assert_trace(because(39,rule_desc('remote access file exploit',cvss_ac(_h3492)),accessFile(_h3473,_h3474),[cvss(_h3480,_h3492),fileOnHost(_h3473,_h3474),vulnExists(_h3474,_h3480,_h3481,remoteExploit,fileAccess)])))))).
+:-(mvTrc(accessFile(_h3473,_h3474,_h3475,39)),','(mvTrc(vulnExists(_h3473,_h3481,_h3482,remoteExploit,fileAccess,_h3542)),','(fileOnHost(_h3475,_h3473),','(cvss(_h3481,_h3496),','(mvTrc(stolenCredential(_h3501,_h3502,_h3596)),','(hostDefined(_h3473,_h3502),assert_trace(because(39,rule_desc('remote access file exploit',cvss_ac(_h3496)),accessFile(_h3473,_h3474,_h3475),[hostDefined(_h3473,_h3502),stolenCredential(_h3501,_h3502),cvss(_h3481,_h3496),fileOnHost(_h3475,_h3473),vulnExists(_h3473,_h3481,_h3482,remoteExploit,fileAccess)])))))))).
 
