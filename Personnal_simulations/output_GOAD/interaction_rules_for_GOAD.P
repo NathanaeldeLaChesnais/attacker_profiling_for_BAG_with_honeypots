@@ -69,7 +69,7 @@ derived(userFound(_user)).
 derived(vulnExists(_machine,_vulID,_program,_range,_consequence)).
 
 
-%meta(cvss(_vulID, _ac)).
+/* %meta(cvss(_vulID, _ac)). */
 primitive(cvss(_vulID, _ac)).
 meta(attackGoal(_)).
 meta(advances(_, _)).

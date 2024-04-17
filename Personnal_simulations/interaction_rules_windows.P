@@ -1,7 +1,0 @@
-primitive(userFound(_user)).
-primitive(userDefined(_user, _dc)).
-
-userFound(_user) :-
-    userDefined(_user, _dc),
-    canAccessHost(_dc),
-    rule_desc('reconnaissance des comptes utilisateurs du domaine', 'likely').

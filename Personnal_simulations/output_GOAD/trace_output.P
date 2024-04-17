@@ -99,25 +99,25 @@ possible_duplicate_trace_step(because(0,rule_desc('When a principal is compromis
 
 possible_duplicate_trace_step(because(0,rule_desc('When a principal is compromised any machine he has an account on will also be compromised',likely),execCode(castelblack,user),[canAccessHost(castelblack),hasAccount(hodor,castelblack,user),stolenCredential(hodor,windows)])).
 
-possible_duplicate_trace_step(because(6,rule_desc('direct network access',certain),netAccess(dc02,_h4976,_h4977),[hacl(intranet,dc02,_h4976,_h4977),attackerLocated(intranet)])).
+possible_duplicate_trace_step(because(6,rule_desc('direct network access',certain),netAccess(dc02,_h3783,_h3784),[hacl(intranet,dc02,_h3783,_h3784),attackerLocated(intranet)])).
 
-possible_duplicate_trace_step(because(23,rule_desc('User defined',certain),userFound(hodor),[netAccess(dc02,_h4976,_h4977),userDefined(hodor,dc02,user)])).
+possible_duplicate_trace_step(because(23,rule_desc('User defined',certain),userFound(hodor),[netAccess(dc02,_h3783,_h3784),userDefined(hodor,dc02,user)])).
 
 possible_duplicate_trace_step(because(24,rule_desc('user is password',certain),stolenCredential(hodor,windows),[inCompetent(hodor),userFound(hodor)])).
 
 attack(stolenCredential(robb_stark,windows)).
 
-possible_duplicate_trace_step(because(23,rule_desc('User defined',certain),userFound(robb_stark),[netAccess(dc02,_h3805,_h3806),userDefined(robb_stark,dc02,user)])).
+possible_duplicate_trace_step(because(23,rule_desc('User defined',certain),userFound(robb_stark),[netAccess(dc02,_h3775,_h3776),userDefined(robb_stark,dc02,user)])).
 
 possible_duplicate_trace_step(because(25,rule_desc('weak password crack',likely),stolenCredential(robb_stark,windows),[hashFoundNTLM(robb_stark),weakPassword(robb_stark),userFound(robb_stark)])).
 
-possible_duplicate_trace_step(because(6,rule_desc('direct network access',certain),netAccess(castelblack,_h3772,_h3773),[hacl(intranet,castelblack,_h3772,_h3773),attackerLocated(intranet)])).
+possible_duplicate_trace_step(because(6,rule_desc('direct network access',certain),netAccess(castelblack,_h3742,_h3743),[hacl(intranet,castelblack,_h3742,_h3743),attackerLocated(intranet)])).
 
-possible_duplicate_trace_step(because(29,rule_desc('Use of DonPAPI',likely),stolenCredential(robb_stark,windows),[netAccess(castelblack,_h3772,_h3773),credentialInClear(robb_stark,castelblack,windows)])).
+possible_duplicate_trace_step(because(29,rule_desc('Use of DonPAPI',likely),stolenCredential(robb_stark,windows),[netAccess(castelblack,_h3742,_h3743),credentialInClear(robb_stark,castelblack,windows)])).
 
 attack(stolenCredential(sql_svc,mssql)).
 
-possible_duplicate_trace_step(because(29,rule_desc('Use of DonPAPI',likely),stolenCredential(sql_svc,mssql),[netAccess(castelblack,_h3840,_h3841),credentialInClear(sql_svc,castelblack,mssql)])).
+possible_duplicate_trace_step(because(29,rule_desc('Use of DonPAPI',likely),stolenCredential(sql_svc,mssql),[netAccess(castelblack,_h3780,_h3781),credentialInClear(sql_svc,castelblack,mssql)])).
 
 attack(stolenCredential(robb_stark,windows)).
 
@@ -127,7 +127,7 @@ possible_duplicate_trace_step(because(37,rule_desc('Use of Hashcat',likely),stol
 
 attack(stolenCredential(jon_snow,windows)).
 
-possible_duplicate_trace_step(because(23,rule_desc('User defined',certain),userFound(jon_snow),[netAccess(dc02,_h4047,_h4048),userDefined(jon_snow,dc02,user)])).
+possible_duplicate_trace_step(because(23,rule_desc('User defined',certain),userFound(jon_snow),[netAccess(dc02,_h3927,_h3928),userDefined(jon_snow,dc02,user)])).
 
 possible_duplicate_trace_step(because(37,rule_desc('Use of Hashcat',likely),stolenCredential(jon_snow,windows),[halfCompetent(jon_snow),stolenHash(jon_snow,windows)])).
 
@@ -137,11 +137,11 @@ attack(stolenCredential(jon_snow,windows)).
 
 attack(accessFile(ntdsdit,dc02)).
 
-possible_duplicate_trace_step(because(18,rule_desc('Vuln declared',certain),vulnExists(dc02,'CVE-2021-42287',_h4157,remoteExploit,fileAccess),[vulProperty('CVE-2021-42287',remoteExploit,fileAccess),vulExists(dc02,'CVE-2021-42287',_h4157)])).
+possible_duplicate_trace_step(because(18,rule_desc('Vuln declared',certain),vulnExists(dc02,'CVE-2021-42287',_h3964,remoteExploit,fileAccess),[vulProperty('CVE-2021-42287',remoteExploit,fileAccess),vulExists(dc02,'CVE-2021-42287',_h3964)])).
 
-possible_duplicate_trace_step(because(39,rule_desc('remote access file exploit',cvss_ac(l)),accessFile(ntdsdit,dc02),[cvss('CVE-2021-42287',l),fileOnHost(ntdsdit,dc02),vulnExists(dc02,'CVE-2021-42287',_h4157,remoteExploit,fileAccess)])).
+possible_duplicate_trace_step(because(39,rule_desc('remote access file exploit',cvss_ac(l)),accessFile(ntdsdit,dc02),[cvss('CVE-2021-42287',l),fileOnHost(ntdsdit,dc02),vulnExists(dc02,'CVE-2021-42287',_h3964,remoteExploit,fileAccess)])).
 
-possible_duplicate_trace_step(because(39,rule_desc('remote access file exploit',cvss_ac(none)),accessFile(ntdsdit,dc02),[cvss('CVE-2021-42287',none),fileOnHost(ntdsdit,dc02),vulnExists(dc02,'CVE-2021-42287',_h4157,remoteExploit,fileAccess)])).
+possible_duplicate_trace_step(because(39,rule_desc('remote access file exploit',cvss_ac(none)),accessFile(ntdsdit,dc02),[cvss('CVE-2021-42287',none),fileOnHost(ntdsdit,dc02),vulnExists(dc02,'CVE-2021-42287',_h3964,remoteExploit,fileAccess)])).
 
 attack(accessFile(ntdsdit,dc02)).
 
