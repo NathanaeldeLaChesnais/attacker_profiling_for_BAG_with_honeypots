@@ -41,18 +41,13 @@ primitive(userDefined(_user, _dc, _perm)).
 primitive(hostDefined(_host, _dc)).
 primitive(rdpEnabled(_host)).
 primitive(userPartOf(_user, _group)).
-primitive(hashFoundNTLM(_user)).
 primitive(weakPassword(_user)).
 primitive(credentialInClear(_user, _host, _service)).
 primitive(isRuning(_service, _host)).
-primitive(stolenHash(_user, _service)).
 primitive(hostProperty(_host, _property, _value)).
 primitive(isConnected(_user, _host)).
 primitive(userAdminOf(_user, _host)).
-primitive(dnsPoisoning(_host)).
-primitive(relayWPAD(_host)).
-primitive(dnsPoisoning(_host)).
-primitive(accessibleHash(_user, _service)).
+primitive(accessibleHash(_user, _service, _where)).
 primitive(halfCompetent(_user)).
 primitive(fileOnHost(_file, _host)).
 
@@ -66,10 +61,14 @@ derived(accessMaliciousInput(_host, _principal, _program)).
 derived(userFound(_user)).
 derived(vulnExists(_machine,_vulID,_program,_range,_consequence)).
 derived(stolenCredential(_user, _service)).
+derived(dnsPoisoning(_host)).
+derived(relayWPAD(_host)).
+derived(stolenHash(_user, _service)).
+derived(hashFoundNTLM(_user)).
 
 
-/* %meta(cvss(_vulID, _ac)). */
-primitive(cvss(_vulID, _ac)).
+meta(cvss(_vulID, _ac)).
+/* primitive(cvss(_vulID, _ac)). */
 meta(attackGoal(_)).
 meta(advances(_, _)).
 
@@ -95,6 +94,7 @@ meta(advances(_, _)).
 :- table userPartOf/2.
 :- table hashFoundNTLM/2.
 :- table weakPassword/1.
+:- table credentialInClear/3.
 
 
 
@@ -414,7 +414,8 @@ interaction_rule(
 
 interaction_rule(
     (stolenHash(User, Service) :-
-      accessibleHash(User, Service)),
+      accessibleHash(User, Service, kerberoasting),
+      netAccess(Service, _PROTOCOL, _PORT)),
     rule_desc('Kerberoasting part3', 'likely')).
 
 interaction_rule(
@@ -429,11 +430,20 @@ interaction_rule(
     rule_desc('Use of Hashcat', 'likely')).
 
 interaction_rule(
-    (accessFile(Host, _Access, File) :-
+    (accessFile(Host, read, File) :-
       vulnExists(Host, VulID, _program, remoteExploit, fileAccess),
       fileOnHost(File, Host),
       cvss(VulID, AC),
       stolenCredential(User, DC),
       hostDefined(Host, DC)),
+    rule_desc('remote access file exploit',
+            cvss_ac(AC))).
+
+interaction_rule(
+    (stolenHash(User, Service) :-
+      vulnExists(Host, VulID, _program, remoteExploit, accessLocalHash),
+      accessibleHash(User, Service, Host),
+      cvss(VulID, AC),
+      netAccess(Host, _PROTOCOL, _PORT)),
     rule_desc('remote access file exploit',
             cvss_ac(AC))).

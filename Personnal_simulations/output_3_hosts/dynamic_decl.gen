@@ -4,8 +4,6 @@
 
 :-(dynamic(clientProgram(_h3142,_h3143))).
 
-:-(dynamic(vuln_exists(_h3142,_h3143,_h3144,_h3145,_h3146,_h3147,_h3148))).
-
 :-(dynamic(vulExists(_h3142,_h3143,_h3144))).
 
 :-(dynamic(vulProperty(_h3142,_h3143,_h3144))).
@@ -36,9 +34,33 @@
 
 :-(dynamic(isUserMachine(_h3142))).
 
-:-(dynamic(vulExists(_h3142,_h3143,_h3144,_h3145,_h3146))).
-
 :-(dynamic(canAccessFile(_h3142,_h3143,_h3144,_h3145))).
+
+:-(dynamic(userDefined(_h3142,_h3143,_h3144))).
+
+:-(dynamic(hostDefined(_h3142,_h3143))).
+
+:-(dynamic(rdpEnabled(_h3142))).
+
+:-(dynamic(userPartOf(_h3142,_h3143))).
+
+:-(dynamic(weakPassword(_h3142))).
+
+:-(dynamic(credentialInClear(_h3142,_h3143,_h3144))).
+
+:-(dynamic(isRuning(_h3142,_h3143))).
+
+:-(dynamic(hostProperty(_h3142,_h3143,_h3144))).
+
+:-(dynamic(isConnected(_h3142,_h3143))).
+
+:-(dynamic(userAdminOf(_h3142,_h3143))).
+
+:-(dynamic(accessibleHash(_h3142,_h3143,_h3144))).
+
+:-(dynamic(halfCompetent(_h3142))).
+
+:-(dynamic(fileOnHost(_h3142,_h3143))).
 
 :-(dynamic(cvss(_h3142,_h3143))).
 

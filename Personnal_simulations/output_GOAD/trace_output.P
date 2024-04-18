@@ -21,21 +21,15 @@ primitive(userDefined,3).
 primitive(hostDefined,2).
 primitive(rdpEnabled,1).
 primitive(userPartOf,2).
-primitive(hashFoundNTLM,1).
 primitive(weakPassword,1).
 primitive(credentialInClear,3).
 primitive(isRuning,2).
-primitive(stolenHash,2).
 primitive(hostProperty,3).
 primitive(isConnected,2).
 primitive(userAdminOf,2).
-primitive(dnsPoisoning,1).
-primitive(relayWPAD,1).
-primitive(dnsPoisoning,1).
-primitive(accessibleHash,2).
+primitive(accessibleHash,3).
 primitive(halfCompetent,1).
 primitive(fileOnHost,2).
-primitive(cvss,2).
 derived(execCode,2).
 derived(netAccess,3).
 derived(canAccessHost,1).
@@ -45,214 +39,97 @@ derived(accessMaliciousInput,3).
 derived(userFound,1).
 derived(vulnExists,5).
 derived(stolenCredential,2).
+derived(dnsPoisoning,1).
+derived(relayWPAD,1).
+derived(stolenHash,2).
+derived(hashFoundNTLM,1).
+meta(cvss,2).
 meta(attackGoal,1).
 meta(advances,2).
 
-attack(accessFile(dc02,_h3512,ntdsdit)).
+attack(stolenHash(localAdmin,meereen)).
 
-possible_duplicate_trace_step(because(18,rule_desc('Vuln declared',certain),vulnExists(dc02,'CVE-2021-42287',_h4726,remoteExploit,fileAccess),[vulProperty('CVE-2021-42287',remoteExploit,fileAccess),vulExists(dc02,'CVE-2021-42287',_h4726)])).
+possible_duplicate_trace_step(because(18,rule_desc('Vuln declared',certain),vulnExists(meereen,'CVE-2019-1040',removeTheMic,remoteExploit,accessLocalHash),[vulProperty('CVE-2019-1040',remoteExploit,accessLocalHash),vulExists(meereen,'CVE-2019-1040',removeTheMic)])).
 
-possible_duplicate_trace_step(because(18,rule_desc('Vuln declared',certain),vulnExists(dc02,'CVE-2021-42287',_h5310,remoteExploit,fileAccess),[vulProperty('CVE-2021-42287',remoteExploit,fileAccess),vulExists(dc02,'CVE-2021-42287',_h5310)])).
+possible_duplicate_trace_step(because(6,rule_desc('direct network access',certain),netAccess(castelblack,_h5659,_h5660),[hacl(intranet,castelblack,_h5659,_h5660),attackerLocated(intranet)])).
 
-possible_duplicate_trace_step(because(6,rule_desc('direct network access',certain),netAccess(castelblack,_h6064,_h6065),[hacl(intranet,castelblack,_h6064,_h6065),attackerLocated(intranet)])).
+possible_duplicate_trace_step(because(6,rule_desc('direct network access',certain),netAccess(north_sevenkingdoms_local,_h5659,_h5660),[hacl(intranet,north_sevenkingdoms_local,_h5659,_h5660),attackerLocated(intranet)])).
 
-possible_duplicate_trace_step(because(6,rule_desc('direct network access',certain),netAccess(north_sevenkingdoms_local,_h6064,_h6065),[hacl(intranet,north_sevenkingdoms_local,_h6064,_h6065),attackerLocated(intranet)])).
+possible_duplicate_trace_step(because(23,rule_desc('User defined',certain),userFound(jeor_mormont),[netAccess(north_sevenkingdoms_local,_h5659,_h5660),userDefined(jeor_mormont,north_sevenkingdoms_local,user)])).
 
-possible_duplicate_trace_step(because(23,rule_desc('User defined',certain),userFound(jeor_mormont),[netAccess(north_sevenkingdoms_local,_h6064,_h6065),userDefined(jeor_mormont,north_sevenkingdoms_local,user)])).
+possible_duplicate_trace_step(because(23,rule_desc('User defined',certain),userFound(robb_stark),[netAccess(north_sevenkingdoms_local,_h5659,_h5660),userDefined(robb_stark,north_sevenkingdoms_local,user)])).
 
-possible_duplicate_trace_step(because(23,rule_desc('User defined',certain),userFound(robb_stark),[netAccess(north_sevenkingdoms_local,_h6064,_h6065),userDefined(robb_stark,north_sevenkingdoms_local,user)])).
+possible_duplicate_trace_step(because(23,rule_desc('User defined',certain),userFound(catelyn_stark),[netAccess(north_sevenkingdoms_local,_h5659,_h5660),userDefined(catelyn_stark,north_sevenkingdoms_local,user)])).
 
-possible_duplicate_trace_step(because(23,rule_desc('User defined',certain),userFound(catelyn_stark),[netAccess(north_sevenkingdoms_local,_h6064,_h6065),userDefined(catelyn_stark,north_sevenkingdoms_local,user)])).
+possible_duplicate_trace_step(because(23,rule_desc('User defined',certain),userFound(jon_snow),[netAccess(north_sevenkingdoms_local,_h5659,_h5660),userDefined(jon_snow,north_sevenkingdoms_local,user)])).
 
-possible_duplicate_trace_step(because(23,rule_desc('User defined',certain),userFound(jon_snow),[netAccess(north_sevenkingdoms_local,_h6064,_h6065),userDefined(jon_snow,north_sevenkingdoms_local,user)])).
+possible_duplicate_trace_step(because(23,rule_desc('User defined',certain),userFound(eddard_stark),[netAccess(north_sevenkingdoms_local,_h5659,_h5660),userDefined(eddard_stark,north_sevenkingdoms_local,domain_admin)])).
 
-possible_duplicate_trace_step(because(23,rule_desc('User defined',certain),userFound(eddard_stark),[netAccess(north_sevenkingdoms_local,_h6064,_h6065),userDefined(eddard_stark,north_sevenkingdoms_local,domain_admin)])).
+possible_duplicate_trace_step(because(6,rule_desc('direct network access',certain),netAccess(dc02,_h5893,_h5894),[hacl(intranet,dc02,_h5893,_h5894),attackerLocated(intranet)])).
 
-possible_duplicate_trace_step(because(25,rule_desc('weak password crack',likely),stolenCredential(robb_stark,windows),[hashFoundNTLM(robb_stark),weakPassword(robb_stark),userFound(robb_stark)])).
+possible_duplicate_trace_step(because(18,rule_desc('Vuln declared',certain),vulnExists(meereen,'CVE-2021-1675',spooler,remoteExploit,privEscalation),[vulProperty('CVE-2021-1675',remoteExploit,privEscalation),vulExists(meereen,'CVE-2021-1675',spooler)])).
 
-possible_duplicate_trace_step(because(29,rule_desc('Use of DonPAPI',likely),stolenCredential(sql_svc,mssql),[netAccess(castelblack,_h6287,_h6288),credentialInClear(sql_svc,castelblack,mssql)])).
+possible_duplicate_trace_step(because(6,rule_desc('direct network access',certain),netAccess(meereen,protocol,port),[hacl(intranet,meereen,protocol,port),attackerLocated(intranet)])).
 
-possible_duplicate_trace_step(because(29,rule_desc('Use of DonPAPI',likely),stolenCredential(robb_stark,north_sevenkingdoms_local),[netAccess(castelblack,_h6287,_h6288),credentialInClear(robb_stark,castelblack,north_sevenkingdoms_local)])).
+possible_duplicate_trace_step(because(2,rule_desc('remote exploit of a server program',cvss_ac(none)),execCode(meereen,_h3814),[netAccess(meereen,protocol,port),networkServiceInfo(meereen,spooler,protocol,port,_h3814),cvss('CVE-2021-1675',none),vulnExists(meereen,'CVE-2021-1675',spooler,remoteExploit,privEscalation)])).
 
-possible_duplicate_trace_step(because(37,rule_desc('Use of Hashcat',likely),stolenCredential(localAdmin,castelblack),[halfCompetent(localAdmin),stolenHash(localAdmin,castelblack)])).
+possible_duplicate_trace_step(because(2,rule_desc('remote exploit of a server program',cvss_ac(h)),execCode(meereen,_h3814),[netAccess(meereen,protocol,port),networkServiceInfo(meereen,spooler,protocol,port,_h3814),cvss('CVE-2021-1675',h),vulnExists(meereen,'CVE-2021-1675',spooler,remoteExploit,privEscalation)])).
 
-possible_duplicate_trace_step(because(37,rule_desc('Use of Hashcat',likely),stolenCredential(jon_snow,north_sevenkingdoms_local),[halfCompetent(jon_snow),stolenHash(jon_snow,north_sevenkingdoms_local)])).
+possible_duplicate_trace_step(because(28,rule_desc('NTLM hash found',likely),hashFoundNTLM(robb_stark),[netAccess(dc02,_h5893,_h5894),isRuning(ntlmBot,dc02),userPartOf(robb_stark,runNTLMBot)])).
 
-possible_duplicate_trace_step(because(37,rule_desc('Use of Hashcat',likely),stolenCredential(jon_snow,north_sevenkingdoms_local),[halfCompetent(jon_snow),stolenHash(jon_snow,north_sevenkingdoms_local)])).
+possible_duplicate_trace_step(because(23,rule_desc('User defined',certain),userFound(hodor),[netAccess(north_sevenkingdoms_local,_h5659,_h5660),userDefined(hodor,north_sevenkingdoms_local,user)])).
 
-possible_duplicate_trace_step(because(39,rule_desc('remote access file exploit',cvss_ac(none)),accessFile(dc02,write,ntdsdit),[hostDefined(dc02,north_sevenkingdoms_local),stolenCredential(robb_stark,north_sevenkingdoms_local),cvss('CVE-2021-42287',none),fileOnHost(ntdsdit,dc02),vulnExists(dc02,'CVE-2021-42287',_h5310,remoteExploit,fileAccess)])).
+possible_duplicate_trace_step(because(23,rule_desc('User defined',certain),userFound(localAdmin),[netAccess(castelblack,_h5659,_h5660),userDefined(localAdmin,castelblack,local_admin)])).
 
-possible_duplicate_trace_step(because(39,rule_desc('remote access file exploit',cvss_ac(none)),accessFile(dc02,write,ntdsdit),[hostDefined(dc02,north_sevenkingdoms_local),stolenCredential(jon_snow,north_sevenkingdoms_local),cvss('CVE-2021-42287',none),fileOnHost(ntdsdit,dc02),vulnExists(dc02,'CVE-2021-42287',_h5310,remoteExploit,fileAccess)])).
-
-possible_duplicate_trace_step(because(39,rule_desc('remote access file exploit',cvss_ac(h)),accessFile(dc02,write,ntdsdit),[hostDefined(dc02,north_sevenkingdoms_local),stolenCredential(robb_stark,north_sevenkingdoms_local),cvss('CVE-2021-42287',h),fileOnHost(ntdsdit,dc02),vulnExists(dc02,'CVE-2021-42287',_h5310,remoteExploit,fileAccess)])).
-
-possible_duplicate_trace_step(because(39,rule_desc('remote access file exploit',cvss_ac(h)),accessFile(dc02,write,ntdsdit),[hostDefined(dc02,north_sevenkingdoms_local),stolenCredential(jon_snow,north_sevenkingdoms_local),cvss('CVE-2021-42287',h),fileOnHost(ntdsdit,dc02),vulnExists(dc02,'CVE-2021-42287',_h5310,remoteExploit,fileAccess)])).
-
-possible_duplicate_trace_step(because(39,rule_desc('remote access file exploit',cvss_ac(none)),accessFile(dc02,write,ntdsdit),[hostDefined(dc02,north_sevenkingdoms_local),stolenCredential(robb_stark,north_sevenkingdoms_local),cvss('CVE-2021-42287',none),fileOnHost(ntdsdit,dc02),vulnExists(dc02,'CVE-2021-42287',_h4726,remoteExploit,fileAccess)])).
-
-possible_duplicate_trace_step(because(39,rule_desc('remote access file exploit',cvss_ac(none)),accessFile(dc02,write,ntdsdit),[hostDefined(dc02,north_sevenkingdoms_local),stolenCredential(jon_snow,north_sevenkingdoms_local),cvss('CVE-2021-42287',none),fileOnHost(ntdsdit,dc02),vulnExists(dc02,'CVE-2021-42287',_h4726,remoteExploit,fileAccess)])).
+possible_duplicate_trace_step(because(24,rule_desc('user is password',certain),stolenCredential(hodor,windows),[inCompetent(hodor),userFound(hodor)])).
 
 possible_duplicate_trace_step(because(25,rule_desc('weak password crack',likely),stolenCredential(robb_stark,windows),[hashFoundNTLM(robb_stark),weakPassword(robb_stark),userFound(robb_stark)])).
 
-possible_duplicate_trace_step(because(13,rule_desc('VPN is a login service',certain),logInService(castelblack,rdp,3389),[networkServiceInfo(castelblack,vpnService,rdp,3389,_h6577)])).
+possible_duplicate_trace_step(because(13,rule_desc('VPN is a login service',certain),logInService(castelblack,rdp,3389),[networkServiceInfo(castelblack,vpnService,rdp,3389,_h6583)])).
 
 possible_duplicate_trace_step(because(6,rule_desc('direct network access',certain),netAccess(castelblack,rdp,3389),[hacl(intranet,castelblack,rdp,3389),attackerLocated(intranet)])).
 
-possible_duplicate_trace_step(because(4,rule_desc('Trojan horse installation',possible),execCode(dc02,root),[accessFile(dc02,write,ntdsdit)])).
-
-possible_duplicate_trace_step(because(8,rule_desc('Access a host through executing code on the machine',certain),canAccessHost(dc02),[execCode(dc02,root)])).
-
-possible_duplicate_trace_step(because(0,rule_desc('When a principal is compromised any machine he has an account on will also be compromised',likely),execCode(dc02,user),[canAccessHost(dc02),hasAccount(robb_stark,dc02,user),stolenCredential(robb_stark,windows)])).
-
 possible_duplicate_trace_step(because(9,rule_desc('Access a host through a log-in service',certain),canAccessHost(castelblack),[netAccess(castelblack,rdp,3389),logInService(castelblack,rdp,3389)])).
 
-possible_duplicate_trace_step(because(23,rule_desc('User defined',certain),userFound(hodor),[netAccess(north_sevenkingdoms_local,_h6064,_h6065),userDefined(hodor,north_sevenkingdoms_local,user)])).
+possible_duplicate_trace_step(because(0,rule_desc('When a principal is compromised any machine he has an account on will also be compromised',likely),execCode(castelblack,user),[canAccessHost(castelblack),hasAccount(robb_stark,castelblack,user),stolenCredential(robb_stark,windows)])).
 
-possible_duplicate_trace_step(because(23,rule_desc('User defined',certain),userFound(localAdmin),[netAccess(castelblack,_h6064,_h6065),userDefined(localAdmin,castelblack,local_admin)])).
-
-possible_duplicate_trace_step(because(24,rule_desc('user is password',certain),stolenCredential(hodor,windows),[inCompetent(hodor),userFound(hodor)])).
-
-possible_duplicate_trace_step(because(4,rule_desc('Trojan horse installation',possible),execCode(dc02,root),[accessFile(dc02,write,ntdsdit)])).
-
-possible_duplicate_trace_step(because(39,rule_desc('remote access file exploit',cvss_ac(h)),accessFile(dc02,write,ntdsdit),[hostDefined(dc02,north_sevenkingdoms_local),stolenCredential(robb_stark,north_sevenkingdoms_local),cvss('CVE-2021-42287',h),fileOnHost(ntdsdit,dc02),vulnExists(dc02,'CVE-2021-42287',_h4726,remoteExploit,fileAccess)])).
-
-possible_duplicate_trace_step(because(39,rule_desc('remote access file exploit',cvss_ac(h)),accessFile(dc02,write,ntdsdit),[hostDefined(dc02,north_sevenkingdoms_local),stolenCredential(jon_snow,north_sevenkingdoms_local),cvss('CVE-2021-42287',h),fileOnHost(ntdsdit,dc02),vulnExists(dc02,'CVE-2021-42287',_h4726,remoteExploit,fileAccess)])).
-
-possible_duplicate_trace_step(because(4,rule_desc('Trojan horse installation',possible),execCode(dc02,root),[accessFile(dc02,write,ntdsdit)])).
-
-possible_duplicate_trace_step(because(0,rule_desc('When a principal is compromised any machine he has an account on will also be compromised',likely),execCode(dc02,user),[canAccessHost(dc02),hasAccount(robb_stark,dc02,user),stolenCredential(robb_stark,windows)])).
-
-possible_duplicate_trace_step(because(8,rule_desc('Access a host through executing code on the machine',certain),canAccessHost(dc02),[execCode(dc02,user)])).
+possible_duplicate_trace_step(because(0,rule_desc('When a principal is compromised any machine he has an account on will also be compromised',likely),execCode(castelblack,user),[canAccessHost(castelblack),hasAccount(hodor,castelblack,user),stolenCredential(hodor,windows)])).
 
 possible_duplicate_trace_step(because(0,rule_desc('When a principal is compromised any machine he has an account on will also be compromised',likely),execCode(castelblack,user),[canAccessHost(castelblack),hasAccount(robb_stark,castelblack,user),stolenCredential(robb_stark,windows)])).
 
-possible_duplicate_trace_step(because(0,rule_desc('When a principal is compromised any machine he has an account on will also be compromised',likely),execCode(castelblack,user),[canAccessHost(castelblack),hasAccount(robb_stark,castelblack,user),stolenCredential(robb_stark,windows)])).
-
-possible_duplicate_trace_step(because(24,rule_desc('user is password',certain),stolenCredential(hodor,windows),[inCompetent(hodor),userFound(hodor)])).
-
-possible_duplicate_trace_step(because(11,rule_desc('password sniffing',likely),stolenCredential(jeor_mormont,windows),[execCode(dc02,root),hasAccount(jeor_mormont,dc02,user)])).
-
-possible_duplicate_trace_step(because(11,rule_desc('password sniffing',likely),stolenCredential(robb_stark,windows),[execCode(dc02,root),hasAccount(robb_stark,dc02,user)])).
-
-possible_duplicate_trace_step(because(11,rule_desc('password sniffing',likely),stolenCredential(catelyn_stark,windows),[execCode(dc02,root),hasAccount(catelyn_stark,dc02,user)])).
-
-possible_duplicate_trace_step(because(11,rule_desc('password sniffing',likely),stolenCredential(jon_snow,windows),[execCode(dc02,root),hasAccount(jon_snow,dc02,user)])).
-
-possible_duplicate_trace_step(because(11,rule_desc('password sniffing',likely),stolenCredential(eddard_stark,windows),[execCode(dc02,root),hasAccount(eddard_stark,dc02,domain_admin)])).
-
-possible_duplicate_trace_step(because(11,rule_desc('password sniffing',likely),stolenCredential(hodor,windows),[execCode(dc02,root),hasAccount(hodor,dc02,user)])).
-
-possible_duplicate_trace_step(because(11,rule_desc('password sniffing',likely),stolenCredential(jeor_mormont,windows),[execCode(dc02,root),hasAccount(jeor_mormont,dc02,user)])).
-
-possible_duplicate_trace_step(because(11,rule_desc('password sniffing',likely),stolenCredential(robb_stark,windows),[execCode(dc02,root),hasAccount(robb_stark,dc02,user)])).
-
-possible_duplicate_trace_step(because(11,rule_desc('password sniffing',likely),stolenCredential(catelyn_stark,windows),[execCode(dc02,root),hasAccount(catelyn_stark,dc02,user)])).
-
-possible_duplicate_trace_step(because(11,rule_desc('password sniffing',likely),stolenCredential(jon_snow,windows),[execCode(dc02,root),hasAccount(jon_snow,dc02,user)])).
-
-possible_duplicate_trace_step(because(11,rule_desc('password sniffing',likely),stolenCredential(eddard_stark,windows),[execCode(dc02,root),hasAccount(eddard_stark,dc02,domain_admin)])).
-
-possible_duplicate_trace_step(because(11,rule_desc('password sniffing',likely),stolenCredential(hodor,windows),[execCode(dc02,root),hasAccount(hodor,dc02,user)])).
+possible_duplicate_trace_step(because(0,rule_desc('When a principal is compromised any machine he has an account on will also be compromised',likely),execCode(castelblack,user),[canAccessHost(castelblack),hasAccount(hodor,castelblack,user),stolenCredential(hodor,windows)])).
 
 possible_duplicate_trace_step(because(8,rule_desc('Access a host through executing code on the machine',certain),canAccessHost(castelblack),[execCode(castelblack,user)])).
 
-possible_duplicate_trace_step(because(0,rule_desc('When a principal is compromised any machine he has an account on will also be compromised',likely),execCode(dc02,user),[canAccessHost(dc02),hasAccount(hodor,dc02,user),stolenCredential(hodor,windows)])).
-
-possible_duplicate_trace_step(because(0,rule_desc('When a principal is compromised any machine he has an account on will also be compromised',likely),execCode(dc02,user),[canAccessHost(dc02),hasAccount(jeor_mormont,dc02,user),stolenCredential(jeor_mormont,windows)])).
-
-possible_duplicate_trace_step(because(0,rule_desc('When a principal is compromised any machine he has an account on will also be compromised',likely),execCode(dc02,user),[canAccessHost(dc02),hasAccount(robb_stark,dc02,user),stolenCredential(robb_stark,windows)])).
-
-possible_duplicate_trace_step(because(0,rule_desc('When a principal is compromised any machine he has an account on will also be compromised',likely),execCode(dc02,user),[canAccessHost(dc02),hasAccount(catelyn_stark,dc02,user),stolenCredential(catelyn_stark,windows)])).
-
-possible_duplicate_trace_step(because(0,rule_desc('When a principal is compromised any machine he has an account on will also be compromised',likely),execCode(dc02,user),[canAccessHost(dc02),hasAccount(jon_snow,dc02,user),stolenCredential(jon_snow,windows)])).
-
-possible_duplicate_trace_step(because(0,rule_desc('When a principal is compromised any machine he has an account on will also be compromised',likely),execCode(dc02,domain_admin),[canAccessHost(dc02),hasAccount(eddard_stark,dc02,domain_admin),stolenCredential(eddard_stark,windows)])).
-
-possible_duplicate_trace_step(because(0,rule_desc('When a principal is compromised any machine he has an account on will also be compromised',likely),execCode(dc02,user),[canAccessHost(dc02),hasAccount(hodor,dc02,user),stolenCredential(hodor,windows)])).
+possible_duplicate_trace_step(because(0,rule_desc('When a principal is compromised any machine he has an account on will also be compromised',likely),execCode(castelblack,user),[canAccessHost(castelblack),hasAccount(robb_stark,castelblack,user),stolenCredential(robb_stark,windows)])).
 
 possible_duplicate_trace_step(because(0,rule_desc('When a principal is compromised any machine he has an account on will also be compromised',likely),execCode(castelblack,user),[canAccessHost(castelblack),hasAccount(hodor,castelblack,user),stolenCredential(hodor,windows)])).
-
-possible_duplicate_trace_step(because(0,rule_desc('When a principal is compromised any machine he has an account on will also be compromised',likely),execCode(castelblack,user),[canAccessHost(castelblack),hasAccount(hodor,castelblack,user),stolenCredential(hodor,windows)])).
-
-possible_duplicate_trace_step(because(0,rule_desc('When a principal is compromised any machine he has an account on will also be compromised',likely),execCode(castelblack,user),[canAccessHost(castelblack),hasAccount(jeor_mormont,castelblack,user),stolenCredential(jeor_mormont,windows)])).
-
-possible_duplicate_trace_step(because(0,rule_desc('When a principal is compromised any machine he has an account on will also be compromised',likely),execCode(castelblack,user),[canAccessHost(castelblack),hasAccount(jeor_mormont,castelblack,user),stolenCredential(jeor_mormont,windows)])).
 
 possible_duplicate_trace_step(because(0,rule_desc('When a principal is compromised any machine he has an account on will also be compromised',likely),execCode(castelblack,user),[canAccessHost(castelblack),hasAccount(robb_stark,castelblack,user),stolenCredential(robb_stark,windows)])).
 
-possible_duplicate_trace_step(because(0,rule_desc('When a principal is compromised any machine he has an account on will also be compromised',likely),execCode(castelblack,user),[canAccessHost(castelblack),hasAccount(robb_stark,castelblack,user),stolenCredential(robb_stark,windows)])).
-
-possible_duplicate_trace_step(because(0,rule_desc('When a principal is compromised any machine he has an account on will also be compromised',likely),execCode(castelblack,user),[canAccessHost(castelblack),hasAccount(catelyn_stark,castelblack,user),stolenCredential(catelyn_stark,windows)])).
-
-possible_duplicate_trace_step(because(0,rule_desc('When a principal is compromised any machine he has an account on will also be compromised',likely),execCode(castelblack,user),[canAccessHost(castelblack),hasAccount(catelyn_stark,castelblack,user),stolenCredential(catelyn_stark,windows)])).
-
-possible_duplicate_trace_step(because(0,rule_desc('When a principal is compromised any machine he has an account on will also be compromised',likely),execCode(castelblack,user),[canAccessHost(castelblack),hasAccount(jon_snow,castelblack,user),stolenCredential(jon_snow,windows)])).
-
-possible_duplicate_trace_step(because(0,rule_desc('When a principal is compromised any machine he has an account on will also be compromised',likely),execCode(castelblack,user),[canAccessHost(castelblack),hasAccount(jon_snow,castelblack,user),stolenCredential(jon_snow,windows)])).
-
-possible_duplicate_trace_step(because(0,rule_desc('When a principal is compromised any machine he has an account on will also be compromised',likely),execCode(castelblack,domain_admin),[canAccessHost(castelblack),hasAccount(eddard_stark,castelblack,domain_admin),stolenCredential(eddard_stark,windows)])).
-
-possible_duplicate_trace_step(because(0,rule_desc('When a principal is compromised any machine he has an account on will also be compromised',likely),execCode(castelblack,domain_admin),[canAccessHost(castelblack),hasAccount(eddard_stark,castelblack,domain_admin),stolenCredential(eddard_stark,windows)])).
-
 possible_duplicate_trace_step(because(0,rule_desc('When a principal is compromised any machine he has an account on will also be compromised',likely),execCode(castelblack,user),[canAccessHost(castelblack),hasAccount(hodor,castelblack,user),stolenCredential(hodor,windows)])).
 
-possible_duplicate_trace_step(because(0,rule_desc('When a principal is compromised any machine he has an account on will also be compromised',likely),execCode(castelblack,user),[canAccessHost(castelblack),hasAccount(hodor,castelblack,user),stolenCredential(hodor,windows)])).
+possible_duplicate_trace_step(because(6,rule_desc('direct network access',certain),netAccess(meereen,_h3707,_h3708),[hacl(intranet,meereen,_h3707,_h3708),attackerLocated(intranet)])).
 
-possible_duplicate_trace_step(because(0,rule_desc('When a principal is compromised any machine he has an account on will also be compromised',likely),execCode(dc02,user),[canAccessHost(dc02),hasAccount(hodor,dc02,user),stolenCredential(hodor,windows)])).
+possible_duplicate_trace_step(because(40,rule_desc('remote access file exploit',cvss_ac(m)),stolenHash(localAdmin,meereen),[netAccess(meereen,_h3707,_h3708),cvss('CVE-2019-1040',m),accessibleHash(localAdmin,meereen,meereen),vulnExists(meereen,'CVE-2019-1040',removeTheMic,remoteExploit,accessLocalHash)])).
 
-possible_duplicate_trace_step(because(0,rule_desc('When a principal is compromised any machine he has an account on will also be compromised',likely),execCode(castelblack,user),[canAccessHost(castelblack),hasAccount(hodor,castelblack,user),stolenCredential(hodor,windows)])).
+possible_duplicate_trace_step(because(40,rule_desc('remote access file exploit',cvss_ac(none)),stolenHash(localAdmin,meereen),[netAccess(meereen,_h3707,_h3708),cvss('CVE-2019-1040',none),accessibleHash(localAdmin,meereen,meereen),vulnExists(meereen,'CVE-2019-1040',removeTheMic,remoteExploit,accessLocalHash)])).
 
-possible_duplicate_trace_step(because(0,rule_desc('When a principal is compromised any machine he has an account on will also be compromised',likely),execCode(castelblack,user),[canAccessHost(castelblack),hasAccount(hodor,castelblack,user),stolenCredential(hodor,windows)])).
+attack(stolenHash(localAdmin,meereen)).
 
-possible_duplicate_trace_step(because(0,rule_desc('When a principal is compromised any machine he has an account on will also be compromised',likely),execCode(dc02,user),[canAccessHost(dc02),hasAccount(jeor_mormont,dc02,user),stolenCredential(jeor_mormont,windows)])).
+attack(stolenHash(guest,meereen)).
 
-possible_duplicate_trace_step(because(0,rule_desc('When a principal is compromised any machine he has an account on will also be compromised',likely),execCode(castelblack,user),[canAccessHost(castelblack),hasAccount(jeor_mormont,castelblack,user),stolenCredential(jeor_mormont,windows)])).
+possible_duplicate_trace_step(because(40,rule_desc('remote access file exploit',cvss_ac(m)),stolenHash(guest,meereen),[netAccess(meereen,_h3920,_h3921),cvss('CVE-2019-1040',m),accessibleHash(guest,meereen,meereen),vulnExists(meereen,'CVE-2019-1040',removeTheMic,remoteExploit,accessLocalHash)])).
 
-possible_duplicate_trace_step(because(0,rule_desc('When a principal is compromised any machine he has an account on will also be compromised',likely),execCode(castelblack,user),[canAccessHost(castelblack),hasAccount(jeor_mormont,castelblack,user),stolenCredential(jeor_mormont,windows)])).
+possible_duplicate_trace_step(because(40,rule_desc('remote access file exploit',cvss_ac(none)),stolenHash(guest,meereen),[netAccess(meereen,_h3920,_h3921),cvss('CVE-2019-1040',none),accessibleHash(guest,meereen,meereen),vulnExists(meereen,'CVE-2019-1040',removeTheMic,remoteExploit,accessLocalHash)])).
 
-possible_duplicate_trace_step(because(0,rule_desc('When a principal is compromised any machine he has an account on will also be compromised',likely),execCode(dc02,user),[canAccessHost(dc02),hasAccount(robb_stark,dc02,user),stolenCredential(robb_stark,windows)])).
+attack(stolenHash(guest,meereen)).
 
-possible_duplicate_trace_step(because(0,rule_desc('When a principal is compromised any machine he has an account on will also be compromised',likely),execCode(castelblack,user),[canAccessHost(castelblack),hasAccount(robb_stark,castelblack,user),stolenCredential(robb_stark,windows)])).
+attack(stolenHash(defaultAccount,meereen)).
 
-possible_duplicate_trace_step(because(0,rule_desc('When a principal is compromised any machine he has an account on will also be compromised',likely),execCode(castelblack,user),[canAccessHost(castelblack),hasAccount(robb_stark,castelblack,user),stolenCredential(robb_stark,windows)])).
+possible_duplicate_trace_step(because(40,rule_desc('remote access file exploit',cvss_ac(m)),stolenHash(defaultAccount,meereen),[netAccess(meereen,_h4082,_h4083),cvss('CVE-2019-1040',m),accessibleHash(defaultAccount,meereen,meereen),vulnExists(meereen,'CVE-2019-1040',removeTheMic,remoteExploit,accessLocalHash)])).
 
-possible_duplicate_trace_step(because(0,rule_desc('When a principal is compromised any machine he has an account on will also be compromised',likely),execCode(dc02,user),[canAccessHost(dc02),hasAccount(catelyn_stark,dc02,user),stolenCredential(catelyn_stark,windows)])).
+possible_duplicate_trace_step(because(40,rule_desc('remote access file exploit',cvss_ac(none)),stolenHash(defaultAccount,meereen),[netAccess(meereen,_h4082,_h4083),cvss('CVE-2019-1040',none),accessibleHash(defaultAccount,meereen,meereen),vulnExists(meereen,'CVE-2019-1040',removeTheMic,remoteExploit,accessLocalHash)])).
 
-possible_duplicate_trace_step(because(0,rule_desc('When a principal is compromised any machine he has an account on will also be compromised',likely),execCode(castelblack,user),[canAccessHost(castelblack),hasAccount(catelyn_stark,castelblack,user),stolenCredential(catelyn_stark,windows)])).
-
-possible_duplicate_trace_step(because(0,rule_desc('When a principal is compromised any machine he has an account on will also be compromised',likely),execCode(castelblack,user),[canAccessHost(castelblack),hasAccount(catelyn_stark,castelblack,user),stolenCredential(catelyn_stark,windows)])).
-
-possible_duplicate_trace_step(because(0,rule_desc('When a principal is compromised any machine he has an account on will also be compromised',likely),execCode(dc02,user),[canAccessHost(dc02),hasAccount(jon_snow,dc02,user),stolenCredential(jon_snow,windows)])).
-
-possible_duplicate_trace_step(because(0,rule_desc('When a principal is compromised any machine he has an account on will also be compromised',likely),execCode(castelblack,user),[canAccessHost(castelblack),hasAccount(jon_snow,castelblack,user),stolenCredential(jon_snow,windows)])).
-
-possible_duplicate_trace_step(because(0,rule_desc('When a principal is compromised any machine he has an account on will also be compromised',likely),execCode(castelblack,user),[canAccessHost(castelblack),hasAccount(jon_snow,castelblack,user),stolenCredential(jon_snow,windows)])).
-
-possible_duplicate_trace_step(because(0,rule_desc('When a principal is compromised any machine he has an account on will also be compromised',likely),execCode(dc02,domain_admin),[canAccessHost(dc02),hasAccount(eddard_stark,dc02,domain_admin),stolenCredential(eddard_stark,windows)])).
-
-possible_duplicate_trace_step(because(0,rule_desc('When a principal is compromised any machine he has an account on will also be compromised',likely),execCode(castelblack,domain_admin),[canAccessHost(castelblack),hasAccount(eddard_stark,castelblack,domain_admin),stolenCredential(eddard_stark,windows)])).
-
-possible_duplicate_trace_step(because(0,rule_desc('When a principal is compromised any machine he has an account on will also be compromised',likely),execCode(castelblack,domain_admin),[canAccessHost(castelblack),hasAccount(eddard_stark,castelblack,domain_admin),stolenCredential(eddard_stark,windows)])).
-
-possible_duplicate_trace_step(because(0,rule_desc('When a principal is compromised any machine he has an account on will also be compromised',likely),execCode(dc02,user),[canAccessHost(dc02),hasAccount(hodor,dc02,user),stolenCredential(hodor,windows)])).
-
-possible_duplicate_trace_step(because(0,rule_desc('When a principal is compromised any machine he has an account on will also be compromised',likely),execCode(castelblack,user),[canAccessHost(castelblack),hasAccount(hodor,castelblack,user),stolenCredential(hodor,windows)])).
-
-possible_duplicate_trace_step(because(0,rule_desc('When a principal is compromised any machine he has an account on will also be compromised',likely),execCode(castelblack,user),[canAccessHost(castelblack),hasAccount(hodor,castelblack,user),stolenCredential(hodor,windows)])).
-
-possible_duplicate_trace_step(because(8,rule_desc('Access a host through executing code on the machine',certain),canAccessHost(dc02),[execCode(dc02,domain_admin)])).
-
-possible_duplicate_trace_step(because(0,rule_desc('When a principal is compromised any machine he has an account on will also be compromised',likely),execCode(castelblack,user),[canAccessHost(castelblack),hasAccount(robb_stark,castelblack,user),stolenCredential(robb_stark,windows)])).
-
-possible_duplicate_trace_step(because(0,rule_desc('When a principal is compromised any machine he has an account on will also be compromised',likely),execCode(castelblack,user),[canAccessHost(castelblack),hasAccount(robb_stark,castelblack,user),stolenCredential(robb_stark,windows)])).
-
-possible_duplicate_trace_step(because(8,rule_desc('Access a host through executing code on the machine',certain),canAccessHost(castelblack),[execCode(castelblack,domain_admin)])).
-
-possible_duplicate_trace_step(because(39,rule_desc('remote access file exploit',cvss_ac(h)),accessFile(dc02,_h3512,ntdsdit),[hostDefined(dc02,north_sevenkingdoms_local),stolenCredential(jon_snow,north_sevenkingdoms_local),cvss('CVE-2021-42287',h),fileOnHost(ntdsdit,dc02),vulnExists(dc02,'CVE-2021-42287',_h3673,remoteExploit,fileAccess)])).
-
-possible_duplicate_trace_step(because(39,rule_desc('remote access file exploit',cvss_ac(h)),accessFile(dc02,_h3512,ntdsdit),[hostDefined(dc02,north_sevenkingdoms_local),stolenCredential(robb_stark,north_sevenkingdoms_local),cvss('CVE-2021-42287',h),fileOnHost(ntdsdit,dc02),vulnExists(dc02,'CVE-2021-42287',_h3673,remoteExploit,fileAccess)])).
-
-possible_duplicate_trace_step(because(39,rule_desc('remote access file exploit',cvss_ac(none)),accessFile(dc02,_h3512,ntdsdit),[hostDefined(dc02,north_sevenkingdoms_local),stolenCredential(jon_snow,north_sevenkingdoms_local),cvss('CVE-2021-42287',none),fileOnHost(ntdsdit,dc02),vulnExists(dc02,'CVE-2021-42287',_h3673,remoteExploit,fileAccess)])).
-
-possible_duplicate_trace_step(because(39,rule_desc('remote access file exploit',cvss_ac(none)),accessFile(dc02,_h3512,ntdsdit),[hostDefined(dc02,north_sevenkingdoms_local),stolenCredential(robb_stark,north_sevenkingdoms_local),cvss('CVE-2021-42287',none),fileOnHost(ntdsdit,dc02),vulnExists(dc02,'CVE-2021-42287',_h3673,remoteExploit,fileAccess)])).
+attack(stolenHash(defaultAccount,meereen)).
 

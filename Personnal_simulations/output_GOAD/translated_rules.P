@@ -48,7 +48,7 @@
 
 :-(mvTrc(stolenCredential(_h3473,windows,24)),','(mvTrc(userFound(_h3473,_h3516)),','(inCompetent(_h3473),assert_trace(because(24,rule_desc('user is password',certain),stolenCredential(_h3473,windows),[inCompetent(_h3473),userFound(_h3473)]))))).
 
-:-(mvTrc(stolenCredential(_h3473,windows,25)),','(mvTrc(userFound(_h3473,_h3521)),','(weakPassword(_h3473),','(hashFoundNTLM(_h3473),assert_trace(because(25,rule_desc('weak password crack',likely),stolenCredential(_h3473,windows),[hashFoundNTLM(_h3473),weakPassword(_h3473),userFound(_h3473)])))))).
+:-(mvTrc(stolenCredential(_h3473,windows,25)),','(mvTrc(userFound(_h3473,_h3521)),','(weakPassword(_h3473),','(mvTrc(hashFoundNTLM(_h3473,_h3559)),assert_trace(because(25,rule_desc('weak password crack',likely),stolenCredential(_h3473,windows),[hashFoundNTLM(_h3473),weakPassword(_h3473),userFound(_h3473)])))))).
 
 :-(mvTrc(hasAccount(_h3473,_h3474,_h3475,26)),','(userDefined(_h3473,_h3481,_h3475),','(hostDefined(_h3474,_h3481),assert_trace(because(26,rule_desc('User defined',certain),hasAccount(_h3473,_h3474,_h3475),[hostDefined(_h3474,_h3481),userDefined(_h3473,_h3481,_h3475)]))))).
 
@@ -66,15 +66,17 @@
 
 :-(mvTrc(dnsPoisoning(_h3473,33)),','(hostProperty(_h3473,automaticDNS,true),','(mvTrc(netAccess(_h3473,_h3483,_h3484,_h3533)),assert_trace(because(33,rule_desc('dns Poisoning',likely),dnsPoisoning(_h3473),[netAccess(_h3473,_h3483,_h3484),hostProperty(_h3473,automaticDNS,true)]))))).
 
-:-(mvTrc(relayWPAD(_h3473,34)),','(dnsPoisoning(_h3473),','(mvTrc(netAccess(_h3473,_h3481,_h3482,_h3531)),assert_trace(because(34,rule_desc('relay the wpad http query to the ldaps',likely),relayWPAD(_h3473),[netAccess(_h3473,_h3481,_h3482),dnsPoisoning(_h3473)]))))).
+:-(mvTrc(relayWPAD(_h3473,34)),','(mvTrc(dnsPoisoning(_h3473,_h3517)),','(mvTrc(netAccess(_h3473,_h3481,_h3482,_h3550)),assert_trace(because(34,rule_desc('relay the wpad http query to the ldaps',likely),relayWPAD(_h3473),[netAccess(_h3473,_h3481,_h3482),dnsPoisoning(_h3473)]))))).
 
-:-(mvTrc(hostDefined(_h3473,_h3474,35)),','(hostDefined(_h3479,_h3474),','(relayWPAD(_h3479),','(userAdminOf(attacker,_h3473),assert_trace(because(35,rule_desc('relay the wpad http query to the ldaps',likely),hostDefined(_h3473,_h3474),[userAdminOf(attacker,_h3473),relayWPAD(_h3479),hostDefined(_h3479,_h3474)])))))).
+:-(mvTrc(hostDefined(_h3473,_h3474,35)),','(hostDefined(_h3479,_h3474),','(mvTrc(relayWPAD(_h3479,_h3528)),','(userAdminOf(attacker,_h3473),assert_trace(because(35,rule_desc('relay the wpad http query to the ldaps',likely),hostDefined(_h3473,_h3474),[userAdminOf(attacker,_h3473),relayWPAD(_h3479),hostDefined(_h3479,_h3474)])))))).
 
-:-(mvTrc(stolenHash(_h3473,_h3474,36)),','(accessibleHash(_h3473,_h3474),assert_trace(because(36,rule_desc('Kerberoasting part3',likely),stolenHash(_h3473,_h3474),[accessibleHash(_h3473,_h3474)])))).
+:-(mvTrc(stolenHash(_h3473,_h3474,36)),','(accessibleHash(_h3473,_h3474,kerberoasting),','(mvTrc(netAccess(_h3474,_h3484,_h3485,_h3534)),assert_trace(because(36,rule_desc('Kerberoasting part3',likely),stolenHash(_h3473,_h3474),[netAccess(_h3474,_h3484,_h3485),accessibleHash(_h3473,_h3474,kerberoasting)]))))).
 
-:-(mvTrc(stolenCredential(_h3473,_h3474,37)),','(stolenHash(_h3473,_h3474),','(halfCompetent(_h3473),assert_trace(because(37,rule_desc('Use of Hashcat',likely),stolenCredential(_h3473,_h3474),[halfCompetent(_h3473),stolenHash(_h3473,_h3474)]))))).
+:-(mvTrc(stolenCredential(_h3473,_h3474,37)),','(mvTrc(stolenHash(_h3473,_h3474,_h3517)),','(halfCompetent(_h3473),assert_trace(because(37,rule_desc('Use of Hashcat',likely),stolenCredential(_h3473,_h3474),[halfCompetent(_h3473),stolenHash(_h3473,_h3474)]))))).
 
 :-(mvTrc(halfCompetent(_h3473,38)),','(userDefined(_h3473,_h3476,_h3477),assert_trace(because(38,rule_desc('Use of Hashcat',likely),halfCompetent(_h3473),[userDefined(_h3473,_h3476,_h3477)])))).
 
-:-(mvTrc(accessFile(_h3473,_h3474,_h3475,39)),','(mvTrc(vulnExists(_h3473,_h3481,_h3482,remoteExploit,fileAccess,_h3542)),','(fileOnHost(_h3475,_h3473),','(cvss(_h3481,_h3496),','(mvTrc(stolenCredential(_h3501,_h3502,_h3596)),','(hostDefined(_h3473,_h3502),assert_trace(because(39,rule_desc('remote access file exploit',cvss_ac(_h3496)),accessFile(_h3473,_h3474,_h3475),[hostDefined(_h3473,_h3502),stolenCredential(_h3501,_h3502),cvss(_h3481,_h3496),fileOnHost(_h3475,_h3473),vulnExists(_h3473,_h3481,_h3482,remoteExploit,fileAccess)])))))))).
+:-(mvTrc(accessFile(_h3473,read,_h3475,39)),','(mvTrc(vulnExists(_h3473,_h3481,_h3482,remoteExploit,fileAccess,_h3542)),','(fileOnHost(_h3475,_h3473),','(cvss(_h3481,_h3496),','(mvTrc(stolenCredential(_h3501,_h3502,_h3596)),','(hostDefined(_h3473,_h3502),assert_trace(because(39,rule_desc('remote access file exploit',cvss_ac(_h3496)),accessFile(_h3473,read,_h3475),[hostDefined(_h3473,_h3502),stolenCredential(_h3501,_h3502),cvss(_h3481,_h3496),fileOnHost(_h3475,_h3473),vulnExists(_h3473,_h3481,_h3482,remoteExploit,fileAccess)])))))))).
+
+:-(mvTrc(stolenHash(_h3473,_h3474,40)),','(mvTrc(vulnExists(_h3479,_h3480,_h3481,remoteExploit,accessLocalHash,_h3537)),','(accessibleHash(_h3473,_h3474,_h3479),','(cvss(_h3480,_h3496),','(mvTrc(netAccess(_h3479,_h3499,_h3500,_h3600)),assert_trace(because(40,rule_desc('remote access file exploit',cvss_ac(_h3496)),stolenHash(_h3473,_h3474),[netAccess(_h3479,_h3499,_h3500),cvss(_h3480,_h3496),accessibleHash(_h3473,_h3474,_h3479),vulnExists(_h3479,_h3480,_h3481,remoteExploit,accessLocalHash)]))))))).
 

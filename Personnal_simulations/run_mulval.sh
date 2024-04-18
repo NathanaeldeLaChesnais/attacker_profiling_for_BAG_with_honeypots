@@ -4,7 +4,8 @@
 ARCHITECTURE=$1
 ARCHITECTURE_FILE=$ARCHITECTURE".P"
 ARCHITECTURE_PATH="/mnt/c/Users/docuser/Documents/mulval/Personnal_simulations/"$ARCHITECTURE_FILE
-RULE_SET="interaction_rules_for_GOAD.P"
+# RULE_SET="interaction_rules_for_GOAD.P"
+RULE_SET="interaction_rules_with_metrics.P"
 RULE_SET_PATH="$(pwd)/"$RULE_SET 
 OUTPUT_DIR="/mnt/c/Users/docuser/Documents/mulval/Personnal_simulations/output_"$ARCHITECTURE
 

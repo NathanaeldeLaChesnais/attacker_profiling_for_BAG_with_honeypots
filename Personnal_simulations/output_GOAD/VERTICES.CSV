@@ -1,24 +1,20 @@
-1,"accessFile(dc02,_,ntdsdit)","OR",0
-2,"RULE 39 (remote access file exploit)","AND",0.2
-3,"hostDefined(dc02,north_sevenkingdoms_local)","LEAF",1
-4,"stolenCredential(jon_snow,north_sevenkingdoms_local)","OR",0
-5,"RULE 37 (Use of Hashcat)","AND",0.8
-6,"halfCompetent(jon_snow)","LEAF",1
-7,"stolenHash(jon_snow,north_sevenkingdoms_local)","LEAF",1
-8,"cvss('CVE-2021-42287',h)","LEAF",1
-9,"fileOnHost(ntdsdit,dc02)","LEAF",1
-10,"vulnExists(dc02,'CVE-2021-42287',_,remoteExploit,fileAccess)","OR",0
-11,"RULE 18 (Vuln declared)","AND",1
-12,"vulProperty('CVE-2021-42287',remoteExploit,fileAccess)","LEAF",1
-13,"vulExists(dc02,'CVE-2021-42287',_)","LEAF",1
-14,"RULE 39 (remote access file exploit)","AND",0.2
-15,"stolenCredential(robb_stark,north_sevenkingdoms_local)","OR",0
-16,"RULE 29 (Use of DonPAPI)","AND",0.8
-17,"netAccess(castelblack,_,_)","OR",0
-18,"RULE 6 (direct network access)","AND",1
-19,"hacl(intranet,castelblack,_,_)","LEAF",1
-20,"attackerLocated(intranet)","LEAF",1
-21,"credentialInClear(robb_stark,castelblack,north_sevenkingdoms_local)","LEAF",1
-22,"RULE 39 (remote access file exploit)","AND",0
-23,"cvss('CVE-2021-42287',none)","LEAF",1
-24,"RULE 39 (remote access file exploit)","AND",0
+1,"stolenHash(defaultAccount,meereen)","OR",0
+2,"RULE 40 (remote access file exploit)","AND",0.6
+3,"netAccess(meereen,_,_)","OR",0
+4,"RULE 6 (direct network access)","AND",1
+5,"hacl(intranet,meereen,_,_)","LEAF",1
+6,"attackerLocated(intranet)","LEAF",1
+7,"accessibleHash(defaultAccount,meereen,meereen)","LEAF",1
+8,"vulnExists(meereen,'CVE-2019-1040',removeTheMic,remoteExploit,accessLocalHash)","OR",0
+9,"RULE 18 (Vuln declared)","AND",1
+10,"vulProperty('CVE-2019-1040',remoteExploit,accessLocalHash)","LEAF",1
+11,"vulExists(meereen,'CVE-2019-1040',removeTheMic)","LEAF",1
+12,"RULE 40 (remote access file exploit)","AND",0
+13,"stolenHash(guest,meereen)","OR",0
+14,"RULE 40 (remote access file exploit)","AND",0.6
+15,"accessibleHash(guest,meereen,meereen)","LEAF",1
+16,"RULE 40 (remote access file exploit)","AND",0
+17,"stolenHash(localAdmin,meereen)","OR",0
+18,"RULE 40 (remote access file exploit)","AND",0.6
+19,"accessibleHash(localAdmin,meereen,meereen)","LEAF",1
+20,"RULE 40 (remote access file exploit)","AND",0

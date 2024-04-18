@@ -1,16 +1,16 @@
 
 attackerLocated(intranet).
 /* attackGoal(stolenCredential(_, _)). */
-attackGoal(accessFile(_, _, _)).
-/* attackGoal(hostDefined(_, _)).
-attackGoal(stolenHash(jon_snow, windows)). */
+/* attackGoal(accessFile(_, _, _)).
+attackGoal(execCode(_, _)). */
+attackGoal(stolenHash(_, meereen)).
 
 /* Users and their properties */
 userDefined(eddard_stark, north_sevenkingdoms_local, domain_admin).
 userPartOf(eddard_stark, runNTLMBot).
 
 userDefined(jon_snow, north_sevenkingdoms_local, user).
-accessibleHash(jon_snow, north_sevenkingdoms_local). /* part 3 kerberoasting */
+accessibleHash(jon_snow, north_sevenkingdoms_local, kerberoasting). /* part 3 kerberoasting */
 halfCompetent(jon_snow). /* part 3 */
 
 userDefined(catelyn_stark, north_sevenkingdoms_local, user).
@@ -34,8 +34,15 @@ hostProperty(castelblack, automaticDNS, true). /* part4 */
 hostDefined(dc02, north_sevenkingdoms_local).
 vulExists(dc02, 'CVE-2021-42287', Active_Directory). /* part5 samAccountName */
 vulProperty('CVE-2021-42287', remoteExploit, fileAccess). /* part5 */
-cvss('CVE-2021-42287', 'h'). /* part5 */
+cvss('CVE-2021-42287', h). /* part5 */
 fileOnHost(ntdsdit, dc02). /* part5 */
+
+hostDefined(meereen, essos_local).
+setuidProgramInfo(meereen, spooler, root). /* part5 */
+networkServiceInfo(meereen, spooler, protocol, port, _root). /* part5 */
+vulExists(meereen, 'CVE-2021-1675', spooler). /* part5 printNightMare */
+vulProperty('CVE-2021-1675', remoteExploit, privEscalation). /* part5 */
+cvss('CVE-2021-1675', h). /* part5 */ 
 
 /* exterior host */
 hostDefined(external, out). /* part4, à voir parce qu'en vrai il prend l'identité d'un autre */
@@ -51,8 +58,11 @@ credentialInClear(sql_svc, castelblack, mssql). /* part4 */
 credentialInClear(robb_stark, castelblack, north_sevenkingdoms_local). /* part4 */
 
 
-vulExists(mereen, 'CVE-2019-1040', removeTheMic).
-vulProperty('CVE-2019-1040', remoteExploit, privilegeEscalation). /* part4 permet de récupérer des hash de mot de pass, à déployer et utiliser plus tard */
-
+vulExists(meereen, 'CVE-2019-1040', removeTheMic).
+vulProperty('CVE-2019-1040', remoteExploit, accessLocalHash). /* part4 permet de récupérer des hash de mot de pass, à déployer et utiliser plus tard */
+cvss('CVE-2019-1040', m). /* part4 */
+accessibleHash(localAdmin, meereen, meereen). /* part4 */
+accessibleHash(guest, meereen, meereen). /* part4 */
+accessibleHash(defaultAccount, meereen, meereen). /* part4 */
 
 hacl(intranet, _, _, _).
