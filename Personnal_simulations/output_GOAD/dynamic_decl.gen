@@ -1,66 +1,68 @@
-:-(dynamic(inCompetent(_h3142))).
+:-(dynamic(inCompetent(_h2948))).
 
-:-(dynamic(competent(_h3142))).
+:-(dynamic(competent(_h2948))).
 
-:-(dynamic(clientProgram(_h3142,_h3143))).
+:-(dynamic(clientProgram(_h2948,_h2949))).
 
-:-(dynamic(vulExists(_h3142,_h3143,_h3144))).
+:-(dynamic(vulExists(_h2948,_h2949,_h2950))).
 
-:-(dynamic(vulProperty(_h3142,_h3143,_h3144))).
+:-(dynamic(vulProperty(_h2948,_h2949,_h2950))).
 
-:-(dynamic(vulProperty(_h3142,_h3143,_h3144,_h3145,_h3146))).
+:-(dynamic(vulProperty(_h2948,_h2949,_h2950,_h2951,_h2952))).
 
-:-(dynamic(hacl(_h3142,_h3143,_h3144,_h3145))).
+:-(dynamic(hacl(_h2948,_h2949,_h2950,_h2951))).
 
-:-(dynamic(attackerLocated(_h3142))).
+:-(dynamic(attackerLocated(_h2948))).
 
-:-(dynamic(hasAccount(_h3142,_h3143,_h3144))).
+:-(dynamic(hasAccount(_h2948,_h2949,_h2950))).
 
-:-(dynamic(networkServiceInfo(_h3142,_h3143,_h3144,_h3145,_h3146))).
+:-(dynamic(networkServiceInfo(_h2948,_h2949,_h2950,_h2951,_h2952))).
 
-:-(dynamic(setuidProgramInfo(_h3142,_h3143,_h3144))).
+:-(dynamic(setuidProgramInfo(_h2948,_h2949,_h2950))).
 
-:-(dynamic(nfsExportInfo(_h3142,_h3143,_h3144,_h3145))).
+:-(dynamic(nfsExportInfo(_h2948,_h2949,_h2950,_h2951))).
 
-:-(dynamic(nfsMounted(_h3142,_h3143,_h3144,_h3145,_h3146))).
+:-(dynamic(nfsMounted(_h2948,_h2949,_h2950,_h2951,_h2952))).
 
-:-(dynamic(localFileProtection(_h3142,_h3143,_h3144,_h3145))).
+:-(dynamic(localFileProtection(_h2948,_h2949,_h2950,_h2951))).
 
-:-(dynamic(dependsOn(_h3142,_h3143,_h3144))).
+:-(dynamic(dependsOn(_h2948,_h2949,_h2950))).
 
-:-(dynamic(installed(_h3142,_h3143))).
+:-(dynamic(installed(_h2948,_h2949))).
 
-:-(dynamic(isWebServer(_h3142))).
+:-(dynamic(isWebServer(_h2948))).
 
-:-(dynamic(isUserMachine(_h3142))).
+:-(dynamic(isUserMachine(_h2948))).
 
-:-(dynamic(canAccessFile(_h3142,_h3143,_h3144,_h3145))).
+:-(dynamic(canAccessFile(_h2948,_h2949,_h2950,_h2951))).
 
-:-(dynamic(userDefined(_h3142,_h3143,_h3144))).
+:-(dynamic(userDefined(_h2948,_h2949,_h2950))).
 
-:-(dynamic(hostDefined(_h3142,_h3143))).
+:-(dynamic(hostDefined(_h2948,_h2949))).
 
-:-(dynamic(rdpEnabled(_h3142))).
+:-(dynamic(rdpEnabled(_h2948))).
 
-:-(dynamic(userPartOf(_h3142,_h3143))).
+:-(dynamic(userPartOf(_h2948,_h2949))).
 
-:-(dynamic(weakPassword(_h3142))).
+:-(dynamic(weakPassword(_h2948))).
 
-:-(dynamic(credentialInClear(_h3142,_h3143,_h3144))).
+:-(dynamic(credentialInClear(_h2948,_h2949,_h2950))).
 
-:-(dynamic(isRuning(_h3142,_h3143))).
+:-(dynamic(isRuning(_h2948,_h2949))).
 
-:-(dynamic(hostProperty(_h3142,_h3143,_h3144))).
+:-(dynamic(hostProperty(_h2948,_h2949,_h2950))).
 
-:-(dynamic(isConnected(_h3142,_h3143))).
+:-(dynamic(isConnected(_h2948,_h2949))).
 
-:-(dynamic(userAdminOf(_h3142,_h3143))).
+:-(dynamic(userAdminOf(_h2948,_h2949))).
 
-:-(dynamic(accessibleHash(_h3142,_h3143,_h3144))).
+:-(dynamic(accessibleHash(_h2948,_h2949,_h2950))).
 
-:-(dynamic(halfCompetent(_h3142))).
+:-(dynamic(halfCompetent(_h2948))).
 
-:-(dynamic(fileOnHost(_h3142,_h3143))).
+:-(dynamic(fileOnHost(_h2948,_h2949))).
 
-:-(dynamic(trace_step(_h3077,_h3078))).
+:-(dynamic(cvss(_h2948,_h2949))).
+
+:-(dynamic(trace_step(_h2883,_h2884))).
 

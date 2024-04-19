@@ -68,7 +68,7 @@ derived(hashFoundNTLM(_user)).
 
 
 meta(cvss(_vulID, _ac)).
-/* primitive(cvss(_vulID, _ac)). */
+primitive(cvss(_vulID, _ac)).
 meta(attackGoal(_)).
 meta(advances(_, _)).
 
@@ -95,6 +95,7 @@ meta(advances(_, _)).
 :- table hashFoundNTLM/2.
 :- table weakPassword/1.
 :- table credentialInClear/3.
+:- table stolenHash/2.
 
 
 
@@ -323,9 +324,18 @@ interaction_rule(
 
 interaction_rule(
     (userFound(USER) :-
-      userDefined(USER, DC , _Perm),
-      netAccess(DC, PROTOCOL, PORT)),
-    rule_desc('User defined', 'certain')).
+      userDefined(USER, Domain , _Perm),
+      netAccess(DC, PROTOCOL, PORT),
+      vulnExists(DC, VulID, Domain, remoteExploit, accountEnumeration),
+      cvss(VulID, AC)),
+    rule_desc('User enumeration anonymously', 
+        cvss_ac(AC))).
+
+interaction_rule(
+    (userFound(USER) :-
+      userDefined(USER, Domain , _Perm),
+      netAccess(Domain, PROTOCOL, PORT)), /* On est obligé de mettre Domain au debut pour ne pas multiplier les sourecs d'attaque */
+    rule_desc('Username found by brutforce', 'unlikely')).
 
 interaction_rule(
     (stolenCredential(USER, windows)  :-
@@ -371,14 +381,14 @@ interaction_rule(
       netAccess(H, _PROTOCOL, _PORT)),
     rule_desc('Use of DonPAPI', 'likely')).
 
-interaction_rule(
+/* interaction_rule(
     (stolenHash(User, H) :-
       hostProperty(H, signedSMB, false),
       isConnected(User2, H),
       userAdminOf(User2, H),
       userDefined(User, H, _Perm),
       netAccess(H, _PROTOCOL, _PORT)),
-    rule_desc('Use a socks relay with an admin account / part 4', 'likely')).
+    rule_desc('Use a socks relay with an admin account / part 4', 'likely')). */
 
 interaction_rule(
     (isConnected(User, H) :-
@@ -412,11 +422,11 @@ interaction_rule(
     rule_desc('relay the wpad http query to the ldaps', 'likely')). /* part 4 à voir parce qu'en vrai il prend l'identité d'un autre */
 
 
-interaction_rule(
+/* interaction_rule(
     (stolenHash(User, Service) :-
       accessibleHash(User, Service, kerberoasting),
       netAccess(Service, _PROTOCOL, _PORT)),
-    rule_desc('Kerberoasting part3', 'likely')).
+    rule_desc('Kerberoasting part3', 'likely')). */
 
 interaction_rule(
     (stolenCredential(User, Service) :-
@@ -445,5 +455,5 @@ interaction_rule(
       accessibleHash(User, Service, Host),
       cvss(VulID, AC),
       netAccess(Host, _PROTOCOL, _PORT)),
-    rule_desc('remote access file exploit',
+    rule_desc('remote access hash',
             cvss_ac(AC))).

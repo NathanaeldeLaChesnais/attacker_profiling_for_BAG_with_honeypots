@@ -1,20 +1,34 @@
-1,"stolenHash(defaultAccount,meereen)","OR",0
-2,"RULE 40 (remote access file exploit)","AND",0.6
+1,"stolenHash(daenerys_targaryen,meereen)","OR",0
+2,"RULE 39 (remote access hash)","AND",0.2
 3,"netAccess(meereen,_,_)","OR",0
 4,"RULE 6 (direct network access)","AND",1
 5,"hacl(intranet,meereen,_,_)","LEAF",1
 6,"attackerLocated(intranet)","LEAF",1
-7,"accessibleHash(defaultAccount,meereen,meereen)","LEAF",1
-8,"vulnExists(meereen,'CVE-2019-1040',removeTheMic,remoteExploit,accessLocalHash)","OR",0
-9,"RULE 18 (Vuln declared)","AND",1
-10,"vulProperty('CVE-2019-1040',remoteExploit,accessLocalHash)","LEAF",1
-11,"vulExists(meereen,'CVE-2019-1040',removeTheMic)","LEAF",1
-12,"RULE 40 (remote access file exploit)","AND",0
-13,"stolenHash(guest,meereen)","OR",0
-14,"RULE 40 (remote access file exploit)","AND",0.6
-15,"accessibleHash(guest,meereen,meereen)","LEAF",1
-16,"RULE 40 (remote access file exploit)","AND",0
-17,"stolenHash(localAdmin,meereen)","OR",0
-18,"RULE 40 (remote access file exploit)","AND",0.6
-19,"accessibleHash(localAdmin,meereen,meereen)","LEAF",1
-20,"RULE 40 (remote access file exploit)","AND",0
+7,"cvss('ESC8',h)","LEAF",1
+8,"accessibleHash(daenerys_targaryen,meereen,meereen)","LEAF",1
+9,"vulnExists(meereen,'ESC8',webEnrollementEnabled,remoteExploit,accessLocalHash)","OR",0
+10,"RULE 18 (Vuln declared)","AND",1
+11,"vulProperty('ESC8',remoteExploit,accessLocalHash)","LEAF",1
+12,"vulExists(meereen,'ESC8',webEnrollementEnabled)","LEAF",1
+13,"RULE 39 (remote access hash)","AND",0.6
+14,"cvss('CVE-2019-1040',m)","LEAF",1
+15,"vulnExists(meereen,'CVE-2019-1040',removeTheMic,remoteExploit,accessLocalHash)","OR",0
+16,"RULE 18 (Vuln declared)","AND",1
+17,"vulProperty('CVE-2019-1040',remoteExploit,accessLocalHash)","LEAF",1
+18,"vulExists(meereen,'CVE-2019-1040',removeTheMic)","LEAF",1
+19,"stolenHash(defaultAccount,meereen)","OR",0
+20,"RULE 39 (remote access hash)","AND",0.2
+21,"accessibleHash(defaultAccount,meereen,meereen)","LEAF",1
+22,"RULE 39 (remote access hash)","AND",0.6
+23,"stolenHash(guest,meereen)","OR",0
+24,"RULE 39 (remote access hash)","AND",0.2
+25,"accessibleHash(guest,meereen,meereen)","LEAF",1
+26,"RULE 39 (remote access hash)","AND",0.6
+27,"stolenHash(jorah_mormont,meereen)","OR",0
+28,"RULE 39 (remote access hash)","AND",0.2
+29,"accessibleHash(jorah_mormont,meereen,meereen)","LEAF",1
+30,"RULE 39 (remote access hash)","AND",0.6
+31,"stolenHash(localAdmin,meereen)","OR",0
+32,"RULE 39 (remote access hash)","AND",0.2
+33,"accessibleHash(localAdmin,meereen,meereen)","LEAF",1
+34,"RULE 39 (remote access hash)","AND",0.6

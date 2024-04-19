@@ -13,5 +13,3 @@
 
 :-load_dyn('/root/mulval//src/analyzer/advances_notrim.P').
 
-:-assert(cvss(_, none)).
-

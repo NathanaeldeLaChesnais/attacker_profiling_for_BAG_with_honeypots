@@ -16,6 +16,6 @@ docker run -ti --name mulval -v $OUTPUT_DIR:/input -d --rm wilbercui/mulval bash
 docker cp $ARCHITECTURE_PATH  mulval:/input
 docker cp $RULE_SET_PATH mulval:/input
 
-docker exec mulval bash -c "graph_gen.sh  ${ARCHITECTURE_FILE} -v -r ${RULE_SET}"
+docker exec mulval bash -c "graph_gen.sh  ${ARCHITECTURE_FILE} --cvss -v -r ${RULE_SET}"
 docker stop mulval
 

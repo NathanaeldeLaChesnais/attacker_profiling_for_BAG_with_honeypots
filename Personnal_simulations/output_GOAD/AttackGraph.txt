@@ -1,5 +1,5 @@
-1,"stolenHash(defaultAccount,meereen)","OR",0
-2,"RULE 40 (remote access file exploit)","AND",0.6
+1,"stolenHash(daenerys_targaryen,meereen)","OR",0
+2,"RULE 39 (remote access hash)","AND",0.2
 3,"netAccess(meereen,_,_)","OR",0
 4,"RULE 6 (direct network access)","AND",1
 5,"hacl(intranet,meereen,_,_)","LEAF",1
@@ -8,43 +8,86 @@
 4,6,-1
 3,4,-1
 2,3,-1
-7,"accessibleHash(defaultAccount,meereen,meereen)","LEAF",1
+7,"cvss('ESC8',h)","LEAF",1
 2,7,-1
-8,"vulnExists(meereen,'CVE-2019-1040',removeTheMic,remoteExploit,accessLocalHash)","OR",0
-9,"RULE 18 (Vuln declared)","AND",1
-10,"vulProperty('CVE-2019-1040',remoteExploit,accessLocalHash)","LEAF",1
-9,10,-1
-11,"vulExists(meereen,'CVE-2019-1040',removeTheMic)","LEAF",1
-9,11,-1
-8,9,-1
+8,"accessibleHash(daenerys_targaryen,meereen,meereen)","LEAF",1
 2,8,-1
+9,"vulnExists(meereen,'ESC8',webEnrollementEnabled,remoteExploit,accessLocalHash)","OR",0
+10,"RULE 18 (Vuln declared)","AND",1
+11,"vulProperty('ESC8',remoteExploit,accessLocalHash)","LEAF",1
+10,11,-1
+12,"vulExists(meereen,'ESC8',webEnrollementEnabled)","LEAF",1
+10,12,-1
+9,10,-1
+2,9,-1
 1,2,-1
-12,"RULE 40 (remote access file exploit)","AND",0
-12,3,-1
-12,7,-1
-12,8,-1
-1,12,-1
-13,"stolenHash(guest,meereen)","OR",0
-14,"RULE 40 (remote access file exploit)","AND",0.6
-14,3,-1
-15,"accessibleHash(guest,meereen,meereen)","LEAF",1
-14,15,-1
-14,8,-1
+13,"RULE 39 (remote access hash)","AND",0.6
+13,3,-1
+14,"cvss('CVE-2019-1040',m)","LEAF",1
 13,14,-1
-16,"RULE 40 (remote access file exploit)","AND",0
-16,3,-1
-16,15,-1
-16,8,-1
-13,16,-1
-17,"stolenHash(localAdmin,meereen)","OR",0
-18,"RULE 40 (remote access file exploit)","AND",0.6
-18,3,-1
-19,"accessibleHash(localAdmin,meereen,meereen)","LEAF",1
-18,19,-1
-18,8,-1
-17,18,-1
-20,"RULE 40 (remote access file exploit)","AND",0
+13,8,-1
+15,"vulnExists(meereen,'CVE-2019-1040',removeTheMic,remoteExploit,accessLocalHash)","OR",0
+16,"RULE 18 (Vuln declared)","AND",1
+17,"vulProperty('CVE-2019-1040',remoteExploit,accessLocalHash)","LEAF",1
+16,17,-1
+18,"vulExists(meereen,'CVE-2019-1040',removeTheMic)","LEAF",1
+16,18,-1
+15,16,-1
+13,15,-1
+1,13,-1
+19,"stolenHash(defaultAccount,meereen)","OR",0
+20,"RULE 39 (remote access hash)","AND",0.2
 20,3,-1
-20,19,-1
-20,8,-1
-17,20,-1
+20,7,-1
+21,"accessibleHash(defaultAccount,meereen,meereen)","LEAF",1
+20,21,-1
+20,9,-1
+19,20,-1
+22,"RULE 39 (remote access hash)","AND",0.6
+22,3,-1
+22,14,-1
+22,21,-1
+22,15,-1
+19,22,-1
+23,"stolenHash(guest,meereen)","OR",0
+24,"RULE 39 (remote access hash)","AND",0.2
+24,3,-1
+24,7,-1
+25,"accessibleHash(guest,meereen,meereen)","LEAF",1
+24,25,-1
+24,9,-1
+23,24,-1
+26,"RULE 39 (remote access hash)","AND",0.6
+26,3,-1
+26,14,-1
+26,25,-1
+26,15,-1
+23,26,-1
+27,"stolenHash(jorah_mormont,meereen)","OR",0
+28,"RULE 39 (remote access hash)","AND",0.2
+28,3,-1
+28,7,-1
+29,"accessibleHash(jorah_mormont,meereen,meereen)","LEAF",1
+28,29,-1
+28,9,-1
+27,28,-1
+30,"RULE 39 (remote access hash)","AND",0.6
+30,3,-1
+30,14,-1
+30,29,-1
+30,15,-1
+27,30,-1
+31,"stolenHash(localAdmin,meereen)","OR",0
+32,"RULE 39 (remote access hash)","AND",0.2
+32,3,-1
+32,7,-1
+33,"accessibleHash(localAdmin,meereen,meereen)","LEAF",1
+32,33,-1
+32,9,-1
+31,32,-1
+34,"RULE 39 (remote access hash)","AND",0.6
+34,3,-1
+34,14,-1
+34,33,-1
+34,15,-1
+31,34,-1
