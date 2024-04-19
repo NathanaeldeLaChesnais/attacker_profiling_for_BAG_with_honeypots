@@ -94,7 +94,16 @@ vulProperty('ShadowCredential', remoteExploit, accessLocalHash). /* part6 */
 cvss('ShadowCredential', h). /* part6 */
 
 
+/**** MSSQL ****/
+/* Coerce and relay à mettre aussi en place depuis la partie 7 */
+/* Pour que la vuln suivante soit bien représentée, il faut ajouter la nécéssité d avoir un com */pte
+vulExists(braavos, 'MSSQL', mssql). /* part7 */
+vulProperty('MSSQL', remoteExploit, privEscalation). /* part7 */
+cvss('MSSQL', h). /* part7 */
+networkServiceInfo(braavos, mssql, protocol, port, shell). /* part7 */
 
+vulExists(castelblack, 'MSSQL', mssql). /* part7 */
+networkServiceInfo(castelblack, mssql, protocol, port, shell). /* part7 */
 
 
 /* exterior host */
