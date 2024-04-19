@@ -1,5 +1,5 @@
 attackerLocated(intranet).
-/* attackGoal(execCode(_, _)). */
+/* attackGoal(execCode(meereen, _)). */
 attackGoal(stolenHash(_, meereen)).
 /* attackGoal(accessFile(_, _, _)).
 attackGoal(execCode(_, _)). */
@@ -72,6 +72,26 @@ accessibleHash(daenerys_targaryen, meereen, meereen). /* part6 */
 accessibleHash(jorah_mormont, meereen, meereen). /* part6 */
 /* ... */
 
+vulExists(meereen, 'ESC1', certification). /* part6 */
+vulProperty('ESC1', remoteExploit, accessLocalHash). /* part6 */
+cvss('ESC1', h). /* part6 */
+
+vulExists(meereen, 'ESC2', certification). /* part6 */
+vulProperty('ESC2', remoteExploit, accessLocalHash). /* part6 */
+cvss('ESC2', h). /* part6 */
+
+vulExists(meereen, 'ESC3', certification). /* part6 */
+vulProperty('ESC3', remoteExploit, accessLocalHash). /* part6 */
+cvss('ESC3', h). /* part6 */
+
+vulExists(meereen, 'CVE-2022-26923', certifried). /* part6 */
+vulProperty('CVE-2022-26923', remoteExploit, privEscalation). /* part6 */
+cvss('CVE-2022-26923', h). /* part6 */
+networkServiceInfo(meereen, certifried, protocol, port, shell). /* part6 */
+
+vulExists(meereen, 'ShadowCredential', essos_local). /* part6 */
+vulProperty('ShadowCredential', remoteExploit, accessLocalHash). /* part6 */
+cvss('ShadowCredential', h). /* part6 */
 
 
 /* exterior host */
