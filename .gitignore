@@ -5,3 +5,5 @@ mulval
 dockerised-mulval
 
 .gitignore
+
+Personnal_simulations/output/*

@@ -324,7 +324,7 @@ interaction_rule(
       netAccess(DC),
       vulnExists(DC, VulID, Domain, remoteExploit, accountEnumeration),
       cvss(VulID, AC)),
-    rule_desc('User enumeration anonymously', 
+    rule_desc('User enumeration anonymously part2', 
         cvss_ac(AC))).
 
 interaction_rule(
@@ -353,10 +353,24 @@ interaction_rule(
     rule_desc('Use of Hashcat for password crack', 'likely')).
 
 
-
-
-
 /* Rules for part 3 */
+interaction_rule(
+    (userFound(USER, Domain) :-
+      userDefined(USER, Domain , _Perm),
+      stolenCredential(USER1, Domain),
+      netAccess(Domain)), 
+    rule_desc('Username found after authentification', 'certain')). /* part 3 on peut meme requeter les domaines joints */
+
+interaction_rule(
+    (stolenHash(User, Domain) :-
+      accessibleHash(User, Domain, kerberoasting),
+      netAccess(Domain),
+      stolenCredential(User1, Domain)),
+    rule_desc('Kerberoasting part3', 'likely')).
+
+
+
+/* Rules for part 4 */
 
 interaction_rule(
     (hasAccount(User, Host, Perm) :-
@@ -484,13 +498,4 @@ interaction_rule(
       userDefined(User, Host, _Perm),
       hostDefined(Host, DC)),
     rule_desc('les hash des comptes locaux sont sur la machine', 'certain')).
-
-interaction_rule(
-    (stolenHash(User, Service) :-
-      accessibleHash(User, Service, kerberoasting),
-      netAccess(Service)),
-    rule_desc('Kerberoasting part3', 'likely')).
-
-
-
     
