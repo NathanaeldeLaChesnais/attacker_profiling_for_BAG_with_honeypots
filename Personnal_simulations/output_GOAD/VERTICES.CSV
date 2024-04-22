@@ -1,82 +1,36 @@
 1,"netAccess(winterfell)","OR",0
 2,"RULE 5 (direct network access)","AND",1
 3,"hacl(intranet,winterfell,_,_)","LEAF",1
-2,3,-1
 4,"attackerLocated(intranet)","LEAF",1
-2,4,-1
-1,2,-1
 5,"stolenCredential(brandon_stark,north_sevenkingdoms_local)","OR",0
 6,"RULE 25 (Use of Hashcat for password crack)","AND",0.8
 7,"weakPassword(brandon_stark)","LEAF",1
-6,7,-1
 8,"stolenHash(brandon_stark,north_sevenkingdoms_local)","OR",0
 9,"RULE 24 (asreproasting part2)","AND",0.8
 10,"userFound(brandon_stark,north_sevenkingdoms_local)","OR",0
 11,"RULE 21 (User enumeration anonymously)","AND",0.6
 12,"cvss('Enumerate DC properties anonymously',m)","LEAF",1
-11,12,-1
 13,"vulnExists(winterfell,'Enumerate DC properties anonymously',north_sevenkingdoms_local,remoteExploit,accountEnumeration)","OR",0
 14,"RULE 16 (Vuln declared)","AND",1
 15,"vulProperty('Enumerate DC properties anonymously',remoteExploit,accountEnumeration)","LEAF",1
-14,15,-1
 16,"vulExists(winterfell,'Enumerate DC properties anonymously',north_sevenkingdoms_local)","LEAF",1
-14,16,-1
-13,14,-1
-11,13,-1
-11,1,-1
 17,"userDefined(brandon_stark,north_sevenkingdoms_local,user)","LEAF",1
-11,17,-1
-10,11,-1
 18,"RULE 22 (Username found by brutforce)","AND",0.2
 19,"netAccess(north_sevenkingdoms_local)","OR",0
 20,"RULE 5 (direct network access)","AND",1
 21,"hacl(intranet,north_sevenkingdoms_local,_,_)","LEAF",1
-20,21,-1
-20,4,-1
-19,20,-1
-18,19,-1
-18,17,-1
-10,18,-1
-9,10,-1
-9,19,-1
 22,"accessibleHash(brandon_stark,north_sevenkingdoms_local,asreproasting)","LEAF",1
-9,22,-1
-8,9,-1
-6,8,-1
-5,6,-1
 23,"stolenCredential(hodor,north_sevenkingdoms_local)","OR",0
 24,"RULE 23 (password is user or in user description)","AND",1
 25,"inCompetent(hodor)","LEAF",1
-24,25,-1
 26,"userFound(hodor,north_sevenkingdoms_local)","OR",0
 27,"RULE 21 (User enumeration anonymously)","AND",0.6
-27,12,-1
-27,13,-1
-27,1,-1
 28,"userDefined(hodor,north_sevenkingdoms_local,user)","LEAF",1
-27,28,-1
-26,27,-1
 29,"RULE 22 (Username found by brutforce)","AND",0.2
-29,19,-1
-29,28,-1
-26,29,-1
-24,26,-1
-23,24,-1
 30,"stolenCredential(samwell_tarly,north_sevenkingdoms_local)","OR",0
 31,"RULE 23 (password is user or in user description)","AND",1
 32,"inCompetent(samwell_tarly)","LEAF",1
-31,32,-1
 33,"userFound(samwell_tarly,north_sevenkingdoms_local)","OR",0
 34,"RULE 21 (User enumeration anonymously)","AND",0.6
-34,12,-1
-34,13,-1
-34,1,-1
 35,"userDefined(samwell_tarly,north_sevenkingdoms_local,user)","LEAF",1
-34,35,-1
-33,34,-1
 36,"RULE 22 (Username found by brutforce)","AND",0.2
-36,19,-1
-36,35,-1
-33,36,-1
-31,33,-1
-30,31,-1

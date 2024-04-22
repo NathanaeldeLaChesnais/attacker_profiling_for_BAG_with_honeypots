@@ -1,6 +1,12 @@
 attackerLocated(intranet).
+attackGoal(stolenCredential(samwell_tarly, _)).
+attackGoal(stolenCredential(brandon_stark, _)).
+attackGoal(stolenCredential(hodor, _)).
 /* attackGoal(execCode(meereen, _)). */
-attackGoal(stolenCredential(jeor_mormont, castelblack)).
+attackGoal(netAccess(winterfell)).
+/* attackGoal(accessibleHash(localAdmin, castelblack, castelblack)).
+attackGoal(userAdminOf(jeor_mormont, castelblack)).
+attackGoal(stolenCredential(jeor_mormont, north_sevenkingdoms_local)). */
 /* attackGoal(accessFile(_, _, _)).
 attackGoal(execCode(_, _)). */
 
@@ -10,7 +16,7 @@ userPartOf(eddard_stark, runNTLMBot, user).
 
 userDefined(jon_snow, north_sevenkingdoms_local, user).
 accessibleHash(jon_snow, north_sevenkingdoms_local, kerberoasting). /* part 3 kerberoasting */
-halfCompetent(jon_snow). /* part 3 */
+weakPassword(jon_snow). /* part 3 */
 
 userDefined(catelyn_stark, north_sevenkingdoms_local, user).
 
@@ -20,14 +26,17 @@ weakPassword(robb_stark).
 
 userDefined(jeor_mormont, north_sevenkingdoms_local, user).
 userPartOf(jeor_mormont, castelblack, admin).
-stolenCredential(jeor_mormont, north_sevenkingdoms_local). /* part 9, je ne sais pas d'où ça sort */
-
+/* stolenCredential(jeor_mormont, north_sevenkingdoms_local). */ /* part 9, je ne sais pas d'où ça sort */
 
 userDefined(hodor, north_sevenkingdoms_local, user).
 inCompetent(hodor).
 
 userDefined(samwell_tarly, north_sevenkingdoms_local, user).
 inCompetent(samwell_tarly). /* part 2 password in description */
+
+userDefined(brandon_stark, north_sevenkingdoms_local, user).
+weakPassword(brandon_stark). /* part 2, asreproasting + brutforce */
+accessibleHash(brandon_stark, north_sevenkingdoms_local, asreproasting ). /* part 2, asreproasting + brutforce */
 
 userDefined(localAdmin, castelblack, local_admin).
 
@@ -41,7 +50,7 @@ hostProperty(castelblack, automaticDNS, true). /* part4 */
 vulExists(castelblack, 'IIS_webshell', asp_net). /* part8 */
 vulProperty('IIS_webshell', remoteExploit, execCode). /* part8 */
 cvss('IIS_webshell', h). /* part8 */
-networkServiceInfo(castelblack, asp_net, protocol, port, shell). /* part8 */
+networkServiceInfo(castelblack, asp_net, shell). /* part8 */
 
 hostDefined(winterfell, north_sevenkingdoms_local).
 vulExists(winterfell, 'Enumerate DC properties anonymously', north_sevenkingdoms_local). /* part2 account enumeration */
@@ -67,7 +76,7 @@ accessibleHash(guest, meereen, meereen). /* part4 */
 accessibleHash(defaultAccount, meereen, meereen). /* part4 */
 
 setuidProgramInfo(meereen, spooler, root). /* part5 */
-networkServiceInfo(meereen, spooler, protocol, port, _root). /* part5 */
+networkServiceInfo(meereen, spooler, _root). /* part5 */
 vulExists(meereen, 'CVE-2021-1675', spooler). /* part5 printNightMare */
 vulProperty('CVE-2021-1675', remoteExploit, privEscalation). /* part5 */
 cvss('CVE-2021-1675', h). /* part5 */ 
@@ -97,7 +106,7 @@ cvss('ESC3', h). /* part6 */
 vulExists(meereen, 'CVE-2022-26923', certifried). /* part6 */
 vulProperty('CVE-2022-26923', remoteExploit, privEscalation). /* part6 */
 cvss('CVE-2022-26923', h). /* part6 */
-networkServiceInfo(meereen, certifried, protocol, port, shell). /* part6 */
+networkServiceInfo(meereen, certifried, shell). /* part6 */
 
 vulExists(meereen, 'ShadowCredential', essos_local). /* part6 */
 vulProperty('ShadowCredential', remoteExploit, accessLocalHash). /* part6 */
@@ -110,10 +119,10 @@ cvss('ShadowCredential', h). /* part6 */
 vulExists(braavos, 'MSSQL', mssql). /* part7 */
 vulProperty('MSSQL', remoteExploit, privEscalation). /* part7 */
 cvss('MSSQL', h). /* part7 */
-networkServiceInfo(braavos, mssql, protocol, port, shell). /* part7 */
+networkServiceInfo(braavos, mssql, shell). /* part7 */
 
 vulExists(castelblack, 'MSSQL', mssql). /* part7 */
-networkServiceInfo(castelblack, mssql, protocol, port, shell). /* part7 */
+networkServiceInfo(castelblack, mssql, shell). /* part7 */
 
 
 /* exterior host */
@@ -121,7 +130,7 @@ hostDefined(external, out). /* part4, à voir parce qu'en vrai il prend l'identi
 userAdminOf(attacker, external).
 
 /* Network Configurations */
-networkServiceInfo(castelblack, vpnService, rdp, 3389, _).
+networkServiceInfo(castelblack, vpnService, _).
 rdpEnabled(castelblack).
 isRuning(ntlmBot, winterfell). /* part4 */
 

@@ -7,7 +7,7 @@ primitive(vulProperty,5).
 primitive(hacl,4).
 primitive(attackerLocated,1).
 primitive(hasAccount,3).
-primitive(networkServiceInfo,5).
+primitive(networkServiceInfo,3).
 primitive(setuidProgramInfo,3).
 primitive(nfsExportInfo,4).
 primitive(nfsMounted,5).
@@ -28,18 +28,19 @@ primitive(hostProperty,3).
 primitive(isConnected,2).
 primitive(userAdminOf,2).
 primitive(accessibleHash,3).
-primitive(halfCompetent,1).
 primitive(fileOnHost,2).
 primitive(amsiBypass,1).
 primitive(cvss,2).
 derived(execCode,2).
-derived(netAccess,3).
+derived(netAccess,1).
 derived(canAccessHost,1).
 derived(accessFile,3).
 derived(logInService,3).
 derived(accessMaliciousInput,3).
-derived(userFound,1).
+derived(userFound,2).
 derived(vulnExists,5).
+derived(stolenCredential,2).
+derived(stolenCredential,2).
 derived(stolenCredential,2).
 derived(dnsPoisoning,1).
 derived(relayWPAD,1).
@@ -47,5 +48,60 @@ derived(stolenHash,2).
 derived(hashFoundNTLM,1).
 meta(cvss,2).
 meta(attackGoal,1).
-meta(advances,2).
+
+attack(stolenCredential(samwell_tarly,north_sevenkingdoms_local)).
+
+possible_duplicate_trace_step(because(5,rule_desc('direct network access',certain),netAccess(_h3747),[hacl(intranet,_h3747,_h3818,_h3819),attackerLocated(intranet)])).
+
+possible_duplicate_trace_step(because(16,rule_desc('Vuln declared',certain),vulnExists(winterfell,'Enumerate DC properties anonymously',north_sevenkingdoms_local,remoteExploit,accountEnumeration),[vulProperty('Enumerate DC properties anonymously',remoteExploit,accountEnumeration),vulExists(winterfell,'Enumerate DC properties anonymously',north_sevenkingdoms_local)])).
+
+possible_duplicate_trace_step(because(16,rule_desc('Vuln declared',certain),vulnExists(winterfell,'Enumerate DC properties anonymously',north_sevenkingdoms_local,remoteExploit,accountEnumeration),[vulProperty('Enumerate DC properties anonymously',remoteExploit,accountEnumeration),vulExists(winterfell,'Enumerate DC properties anonymously',north_sevenkingdoms_local)])).
+
+possible_duplicate_trace_step(because(21,rule_desc('User enumeration anonymously',cvss_ac(m)),userFound(samwell_tarly,north_sevenkingdoms_local),[cvss('Enumerate DC properties anonymously',m),vulnExists(winterfell,'Enumerate DC properties anonymously',north_sevenkingdoms_local,remoteExploit,accountEnumeration),netAccess(winterfell),userDefined(samwell_tarly,north_sevenkingdoms_local,user)])).
+
+possible_duplicate_trace_step(because(5,rule_desc('direct network access',certain),netAccess(north_sevenkingdoms_local),[hacl(intranet,north_sevenkingdoms_local,_h3784,_h3785),attackerLocated(intranet)])).
+
+possible_duplicate_trace_step(because(22,rule_desc('Username found by brutforce',unlikely),userFound(samwell_tarly,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),userDefined(samwell_tarly,north_sevenkingdoms_local,user)])).
+
+possible_duplicate_trace_step(because(23,rule_desc('password is user or in user description',certain),stolenCredential(samwell_tarly,north_sevenkingdoms_local),[inCompetent(samwell_tarly),userFound(samwell_tarly,north_sevenkingdoms_local)])).
+
+possible_duplicate_trace_step(because(23,rule_desc('password is user or in user description',certain),stolenCredential(samwell_tarly,north_sevenkingdoms_local),[inCompetent(samwell_tarly),userFound(samwell_tarly,north_sevenkingdoms_local)])).
+
+possible_duplicate_trace_step(because(16,rule_desc('Vuln declared',certain),vulnExists(meereen,'CVE-2019-1040',removeTheMic,remoteExploit,accessLocalHash),[vulProperty('CVE-2019-1040',remoteExploit,accessLocalHash),vulExists(meereen,'CVE-2019-1040',removeTheMic)])).
+
+possible_duplicate_trace_step(because(16,rule_desc('Vuln declared',certain),vulnExists(meereen,'ESC8',webEnrollementEnabled,remoteExploit,accessLocalHash),[vulProperty('ESC8',remoteExploit,accessLocalHash),vulExists(meereen,'ESC8',webEnrollementEnabled)])).
+
+possible_duplicate_trace_step(because(16,rule_desc('Vuln declared',certain),vulnExists(meereen,'ESC1',certification,remoteExploit,accessLocalHash),[vulProperty('ESC1',remoteExploit,accessLocalHash),vulExists(meereen,'ESC1',certification)])).
+
+possible_duplicate_trace_step(because(16,rule_desc('Vuln declared',certain),vulnExists(meereen,'ESC2',certification,remoteExploit,accessLocalHash),[vulProperty('ESC2',remoteExploit,accessLocalHash),vulExists(meereen,'ESC2',certification)])).
+
+possible_duplicate_trace_step(because(16,rule_desc('Vuln declared',certain),vulnExists(meereen,'ESC3',certification,remoteExploit,accessLocalHash),[vulProperty('ESC3',remoteExploit,accessLocalHash),vulExists(meereen,'ESC3',certification)])).
+
+possible_duplicate_trace_step(because(16,rule_desc('Vuln declared',certain),vulnExists(meereen,'ShadowCredential',essos_local,remoteExploit,accessLocalHash),[vulProperty('ShadowCredential',remoteExploit,accessLocalHash),vulExists(meereen,'ShadowCredential',essos_local)])).
+
+attack(stolenCredential(brandon_stark,north_sevenkingdoms_local)).
+
+possible_duplicate_trace_step(because(21,rule_desc('User enumeration anonymously',cvss_ac(m)),userFound(brandon_stark,north_sevenkingdoms_local),[cvss('Enumerate DC properties anonymously',m),vulnExists(winterfell,'Enumerate DC properties anonymously',north_sevenkingdoms_local,remoteExploit,accountEnumeration),netAccess(winterfell),userDefined(brandon_stark,north_sevenkingdoms_local,user)])).
+
+possible_duplicate_trace_step(because(22,rule_desc('Username found by brutforce',unlikely),userFound(brandon_stark,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),userDefined(brandon_stark,north_sevenkingdoms_local,user)])).
+
+possible_duplicate_trace_step(because(24,rule_desc('asreproasting part2',likely),stolenHash(brandon_stark,north_sevenkingdoms_local),[userFound(brandon_stark,north_sevenkingdoms_local),netAccess(north_sevenkingdoms_local),accessibleHash(brandon_stark,north_sevenkingdoms_local,asreproasting)])).
+
+possible_duplicate_trace_step(because(24,rule_desc('asreproasting part2',likely),stolenHash(brandon_stark,north_sevenkingdoms_local),[userFound(brandon_stark,north_sevenkingdoms_local),netAccess(north_sevenkingdoms_local),accessibleHash(brandon_stark,north_sevenkingdoms_local,asreproasting)])).
+
+possible_duplicate_trace_step(because(25,rule_desc('Use of Hashcat for password crack',likely),stolenCredential(brandon_stark,north_sevenkingdoms_local),[weakPassword(brandon_stark),stolenHash(brandon_stark,north_sevenkingdoms_local)])).
+
+attack(stolenCredential(hodor,north_sevenkingdoms_local)).
+
+possible_duplicate_trace_step(because(21,rule_desc('User enumeration anonymously',cvss_ac(m)),userFound(hodor,north_sevenkingdoms_local),[cvss('Enumerate DC properties anonymously',m),vulnExists(winterfell,'Enumerate DC properties anonymously',north_sevenkingdoms_local,remoteExploit,accountEnumeration),netAccess(winterfell),userDefined(hodor,north_sevenkingdoms_local,user)])).
+
+possible_duplicate_trace_step(because(22,rule_desc('Username found by brutforce',unlikely),userFound(hodor,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),userDefined(hodor,north_sevenkingdoms_local,user)])).
+
+possible_duplicate_trace_step(because(23,rule_desc('password is user or in user description',certain),stolenCredential(hodor,north_sevenkingdoms_local),[inCompetent(hodor),userFound(hodor,north_sevenkingdoms_local)])).
+
+possible_duplicate_trace_step(because(23,rule_desc('password is user or in user description',certain),stolenCredential(hodor,north_sevenkingdoms_local),[inCompetent(hodor),userFound(hodor,north_sevenkingdoms_local)])).
+
+attack(netAccess(winterfell)).
+
+possible_duplicate_trace_step(because(5,rule_desc('direct network access',certain),netAccess(winterfell),[hacl(intranet,winterfell,_h3930,_h3931),attackerLocated(intranet)])).
 

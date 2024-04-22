@@ -27,7 +27,7 @@ primitive(vulProperty(_vulID, _range, _consequence, _port, _prot)).
 primitive(hacl(_src, _dst, _prot, _port)).
 primitive(attackerLocated(_host)).
 primitive(hasAccount(_principal, _host, _account)).
-primitive(networkServiceInfo(_host, _program, _protocol, _port, _user)).
+primitive(networkServiceInfo(_host, _program, _user)).
 primitive(setuidProgramInfo(_host, _program, _owner)).
 primitive(nfsExportInfo(_server, _path, _access, _client)).
 primitive(nfsMounted(_client, _clientpath, _server, _serverpath, _access)).
@@ -48,20 +48,21 @@ primitive(hostProperty(_host, _property, _value)).
 primitive(isConnected(_user, _host)).
 primitive(userAdminOf(_user, _host)).
 primitive(accessibleHash(_user, _service, _where)).
-primitive(halfCompetent(_user)).
 primitive(fileOnHost(_file, _host)).
 primitive(amsiBypass(_host)).
 
 
 derived(execCode(_host, _user)).
-derived(netAccess(_machine,_protocol,_port)).
+derived(netAccess(_machine)).
 derived(canAccessHost(_host)).
 derived(accessFile(_machine,_access,_filepath)).
 derived(logInService(_host, _protocol, _port)).
 derived(accessMaliciousInput(_host, _principal, _program)).
-derived(userFound(_user)).
+derived(userFound(_user, _domain)).
 derived(vulnExists(_machine,_vulID,_program,_range,_consequence)).
 derived(stolenCredential(_user, _service)).
+derived(stolenCredential(_user, _host)).
+derived(stolenCredential(_user, _domain)).
 derived(dnsPoisoning(_host)).
 derived(relayWPAD(_host)).
 derived(stolenHash(_user, _service)).
@@ -71,7 +72,7 @@ derived(hashFoundNTLM(_user)).
 meta(cvss(_vulID, _ac)).
 primitive(cvss(_vulID, _ac)).
 meta(attackGoal(_)).
-meta(advances(_, _)).
+/* meta(advances(_, _)). */
 
 /******************************************************/
 /*             Tabling Predicates                     */
@@ -79,7 +80,7 @@ meta(advances(_, _)).
 /******************************************************/
 
 :- table execCode/2.
-:- table netAccess/3.
+:- table netAccess/1.
 :- table canAccessHost/1.
 :- table canAccessFile/4.
 :- table accessFile/3.
@@ -87,7 +88,7 @@ meta(advances(_, _)).
 :- table logInService/3.
 
 /* Add more tabled predicates here */
-:- table userFound/1.
+:- table userFound/2.
 :- table hasAccount/3.
 :- table userDefined/3.
 :- table hostDefined/2.
@@ -132,8 +133,8 @@ interaction_rule(
   (execCode(H, Perm) :-
 	vulnExists(H, VulID, Software, remoteExploit, privEscalation),
         cvss(VulID, AC),
-	networkServiceInfo(H, Software, Protocol, Port, Perm),
-	netAccess(H, Protocol, Port)),
+	networkServiceInfo(H, Software, Perm),
+	netAccess(H)),
   rule_desc('remote exploit of a server program',
             cvss_ac(AC))).
 
@@ -166,26 +167,19 @@ interaction_rule(
    For now we assume that every user on a local
    machine has access to network. this may change
    later. */
-interaction_rule(
-  (netAccess(H2, Protocol, Port) :-
-	execCode(H1, _Perm),  /* Any permission level */
-	advances(H1, H2),
-        hacl(H1, H2, Protocol, Port)),
-  rule_desc('multi-hop access',
-            'certain')).
 
 interaction_rule(
-  (netAccess(H, Protocol, Port) :-
+  (netAccess(H) :-
 	attackerLocated(Zone),
 	hacl(Zone, H, Protocol, Port)),
   rule_desc('direct network access',
             'certain')).
-
+/* 
 interaction_rule(
   (netAccess(H, Protocol, Port) :-
 	attackerLocated(H)),
   rule_desc('direct on-host access',
-            'certain')).
+            'certain')). */
 
 
 /****** Section canAccessHost ******/
@@ -198,7 +192,7 @@ interaction_rule(
 interaction_rule(
   (canAccessHost(H) :-
 	logInService(H, Protocol, Port),
-	netAccess(H, Protocol, Port)),
+	netAccess(H)),
   rule_desc('Access a host through a log-in service',
             'certain')).
 
@@ -229,12 +223,12 @@ interaction_rule(
 /***************** Section ssh **********************/
 interaction_rule(
   (logInService(H, Protocol, Port) :-
-	networkServiceInfo(H, sshd, Protocol, Port, _)),
+	networkServiceInfo(H, sshd, _)),
   rule_desc('SSH is a login service', 'certain')).
 
 interaction_rule(
   (logInService(H, Protocol, Port) :-
-	networkServiceInfo(H, vpnService, Protocol, Port, _)),
+	networkServiceInfo(H, vpnService, _)),
   rule_desc('VPN is a login service', 'certain')).
 
 
@@ -323,34 +317,46 @@ interaction_rule(
 /****         More Interaction Rules here         *****/
 /******************************************************/
 
+/* Rules for part 2 */
 interaction_rule(
-    (userFound(USER) :-
+    (userFound(USER, Domain) :-
       userDefined(USER, Domain , _Perm),
-      netAccess(DC, PROTOCOL, PORT),
+      netAccess(DC),
       vulnExists(DC, VulID, Domain, remoteExploit, accountEnumeration),
       cvss(VulID, AC)),
     rule_desc('User enumeration anonymously', 
         cvss_ac(AC))).
 
 interaction_rule(
-    (userFound(USER) :-
+    (userFound(USER, Domain) :-
       userDefined(USER, Domain , _Perm),
-      netAccess(Domain, PROTOCOL, PORT)), /* On est obligé de mettre Domain au debut pour ne pas multiplier les sourecs d'attaque */
+      netAccess(Domain)), /* On est obligé de mettre Domain au debut pour ne pas multiplier les sourecs d'attaque */
     rule_desc('Username found by brutforce', 'unlikely')).
 
 interaction_rule(
-    (stolenCredential(USER, windows)  :-
-      userFound(USER),
+    (stolenCredential(USER, Domain)  :-
+      userFound(USER, Domain),
       inCompetent(USER)),
-    rule_desc('user is password', 'certain')).
+    rule_desc('password is user or in user description', 'certain')).
 
 interaction_rule(
-    (stolenCredential(USER, windows)  :-
-      userFound(USER),
-      weakPassword(USER),
-      hashFoundNTLM(USER)),
-    rule_desc('weak password crack', 'likely')).
+    (stolenHash(User, Domain) :-
+      accessibleHash(User, Domain, asreproasting),
+      netAccess(Domain),
+      userFound(User, Domain)),
+    rule_desc('asreproasting part2', 'likely')).
 
+interaction_rule(
+    (stolenCredential(User, Service) :-
+      stolenHash(User, Service),
+      weakPassword(User)),
+    rule_desc('Use of Hashcat for password crack', 'likely')).
+
+
+
+
+
+/* Rules for part 3 */
 
 interaction_rule(
     (hasAccount(User, Host, Perm) :-
@@ -358,13 +364,20 @@ interaction_rule(
       hostDefined(Host, DC)),
     rule_desc('User defined', 'certain')).
 
+interaction_rule(
+    (stolenCredential(USER, Domain)  :-
+      userFound(USER, Domain),
+      weakPassword(USER),
+      hashFoundNTLM(USER)),
+    rule_desc('weak password crack', 'likely')).
+
 
 interaction_rule(
     (execCode(USER, HOST, Perm) :-
       hasAccount(USER, HOST, Perm),
       stolenCredential(USR, windows),
       hostDefined(HOST, DC),
-      netAccess(DC, PROTOCOL, PORT),
+      netAccess(DC),
       rdpEnabled(HOST)),
     rule_desc('RDP access', 'certain')).
 
@@ -373,13 +386,13 @@ interaction_rule(
     (hashFoundNTLM(User) :-
       userPartOf(User, runNTLMBot, user),
       isRuning(ntlmBot, H),
-      netAccess(H, PROTOCOL, PORT)),
+      netAccess(H)),
     rule_desc('NTLM hash found', 'likely')).
 
 interaction_rule(
     (stolenCredential(User, Service) :-
       credentialInClear(User, H, Service),
-      netAccess(H, _PROTOCOL, _PORT)),
+      netAccess(H)),
     rule_desc('Use of DonPAPI', 'likely')).
 
 /* interaction_rule(
@@ -388,7 +401,7 @@ interaction_rule(
       isConnected(User2, H),
       userAdminOf(User2, H),
       userDefined(User, H, _Perm),
-      netAccess(H, _PROTOCOL, _PORT)),
+      netAccess(H)),
     rule_desc('Use a socks relay with an admin account / part 4', 'likely')). */
 
 interaction_rule(
@@ -406,13 +419,13 @@ interaction_rule(
 interaction_rule(
     (dnsPoisoning(Host) :-
       hostProperty(Host, automaticDNS, true),
-      netAccess(Host, _PROTOCOL, _PORT)),
+      netAccess(Host)),
     rule_desc('dns Poisoning', 'likely')).
 
 interaction_rule(
     (relayWPAD(Host) :-
       dnsPoisoning(Host),
-      netAccess(Host, _PROTOCOL, _PORT)),
+      netAccess(Host)),
     rule_desc('relay the wpad http query to the ldaps', 'likely')). /* part 4 */
 
 interaction_rule(
@@ -421,24 +434,6 @@ interaction_rule(
       relayWPAD(Host1),
       userAdminOf(attacker, Host)),
     rule_desc('relay the wpad http query to the ldaps', 'likely')). /* part 4 à voir parce qu'en vrai il prend l'identité d'un autre */
-
-
-/* interaction_rule(
-    (stolenHash(User, Service) :-
-      accessibleHash(User, Service, kerberoasting),
-      netAccess(Service, _PROTOCOL, _PORT)),
-    rule_desc('Kerberoasting part3', 'likely')). */
-
-interaction_rule(
-    (stolenCredential(User, Service) :-
-      stolenHash(User, Service),
-      halfCompetent(User)),
-    rule_desc('Use of Hashcat', 'likely')).
-
-interaction_rule(
-    (halfCompetent(User) :-
-      userDefined(User, DC, _Perm)),
-    rule_desc('Use of Hashcat', 'likely')).
 
 interaction_rule(
     (accessFile(Host, read, File) :-
@@ -455,21 +450,22 @@ interaction_rule(
       vulnExists(Host, VulID, _program, remoteExploit, accessLocalHash),
       accessibleHash(User, Service, Host),
       cvss(VulID, AC),
-      netAccess(Host, _PROTOCOL, _PORT)),
+      netAccess(Host)),
     rule_desc('remote access hash',
             cvss_ac(AC))).
 
 interaction_rule(
     (amsiBypass(Host) :-
-      netAccess(Host, _PROTOCOL, _PORT)),
+      netAccess(Host)),
     rule_desc('amsi Bypass', 'likely')).
 
 interaction_rule(
     (stolenHash(User, Service) :-
       accessibleHash(User, Service, Host),
       userAdminOf(User1, Host),
-      stolenCredential(User1, Host),
-      netAccess(Host, _PROTOCOL, _PORT)),
+      stolenCredential(User1, Domain),
+      hostDefined(Host, Domain),
+      netAccess(Host)),
     rule_desc('secretsdump as local admin', 'certain')).
 
 interaction_rule(
@@ -482,4 +478,19 @@ interaction_rule(
       stolenCredential(User, Domain),
       hostDefined(Host, Domain)),
     rule_desc('Host is on the domain', 'certain')). */
+
+interaction_rule(
+    (accessibleHash(User, Host, Host) :-
+      userDefined(User, Host, _Perm),
+      hostDefined(Host, DC)),
+    rule_desc('les hash des comptes locaux sont sur la machine', 'certain')).
+
+interaction_rule(
+    (stolenHash(User, Service) :-
+      accessibleHash(User, Service, kerberoasting),
+      netAccess(Service)),
+    rule_desc('Kerberoasting part3', 'likely')).
+
+
+
     

@@ -16,7 +16,7 @@
 
 :-(dynamic(hasAccount(_h2948,_h2949,_h2950))).
 
-:-(dynamic(networkServiceInfo(_h2948,_h2949,_h2950,_h2951,_h2952))).
+:-(dynamic(networkServiceInfo(_h2948,_h2949,_h2950))).
 
 :-(dynamic(setuidProgramInfo(_h2948,_h2949,_h2950))).
 
@@ -57,8 +57,6 @@
 :-(dynamic(userAdminOf(_h2948,_h2949))).
 
 :-(dynamic(accessibleHash(_h2948,_h2949,_h2950))).
-
-:-(dynamic(halfCompetent(_h2948))).
 
 :-(dynamic(fileOnHost(_h2948,_h2949))).
 
