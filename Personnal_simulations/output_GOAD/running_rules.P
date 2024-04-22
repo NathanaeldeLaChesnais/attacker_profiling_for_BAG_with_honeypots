@@ -40,7 +40,7 @@ primitive(canAccessFile(_host, _user, _access, _path)).
 primitive(userDefined(_user, _dc, _perm)).
 primitive(hostDefined(_host, _dc)).
 primitive(rdpEnabled(_host)).
-primitive(userPartOf(_user, _group)).
+primitive(userPartOf(_user, _host, _group)).
 primitive(weakPassword(_user)).
 primitive(credentialInClear(_user, _host, _service)).
 primitive(isRuning(_service, _host)).
@@ -50,6 +50,7 @@ primitive(userAdminOf(_user, _host)).
 primitive(accessibleHash(_user, _service, _where)).
 primitive(halfCompetent(_user)).
 primitive(fileOnHost(_file, _host)).
+primitive(amsiBypass(_host)).
 
 
 derived(execCode(_host, _user)).
@@ -370,7 +371,7 @@ interaction_rule(
 
 interaction_rule(
     (hashFoundNTLM(User) :-
-      userPartOf(User, runNTLMBot),
+      userPartOf(User, runNTLMBot, user),
       isRuning(ntlmBot, H),
       netAccess(H, PROTOCOL, PORT)),
     rule_desc('NTLM hash found', 'likely')).
@@ -457,3 +458,28 @@ interaction_rule(
       netAccess(Host, _PROTOCOL, _PORT)),
     rule_desc('remote access hash',
             cvss_ac(AC))).
+
+interaction_rule(
+    (amsiBypass(Host) :-
+      netAccess(Host, _PROTOCOL, _PORT)),
+    rule_desc('amsi Bypass', 'likely')).
+
+interaction_rule(
+    (stolenHash(User, Service) :-
+      accessibleHash(User, Service, Host),
+      userAdminOf(User1, Host),
+      stolenCredential(User1, Host),
+      netAccess(Host, _PROTOCOL, _PORT)),
+    rule_desc('secretsdump as local admin', 'certain')).
+
+interaction_rule(
+    (userAdminOf(User, Host) :-
+      userPartOf(User, Host, admin)),
+    rule_desc('User is admin', 'certain')).
+
+/* interaction_rule(
+    (stolenCredential(User, Host) :-
+      stolenCredential(User, Domain),
+      hostDefined(Host, Domain)),
+    rule_desc('Host is on the domain', 'certain')). */
+    

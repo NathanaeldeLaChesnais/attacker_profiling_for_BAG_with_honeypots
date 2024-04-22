@@ -1,12 +1,12 @@
 attackerLocated(intranet).
 /* attackGoal(execCode(meereen, _)). */
-attackGoal(stolenHash(_, meereen)).
+attackGoal(stolenCredential(jeor_mormont, castelblack)).
 /* attackGoal(accessFile(_, _, _)).
 attackGoal(execCode(_, _)). */
 
 /* Users and their properties */
 userDefined(eddard_stark, north_sevenkingdoms_local, domain_admin).
-userPartOf(eddard_stark, runNTLMBot).
+userPartOf(eddard_stark, runNTLMBot, user).
 
 userDefined(jon_snow, north_sevenkingdoms_local, user).
 accessibleHash(jon_snow, north_sevenkingdoms_local, kerberoasting). /* part 3 kerberoasting */
@@ -15,10 +15,13 @@ halfCompetent(jon_snow). /* part 3 */
 userDefined(catelyn_stark, north_sevenkingdoms_local, user).
 
 userDefined(robb_stark, north_sevenkingdoms_local, user).
-userPartOf(robb_stark, runNTLMBot).
+userPartOf(robb_stark, runNTLMBot, user).
 weakPassword(robb_stark).
 
 userDefined(jeor_mormont, north_sevenkingdoms_local, user).
+userPartOf(jeor_mormont, castelblack, admin).
+stolenCredential(jeor_mormont, north_sevenkingdoms_local). /* part 9, je ne sais pas d'où ça sort */
+
 
 userDefined(hodor, north_sevenkingdoms_local, user).
 inCompetent(hodor).
@@ -35,6 +38,11 @@ hostDefined(castelblack, north_sevenkingdoms_local).
 hostProperty(castelblack, signedSMB, false).
 hostProperty(castelblack, automaticDNS, true). /* part4 */
 
+vulExists(castelblack, 'IIS_webshell', asp_net). /* part8 */
+vulProperty('IIS_webshell', remoteExploit, execCode). /* part8 */
+cvss('IIS_webshell', h). /* part8 */
+networkServiceInfo(castelblack, asp_net, protocol, port, shell). /* part8 */
+
 hostDefined(winterfell, north_sevenkingdoms_local).
 vulExists(winterfell, 'Enumerate DC properties anonymously', north_sevenkingdoms_local). /* part2 account enumeration */
 vulProperty('Enumerate DC properties anonymously', remoteExploit, accountEnumeration). /* part2 */
@@ -44,6 +52,8 @@ vulExists(winterfell, 'CVE-2021-42287', Active_Directory). /* part5 samAccountNa
 vulProperty('CVE-2021-42287', remoteExploit, fileAccess). /* part5 */
 cvss('CVE-2021-42287', h). /* part5 */
 fileOnHost(ntdsdit, winterfell). /* part5 */
+
+
 
 /* Configuration of Meereen */
 hostDefined(meereen, essos_local).
@@ -96,7 +106,7 @@ cvss('ShadowCredential', h). /* part6 */
 
 /**** MSSQL ****/
 /* Coerce and relay à mettre aussi en place depuis la partie 7 */
-/* Pour que la vuln suivante soit bien représentée, il faut ajouter la nécéssité d avoir un com */pte
+/* Pour que la vuln suivante soit bien représentée, il faut ajouter la nécéssité d avoir un compte */
 vulExists(braavos, 'MSSQL', mssql). /* part7 */
 vulProperty('MSSQL', remoteExploit, privEscalation). /* part7 */
 cvss('MSSQL', h). /* part7 */

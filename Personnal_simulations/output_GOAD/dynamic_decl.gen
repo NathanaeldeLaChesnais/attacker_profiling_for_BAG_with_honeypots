@@ -42,7 +42,7 @@
 
 :-(dynamic(rdpEnabled(_h2948))).
 
-:-(dynamic(userPartOf(_h2948,_h2949))).
+:-(dynamic(userPartOf(_h2948,_h2949,_h2950))).
 
 :-(dynamic(weakPassword(_h2948))).
 
@@ -61,6 +61,8 @@
 :-(dynamic(halfCompetent(_h2948))).
 
 :-(dynamic(fileOnHost(_h2948,_h2949))).
+
+:-(dynamic(amsiBypass(_h2948))).
 
 :-(dynamic(cvss(_h2948,_h2949))).
 

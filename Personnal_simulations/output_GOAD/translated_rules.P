@@ -56,7 +56,7 @@
 
 :-(mvTrc(execCode(_h3279,_h3280,_h3281,28)),','(hasAccount(_h3279,_h3280,_h3281),','(mvTrc(stolenCredential(_h3293,windows,_h3349)),','(hostDefined(_h3280,_h3300),','(mvTrc(netAccess(_h3300,_h3306,_h3307,_h3383)),','(rdpEnabled(_h3280),assert_trace(because(28,rule_desc('RDP access',certain),execCode(_h3279,_h3280,_h3281),[rdpEnabled(_h3280),netAccess(_h3300,_h3306,_h3307),hostDefined(_h3280,_h3300),stolenCredential(_h3293,windows),hasAccount(_h3279,_h3280,_h3281)])))))))).
 
-:-(mvTrc(hashFoundNTLM(_h3279,29)),','(userPartOf(_h3279,runNTLMBot),','(isRuning(ntlmBot,_h3291),','(mvTrc(netAccess(_h3291,_h3294,_h3295,_h3349)),assert_trace(because(29,rule_desc('NTLM hash found',likely),hashFoundNTLM(_h3279),[netAccess(_h3291,_h3294,_h3295),isRuning(ntlmBot,_h3291),userPartOf(_h3279,runNTLMBot)])))))).
+:-(mvTrc(hashFoundNTLM(_h3279,29)),','(userPartOf(_h3279,runNTLMBot,user),','(isRuning(ntlmBot,_h3292),','(mvTrc(netAccess(_h3292,_h3295,_h3296,_h3350)),assert_trace(because(29,rule_desc('NTLM hash found',likely),hashFoundNTLM(_h3279),[netAccess(_h3292,_h3295,_h3296),isRuning(ntlmBot,_h3292),userPartOf(_h3279,runNTLMBot,user)])))))).
 
 :-(mvTrc(stolenCredential(_h3279,_h3280,30)),','(credentialInClear(_h3279,_h3286,_h3280),','(mvTrc(netAccess(_h3286,_h3290,_h3291,_h3340)),assert_trace(because(30,rule_desc('Use of DonPAPI',likely),stolenCredential(_h3279,_h3280),[netAccess(_h3286,_h3290,_h3291),credentialInClear(_h3279,_h3286,_h3280)]))))).
 
@@ -77,4 +77,10 @@
 :-(mvTrc(accessFile(_h3279,read,_h3281,38)),','(mvTrc(vulnExists(_h3279,_h3287,_h3288,remoteExploit,fileAccess,_h3348)),','(fileOnHost(_h3281,_h3279),','(cvss(_h3287,_h3302),','(mvTrc(stolenCredential(_h3307,_h3308,_h3402)),','(hostDefined(_h3279,_h3308),assert_trace(because(38,rule_desc('remote access file exploit',cvss_ac(_h3302)),accessFile(_h3279,read,_h3281),[hostDefined(_h3279,_h3308),stolenCredential(_h3307,_h3308),cvss(_h3287,_h3302),fileOnHost(_h3281,_h3279),vulnExists(_h3279,_h3287,_h3288,remoteExploit,fileAccess)])))))))).
 
 :-(mvTrc(stolenHash(_h3279,_h3280,39)),','(mvTrc(vulnExists(_h3285,_h3286,_h3287,remoteExploit,accessLocalHash,_h3343)),','(accessibleHash(_h3279,_h3280,_h3285),','(cvss(_h3286,_h3302),','(mvTrc(netAccess(_h3285,_h3305,_h3306,_h3406)),assert_trace(because(39,rule_desc('remote access hash',cvss_ac(_h3302)),stolenHash(_h3279,_h3280),[netAccess(_h3285,_h3305,_h3306),cvss(_h3286,_h3302),accessibleHash(_h3279,_h3280,_h3285),vulnExists(_h3285,_h3286,_h3287,remoteExploit,accessLocalHash)]))))))).
+
+:-(mvTrc(amsiBypass(_h3279,40)),','(mvTrc(netAccess(_h3279,_h3282,_h3283,_h3327)),assert_trace(because(40,rule_desc('amsi Bypass',likely),amsiBypass(_h3279),[netAccess(_h3279,_h3282,_h3283)])))).
+
+:-(mvTrc(stolenHash(_h3279,_h3280,41)),','(accessibleHash(_h3279,_h3280,_h3287),','(userAdminOf(_h3292,_h3287),','(mvTrc(stolenCredential(_h3292,_h3287,_h3348)),','(mvTrc(netAccess(_h3287,_h3302,_h3303,_h3386)),assert_trace(because(41,rule_desc('secretsdump as local admin',certain),stolenHash(_h3279,_h3280),[netAccess(_h3287,_h3302,_h3303),stolenCredential(_h3292,_h3287),userAdminOf(_h3292,_h3287),accessibleHash(_h3279,_h3280,_h3287)]))))))).
+
+:-(mvTrc(userAdminOf(_h3279,_h3280,42)),','(userPartOf(_h3279,_h3280,admin),assert_trace(because(42,rule_desc('User is admin',certain),userAdminOf(_h3279,_h3280),[userPartOf(_h3279,_h3280,admin)])))).
 
