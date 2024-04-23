@@ -1,8 +1,9 @@
 attackerLocated(intranet).
-attackGoal(stolenCredential(samwell_tarly, _)).
+/* attackGoal(stolenCredential(samwell_tarly, _)).
 attackGoal(stolenCredential(brandon_stark, _)).
 attackGoal(stolenCredential(hodor, _)).
-attackGoal(stolenCredential(jon_snow, _)).
+attackGoal(stolenCredential(jon_snow, _)). */
+attackGoal(stolenCredential(robb_stark, _)).
 /* attackGoal(execCode(meereen, _)). */
 /* attackGoal(netAccess(winterfell)). */
 /* attackGoal(accessibleHash(localAdmin, castelblack, castelblack)).

@@ -366,24 +366,30 @@ interaction_rule(
       accessibleHash(User, Domain, kerberoasting),
       netAccess(Domain),
       stolenCredential(User1, Domain)),
-    rule_desc('Kerberoasting part3', 'likely')).
+    rule_desc('Kerberoasting part 3', 'likely')).
 
 
 
 /* Rules for part 4 */
+interaction_rule(
+    (stolenHash(User, ntlmBot) :-
+      userPartOf(User, runNTLMBot, user),
+      isRuning(ntlmBot, H),
+      netAccess(H)),
+    rule_desc('NTLM hash found part 4', 'likely')).
+
+interaction_rule(
+    (stolenCredential(USER, Domain)  :-
+      userDefined(USER, Domain , _Perm),
+      weakPassword(USER),
+      stolenHash(USER, ntlmBot)),
+    rule_desc('hashcat sur NTLM part 4 sachant que le user est trouve en meme temps que le hash', 'likely')).
 
 interaction_rule(
     (hasAccount(User, Host, Perm) :-
       userDefined(User, DC, Perm),
       hostDefined(Host, DC)),
     rule_desc('User defined', 'certain')).
-
-interaction_rule(
-    (stolenCredential(USER, Domain)  :-
-      userFound(USER, Domain),
-      weakPassword(USER),
-      hashFoundNTLM(USER)),
-    rule_desc('weak password crack', 'likely')).
 
 
 interaction_rule(
@@ -394,14 +400,6 @@ interaction_rule(
       netAccess(DC),
       rdpEnabled(HOST)),
     rule_desc('RDP access', 'certain')).
-
-
-interaction_rule(
-    (hashFoundNTLM(User) :-
-      userPartOf(User, runNTLMBot, user),
-      isRuning(ntlmBot, H),
-      netAccess(H)),
-    rule_desc('NTLM hash found', 'likely')).
 
 interaction_rule(
     (stolenCredential(User, Service) :-
