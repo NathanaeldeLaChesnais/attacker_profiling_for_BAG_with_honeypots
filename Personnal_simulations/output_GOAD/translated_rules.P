@@ -44,7 +44,7 @@
 
 :-(mvTrc(userFound(_h3279,_h3280,22)),','(userDefined(_h3279,_h3280,_h3287),','(mvTrc(netAccess(_h3280,_h3338)),assert_trace(because(22,rule_desc('Username found by brutforce',unlikely),userFound(_h3279,_h3280),[netAccess(_h3280),userDefined(_h3279,_h3280,_h3287)]))))).
 
-:-(mvTrc(stolenCredential(_h3279,_h3280,23)),','(mvTrc(userFound(_h3279,_h3280,_h3323)),','(inCompetent(_h3279),assert_trace(because(23,rule_desc('password is user or in user description',certain),stolenCredential(_h3279,_h3280),[inCompetent(_h3279),userFound(_h3279,_h3280)]))))).
+:-(mvTrc(stolenCredential(_h3279,_h3280,23)),','(mvTrc(userFound(_h3279,_h3280,_h3323)),','(inCompetent(_h3279),assert_trace(because(23,rule_desc('password is user or in user description',likely),stolenCredential(_h3279,_h3280),[inCompetent(_h3279),userFound(_h3279,_h3280)]))))).
 
 :-(mvTrc(stolenHash(_h3279,_h3280,24)),','(accessibleHash(_h3279,_h3280,asreproasting),','(mvTrc(netAccess(_h3280,_h3335)),','(mvTrc(userFound(_h3279,_h3280,_h3368)),assert_trace(because(24,rule_desc('asreproasting part2',likely),stolenHash(_h3279,_h3280),[userFound(_h3279,_h3280),netAccess(_h3280),accessibleHash(_h3279,_h3280,asreproasting)])))))).
 
@@ -53,4 +53,36 @@
 :-(mvTrc(userFound(_h3279,_h3280,26)),','(userDefined(_h3279,_h3280,_h3287),','(mvTrc(stolenCredential(_h3292,_h3280,_h3335)),','(mvTrc(netAccess(_h3280,_h3373)),assert_trace(because(26,rule_desc('Username found after authentification',certain),userFound(_h3279,_h3280),[netAccess(_h3280),stolenCredential(_h3292,_h3280),userDefined(_h3279,_h3280,_h3287)])))))).
 
 :-(mvTrc(stolenHash(_h3279,_h3280,27)),','(accessibleHash(_h3279,_h3280,kerberoasting),','(mvTrc(netAccess(_h3280,_h3335)),','(mvTrc(stolenCredential(_h3294,_h3280,_h3368)),assert_trace(because(27,rule_desc('Kerberoasting part3',likely),stolenHash(_h3279,_h3280),[stolenCredential(_h3294,_h3280),netAccess(_h3280),accessibleHash(_h3279,_h3280,kerberoasting)])))))).
+
+:-(mvTrc(hasAccount(_h3279,_h3280,_h3281,28)),','(userDefined(_h3279,_h3287,_h3281),','(hostDefined(_h3280,_h3287),assert_trace(because(28,rule_desc('User defined',certain),hasAccount(_h3279,_h3280,_h3281),[hostDefined(_h3280,_h3287),userDefined(_h3279,_h3287,_h3281)]))))).
+
+:-(mvTrc(stolenCredential(_h3279,_h3280,29)),','(mvTrc(userFound(_h3279,_h3280,_h3328)),','(weakPassword(_h3279),','(mvTrc(hashFoundNTLM(_h3279,_h3371)),assert_trace(because(29,rule_desc('weak password crack',likely),stolenCredential(_h3279,_h3280),[hashFoundNTLM(_h3279),weakPassword(_h3279),userFound(_h3279,_h3280)])))))).
+
+:-(mvTrc(execCode(_h3279,_h3280,_h3281,30)),','(hasAccount(_h3279,_h3280,_h3281),','(mvTrc(stolenCredential(_h3293,windows,_h3347)),','(hostDefined(_h3280,_h3300),','(mvTrc(netAccess(_h3300,_h3381)),','(rdpEnabled(_h3280),assert_trace(because(30,rule_desc('RDP access',certain),execCode(_h3279,_h3280,_h3281),[rdpEnabled(_h3280),netAccess(_h3300),hostDefined(_h3280,_h3300),stolenCredential(_h3293,windows),hasAccount(_h3279,_h3280,_h3281)])))))))).
+
+:-(mvTrc(hashFoundNTLM(_h3279,31)),','(userPartOf(_h3279,runNTLMBot,user),','(isRuning(ntlmBot,_h3292),','(mvTrc(netAccess(_h3292,_h3348)),assert_trace(because(31,rule_desc('NTLM hash found',likely),hashFoundNTLM(_h3279),[netAccess(_h3292),isRuning(ntlmBot,_h3292),userPartOf(_h3279,runNTLMBot,user)])))))).
+
+:-(mvTrc(stolenCredential(_h3279,_h3280,32)),','(credentialInClear(_h3279,_h3286,_h3280),','(mvTrc(netAccess(_h3286,_h3338)),assert_trace(because(32,rule_desc('Use of DonPAPI',likely),stolenCredential(_h3279,_h3280),[netAccess(_h3286),credentialInClear(_h3279,_h3286,_h3280)]))))).
+
+:-(mvTrc(isConnected(_h3279,_h3280,33)),','(hostDefined(_h3280,_h3286),','(userDefined(_h3279,_h3286,_h3290),assert_trace(because(33,rule_desc('Use a socks relay with an admin account / part 4',unlikely),isConnected(_h3279,_h3280),[userDefined(_h3279,_h3286,_h3290),hostDefined(_h3280,_h3286)]))))).
+
+:-(mvTrc(userAdminOf(_h3279,_h3280,34)),','(userDefined(_h3279,_h3286,domain_admin),','(hostDefined(_h3280,_h3286),assert_trace(because(34,rule_desc('Un admin de domain est admin local des machines du domain',certain),userAdminOf(_h3279,_h3280),[hostDefined(_h3280,_h3286),userDefined(_h3279,_h3286,domain_admin)]))))).
+
+:-(mvTrc(dnsPoisoning(_h3279,35)),','(hostProperty(_h3279,automaticDNS,true),','(mvTrc(netAccess(_h3279,_h3337)),assert_trace(because(35,rule_desc('dns Poisoning',likely),dnsPoisoning(_h3279),[netAccess(_h3279),hostProperty(_h3279,automaticDNS,true)]))))).
+
+:-(mvTrc(relayWPAD(_h3279,36)),','(mvTrc(dnsPoisoning(_h3279,_h3321)),','(mvTrc(netAccess(_h3279,_h3354)),assert_trace(because(36,rule_desc('relay the wpad http query to the ldaps',likely),relayWPAD(_h3279),[netAccess(_h3279),dnsPoisoning(_h3279)]))))).
+
+:-(mvTrc(hostDefined(_h3279,_h3280,37)),','(hostDefined(_h3285,_h3280),','(mvTrc(relayWPAD(_h3285,_h3334)),','(userAdminOf(attacker,_h3279),assert_trace(because(37,rule_desc('relay the wpad http query to the ldaps',likely),hostDefined(_h3279,_h3280),[userAdminOf(attacker,_h3279),relayWPAD(_h3285),hostDefined(_h3285,_h3280)])))))).
+
+:-(mvTrc(accessFile(_h3279,read,_h3281,38)),','(mvTrc(vulnExists(_h3279,_h3287,_h3288,remoteExploit,fileAccess,_h3348)),','(fileOnHost(_h3281,_h3279),','(cvss(_h3287,_h3302),','(mvTrc(stolenCredential(_h3307,_h3308,_h3402)),','(hostDefined(_h3279,_h3308),assert_trace(because(38,rule_desc('remote access file exploit',cvss_ac(_h3302)),accessFile(_h3279,read,_h3281),[hostDefined(_h3279,_h3308),stolenCredential(_h3307,_h3308),cvss(_h3287,_h3302),fileOnHost(_h3281,_h3279),vulnExists(_h3279,_h3287,_h3288,remoteExploit,fileAccess)])))))))).
+
+:-(mvTrc(stolenHash(_h3279,_h3280,39)),','(mvTrc(vulnExists(_h3285,_h3286,_h3287,remoteExploit,accessLocalHash,_h3341)),','(accessibleHash(_h3279,_h3280,_h3285),','(cvss(_h3286,_h3302),','(mvTrc(netAccess(_h3285,_h3404)),assert_trace(because(39,rule_desc('remote access hash',cvss_ac(_h3302)),stolenHash(_h3279,_h3280),[netAccess(_h3285),cvss(_h3286,_h3302),accessibleHash(_h3279,_h3280,_h3285),vulnExists(_h3285,_h3286,_h3287,remoteExploit,accessLocalHash)]))))))).
+
+:-(mvTrc(amsiBypass(_h3279,40)),','(mvTrc(netAccess(_h3279,_h3325)),assert_trace(because(40,rule_desc('amsi Bypass',likely),amsiBypass(_h3279),[netAccess(_h3279)])))).
+
+:-(mvTrc(stolenHash(_h3279,_h3280,41)),','(accessibleHash(_h3279,_h3280,_h3287),','(userAdminOf(_h3292,_h3287),','(mvTrc(stolenCredential(_h3292,_h3299,_h3352)),','(hostDefined(_h3287,_h3299),','(mvTrc(netAccess(_h3287,_h3395)),assert_trace(because(41,rule_desc('secretsdump as local admin',certain),stolenHash(_h3279,_h3280),[netAccess(_h3287),hostDefined(_h3287,_h3299),stolenCredential(_h3292,_h3299),userAdminOf(_h3292,_h3287),accessibleHash(_h3279,_h3280,_h3287)])))))))).
+
+:-(mvTrc(userAdminOf(_h3279,_h3280,42)),','(userPartOf(_h3279,_h3280,admin),assert_trace(because(42,rule_desc('User is admin',certain),userAdminOf(_h3279,_h3280),[userPartOf(_h3279,_h3280,admin)])))).
+
+:-(mvTrc(accessibleHash(_h3279,_h3280,_h3280,43)),','(userDefined(_h3279,_h3280,_h3288),','(hostDefined(_h3280,_h3291),assert_trace(because(43,rule_desc('les hash des comptes locaux sont sur la machine',certain),accessibleHash(_h3279,_h3280,_h3280),[hostDefined(_h3280,_h3291),userDefined(_h3279,_h3280,_h3288)]))))).
 

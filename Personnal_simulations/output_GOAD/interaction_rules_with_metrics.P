@@ -337,7 +337,7 @@ interaction_rule(
     (stolenCredential(USER, Domain)  :-
       userFound(USER, Domain),
       inCompetent(USER)),
-    rule_desc('password is user or in user description', 'certain')).
+    rule_desc('password is user or in user description', 'likely')).
 
 interaction_rule(
     (stolenHash(User, Domain) :-
@@ -369,4 +369,133 @@ interaction_rule(
     rule_desc('Kerberoasting part3', 'likely')).
 
 
+
+/* Rules for part 4 */
+
+interaction_rule(
+    (hasAccount(User, Host, Perm) :-
+      userDefined(User, DC, Perm),
+      hostDefined(Host, DC)),
+    rule_desc('User defined', 'certain')).
+
+interaction_rule(
+    (stolenCredential(USER, Domain)  :-
+      userFound(USER, Domain),
+      weakPassword(USER),
+      hashFoundNTLM(USER)),
+    rule_desc('weak password crack', 'likely')).
+
+
+interaction_rule(
+    (execCode(USER, HOST, Perm) :-
+      hasAccount(USER, HOST, Perm),
+      stolenCredential(USR, windows),
+      hostDefined(HOST, DC),
+      netAccess(DC),
+      rdpEnabled(HOST)),
+    rule_desc('RDP access', 'certain')).
+
+
+interaction_rule(
+    (hashFoundNTLM(User) :-
+      userPartOf(User, runNTLMBot, user),
+      isRuning(ntlmBot, H),
+      netAccess(H)),
+    rule_desc('NTLM hash found', 'likely')).
+
+interaction_rule(
+    (stolenCredential(User, Service) :-
+      credentialInClear(User, H, Service),
+      netAccess(H)),
+    rule_desc('Use of DonPAPI', 'likely')).
+
+/* interaction_rule(
+    (stolenHash(User, H) :-
+      hostProperty(H, signedSMB, false),
+      isConnected(User2, H),
+      userAdminOf(User2, H),
+      userDefined(User, H, _Perm),
+      netAccess(H)),
+    rule_desc('Use a socks relay with an admin account / part 4', 'likely')). */
+
+interaction_rule(
+    (isConnected(User, H) :-
+      hostDefined(H, DC),
+      userDefined(User, DC, _Perm)),
+    rule_desc('Use a socks relay with an admin account / part 4', 'unlikely')).
+
+interaction_rule(
+    (userAdminOf(User, H) :-
+      userDefined(User, DC, domain_admin),
+      hostDefined(H, DC)),
+    rule_desc('Un admin de domain est admin local des machines du domain', 'certain')).
+
+interaction_rule(
+    (dnsPoisoning(Host) :-
+      hostProperty(Host, automaticDNS, true),
+      netAccess(Host)),
+    rule_desc('dns Poisoning', 'likely')).
+
+interaction_rule(
+    (relayWPAD(Host) :-
+      dnsPoisoning(Host),
+      netAccess(Host)),
+    rule_desc('relay the wpad http query to the ldaps', 'likely')). /* part 4 */
+
+interaction_rule(
+    (hostDefined(Host, DC) :-
+      hostDefined(Host1, DC),
+      relayWPAD(Host1),
+      userAdminOf(attacker, Host)),
+    rule_desc('relay the wpad http query to the ldaps', 'likely')). /* part 4 à voir parce qu'en vrai il prend l'identité d'un autre */
+
+interaction_rule(
+    (accessFile(Host, read, File) :-
+      vulnExists(Host, VulID, _program, remoteExploit, fileAccess),
+      fileOnHost(File, Host),
+      cvss(VulID, AC),
+      stolenCredential(User, DC),
+      hostDefined(Host, DC)),
+    rule_desc('remote access file exploit',
+            cvss_ac(AC))).
+
+interaction_rule(
+    (stolenHash(User, Service) :-
+      vulnExists(Host, VulID, _program, remoteExploit, accessLocalHash),
+      accessibleHash(User, Service, Host),
+      cvss(VulID, AC),
+      netAccess(Host)),
+    rule_desc('remote access hash',
+            cvss_ac(AC))).
+
+interaction_rule(
+    (amsiBypass(Host) :-
+      netAccess(Host)),
+    rule_desc('amsi Bypass', 'likely')).
+
+interaction_rule(
+    (stolenHash(User, Service) :-
+      accessibleHash(User, Service, Host),
+      userAdminOf(User1, Host),
+      stolenCredential(User1, Domain),
+      hostDefined(Host, Domain),
+      netAccess(Host)),
+    rule_desc('secretsdump as local admin', 'certain')).
+
+interaction_rule(
+    (userAdminOf(User, Host) :-
+      userPartOf(User, Host, admin)),
+    rule_desc('User is admin', 'certain')).
+
+/* interaction_rule(
+    (stolenCredential(User, Host) :-
+      stolenCredential(User, Domain),
+      hostDefined(Host, Domain)),
+    rule_desc('Host is on the domain', 'certain')). */
+
+interaction_rule(
+    (accessibleHash(User, Host, Host) :-
+      userDefined(User, Host, _Perm),
+      hostDefined(Host, DC)),
+    rule_desc('les hash des comptes locaux sont sur la machine', 'certain')).
     

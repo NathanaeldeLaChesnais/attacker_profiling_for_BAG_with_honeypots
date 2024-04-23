@@ -337,7 +337,7 @@ interaction_rule(
     (stolenCredential(USER, Domain)  :-
       userFound(USER, Domain),
       inCompetent(USER)),
-    rule_desc('password is user or in user description', 'certain')).
+    rule_desc('password is user or in user description', 'likely')).
 
 interaction_rule(
     (stolenHash(User, Domain) :-
@@ -371,6 +371,12 @@ interaction_rule(
 
 
 /* Rules for part 4 */
+interaction_rule(
+    (hashFoundNTLM(User) :-
+      userPartOf(User, runNTLMBot, user),
+      isRuning(ntlmBot, H),
+      netAccess(H)),
+    rule_desc('NTLM hash found', 'likely')).
 
 interaction_rule(
     (hasAccount(User, Host, Perm) :-
@@ -394,14 +400,6 @@ interaction_rule(
       netAccess(DC),
       rdpEnabled(HOST)),
     rule_desc('RDP access', 'certain')).
-
-
-interaction_rule(
-    (hashFoundNTLM(User) :-
-      userPartOf(User, runNTLMBot, user),
-      isRuning(ntlmBot, H),
-      netAccess(H)),
-    rule_desc('NTLM hash found', 'likely')).
 
 interaction_rule(
     (stolenCredential(User, Service) :-
