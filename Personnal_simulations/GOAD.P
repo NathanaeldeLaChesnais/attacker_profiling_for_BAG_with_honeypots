@@ -1,9 +1,10 @@
 attackerLocated(intranet).
-/* attackGoal(stolenCredential(samwell_tarly, _)).
+attackGoal(stolenCredential(samwell_tarly, _)).
 attackGoal(stolenCredential(brandon_stark, _)).
 attackGoal(stolenCredential(hodor, _)).
-attackGoal(stolenCredential(jon_snow, _)). */
-attackGoal(stolenCredential(robb_stark, _)).
+attackGoal(stolenCredential(jon_snow, _)).
+/* attackGoal(hasAccount(eddard_stark, castelblack, admin)).
+attackGoal(stolenHash(_, castelblack)). */
 /* attackGoal(execCode(meereen, _)). */
 /* attackGoal(netAccess(winterfell)). */
 /* attackGoal(accessibleHash(localAdmin, castelblack, castelblack)).
@@ -40,13 +41,26 @@ userDefined(brandon_stark, north_sevenkingdoms_local, user).
 weakPassword(brandon_stark). /* part 2, asreproasting + brutforce */
 accessibleHash(brandon_stark, north_sevenkingdoms_local, asreproasting ). /* part 2, asreproasting + brutforce */
 
-userDefined(localAdmin, castelblack, local_admin).
+userDefined(localAdmin, castelblack, localAdmin).
 
-
+accessibleHash(localAdmin, castelblack, castelblack). /* part4 */
+accessibleHash(guest, castelblack, castelblack). /* part4 */
+accessibleHash(defaultAccount, castelblack, castelblack). /* part4 */
+accessibleHash(wdgaUtilityAccount, castelblack, castelblack). /* part4 */
+accessibleHash(sql_svc, castelblack, castelblack). /* part4 */
+accessibleHash(brandon_stark, castelblack, castelblack). /* part4 */
+accessibleHash(arya_stark, castelblack, castelblack). /* part4 */
+accessibleHash(robb_stark, castelblack, castelblack). /* part4 */
+accessibleHash(jon_snow, castelblack, castelblack). /* part4 */
+accessibleHash(samwell_tarly, castelblack, castelblack). /* part4 */
 
 /* Hosts and their properties */
+/* castelblack */
 hostDefined(castelblack, north_sevenkingdoms_local).
-hostProperty(castelblack, signedSMB, false).
+vulExists(castelblack, 'Unsigned_SMB', signedSMB_false). /* part4 */
+vulProperty('Unsigned_SMB', remoteExploit, accessFile). /* part4 */
+cvss('Unsigned_SMB', h). /* part4 */
+
 hostProperty(castelblack, automaticDNS, true). /* part4 */
 
 vulExists(castelblack, 'IIS_webshell', asp_net). /* part8 */
@@ -54,12 +68,13 @@ vulProperty('IIS_webshell', remoteExploit, execCode). /* part8 */
 cvss('IIS_webshell', h). /* part8 */
 networkServiceInfo(castelblack, asp_net, shell). /* part8 */
 
+/* Winterfell */
 hostDefined(winterfell, north_sevenkingdoms_local).
 vulExists(winterfell, 'Enumerate DC properties anonymously', north_sevenkingdoms_local). /* part2 account enumeration */
 vulProperty('Enumerate DC properties anonymously', remoteExploit, accountEnumeration). /* part2 */
 cvss('Enumerate DC properties anonymously', m). /* part2 faux score car la vuln n'a pas de CVE associé */
 
-vulExists(winterfell, 'CVE-2021-42287', Active_Directory). /* part5 samAccountName */
+vulExists(winterfell, 'CVE-2021-42287', active_Directory). /* part5 samAccountName */
 vulProperty('CVE-2021-42287', remoteExploit, fileAccess). /* part5 */
 cvss('CVE-2021-42287', h). /* part5 */
 fileOnHost(ntdsdit, winterfell). /* part5 */

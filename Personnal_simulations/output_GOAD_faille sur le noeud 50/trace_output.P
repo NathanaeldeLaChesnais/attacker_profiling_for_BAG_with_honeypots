@@ -1,0 +1,413 @@
+primitive(inCompetent,1).
+primitive(competent,1).
+primitive(clientProgram,2).
+primitive(vulExists,3).
+primitive(vulProperty,3).
+primitive(vulProperty,5).
+primitive(hacl,4).
+primitive(attackerLocated,1).
+primitive(hasAccount,3).
+primitive(networkServiceInfo,3).
+primitive(setuidProgramInfo,3).
+primitive(nfsExportInfo,4).
+primitive(nfsMounted,5).
+primitive(localFileProtection,4).
+primitive(dependsOn,3).
+primitive(installed,2).
+primitive(isWebServer,1).
+primitive(isUserMachine,1).
+primitive(canAccessFile,4).
+primitive(userDefined,3).
+primitive(hostDefined,2).
+primitive(rdpEnabled,1).
+primitive(userPartOf,3).
+primitive(weakPassword,1).
+primitive(credentialInClear,3).
+primitive(isRuning,2).
+primitive(hostProperty,3).
+primitive(isConnected,2).
+primitive(userAdminOf,2).
+primitive(accessibleHash,3).
+primitive(fileOnHost,2).
+primitive(amsiBypass,1).
+primitive(cvss,2).
+derived(execCode,2).
+derived(netAccess,1).
+derived(canAccessHost,1).
+derived(accessFile,3).
+derived(logInService,3).
+derived(accessMaliciousInput,3).
+derived(userFound,2).
+derived(vulnExists,5).
+derived(stolenCredential,2).
+derived(stolenCredential,2).
+derived(stolenCredential,2).
+derived(dnsPoisoning,1).
+derived(relayWPAD,1).
+derived(stolenHash,2).
+derived(hashFoundNTLM,1).
+meta(cvss,2).
+meta(attackGoal,1).
+
+attack(stolenCredential(samwell_tarly,north_sevenkingdoms_local)).
+
+possible_duplicate_trace_step(because(5,rule_desc('direct network access',certain),netAccess(_h3615),[hacl(intranet,_h3615,_h3686,_h3687),attackerLocated(intranet)])).
+
+possible_duplicate_trace_step(because(16,rule_desc('Vuln declared',certain),vulnExists(winterfell,'Enumerate DC properties anonymously',north_sevenkingdoms_local,remoteExploit,accountEnumeration),[vulProperty('Enumerate DC properties anonymously',remoteExploit,accountEnumeration),vulExists(winterfell,'Enumerate DC properties anonymously',north_sevenkingdoms_local)])).
+
+possible_duplicate_trace_step(because(16,rule_desc('Vuln declared',certain),vulnExists(winterfell,'Enumerate DC properties anonymously',north_sevenkingdoms_local,remoteExploit,accountEnumeration),[vulProperty('Enumerate DC properties anonymously',remoteExploit,accountEnumeration),vulExists(winterfell,'Enumerate DC properties anonymously',north_sevenkingdoms_local)])).
+
+possible_duplicate_trace_step(because(22,rule_desc('User enumeration anonymously part2',cvss_ac(m)),userFound(samwell_tarly,north_sevenkingdoms_local),[cvss('Enumerate DC properties anonymously',m),vulnExists(winterfell,'Enumerate DC properties anonymously',north_sevenkingdoms_local,remoteExploit,accountEnumeration),netAccess(winterfell),userDefined(samwell_tarly,north_sevenkingdoms_local,user)])).
+
+possible_duplicate_trace_step(because(5,rule_desc('direct network access',certain),netAccess(north_sevenkingdoms_local),[hacl(intranet,north_sevenkingdoms_local,_h3652,_h3653),attackerLocated(intranet)])).
+
+possible_duplicate_trace_step(because(23,rule_desc('Username found by brutforce',unlikely),userFound(samwell_tarly,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),userDefined(samwell_tarly,north_sevenkingdoms_local,user)])).
+
+possible_duplicate_trace_step(because(22,rule_desc('User enumeration anonymously part2',cvss_ac(m)),userFound(brandon_stark,north_sevenkingdoms_local),[cvss('Enumerate DC properties anonymously',m),vulnExists(winterfell,'Enumerate DC properties anonymously',north_sevenkingdoms_local,remoteExploit,accountEnumeration),netAccess(winterfell),userDefined(brandon_stark,north_sevenkingdoms_local,user)])).
+
+possible_duplicate_trace_step(because(22,rule_desc('User enumeration anonymously part2',cvss_ac(m)),userFound(samwell_tarly,north_sevenkingdoms_local),[cvss('Enumerate DC properties anonymously',m),vulnExists(winterfell,'Enumerate DC properties anonymously',north_sevenkingdoms_local,remoteExploit,accountEnumeration),netAccess(winterfell),userDefined(samwell_tarly,north_sevenkingdoms_local,user)])).
+
+possible_duplicate_trace_step(because(22,rule_desc('User enumeration anonymously part2',cvss_ac(m)),userFound(hodor,north_sevenkingdoms_local),[cvss('Enumerate DC properties anonymously',m),vulnExists(winterfell,'Enumerate DC properties anonymously',north_sevenkingdoms_local,remoteExploit,accountEnumeration),netAccess(winterfell),userDefined(hodor,north_sevenkingdoms_local,user)])).
+
+possible_duplicate_trace_step(because(22,rule_desc('User enumeration anonymously part2',cvss_ac(m)),userFound(jeor_mormont,north_sevenkingdoms_local),[cvss('Enumerate DC properties anonymously',m),vulnExists(winterfell,'Enumerate DC properties anonymously',north_sevenkingdoms_local,remoteExploit,accountEnumeration),netAccess(winterfell),userDefined(jeor_mormont,north_sevenkingdoms_local,user)])).
+
+possible_duplicate_trace_step(because(22,rule_desc('User enumeration anonymously part2',cvss_ac(m)),userFound(robb_stark,north_sevenkingdoms_local),[cvss('Enumerate DC properties anonymously',m),vulnExists(winterfell,'Enumerate DC properties anonymously',north_sevenkingdoms_local,remoteExploit,accountEnumeration),netAccess(winterfell),userDefined(robb_stark,north_sevenkingdoms_local,user)])).
+
+possible_duplicate_trace_step(because(22,rule_desc('User enumeration anonymously part2',cvss_ac(m)),userFound(catelyn_stark,north_sevenkingdoms_local),[cvss('Enumerate DC properties anonymously',m),vulnExists(winterfell,'Enumerate DC properties anonymously',north_sevenkingdoms_local,remoteExploit,accountEnumeration),netAccess(winterfell),userDefined(catelyn_stark,north_sevenkingdoms_local,user)])).
+
+possible_duplicate_trace_step(because(22,rule_desc('User enumeration anonymously part2',cvss_ac(m)),userFound(jon_snow,north_sevenkingdoms_local),[cvss('Enumerate DC properties anonymously',m),vulnExists(winterfell,'Enumerate DC properties anonymously',north_sevenkingdoms_local,remoteExploit,accountEnumeration),netAccess(winterfell),userDefined(jon_snow,north_sevenkingdoms_local,user)])).
+
+possible_duplicate_trace_step(because(22,rule_desc('User enumeration anonymously part2',cvss_ac(m)),userFound(eddard_stark,north_sevenkingdoms_local),[cvss('Enumerate DC properties anonymously',m),vulnExists(winterfell,'Enumerate DC properties anonymously',north_sevenkingdoms_local,remoteExploit,accountEnumeration),netAccess(winterfell),userDefined(eddard_stark,north_sevenkingdoms_local,domain_admin)])).
+
+possible_duplicate_trace_step(because(23,rule_desc('Username found by brutforce',unlikely),userFound(brandon_stark,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),userDefined(brandon_stark,north_sevenkingdoms_local,user)])).
+
+possible_duplicate_trace_step(because(23,rule_desc('Username found by brutforce',unlikely),userFound(samwell_tarly,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),userDefined(samwell_tarly,north_sevenkingdoms_local,user)])).
+
+possible_duplicate_trace_step(because(23,rule_desc('Username found by brutforce',unlikely),userFound(hodor,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),userDefined(hodor,north_sevenkingdoms_local,user)])).
+
+possible_duplicate_trace_step(because(23,rule_desc('Username found by brutforce',unlikely),userFound(jeor_mormont,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),userDefined(jeor_mormont,north_sevenkingdoms_local,user)])).
+
+possible_duplicate_trace_step(because(23,rule_desc('Username found by brutforce',unlikely),userFound(robb_stark,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),userDefined(robb_stark,north_sevenkingdoms_local,user)])).
+
+possible_duplicate_trace_step(because(23,rule_desc('Username found by brutforce',unlikely),userFound(catelyn_stark,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),userDefined(catelyn_stark,north_sevenkingdoms_local,user)])).
+
+possible_duplicate_trace_step(because(23,rule_desc('Username found by brutforce',unlikely),userFound(jon_snow,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),userDefined(jon_snow,north_sevenkingdoms_local,user)])).
+
+possible_duplicate_trace_step(because(23,rule_desc('Username found by brutforce',unlikely),userFound(eddard_stark,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),userDefined(eddard_stark,north_sevenkingdoms_local,domain_admin)])).
+
+possible_duplicate_trace_step(because(22,rule_desc('User enumeration anonymously part2',cvss_ac(m)),userFound(brandon_stark,north_sevenkingdoms_local),[cvss('Enumerate DC properties anonymously',m),vulnExists(winterfell,'Enumerate DC properties anonymously',north_sevenkingdoms_local,remoteExploit,accountEnumeration),netAccess(winterfell),userDefined(brandon_stark,north_sevenkingdoms_local,user)])).
+
+possible_duplicate_trace_step(because(23,rule_desc('Username found by brutforce',unlikely),userFound(brandon_stark,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),userDefined(brandon_stark,north_sevenkingdoms_local,user)])).
+
+possible_duplicate_trace_step(because(16,rule_desc('Vuln declared',certain),vulnExists(meereen,'CVE-2019-1040',removeTheMic,remoteExploit,accessLocalHash),[vulProperty('CVE-2019-1040',remoteExploit,accessLocalHash),vulExists(meereen,'CVE-2019-1040',removeTheMic)])).
+
+possible_duplicate_trace_step(because(16,rule_desc('Vuln declared',certain),vulnExists(meereen,'ESC8',webEnrollementEnabled,remoteExploit,accessLocalHash),[vulProperty('ESC8',remoteExploit,accessLocalHash),vulExists(meereen,'ESC8',webEnrollementEnabled)])).
+
+possible_duplicate_trace_step(because(16,rule_desc('Vuln declared',certain),vulnExists(meereen,'ESC1',certification,remoteExploit,accessLocalHash),[vulProperty('ESC1',remoteExploit,accessLocalHash),vulExists(meereen,'ESC1',certification)])).
+
+possible_duplicate_trace_step(because(16,rule_desc('Vuln declared',certain),vulnExists(meereen,'ESC2',certification,remoteExploit,accessLocalHash),[vulProperty('ESC2',remoteExploit,accessLocalHash),vulExists(meereen,'ESC2',certification)])).
+
+possible_duplicate_trace_step(because(16,rule_desc('Vuln declared',certain),vulnExists(meereen,'ESC3',certification,remoteExploit,accessLocalHash),[vulProperty('ESC3',remoteExploit,accessLocalHash),vulExists(meereen,'ESC3',certification)])).
+
+possible_duplicate_trace_step(because(16,rule_desc('Vuln declared',certain),vulnExists(meereen,'ShadowCredential',essos_local,remoteExploit,accessLocalHash),[vulProperty('ShadowCredential',remoteExploit,accessLocalHash),vulExists(meereen,'ShadowCredential',essos_local)])).
+
+possible_duplicate_trace_step(because(5,rule_desc('direct network access',certain),netAccess(winterfell),[hacl(intranet,winterfell,_h4150,_h4151),attackerLocated(intranet)])).
+
+possible_duplicate_trace_step(because(29,rule_desc('NTLM hash found part 4',likely),stolenHash(robb_stark,ntlmBot),[netAccess(winterfell),isRuning(ntlmBot,winterfell),userPartOf(robb_stark,runNTLMBot,user)])).
+
+possible_duplicate_trace_step(because(30,rule_desc('hashcat sur NTLM part 4 sachant que le user est trouve en meme temps que le hash',likely),stolenCredential(robb_stark,north_sevenkingdoms_local),[stolenHash(robb_stark,ntlmBot),weakPassword(robb_stark),userDefined(robb_stark,north_sevenkingdoms_local,user)])).
+
+possible_duplicate_trace_step(because(5,rule_desc('direct network access',certain),netAccess(castelblack),[hacl(intranet,castelblack,_h4016,_h4017),attackerLocated(intranet)])).
+
+possible_duplicate_trace_step(because(34,rule_desc('Use of DonPAPI',likely),stolenCredential(robb_stark,north_sevenkingdoms_local),[netAccess(castelblack),credentialInClear(robb_stark,castelblack,north_sevenkingdoms_local)])).
+
+possible_duplicate_trace_step(because(28,rule_desc('Kerberoasting part 3',likely),stolenHash(jon_snow,north_sevenkingdoms_local),[stolenCredential(robb_stark,north_sevenkingdoms_local),netAccess(north_sevenkingdoms_local),accessibleHash(jon_snow,north_sevenkingdoms_local,kerberoasting)])).
+
+possible_duplicate_trace_step(because(28,rule_desc('Kerberoasting part 3',likely),stolenHash(jon_snow,north_sevenkingdoms_local),[stolenCredential(robb_stark,north_sevenkingdoms_local),netAccess(north_sevenkingdoms_local),accessibleHash(jon_snow,north_sevenkingdoms_local,kerberoasting)])).
+
+possible_duplicate_trace_step(because(27,rule_desc('Username found after authentification',certain),userFound(brandon_stark,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(robb_stark,north_sevenkingdoms_local),userDefined(brandon_stark,north_sevenkingdoms_local,user)])).
+
+possible_duplicate_trace_step(because(27,rule_desc('Username found after authentification',certain),userFound(brandon_stark,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(robb_stark,north_sevenkingdoms_local),userDefined(brandon_stark,north_sevenkingdoms_local,user)])).
+
+possible_duplicate_trace_step(because(27,rule_desc('Username found after authentification',certain),userFound(eddard_stark,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(robb_stark,north_sevenkingdoms_local),userDefined(eddard_stark,north_sevenkingdoms_local,domain_admin)])).
+
+possible_duplicate_trace_step(because(27,rule_desc('Username found after authentification',certain),userFound(eddard_stark,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(robb_stark,north_sevenkingdoms_local),userDefined(eddard_stark,north_sevenkingdoms_local,domain_admin)])).
+
+possible_duplicate_trace_step(because(27,rule_desc('Username found after authentification',certain),userFound(jon_snow,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(robb_stark,north_sevenkingdoms_local),userDefined(jon_snow,north_sevenkingdoms_local,user)])).
+
+possible_duplicate_trace_step(because(27,rule_desc('Username found after authentification',certain),userFound(jon_snow,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(robb_stark,north_sevenkingdoms_local),userDefined(jon_snow,north_sevenkingdoms_local,user)])).
+
+possible_duplicate_trace_step(because(27,rule_desc('Username found after authentification',certain),userFound(catelyn_stark,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(robb_stark,north_sevenkingdoms_local),userDefined(catelyn_stark,north_sevenkingdoms_local,user)])).
+
+possible_duplicate_trace_step(because(27,rule_desc('Username found after authentification',certain),userFound(catelyn_stark,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(robb_stark,north_sevenkingdoms_local),userDefined(catelyn_stark,north_sevenkingdoms_local,user)])).
+
+possible_duplicate_trace_step(because(27,rule_desc('Username found after authentification',certain),userFound(robb_stark,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(robb_stark,north_sevenkingdoms_local),userDefined(robb_stark,north_sevenkingdoms_local,user)])).
+
+possible_duplicate_trace_step(because(27,rule_desc('Username found after authentification',certain),userFound(robb_stark,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(robb_stark,north_sevenkingdoms_local),userDefined(robb_stark,north_sevenkingdoms_local,user)])).
+
+possible_duplicate_trace_step(because(27,rule_desc('Username found after authentification',certain),userFound(jeor_mormont,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(robb_stark,north_sevenkingdoms_local),userDefined(jeor_mormont,north_sevenkingdoms_local,user)])).
+
+possible_duplicate_trace_step(because(27,rule_desc('Username found after authentification',certain),userFound(jeor_mormont,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(robb_stark,north_sevenkingdoms_local),userDefined(jeor_mormont,north_sevenkingdoms_local,user)])).
+
+possible_duplicate_trace_step(because(27,rule_desc('Username found after authentification',certain),userFound(hodor,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(robb_stark,north_sevenkingdoms_local),userDefined(hodor,north_sevenkingdoms_local,user)])).
+
+possible_duplicate_trace_step(because(27,rule_desc('Username found after authentification',certain),userFound(hodor,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(robb_stark,north_sevenkingdoms_local),userDefined(hodor,north_sevenkingdoms_local,user)])).
+
+possible_duplicate_trace_step(because(27,rule_desc('Username found after authentification',certain),userFound(samwell_tarly,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(robb_stark,north_sevenkingdoms_local),userDefined(samwell_tarly,north_sevenkingdoms_local,user)])).
+
+possible_duplicate_trace_step(because(27,rule_desc('Username found after authentification',certain),userFound(samwell_tarly,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(robb_stark,north_sevenkingdoms_local),userDefined(samwell_tarly,north_sevenkingdoms_local,user)])).
+
+possible_duplicate_trace_step(because(27,rule_desc('Username found after authentification',certain),userFound(brandon_stark,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(robb_stark,north_sevenkingdoms_local),userDefined(brandon_stark,north_sevenkingdoms_local,user)])).
+
+possible_duplicate_trace_step(because(27,rule_desc('Username found after authentification',certain),userFound(brandon_stark,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(robb_stark,north_sevenkingdoms_local),userDefined(brandon_stark,north_sevenkingdoms_local,user)])).
+
+possible_duplicate_trace_step(because(25,rule_desc('asreproasting part2',likely),stolenHash(brandon_stark,north_sevenkingdoms_local),[userFound(brandon_stark,north_sevenkingdoms_local),netAccess(north_sevenkingdoms_local),accessibleHash(brandon_stark,north_sevenkingdoms_local,asreproasting)])).
+
+possible_duplicate_trace_step(because(25,rule_desc('asreproasting part2',likely),stolenHash(brandon_stark,north_sevenkingdoms_local),[userFound(brandon_stark,north_sevenkingdoms_local),netAccess(north_sevenkingdoms_local),accessibleHash(brandon_stark,north_sevenkingdoms_local,asreproasting)])).
+
+possible_duplicate_trace_step(because(25,rule_desc('asreproasting part2',likely),stolenHash(brandon_stark,north_sevenkingdoms_local),[userFound(brandon_stark,north_sevenkingdoms_local),netAccess(north_sevenkingdoms_local),accessibleHash(brandon_stark,north_sevenkingdoms_local,asreproasting)])).
+
+possible_duplicate_trace_step(because(26,rule_desc('Use of Hashcat for password crack',likely),stolenCredential(jon_snow,north_sevenkingdoms_local),[weakPassword(jon_snow),stolenHash(jon_snow,north_sevenkingdoms_local)])).
+
+possible_duplicate_trace_step(because(26,rule_desc('Use of Hashcat for password crack',likely),stolenCredential(brandon_stark,north_sevenkingdoms_local),[weakPassword(brandon_stark),stolenHash(brandon_stark,north_sevenkingdoms_local)])).
+
+possible_duplicate_trace_step(because(24,rule_desc('password is user or in user description',likely),stolenCredential(samwell_tarly,north_sevenkingdoms_local),[inCompetent(samwell_tarly),userFound(samwell_tarly,north_sevenkingdoms_local)])).
+
+possible_duplicate_trace_step(because(24,rule_desc('password is user or in user description',likely),stolenCredential(hodor,north_sevenkingdoms_local),[inCompetent(hodor),userFound(hodor,north_sevenkingdoms_local)])).
+
+possible_duplicate_trace_step(because(24,rule_desc('password is user or in user description',likely),stolenCredential(samwell_tarly,north_sevenkingdoms_local),[inCompetent(samwell_tarly),userFound(samwell_tarly,north_sevenkingdoms_local)])).
+
+possible_duplicate_trace_step(because(24,rule_desc('password is user or in user description',likely),stolenCredential(hodor,north_sevenkingdoms_local),[inCompetent(hodor),userFound(hodor,north_sevenkingdoms_local)])).
+
+possible_duplicate_trace_step(because(24,rule_desc('password is user or in user description',likely),stolenCredential(hodor,north_sevenkingdoms_local),[inCompetent(hodor),userFound(hodor,north_sevenkingdoms_local)])).
+
+possible_duplicate_trace_step(because(24,rule_desc('password is user or in user description',likely),stolenCredential(samwell_tarly,north_sevenkingdoms_local),[inCompetent(samwell_tarly),userFound(samwell_tarly,north_sevenkingdoms_local)])).
+
+possible_duplicate_trace_step(because(28,rule_desc('Kerberoasting part 3',likely),stolenHash(jon_snow,north_sevenkingdoms_local),[stolenCredential(jon_snow,north_sevenkingdoms_local),netAccess(north_sevenkingdoms_local),accessibleHash(jon_snow,north_sevenkingdoms_local,kerberoasting)])).
+
+possible_duplicate_trace_step(because(28,rule_desc('Kerberoasting part 3',likely),stolenHash(jon_snow,north_sevenkingdoms_local),[stolenCredential(brandon_stark,north_sevenkingdoms_local),netAccess(north_sevenkingdoms_local),accessibleHash(jon_snow,north_sevenkingdoms_local,kerberoasting)])).
+
+possible_duplicate_trace_step(because(28,rule_desc('Kerberoasting part 3',likely),stolenHash(jon_snow,north_sevenkingdoms_local),[stolenCredential(samwell_tarly,north_sevenkingdoms_local),netAccess(north_sevenkingdoms_local),accessibleHash(jon_snow,north_sevenkingdoms_local,kerberoasting)])).
+
+possible_duplicate_trace_step(because(28,rule_desc('Kerberoasting part 3',likely),stolenHash(jon_snow,north_sevenkingdoms_local),[stolenCredential(hodor,north_sevenkingdoms_local),netAccess(north_sevenkingdoms_local),accessibleHash(jon_snow,north_sevenkingdoms_local,kerberoasting)])).
+
+possible_duplicate_trace_step(because(27,rule_desc('Username found after authentification',certain),userFound(brandon_stark,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(jon_snow,north_sevenkingdoms_local),userDefined(brandon_stark,north_sevenkingdoms_local,user)])).
+
+possible_duplicate_trace_step(because(27,rule_desc('Username found after authentification',certain),userFound(brandon_stark,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(brandon_stark,north_sevenkingdoms_local),userDefined(brandon_stark,north_sevenkingdoms_local,user)])).
+
+possible_duplicate_trace_step(because(27,rule_desc('Username found after authentification',certain),userFound(brandon_stark,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(samwell_tarly,north_sevenkingdoms_local),userDefined(brandon_stark,north_sevenkingdoms_local,user)])).
+
+possible_duplicate_trace_step(because(27,rule_desc('Username found after authentification',certain),userFound(brandon_stark,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(hodor,north_sevenkingdoms_local),userDefined(brandon_stark,north_sevenkingdoms_local,user)])).
+
+possible_duplicate_trace_step(because(27,rule_desc('Username found after authentification',certain),userFound(eddard_stark,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(jon_snow,north_sevenkingdoms_local),userDefined(eddard_stark,north_sevenkingdoms_local,domain_admin)])).
+
+possible_duplicate_trace_step(because(27,rule_desc('Username found after authentification',certain),userFound(eddard_stark,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(brandon_stark,north_sevenkingdoms_local),userDefined(eddard_stark,north_sevenkingdoms_local,domain_admin)])).
+
+possible_duplicate_trace_step(because(27,rule_desc('Username found after authentification',certain),userFound(eddard_stark,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(samwell_tarly,north_sevenkingdoms_local),userDefined(eddard_stark,north_sevenkingdoms_local,domain_admin)])).
+
+possible_duplicate_trace_step(because(27,rule_desc('Username found after authentification',certain),userFound(eddard_stark,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(hodor,north_sevenkingdoms_local),userDefined(eddard_stark,north_sevenkingdoms_local,domain_admin)])).
+
+possible_duplicate_trace_step(because(27,rule_desc('Username found after authentification',certain),userFound(jon_snow,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(jon_snow,north_sevenkingdoms_local),userDefined(jon_snow,north_sevenkingdoms_local,user)])).
+
+possible_duplicate_trace_step(because(27,rule_desc('Username found after authentification',certain),userFound(jon_snow,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(brandon_stark,north_sevenkingdoms_local),userDefined(jon_snow,north_sevenkingdoms_local,user)])).
+
+possible_duplicate_trace_step(because(27,rule_desc('Username found after authentification',certain),userFound(jon_snow,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(samwell_tarly,north_sevenkingdoms_local),userDefined(jon_snow,north_sevenkingdoms_local,user)])).
+
+possible_duplicate_trace_step(because(27,rule_desc('Username found after authentification',certain),userFound(jon_snow,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(hodor,north_sevenkingdoms_local),userDefined(jon_snow,north_sevenkingdoms_local,user)])).
+
+possible_duplicate_trace_step(because(27,rule_desc('Username found after authentification',certain),userFound(catelyn_stark,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(jon_snow,north_sevenkingdoms_local),userDefined(catelyn_stark,north_sevenkingdoms_local,user)])).
+
+possible_duplicate_trace_step(because(27,rule_desc('Username found after authentification',certain),userFound(catelyn_stark,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(brandon_stark,north_sevenkingdoms_local),userDefined(catelyn_stark,north_sevenkingdoms_local,user)])).
+
+possible_duplicate_trace_step(because(27,rule_desc('Username found after authentification',certain),userFound(catelyn_stark,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(samwell_tarly,north_sevenkingdoms_local),userDefined(catelyn_stark,north_sevenkingdoms_local,user)])).
+
+possible_duplicate_trace_step(because(27,rule_desc('Username found after authentification',certain),userFound(catelyn_stark,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(hodor,north_sevenkingdoms_local),userDefined(catelyn_stark,north_sevenkingdoms_local,user)])).
+
+possible_duplicate_trace_step(because(27,rule_desc('Username found after authentification',certain),userFound(robb_stark,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(jon_snow,north_sevenkingdoms_local),userDefined(robb_stark,north_sevenkingdoms_local,user)])).
+
+possible_duplicate_trace_step(because(27,rule_desc('Username found after authentification',certain),userFound(robb_stark,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(brandon_stark,north_sevenkingdoms_local),userDefined(robb_stark,north_sevenkingdoms_local,user)])).
+
+possible_duplicate_trace_step(because(27,rule_desc('Username found after authentification',certain),userFound(robb_stark,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(samwell_tarly,north_sevenkingdoms_local),userDefined(robb_stark,north_sevenkingdoms_local,user)])).
+
+possible_duplicate_trace_step(because(27,rule_desc('Username found after authentification',certain),userFound(robb_stark,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(hodor,north_sevenkingdoms_local),userDefined(robb_stark,north_sevenkingdoms_local,user)])).
+
+possible_duplicate_trace_step(because(27,rule_desc('Username found after authentification',certain),userFound(jeor_mormont,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(jon_snow,north_sevenkingdoms_local),userDefined(jeor_mormont,north_sevenkingdoms_local,user)])).
+
+possible_duplicate_trace_step(because(27,rule_desc('Username found after authentification',certain),userFound(jeor_mormont,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(brandon_stark,north_sevenkingdoms_local),userDefined(jeor_mormont,north_sevenkingdoms_local,user)])).
+
+possible_duplicate_trace_step(because(27,rule_desc('Username found after authentification',certain),userFound(jeor_mormont,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(samwell_tarly,north_sevenkingdoms_local),userDefined(jeor_mormont,north_sevenkingdoms_local,user)])).
+
+possible_duplicate_trace_step(because(27,rule_desc('Username found after authentification',certain),userFound(jeor_mormont,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(hodor,north_sevenkingdoms_local),userDefined(jeor_mormont,north_sevenkingdoms_local,user)])).
+
+possible_duplicate_trace_step(because(27,rule_desc('Username found after authentification',certain),userFound(hodor,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(jon_snow,north_sevenkingdoms_local),userDefined(hodor,north_sevenkingdoms_local,user)])).
+
+possible_duplicate_trace_step(because(27,rule_desc('Username found after authentification',certain),userFound(hodor,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(brandon_stark,north_sevenkingdoms_local),userDefined(hodor,north_sevenkingdoms_local,user)])).
+
+possible_duplicate_trace_step(because(27,rule_desc('Username found after authentification',certain),userFound(hodor,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(samwell_tarly,north_sevenkingdoms_local),userDefined(hodor,north_sevenkingdoms_local,user)])).
+
+possible_duplicate_trace_step(because(27,rule_desc('Username found after authentification',certain),userFound(hodor,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(hodor,north_sevenkingdoms_local),userDefined(hodor,north_sevenkingdoms_local,user)])).
+
+possible_duplicate_trace_step(because(27,rule_desc('Username found after authentification',certain),userFound(samwell_tarly,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(jon_snow,north_sevenkingdoms_local),userDefined(samwell_tarly,north_sevenkingdoms_local,user)])).
+
+possible_duplicate_trace_step(because(27,rule_desc('Username found after authentification',certain),userFound(samwell_tarly,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(brandon_stark,north_sevenkingdoms_local),userDefined(samwell_tarly,north_sevenkingdoms_local,user)])).
+
+possible_duplicate_trace_step(because(27,rule_desc('Username found after authentification',certain),userFound(samwell_tarly,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(samwell_tarly,north_sevenkingdoms_local),userDefined(samwell_tarly,north_sevenkingdoms_local,user)])).
+
+possible_duplicate_trace_step(because(27,rule_desc('Username found after authentification',certain),userFound(samwell_tarly,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(hodor,north_sevenkingdoms_local),userDefined(samwell_tarly,north_sevenkingdoms_local,user)])).
+
+possible_duplicate_trace_step(because(27,rule_desc('Username found after authentification',certain),userFound(brandon_stark,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(jon_snow,north_sevenkingdoms_local),userDefined(brandon_stark,north_sevenkingdoms_local,user)])).
+
+possible_duplicate_trace_step(because(27,rule_desc('Username found after authentification',certain),userFound(brandon_stark,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(brandon_stark,north_sevenkingdoms_local),userDefined(brandon_stark,north_sevenkingdoms_local,user)])).
+
+possible_duplicate_trace_step(because(27,rule_desc('Username found after authentification',certain),userFound(brandon_stark,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(samwell_tarly,north_sevenkingdoms_local),userDefined(brandon_stark,north_sevenkingdoms_local,user)])).
+
+possible_duplicate_trace_step(because(27,rule_desc('Username found after authentification',certain),userFound(brandon_stark,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(hodor,north_sevenkingdoms_local),userDefined(brandon_stark,north_sevenkingdoms_local,user)])).
+
+possible_duplicate_trace_step(because(27,rule_desc('Username found after authentification',certain),userFound(samwell_tarly,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(hodor,north_sevenkingdoms_local),userDefined(samwell_tarly,north_sevenkingdoms_local,user)])).
+
+possible_duplicate_trace_step(because(27,rule_desc('Username found after authentification',certain),userFound(samwell_tarly,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(samwell_tarly,north_sevenkingdoms_local),userDefined(samwell_tarly,north_sevenkingdoms_local,user)])).
+
+possible_duplicate_trace_step(because(27,rule_desc('Username found after authentification',certain),userFound(samwell_tarly,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(brandon_stark,north_sevenkingdoms_local),userDefined(samwell_tarly,north_sevenkingdoms_local,user)])).
+
+possible_duplicate_trace_step(because(27,rule_desc('Username found after authentification',certain),userFound(samwell_tarly,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(jon_snow,north_sevenkingdoms_local),userDefined(samwell_tarly,north_sevenkingdoms_local,user)])).
+
+possible_duplicate_trace_step(because(27,rule_desc('Username found after authentification',certain),userFound(samwell_tarly,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(robb_stark,north_sevenkingdoms_local),userDefined(samwell_tarly,north_sevenkingdoms_local,user)])).
+
+possible_duplicate_trace_step(because(27,rule_desc('Username found after authentification',certain),userFound(samwell_tarly,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(robb_stark,north_sevenkingdoms_local),userDefined(samwell_tarly,north_sevenkingdoms_local,user)])).
+
+possible_duplicate_trace_step(because(24,rule_desc('password is user or in user description',likely),stolenCredential(samwell_tarly,north_sevenkingdoms_local),[inCompetent(samwell_tarly),userFound(samwell_tarly,north_sevenkingdoms_local)])).
+
+possible_duplicate_trace_step(because(24,rule_desc('password is user or in user description',likely),stolenCredential(samwell_tarly,north_sevenkingdoms_local),[inCompetent(samwell_tarly),userFound(samwell_tarly,north_sevenkingdoms_local)])).
+
+possible_duplicate_trace_step(because(24,rule_desc('password is user or in user description',likely),stolenCredential(samwell_tarly,north_sevenkingdoms_local),[inCompetent(samwell_tarly),userFound(samwell_tarly,north_sevenkingdoms_local)])).
+
+attack(stolenCredential(brandon_stark,castelblack)).
+
+possible_duplicate_trace_step(because(16,rule_desc('Vuln declared',certain),vulnExists(castelblack,'Unsigned_SMB',signedSMB_false,remoteExploit,accessFile),[vulProperty('Unsigned_SMB',remoteExploit,accessFile),vulExists(castelblack,'Unsigned_SMB',signedSMB_false)])).
+
+possible_duplicate_trace_step(because(16,rule_desc('Vuln declared',certain),vulnExists(castelblack,'Unsigned_SMB',signedSMB_false,remoteExploit,accessFile),[vulProperty('Unsigned_SMB',remoteExploit,accessFile),vulExists(castelblack,'Unsigned_SMB',signedSMB_false)])).
+
+possible_duplicate_trace_step(because(29,rule_desc('NTLM hash found part 4',likely),stolenHash(eddard_stark,ntlmBot),[netAccess(winterfell),isRuning(ntlmBot,winterfell),userPartOf(eddard_stark,runNTLMBot,user)])).
+
+possible_duplicate_trace_step(because(29,rule_desc('NTLM hash found part 4',likely),stolenHash(robb_stark,ntlmBot),[netAccess(winterfell),isRuning(ntlmBot,winterfell),userPartOf(robb_stark,runNTLMBot,user)])).
+
+possible_duplicate_trace_step(because(31,rule_desc('Use a socks relay with an admin account / part 4',cvss_ac(h)),stolenHash(brandon_stark,castelblack),[cvss('Unsigned_SMB',h),netAccess(castelblack),accessibleHash(brandon_stark,castelblack,castelblack),userDefined(eddard_stark,castelblack,admin),stolenHash(eddard_stark,ntlmBot),vulnExists(castelblack,'Unsigned_SMB',signedSMB_false,remoteExploit,accessFile)])).
+
+possible_duplicate_trace_step(because(16,rule_desc('Vuln declared',certain),vulnExists(meereen,'CVE-2021-1675',spooler,remoteExploit,privEscalation),[vulProperty('CVE-2021-1675',remoteExploit,privEscalation),vulExists(meereen,'CVE-2021-1675',spooler)])).
+
+possible_duplicate_trace_step(because(16,rule_desc('Vuln declared',certain),vulnExists(meereen,'CVE-2022-26923',certifried,remoteExploit,privEscalation),[vulProperty('CVE-2022-26923',remoteExploit,privEscalation),vulExists(meereen,'CVE-2022-26923',certifried)])).
+
+possible_duplicate_trace_step(because(16,rule_desc('Vuln declared',certain),vulnExists(braavos,'MSSQL',mssql,remoteExploit,privEscalation),[vulProperty('MSSQL',remoteExploit,privEscalation),vulExists(braavos,'MSSQL',mssql)])).
+
+possible_duplicate_trace_step(because(16,rule_desc('Vuln declared',certain),vulnExists(castelblack,'MSSQL',mssql,remoteExploit,privEscalation),[vulProperty('MSSQL',remoteExploit,privEscalation),vulExists(castelblack,'MSSQL',mssql)])).
+
+possible_duplicate_trace_step(because(2,rule_desc('remote exploit of a server program',cvss_ac(h)),execCode(castelblack,shell),[netAccess(castelblack),networkServiceInfo(castelblack,mssql,shell),cvss('MSSQL',h),vulnExists(castelblack,'MSSQL',mssql,remoteExploit,privEscalation)])).
+
+possible_duplicate_trace_step(because(5,rule_desc('direct network access',certain),netAccess(braavos),[hacl(intranet,braavos,_h4854,_h4855),attackerLocated(intranet)])).
+
+possible_duplicate_trace_step(because(2,rule_desc('remote exploit of a server program',cvss_ac(h)),execCode(braavos,shell),[netAccess(braavos),networkServiceInfo(braavos,mssql,shell),cvss('MSSQL',h),vulnExists(braavos,'MSSQL',mssql,remoteExploit,privEscalation)])).
+
+possible_duplicate_trace_step(because(5,rule_desc('direct network access',certain),netAccess(meereen),[hacl(intranet,meereen,_h4854,_h4855),attackerLocated(intranet)])).
+
+possible_duplicate_trace_step(because(2,rule_desc('remote exploit of a server program',cvss_ac(h)),execCode(meereen,shell),[netAccess(meereen),networkServiceInfo(meereen,certifried,shell),cvss('CVE-2022-26923',h),vulnExists(meereen,'CVE-2022-26923',certifried,remoteExploit,privEscalation)])).
+
+possible_duplicate_trace_step(because(2,rule_desc('remote exploit of a server program',cvss_ac(h)),execCode(meereen,_h4552),[netAccess(meereen),networkServiceInfo(meereen,spooler,_h4552),cvss('CVE-2021-1675',h),vulnExists(meereen,'CVE-2021-1675',spooler,remoteExploit,privEscalation)])).
+
+possible_duplicate_trace_step(because(16,rule_desc('Vuln declared',certain),vulnExists(castelblack,'MSSQL',mssql,remoteExploit,privEscalation),[vulProperty('MSSQL',remoteExploit,privEscalation),vulExists(castelblack,'MSSQL',mssql)])).
+
+possible_duplicate_trace_step(because(2,rule_desc('remote exploit of a server program',cvss_ac(h)),execCode(castelblack,shell),[netAccess(castelblack),networkServiceInfo(castelblack,mssql,shell),cvss('MSSQL',h),vulnExists(castelblack,'MSSQL',mssql,remoteExploit,privEscalation)])).
+
+possible_duplicate_trace_step(because(22,rule_desc('User enumeration anonymously part2',cvss_ac(m)),userFound(jeor_mormont,north_sevenkingdoms_local),[cvss('Enumerate DC properties anonymously',m),vulnExists(winterfell,'Enumerate DC properties anonymously',north_sevenkingdoms_local,remoteExploit,accountEnumeration),netAccess(winterfell),userDefined(jeor_mormont,north_sevenkingdoms_local,user)])).
+
+possible_duplicate_trace_step(because(23,rule_desc('Username found by brutforce',unlikely),userFound(jeor_mormont,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),userDefined(jeor_mormont,north_sevenkingdoms_local,user)])).
+
+possible_duplicate_trace_step(because(27,rule_desc('Username found after authentification',certain),userFound(jeor_mormont,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(hodor,north_sevenkingdoms_local),userDefined(jeor_mormont,north_sevenkingdoms_local,user)])).
+
+possible_duplicate_trace_step(because(27,rule_desc('Username found after authentification',certain),userFound(jeor_mormont,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(samwell_tarly,north_sevenkingdoms_local),userDefined(jeor_mormont,north_sevenkingdoms_local,user)])).
+
+possible_duplicate_trace_step(because(27,rule_desc('Username found after authentification',certain),userFound(jeor_mormont,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(brandon_stark,north_sevenkingdoms_local),userDefined(jeor_mormont,north_sevenkingdoms_local,user)])).
+
+possible_duplicate_trace_step(because(27,rule_desc('Username found after authentification',certain),userFound(jeor_mormont,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(jon_snow,north_sevenkingdoms_local),userDefined(jeor_mormont,north_sevenkingdoms_local,user)])).
+
+possible_duplicate_trace_step(because(27,rule_desc('Username found after authentification',certain),userFound(jeor_mormont,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(robb_stark,north_sevenkingdoms_local),userDefined(jeor_mormont,north_sevenkingdoms_local,user)])).
+
+possible_duplicate_trace_step(because(27,rule_desc('Username found after authentification',certain),userFound(jeor_mormont,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(robb_stark,north_sevenkingdoms_local),userDefined(jeor_mormont,north_sevenkingdoms_local,user)])).
+
+possible_duplicate_trace_step(because(16,rule_desc('Vuln declared',certain),vulnExists(castelblack,'Unsigned_SMB',signedSMB_false,remoteExploit,accessFile),[vulProperty('Unsigned_SMB',remoteExploit,accessFile),vulExists(castelblack,'Unsigned_SMB',signedSMB_false)])).
+
+possible_duplicate_trace_step(because(16,rule_desc('Vuln declared',certain),vulnExists(castelblack,'Unsigned_SMB',signedSMB_false,remoteExploit,accessFile),[vulProperty('Unsigned_SMB',remoteExploit,accessFile),vulExists(castelblack,'Unsigned_SMB',signedSMB_false)])).
+
+possible_duplicate_trace_step(because(26,rule_desc('Use of Hashcat for password crack',likely),stolenCredential(brandon_stark,castelblack),[weakPassword(brandon_stark),stolenHash(brandon_stark,castelblack)])).
+
+attack(stolenCredential(brandon_stark,north_sevenkingdoms_local)).
+
+possible_duplicate_trace_step(because(25,rule_desc('asreproasting part2',likely),stolenHash(brandon_stark,north_sevenkingdoms_local),[userFound(brandon_stark,north_sevenkingdoms_local),netAccess(north_sevenkingdoms_local),accessibleHash(brandon_stark,north_sevenkingdoms_local,asreproasting)])).
+
+possible_duplicate_trace_step(because(25,rule_desc('asreproasting part2',likely),stolenHash(brandon_stark,north_sevenkingdoms_local),[userFound(brandon_stark,north_sevenkingdoms_local),netAccess(north_sevenkingdoms_local),accessibleHash(brandon_stark,north_sevenkingdoms_local,asreproasting)])).
+
+possible_duplicate_trace_step(because(25,rule_desc('asreproasting part2',likely),stolenHash(brandon_stark,north_sevenkingdoms_local),[userFound(brandon_stark,north_sevenkingdoms_local),netAccess(north_sevenkingdoms_local),accessibleHash(brandon_stark,north_sevenkingdoms_local,asreproasting)])).
+
+possible_duplicate_trace_step(because(26,rule_desc('Use of Hashcat for password crack',likely),stolenCredential(brandon_stark,north_sevenkingdoms_local),[weakPassword(brandon_stark),stolenHash(brandon_stark,north_sevenkingdoms_local)])).
+
+attack(stolenCredential(hodor,north_sevenkingdoms_local)).
+
+possible_duplicate_trace_step(because(22,rule_desc('User enumeration anonymously part2',cvss_ac(m)),userFound(hodor,north_sevenkingdoms_local),[cvss('Enumerate DC properties anonymously',m),vulnExists(winterfell,'Enumerate DC properties anonymously',north_sevenkingdoms_local,remoteExploit,accountEnumeration),netAccess(winterfell),userDefined(hodor,north_sevenkingdoms_local,user)])).
+
+possible_duplicate_trace_step(because(23,rule_desc('Username found by brutforce',unlikely),userFound(hodor,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),userDefined(hodor,north_sevenkingdoms_local,user)])).
+
+possible_duplicate_trace_step(because(27,rule_desc('Username found after authentification',certain),userFound(hodor,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(hodor,north_sevenkingdoms_local),userDefined(hodor,north_sevenkingdoms_local,user)])).
+
+possible_duplicate_trace_step(because(27,rule_desc('Username found after authentification',certain),userFound(hodor,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(samwell_tarly,north_sevenkingdoms_local),userDefined(hodor,north_sevenkingdoms_local,user)])).
+
+possible_duplicate_trace_step(because(27,rule_desc('Username found after authentification',certain),userFound(hodor,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(brandon_stark,north_sevenkingdoms_local),userDefined(hodor,north_sevenkingdoms_local,user)])).
+
+possible_duplicate_trace_step(because(27,rule_desc('Username found after authentification',certain),userFound(hodor,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(jon_snow,north_sevenkingdoms_local),userDefined(hodor,north_sevenkingdoms_local,user)])).
+
+possible_duplicate_trace_step(because(27,rule_desc('Username found after authentification',certain),userFound(hodor,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(robb_stark,north_sevenkingdoms_local),userDefined(hodor,north_sevenkingdoms_local,user)])).
+
+possible_duplicate_trace_step(because(27,rule_desc('Username found after authentification',certain),userFound(hodor,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(robb_stark,north_sevenkingdoms_local),userDefined(hodor,north_sevenkingdoms_local,user)])).
+
+possible_duplicate_trace_step(because(24,rule_desc('password is user or in user description',likely),stolenCredential(hodor,north_sevenkingdoms_local),[inCompetent(hodor),userFound(hodor,north_sevenkingdoms_local)])).
+
+possible_duplicate_trace_step(because(24,rule_desc('password is user or in user description',likely),stolenCredential(hodor,north_sevenkingdoms_local),[inCompetent(hodor),userFound(hodor,north_sevenkingdoms_local)])).
+
+possible_duplicate_trace_step(because(24,rule_desc('password is user or in user description',likely),stolenCredential(hodor,north_sevenkingdoms_local),[inCompetent(hodor),userFound(hodor,north_sevenkingdoms_local)])).
+
+attack(stolenCredential(jon_snow,castelblack)).
+
+possible_duplicate_trace_step(because(31,rule_desc('Use a socks relay with an admin account / part 4',cvss_ac(h)),stolenHash(jon_snow,castelblack),[cvss('Unsigned_SMB',h),netAccess(castelblack),accessibleHash(jon_snow,castelblack,castelblack),userDefined(eddard_stark,castelblack,admin),stolenHash(eddard_stark,ntlmBot),vulnExists(castelblack,'Unsigned_SMB',signedSMB_false,remoteExploit,accessFile)])).
+
+possible_duplicate_trace_step(because(26,rule_desc('Use of Hashcat for password crack',likely),stolenCredential(jon_snow,castelblack),[weakPassword(jon_snow),stolenHash(jon_snow,castelblack)])).
+
+attack(stolenCredential(jon_snow,north_sevenkingdoms_local)).
+
+possible_duplicate_trace_step(because(22,rule_desc('User enumeration anonymously part2',cvss_ac(m)),userFound(jon_snow,north_sevenkingdoms_local),[cvss('Enumerate DC properties anonymously',m),vulnExists(winterfell,'Enumerate DC properties anonymously',north_sevenkingdoms_local,remoteExploit,accountEnumeration),netAccess(winterfell),userDefined(jon_snow,north_sevenkingdoms_local,user)])).
+
+possible_duplicate_trace_step(because(23,rule_desc('Username found by brutforce',unlikely),userFound(jon_snow,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),userDefined(jon_snow,north_sevenkingdoms_local,user)])).
+
+possible_duplicate_trace_step(because(27,rule_desc('Username found after authentification',certain),userFound(jon_snow,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(hodor,north_sevenkingdoms_local),userDefined(jon_snow,north_sevenkingdoms_local,user)])).
+
+possible_duplicate_trace_step(because(27,rule_desc('Username found after authentification',certain),userFound(jon_snow,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(samwell_tarly,north_sevenkingdoms_local),userDefined(jon_snow,north_sevenkingdoms_local,user)])).
+
+possible_duplicate_trace_step(because(27,rule_desc('Username found after authentification',certain),userFound(jon_snow,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(brandon_stark,north_sevenkingdoms_local),userDefined(jon_snow,north_sevenkingdoms_local,user)])).
+
+possible_duplicate_trace_step(because(27,rule_desc('Username found after authentification',certain),userFound(jon_snow,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(jon_snow,north_sevenkingdoms_local),userDefined(jon_snow,north_sevenkingdoms_local,user)])).
+
+possible_duplicate_trace_step(because(27,rule_desc('Username found after authentification',certain),userFound(jon_snow,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(robb_stark,north_sevenkingdoms_local),userDefined(jon_snow,north_sevenkingdoms_local,user)])).
+
+possible_duplicate_trace_step(because(27,rule_desc('Username found after authentification',certain),userFound(jon_snow,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(robb_stark,north_sevenkingdoms_local),userDefined(jon_snow,north_sevenkingdoms_local,user)])).
+
+possible_duplicate_trace_step(because(28,rule_desc('Kerberoasting part 3',likely),stolenHash(jon_snow,north_sevenkingdoms_local),[stolenCredential(hodor,north_sevenkingdoms_local),netAccess(north_sevenkingdoms_local),accessibleHash(jon_snow,north_sevenkingdoms_local,kerberoasting)])).
+
+possible_duplicate_trace_step(because(28,rule_desc('Kerberoasting part 3',likely),stolenHash(jon_snow,north_sevenkingdoms_local),[stolenCredential(samwell_tarly,north_sevenkingdoms_local),netAccess(north_sevenkingdoms_local),accessibleHash(jon_snow,north_sevenkingdoms_local,kerberoasting)])).
+
+possible_duplicate_trace_step(because(28,rule_desc('Kerberoasting part 3',likely),stolenHash(jon_snow,north_sevenkingdoms_local),[stolenCredential(brandon_stark,north_sevenkingdoms_local),netAccess(north_sevenkingdoms_local),accessibleHash(jon_snow,north_sevenkingdoms_local,kerberoasting)])).
+
+possible_duplicate_trace_step(because(28,rule_desc('Kerberoasting part 3',likely),stolenHash(jon_snow,north_sevenkingdoms_local),[stolenCredential(jon_snow,north_sevenkingdoms_local),netAccess(north_sevenkingdoms_local),accessibleHash(jon_snow,north_sevenkingdoms_local,kerberoasting)])).
+
+possible_duplicate_trace_step(because(28,rule_desc('Kerberoasting part 3',likely),stolenHash(jon_snow,north_sevenkingdoms_local),[stolenCredential(robb_stark,north_sevenkingdoms_local),netAccess(north_sevenkingdoms_local),accessibleHash(jon_snow,north_sevenkingdoms_local,kerberoasting)])).
+
+possible_duplicate_trace_step(because(28,rule_desc('Kerberoasting part 3',likely),stolenHash(jon_snow,north_sevenkingdoms_local),[stolenCredential(robb_stark,north_sevenkingdoms_local),netAccess(north_sevenkingdoms_local),accessibleHash(jon_snow,north_sevenkingdoms_local,kerberoasting)])).
+
+possible_duplicate_trace_step(because(26,rule_desc('Use of Hashcat for password crack',likely),stolenCredential(jon_snow,north_sevenkingdoms_local),[weakPassword(jon_snow),stolenHash(jon_snow,north_sevenkingdoms_local)])).
+

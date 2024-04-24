@@ -1,0 +1,93 @@
+1,"stolenCredential(brandon_stark,castelblack)","OR",0
+2,"RULE 26 (Use of Hashcat for password crack)","AND",0.8
+3,"weakPassword(brandon_stark)","LEAF",1
+4,"stolenHash(brandon_stark,castelblack)","OR",0
+5,"RULE 31 (Use a socks relay with an admin account / part 4)","AND",0.2
+6,"cvss('Unsigned_SMB',h)","LEAF",1
+7,"netAccess(castelblack)","OR",0
+8,"RULE 5 (direct network access)","AND",1
+9,"hacl(intranet,castelblack,_,_)","LEAF",1
+10,"attackerLocated(intranet)","LEAF",1
+11,"accessibleHash(brandon_stark,castelblack,castelblack)","LEAF",1
+12,"userDefined(eddard_stark,castelblack,admin)","LEAF",1
+13,"stolenHash(eddard_stark,ntlmBot)","OR",0
+14,"RULE 29 (NTLM hash found part 4)","AND",0.8
+15,"netAccess(winterfell)","OR",0
+16,"RULE 5 (direct network access)","AND",1
+17,"hacl(intranet,winterfell,_,_)","LEAF",1
+18,"isRuning(ntlmBot,winterfell)","LEAF",1
+19,"userPartOf(eddard_stark,runNTLMBot,user)","LEAF",1
+20,"vulnExists(castelblack,'Unsigned_SMB',signedSMB_false,remoteExploit,accessFile)","OR",0
+21,"RULE 16 (Vuln declared)","AND",1
+22,"vulProperty('Unsigned_SMB',remoteExploit,accessFile)","LEAF",1
+23,"vulExists(castelblack,'Unsigned_SMB',signedSMB_false)","LEAF",1
+24,"stolenCredential(brandon_stark,north_sevenkingdoms_local)","OR",0
+25,"RULE 26 (Use of Hashcat for password crack)","AND",0.8
+26,"stolenHash(brandon_stark,north_sevenkingdoms_local)","OR",0
+27,"RULE 25 (asreproasting part2)","AND",0.8
+28,"userFound(brandon_stark,north_sevenkingdoms_local)","OR",0
+29,"RULE 22 (User enumeration anonymously part2)","AND",0.6
+30,"cvss('Enumerate DC properties anonymously',m)","LEAF",1
+31,"vulnExists(winterfell,'Enumerate DC properties anonymously',north_sevenkingdoms_local,remoteExploit,accountEnumeration)","OR",0
+32,"RULE 16 (Vuln declared)","AND",1
+33,"vulProperty('Enumerate DC properties anonymously',remoteExploit,accountEnumeration)","LEAF",1
+34,"vulExists(winterfell,'Enumerate DC properties anonymously',north_sevenkingdoms_local)","LEAF",1
+35,"userDefined(brandon_stark,north_sevenkingdoms_local,user)","LEAF",1
+36,"RULE 23 (Username found by brutforce)","AND",0.2
+37,"netAccess(north_sevenkingdoms_local)","OR",0
+38,"RULE 5 (direct network access)","AND",1
+39,"hacl(intranet,north_sevenkingdoms_local,_,_)","LEAF",1
+40,"RULE 27 (Username found after authentification)","AND",1
+41,"RULE 27 (Username found after authentification)","AND",1
+42,"stolenCredential(hodor,north_sevenkingdoms_local)","OR",0
+43,"RULE 24 (password is user or in user description)","AND",0.8
+44,"inCompetent(hodor)","LEAF",1
+45,"userFound(hodor,north_sevenkingdoms_local)","OR",0
+46,"RULE 22 (User enumeration anonymously part2)","AND",0.6
+47,"userDefined(hodor,north_sevenkingdoms_local,user)","LEAF",1
+48,"RULE 23 (Username found by brutforce)","AND",0.2
+49,"RULE 27 (Username found after authentification)","AND",1
+50,"RULE 27 (Username found after authentification)","AND",1
+51,"RULE 27 (Username found after authentification)","AND",1
+52,"stolenCredential(jon_snow,north_sevenkingdoms_local)","OR",0
+53,"RULE 26 (Use of Hashcat for password crack)","AND",0.8
+54,"weakPassword(jon_snow)","LEAF",1
+55,"stolenHash(jon_snow,north_sevenkingdoms_local)","OR",0
+56,"RULE 28 (Kerberoasting part 3)","AND",0.8
+57,"accessibleHash(jon_snow,north_sevenkingdoms_local,kerberoasting)","LEAF",1
+58,"RULE 28 (Kerberoasting part 3)","AND",0.8
+59,"RULE 28 (Kerberoasting part 3)","AND",0.8
+60,"RULE 28 (Kerberoasting part 3)","AND",0.8
+61,"stolenCredential(robb_stark,north_sevenkingdoms_local)","OR",0
+62,"RULE 30 (hashcat sur NTLM part 4 sachant que le user est trouve en meme temps que le hash)","AND",0.8
+63,"stolenHash(robb_stark,ntlmBot)","OR",0
+64,"RULE 29 (NTLM hash found part 4)","AND",0.8
+65,"userPartOf(robb_stark,runNTLMBot,user)","LEAF",1
+66,"weakPassword(robb_stark)","LEAF",1
+67,"userDefined(robb_stark,north_sevenkingdoms_local,user)","LEAF",1
+68,"RULE 34 (Use of DonPAPI)","AND",0.8
+69,"credentialInClear(robb_stark,castelblack,north_sevenkingdoms_local)","LEAF",1
+70,"RULE 28 (Kerberoasting part 3)","AND",0.8
+71,"stolenCredential(samwell_tarly,north_sevenkingdoms_local)","OR",0
+72,"RULE 24 (password is user or in user description)","AND",0.8
+73,"inCompetent(samwell_tarly)","LEAF",1
+74,"userFound(samwell_tarly,north_sevenkingdoms_local)","OR",0
+75,"RULE 22 (User enumeration anonymously part2)","AND",0.6
+76,"userDefined(samwell_tarly,north_sevenkingdoms_local,user)","LEAF",1
+77,"RULE 23 (Username found by brutforce)","AND",0.2
+78,"RULE 27 (Username found after authentification)","AND",1
+79,"RULE 27 (Username found after authentification)","AND",1
+80,"RULE 27 (Username found after authentification)","AND",1
+81,"RULE 27 (Username found after authentification)","AND",1
+82,"RULE 27 (Username found after authentification)","AND",1
+83,"RULE 27 (Username found after authentification)","AND",1
+84,"RULE 27 (Username found after authentification)","AND",1
+85,"RULE 27 (Username found after authentification)","AND",1
+86,"RULE 27 (Username found after authentification)","AND",1
+87,"RULE 27 (Username found after authentification)","AND",1
+88,"accessibleHash(brandon_stark,north_sevenkingdoms_local,asreproasting)","LEAF",1
+89,"stolenCredential(jon_snow,castelblack)","OR",0
+90,"RULE 26 (Use of Hashcat for password crack)","AND",0.8
+91,"stolenHash(jon_snow,castelblack)","OR",0
+92,"RULE 31 (Use a socks relay with an admin account / part 4)","AND",0.2
+93,"accessibleHash(jon_snow,castelblack,castelblack)","LEAF",1
