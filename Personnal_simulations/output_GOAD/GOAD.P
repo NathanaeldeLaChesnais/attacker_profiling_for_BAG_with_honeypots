@@ -1,5 +1,6 @@
 attackerLocated(intranet).
-attackGoal(stolenHash(catelyn_stark, north_sevenkingdoms_local)). /* part 5 */
+attackGoal(execCode(meereen, root)).
+/* attackGoal(stolenCredential(_, winterfell)). */ /* part5 */
 /* attackGoal(hasAccount(eddard_stark, castelblack, admin)).
 attackGoal(stolenHash(_, castelblack)). */
 /* attackGoal(execCode(meereen, _)). */
@@ -38,6 +39,9 @@ userDefined(brandon_stark, north_sevenkingdoms_local, user).
 weakPassword(brandon_stark). /* part 2, asreproasting + brutforce */
 accessibleHash(brandon_stark, north_sevenkingdoms_local, asreproasting ). /* part 2, asreproasting + brutforce */
 
+userDefined(jorah_mormont, meereen, user).
+weakPassword(jorah_mormont). /* part 6 but usefull for part 5 */
+
 userDefined(localAdmin, castelblack, localAdmin).
 
 accessibleHash(localAdmin, castelblack, castelblack). /* part4 */
@@ -67,15 +71,19 @@ networkServiceInfo(castelblack, asp_net, shell). /* part8 */
 
 /* Winterfell */
 hostDefined(winterfell, north_sevenkingdoms_local).
+
 vulExists(winterfell, 'Enumerate DC properties anonymously', north_sevenkingdoms_local). /* part2 account enumeration */
 vulProperty('Enumerate DC properties anonymously', remoteExploit, accountEnumeration). /* part2 */
 cvss('Enumerate DC properties anonymously', m). /* part2 faux score car la vuln n'a pas de CVE associé */
 
 vulExists(winterfell, 'CVE-2021-42287', active_Directory). /* part5 samAccountName */
-vulProperty('CVE-2021-42287', remoteExploit, hashAccess). /* part5 */
+vulProperty('CVE-2021-42287', remoteExploit, accessLocalHash). /* part5 */
 cvss('CVE-2021-42287', h). /* part5 */
 fileOnHost(ntdsdit, winterfell). /* part5 */
 
+setuidProgramInfo(winterfell, spooler, root). /* part5 */
+networkServiceInfo(winterfell, spooler, _root). /* part5 */
+vulExists(winterfell, 'CVE-2021-1675', spooler). /* part5 printNightMare */
 
 
 /* Configuration of Meereen */
@@ -92,7 +100,7 @@ accessibleHash(defaultAccount, meereen, meereen). /* part4 */
 setuidProgramInfo(meereen, spooler, root). /* part5 */
 networkServiceInfo(meereen, spooler, _root). /* part5 */
 vulExists(meereen, 'CVE-2021-1675', spooler). /* part5 printNightMare */
-vulProperty('CVE-2021-1675', remoteExploit, privEscalation). /* part5 */
+vulProperty('CVE-2021-1675', remoteExploitWithAccount, privEscalation). /* part5 */
 cvss('CVE-2021-1675', h). /* part5 */ 
 
 vulExists(meereen, 'ESC8', webEnrollementEnabled). /* part6 ADCS */

@@ -40,8 +40,7 @@ derived(accessMaliciousInput,3).
 derived(userFound,2).
 derived(vulnExists,5).
 derived(stolenCredential,2).
-derived(stolenCredential,2).
-derived(stolenCredential,2).
+derived(stolenCredentialDC,2).
 derived(dnsPoisoning,1).
 derived(relayWPAD,1).
 derived(stolenHash,2).
@@ -49,55 +48,43 @@ derived(hashFoundNTLM,1).
 meta(cvss,2).
 meta(attackGoal,1).
 
-attack(stolenHash(catelyn_stark,north_sevenkingdoms_local)).
+attack(execCode(meereen,root)).
 
-possible_duplicate_trace_step(because(16,rule_desc('Vuln declared',certain),vulnExists(winterfell,'CVE-2021-42287',active_Directory,remoteExploit,hashAccess),[vulProperty('CVE-2021-42287',remoteExploit,hashAccess),vulExists(winterfell,'CVE-2021-42287',active_Directory)])).
+possible_duplicate_trace_step(because(16,rule_desc('Vuln declared',certain),vulnExists(castelblack,'MSSQL',mssql,remoteExploit,privEscalation),[vulProperty('MSSQL',remoteExploit,privEscalation),vulExists(castelblack,'MSSQL',mssql)])).
 
-possible_duplicate_trace_step(because(16,rule_desc('Vuln declared',certain),vulnExists(winterfell,'CVE-2021-42287',active_Directory,remoteExploit,hashAccess),[vulProperty('CVE-2021-42287',remoteExploit,hashAccess),vulExists(winterfell,'CVE-2021-42287',active_Directory)])).
+possible_duplicate_trace_step(because(5,rule_desc('direct network access',certain),netAccess(castelblack),[hacl(intranet,castelblack,_h3914,_h3915),attackerLocated(intranet)])).
 
-possible_duplicate_trace_step(because(5,rule_desc('direct network access',certain),netAccess(_h3784),[hacl(intranet,_h3784,_h3856,_h3857),attackerLocated(intranet)])).
+possible_duplicate_trace_step(because(2,rule_desc('remote exploit of a server program',cvss_ac(h)),execCode(castelblack,shell),[netAccess(castelblack),networkServiceInfo(castelblack,mssql,shell),cvss('MSSQL',h),vulnExists(castelblack,'MSSQL',mssql,remoteExploit,privEscalation)])).
+
+possible_duplicate_trace_step(because(16,rule_desc('Vuln declared',certain),vulnExists(meereen,'CVE-2022-26923',certifried,remoteExploit,privEscalation),[vulProperty('CVE-2022-26923',remoteExploit,privEscalation),vulExists(meereen,'CVE-2022-26923',certifried)])).
+
+possible_duplicate_trace_step(because(16,rule_desc('Vuln declared',certain),vulnExists(braavos,'MSSQL',mssql,remoteExploit,privEscalation),[vulProperty('MSSQL',remoteExploit,privEscalation),vulExists(braavos,'MSSQL',mssql)])).
+
+possible_duplicate_trace_step(because(16,rule_desc('Vuln declared',certain),vulnExists(castelblack,'MSSQL',mssql,remoteExploit,privEscalation),[vulProperty('MSSQL',remoteExploit,privEscalation),vulExists(castelblack,'MSSQL',mssql)])).
+
+possible_duplicate_trace_step(because(2,rule_desc('remote exploit of a server program',cvss_ac(h)),execCode(castelblack,shell),[netAccess(castelblack),networkServiceInfo(castelblack,mssql,shell),cvss('MSSQL',h),vulnExists(castelblack,'MSSQL',mssql,remoteExploit,privEscalation)])).
+
+possible_duplicate_trace_step(because(5,rule_desc('direct network access',certain),netAccess(braavos),[hacl(intranet,braavos,_h4236,_h4237),attackerLocated(intranet)])).
+
+possible_duplicate_trace_step(because(2,rule_desc('remote exploit of a server program',cvss_ac(h)),execCode(braavos,shell),[netAccess(braavos),networkServiceInfo(braavos,mssql,shell),cvss('MSSQL',h),vulnExists(braavos,'MSSQL',mssql,remoteExploit,privEscalation)])).
+
+possible_duplicate_trace_step(because(5,rule_desc('direct network access',certain),netAccess(meereen),[hacl(intranet,meereen,_h4236,_h4237),attackerLocated(intranet)])).
+
+possible_duplicate_trace_step(because(2,rule_desc('remote exploit of a server program',cvss_ac(h)),execCode(meereen,shell),[netAccess(meereen),networkServiceInfo(meereen,certifried,shell),cvss('CVE-2022-26923',h),vulnExists(meereen,'CVE-2022-26923',certifried,remoteExploit,privEscalation)])).
+
+possible_duplicate_trace_step(because(16,rule_desc('Vuln declared',certain),vulnExists(winterfell,'CVE-2021-1675',spooler,remoteExploitWithAccount,privEscalation),[vulProperty('CVE-2021-1675',remoteExploitWithAccount,privEscalation),vulExists(winterfell,'CVE-2021-1675',spooler)])).
+
+possible_duplicate_trace_step(because(16,rule_desc('Vuln declared',certain),vulnExists(meereen,'CVE-2021-1675',spooler,remoteExploitWithAccount,privEscalation),[vulProperty('CVE-2021-1675',remoteExploitWithAccount,privEscalation),vulExists(meereen,'CVE-2021-1675',spooler)])).
+
+possible_duplicate_trace_step(because(5,rule_desc('direct network access',certain),netAccess(_h4499),[hacl(intranet,_h4499,_h4571,_h4572),attackerLocated(intranet)])).
 
 possible_duplicate_trace_step(because(16,rule_desc('Vuln declared',certain),vulnExists(winterfell,'Enumerate DC properties anonymously',north_sevenkingdoms_local,remoteExploit,accountEnumeration),[vulProperty('Enumerate DC properties anonymously',remoteExploit,accountEnumeration),vulExists(winterfell,'Enumerate DC properties anonymously',north_sevenkingdoms_local)])).
 
-possible_duplicate_trace_step(because(16,rule_desc('Vuln declared',certain),vulnExists(winterfell,'Enumerate DC properties anonymously',north_sevenkingdoms_local,remoteExploit,accountEnumeration),[vulProperty('Enumerate DC properties anonymously',remoteExploit,accountEnumeration),vulExists(winterfell,'Enumerate DC properties anonymously',north_sevenkingdoms_local)])).
+possible_duplicate_trace_step(because(24,rule_desc('Username found by brutforce',unlikely),userFound(jorah_mormont,meereen),[netAccess(meereen),userDefined(jorah_mormont,meereen,user)])).
 
-possible_duplicate_trace_step(because(23,rule_desc('User enumeration anonymously part2',cvss_ac(m)),userFound(brandon_stark,north_sevenkingdoms_local),[cvss('Enumerate DC properties anonymously',m),vulnExists(winterfell,'Enumerate DC properties anonymously',north_sevenkingdoms_local,remoteExploit,accountEnumeration),netAccess(winterfell),userDefined(brandon_stark,north_sevenkingdoms_local,user)])).
+possible_duplicate_trace_step(because(16,rule_desc('Vuln declared',certain),vulnExists(winterfell,'CVE-2021-42287',active_Directory,remoteExploit,accessLocalHash),[vulProperty('CVE-2021-42287',remoteExploit,accessLocalHash),vulExists(winterfell,'CVE-2021-42287',active_Directory)])).
 
-possible_duplicate_trace_step(because(23,rule_desc('User enumeration anonymously part2',cvss_ac(m)),userFound(samwell_tarly,north_sevenkingdoms_local),[cvss('Enumerate DC properties anonymously',m),vulnExists(winterfell,'Enumerate DC properties anonymously',north_sevenkingdoms_local,remoteExploit,accountEnumeration),netAccess(winterfell),userDefined(samwell_tarly,north_sevenkingdoms_local,user)])).
-
-possible_duplicate_trace_step(because(23,rule_desc('User enumeration anonymously part2',cvss_ac(m)),userFound(hodor,north_sevenkingdoms_local),[cvss('Enumerate DC properties anonymously',m),vulnExists(winterfell,'Enumerate DC properties anonymously',north_sevenkingdoms_local,remoteExploit,accountEnumeration),netAccess(winterfell),userDefined(hodor,north_sevenkingdoms_local,user)])).
-
-possible_duplicate_trace_step(because(23,rule_desc('User enumeration anonymously part2',cvss_ac(m)),userFound(jeor_mormont,north_sevenkingdoms_local),[cvss('Enumerate DC properties anonymously',m),vulnExists(winterfell,'Enumerate DC properties anonymously',north_sevenkingdoms_local,remoteExploit,accountEnumeration),netAccess(winterfell),userDefined(jeor_mormont,north_sevenkingdoms_local,user)])).
-
-possible_duplicate_trace_step(because(23,rule_desc('User enumeration anonymously part2',cvss_ac(m)),userFound(robb_stark,north_sevenkingdoms_local),[cvss('Enumerate DC properties anonymously',m),vulnExists(winterfell,'Enumerate DC properties anonymously',north_sevenkingdoms_local,remoteExploit,accountEnumeration),netAccess(winterfell),userDefined(robb_stark,north_sevenkingdoms_local,user)])).
-
-possible_duplicate_trace_step(because(23,rule_desc('User enumeration anonymously part2',cvss_ac(m)),userFound(catelyn_stark,north_sevenkingdoms_local),[cvss('Enumerate DC properties anonymously',m),vulnExists(winterfell,'Enumerate DC properties anonymously',north_sevenkingdoms_local,remoteExploit,accountEnumeration),netAccess(winterfell),userDefined(catelyn_stark,north_sevenkingdoms_local,user)])).
-
-possible_duplicate_trace_step(because(23,rule_desc('User enumeration anonymously part2',cvss_ac(m)),userFound(jon_snow,north_sevenkingdoms_local),[cvss('Enumerate DC properties anonymously',m),vulnExists(winterfell,'Enumerate DC properties anonymously',north_sevenkingdoms_local,remoteExploit,accountEnumeration),netAccess(winterfell),userDefined(jon_snow,north_sevenkingdoms_local,user)])).
-
-possible_duplicate_trace_step(because(23,rule_desc('User enumeration anonymously part2',cvss_ac(m)),userFound(eddard_stark,north_sevenkingdoms_local),[cvss('Enumerate DC properties anonymously',m),vulnExists(winterfell,'Enumerate DC properties anonymously',north_sevenkingdoms_local,remoteExploit,accountEnumeration),netAccess(winterfell),userDefined(eddard_stark,north_sevenkingdoms_local,domain_admin)])).
-
-possible_duplicate_trace_step(because(5,rule_desc('direct network access',certain),netAccess(north_sevenkingdoms_local),[hacl(intranet,north_sevenkingdoms_local,_h3822,_h3823),attackerLocated(intranet)])).
-
-possible_duplicate_trace_step(because(24,rule_desc('Username found by brutforce',unlikely),userFound(brandon_stark,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),userDefined(brandon_stark,north_sevenkingdoms_local,user)])).
-
-possible_duplicate_trace_step(because(24,rule_desc('Username found by brutforce',unlikely),userFound(samwell_tarly,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),userDefined(samwell_tarly,north_sevenkingdoms_local,user)])).
-
-possible_duplicate_trace_step(because(24,rule_desc('Username found by brutforce',unlikely),userFound(hodor,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),userDefined(hodor,north_sevenkingdoms_local,user)])).
-
-possible_duplicate_trace_step(because(24,rule_desc('Username found by brutforce',unlikely),userFound(jeor_mormont,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),userDefined(jeor_mormont,north_sevenkingdoms_local,user)])).
-
-possible_duplicate_trace_step(because(24,rule_desc('Username found by brutforce',unlikely),userFound(robb_stark,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),userDefined(robb_stark,north_sevenkingdoms_local,user)])).
-
-possible_duplicate_trace_step(because(24,rule_desc('Username found by brutforce',unlikely),userFound(catelyn_stark,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),userDefined(catelyn_stark,north_sevenkingdoms_local,user)])).
-
-possible_duplicate_trace_step(because(24,rule_desc('Username found by brutforce',unlikely),userFound(jon_snow,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),userDefined(jon_snow,north_sevenkingdoms_local,user)])).
-
-possible_duplicate_trace_step(because(24,rule_desc('Username found by brutforce',unlikely),userFound(eddard_stark,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),userDefined(eddard_stark,north_sevenkingdoms_local,domain_admin)])).
-
-possible_duplicate_trace_step(because(23,rule_desc('User enumeration anonymously part2',cvss_ac(m)),userFound(brandon_stark,north_sevenkingdoms_local),[cvss('Enumerate DC properties anonymously',m),vulnExists(winterfell,'Enumerate DC properties anonymously',north_sevenkingdoms_local,remoteExploit,accountEnumeration),netAccess(winterfell),userDefined(brandon_stark,north_sevenkingdoms_local,user)])).
-
-possible_duplicate_trace_step(because(24,rule_desc('Username found by brutforce',unlikely),userFound(brandon_stark,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),userDefined(brandon_stark,north_sevenkingdoms_local,user)])).
+possible_duplicate_trace_step(because(16,rule_desc('Vuln declared',certain),vulnExists(winterfell,'CVE-2021-42287',active_Directory,remoteExploit,accessLocalHash),[vulProperty('CVE-2021-42287',remoteExploit,accessLocalHash),vulExists(winterfell,'CVE-2021-42287',active_Directory)])).
 
 possible_duplicate_trace_step(because(16,rule_desc('Vuln declared',certain),vulnExists(meereen,'CVE-2019-1040',removeTheMic,remoteExploit,accessLocalHash),[vulProperty('CVE-2019-1040',remoteExploit,accessLocalHash),vulExists(meereen,'CVE-2019-1040',removeTheMic)])).
 
@@ -111,293 +98,153 @@ possible_duplicate_trace_step(because(16,rule_desc('Vuln declared',certain),vuln
 
 possible_duplicate_trace_step(because(16,rule_desc('Vuln declared',certain),vulnExists(meereen,'ShadowCredential',essos_local,remoteExploit,accessLocalHash),[vulProperty('ShadowCredential',remoteExploit,accessLocalHash),vulExists(meereen,'ShadowCredential',essos_local)])).
 
-possible_duplicate_trace_step(because(5,rule_desc('direct network access',certain),netAccess(winterfell),[hacl(intranet,winterfell,_h4326,_h4327),attackerLocated(intranet)])).
+possible_duplicate_trace_step(because(42,rule_desc('remote access hash',cvss_ac(h)),stolenHash(localAdmin,meereen),[netAccess(meereen),cvss('ShadowCredential',h),accessibleHash(localAdmin,meereen,meereen),vulnExists(meereen,'ShadowCredential',essos_local,remoteExploit,accessLocalHash)])).
 
-possible_duplicate_trace_step(because(30,rule_desc('NTLM hash found part 4',likely),stolenHash(robb_stark,ntlmBot),[netAccess(winterfell),isRuning(ntlmBot,winterfell),userPartOf(robb_stark,runNTLMBot,user)])).
+possible_duplicate_trace_step(because(42,rule_desc('remote access hash',cvss_ac(h)),stolenHash(guest,meereen),[netAccess(meereen),cvss('ShadowCredential',h),accessibleHash(guest,meereen,meereen),vulnExists(meereen,'ShadowCredential',essos_local,remoteExploit,accessLocalHash)])).
 
-possible_duplicate_trace_step(because(31,rule_desc('hashcat sur NTLM part 4 sachant que le user est trouve en meme temps que le hash',likely),stolenCredential(robb_stark,north_sevenkingdoms_local),[stolenHash(robb_stark,ntlmBot),weakPassword(robb_stark),userDefined(robb_stark,north_sevenkingdoms_local,user)])).
+possible_duplicate_trace_step(because(42,rule_desc('remote access hash',cvss_ac(h)),stolenHash(defaultAccount,meereen),[netAccess(meereen),cvss('ShadowCredential',h),accessibleHash(defaultAccount,meereen,meereen),vulnExists(meereen,'ShadowCredential',essos_local,remoteExploit,accessLocalHash)])).
 
-possible_duplicate_trace_step(because(5,rule_desc('direct network access',certain),netAccess(castelblack),[hacl(intranet,castelblack,_h4192,_h4193),attackerLocated(intranet)])).
+possible_duplicate_trace_step(because(42,rule_desc('remote access hash',cvss_ac(h)),stolenHash(localAdmin,meereen),[netAccess(meereen),cvss('ShadowCredential',h),accessibleHash(localAdmin,meereen,meereen),vulnExists(meereen,'ShadowCredential',essos_local,remoteExploit,accessLocalHash)])).
 
-possible_duplicate_trace_step(because(35,rule_desc('Use of DonPAPI',likely),stolenCredential(robb_stark,north_sevenkingdoms_local),[netAccess(castelblack),credentialInClear(robb_stark,castelblack,north_sevenkingdoms_local)])).
+possible_duplicate_trace_step(because(42,rule_desc('remote access hash',cvss_ac(h)),stolenHash(guest,meereen),[netAccess(meereen),cvss('ShadowCredential',h),accessibleHash(guest,meereen,meereen),vulnExists(meereen,'ShadowCredential',essos_local,remoteExploit,accessLocalHash)])).
 
-possible_duplicate_trace_step(because(40,rule_desc('stolen hash for a full domain',cvss_ac(h)),stolenHash(jon_snow,north_sevenkingdoms_local),[stolenCredential(robb_stark,north_sevenkingdoms_local),cvss('CVE-2021-42287',h),accessibleHash(jon_snow,north_sevenkingdoms_local,north_sevenkingdoms_local),vulnExists(winterfell,'CVE-2021-42287',active_Directory,remoteExploit,hashAccess)])).
+possible_duplicate_trace_step(because(42,rule_desc('remote access hash',cvss_ac(h)),stolenHash(defaultAccount,meereen),[netAccess(meereen),cvss('ShadowCredential',h),accessibleHash(defaultAccount,meereen,meereen),vulnExists(meereen,'ShadowCredential',essos_local,remoteExploit,accessLocalHash)])).
 
-possible_duplicate_trace_step(because(40,rule_desc('stolen hash for a full domain',cvss_ac(h)),stolenHash(jon_snow,north_sevenkingdoms_local),[stolenCredential(robb_stark,north_sevenkingdoms_local),cvss('CVE-2021-42287',h),accessibleHash(jon_snow,north_sevenkingdoms_local,north_sevenkingdoms_local),vulnExists(winterfell,'CVE-2021-42287',active_Directory,remoteExploit,hashAccess)])).
+possible_duplicate_trace_step(because(42,rule_desc('remote access hash',cvss_ac(h)),stolenHash(daenerys_targaryen,meereen),[netAccess(meereen),cvss('ShadowCredential',h),accessibleHash(daenerys_targaryen,meereen,meereen),vulnExists(meereen,'ShadowCredential',essos_local,remoteExploit,accessLocalHash)])).
 
-possible_duplicate_trace_step(because(40,rule_desc('stolen hash for a full domain',cvss_ac(h)),stolenHash(catelyn_stark,north_sevenkingdoms_local),[stolenCredential(robb_stark,north_sevenkingdoms_local),cvss('CVE-2021-42287',h),accessibleHash(catelyn_stark,north_sevenkingdoms_local,north_sevenkingdoms_local),vulnExists(winterfell,'CVE-2021-42287',active_Directory,remoteExploit,hashAccess)])).
+possible_duplicate_trace_step(because(42,rule_desc('remote access hash',cvss_ac(h)),stolenHash(jorah_mormont,meereen),[netAccess(meereen),cvss('ShadowCredential',h),accessibleHash(jorah_mormont,meereen,meereen),vulnExists(meereen,'ShadowCredential',essos_local,remoteExploit,accessLocalHash)])).
 
-possible_duplicate_trace_step(because(40,rule_desc('stolen hash for a full domain',cvss_ac(h)),stolenHash(catelyn_stark,north_sevenkingdoms_local),[stolenCredential(robb_stark,north_sevenkingdoms_local),cvss('CVE-2021-42287',h),accessibleHash(catelyn_stark,north_sevenkingdoms_local,north_sevenkingdoms_local),vulnExists(winterfell,'CVE-2021-42287',active_Directory,remoteExploit,hashAccess)])).
+possible_duplicate_trace_step(because(42,rule_desc('remote access hash',cvss_ac(h)),stolenHash(jorah_mormont,meereen),[netAccess(meereen),cvss('ShadowCredential',h),accessibleHash(jorah_mormont,meereen,meereen),vulnExists(meereen,'ShadowCredential',essos_local,remoteExploit,accessLocalHash)])).
 
-possible_duplicate_trace_step(because(40,rule_desc('stolen hash for a full domain',cvss_ac(h)),stolenHash(robb_stark,north_sevenkingdoms_local),[stolenCredential(robb_stark,north_sevenkingdoms_local),cvss('CVE-2021-42287',h),accessibleHash(robb_stark,north_sevenkingdoms_local,north_sevenkingdoms_local),vulnExists(winterfell,'CVE-2021-42287',active_Directory,remoteExploit,hashAccess)])).
+possible_duplicate_trace_step(because(42,rule_desc('remote access hash',cvss_ac(h)),stolenHash(localAdmin,meereen),[netAccess(meereen),cvss('ESC3',h),accessibleHash(localAdmin,meereen,meereen),vulnExists(meereen,'ESC3',certification,remoteExploit,accessLocalHash)])).
 
-possible_duplicate_trace_step(because(40,rule_desc('stolen hash for a full domain',cvss_ac(h)),stolenHash(robb_stark,north_sevenkingdoms_local),[stolenCredential(robb_stark,north_sevenkingdoms_local),cvss('CVE-2021-42287',h),accessibleHash(robb_stark,north_sevenkingdoms_local,north_sevenkingdoms_local),vulnExists(winterfell,'CVE-2021-42287',active_Directory,remoteExploit,hashAccess)])).
+possible_duplicate_trace_step(because(42,rule_desc('remote access hash',cvss_ac(h)),stolenHash(guest,meereen),[netAccess(meereen),cvss('ESC3',h),accessibleHash(guest,meereen,meereen),vulnExists(meereen,'ESC3',certification,remoteExploit,accessLocalHash)])).
 
-possible_duplicate_trace_step(because(40,rule_desc('stolen hash for a full domain',cvss_ac(h)),stolenHash(jeor_mormont,north_sevenkingdoms_local),[stolenCredential(robb_stark,north_sevenkingdoms_local),cvss('CVE-2021-42287',h),accessibleHash(jeor_mormont,north_sevenkingdoms_local,north_sevenkingdoms_local),vulnExists(winterfell,'CVE-2021-42287',active_Directory,remoteExploit,hashAccess)])).
+possible_duplicate_trace_step(because(42,rule_desc('remote access hash',cvss_ac(h)),stolenHash(defaultAccount,meereen),[netAccess(meereen),cvss('ESC3',h),accessibleHash(defaultAccount,meereen,meereen),vulnExists(meereen,'ESC3',certification,remoteExploit,accessLocalHash)])).
 
-possible_duplicate_trace_step(because(40,rule_desc('stolen hash for a full domain',cvss_ac(h)),stolenHash(jeor_mormont,north_sevenkingdoms_local),[stolenCredential(robb_stark,north_sevenkingdoms_local),cvss('CVE-2021-42287',h),accessibleHash(jeor_mormont,north_sevenkingdoms_local,north_sevenkingdoms_local),vulnExists(winterfell,'CVE-2021-42287',active_Directory,remoteExploit,hashAccess)])).
+possible_duplicate_trace_step(because(42,rule_desc('remote access hash',cvss_ac(h)),stolenHash(localAdmin,meereen),[netAccess(meereen),cvss('ESC3',h),accessibleHash(localAdmin,meereen,meereen),vulnExists(meereen,'ESC3',certification,remoteExploit,accessLocalHash)])).
 
-possible_duplicate_trace_step(because(40,rule_desc('stolen hash for a full domain',cvss_ac(h)),stolenHash(hodor,north_sevenkingdoms_local),[stolenCredential(robb_stark,north_sevenkingdoms_local),cvss('CVE-2021-42287',h),accessibleHash(hodor,north_sevenkingdoms_local,north_sevenkingdoms_local),vulnExists(winterfell,'CVE-2021-42287',active_Directory,remoteExploit,hashAccess)])).
+possible_duplicate_trace_step(because(42,rule_desc('remote access hash',cvss_ac(h)),stolenHash(guest,meereen),[netAccess(meereen),cvss('ESC3',h),accessibleHash(guest,meereen,meereen),vulnExists(meereen,'ESC3',certification,remoteExploit,accessLocalHash)])).
 
-possible_duplicate_trace_step(because(40,rule_desc('stolen hash for a full domain',cvss_ac(h)),stolenHash(hodor,north_sevenkingdoms_local),[stolenCredential(robb_stark,north_sevenkingdoms_local),cvss('CVE-2021-42287',h),accessibleHash(hodor,north_sevenkingdoms_local,north_sevenkingdoms_local),vulnExists(winterfell,'CVE-2021-42287',active_Directory,remoteExploit,hashAccess)])).
+possible_duplicate_trace_step(because(42,rule_desc('remote access hash',cvss_ac(h)),stolenHash(defaultAccount,meereen),[netAccess(meereen),cvss('ESC3',h),accessibleHash(defaultAccount,meereen,meereen),vulnExists(meereen,'ESC3',certification,remoteExploit,accessLocalHash)])).
 
-possible_duplicate_trace_step(because(40,rule_desc('stolen hash for a full domain',cvss_ac(h)),stolenHash(samwell_tarly,north_sevenkingdoms_local),[stolenCredential(robb_stark,north_sevenkingdoms_local),cvss('CVE-2021-42287',h),accessibleHash(samwell_tarly,north_sevenkingdoms_local,north_sevenkingdoms_local),vulnExists(winterfell,'CVE-2021-42287',active_Directory,remoteExploit,hashAccess)])).
+possible_duplicate_trace_step(because(42,rule_desc('remote access hash',cvss_ac(h)),stolenHash(daenerys_targaryen,meereen),[netAccess(meereen),cvss('ESC3',h),accessibleHash(daenerys_targaryen,meereen,meereen),vulnExists(meereen,'ESC3',certification,remoteExploit,accessLocalHash)])).
 
-possible_duplicate_trace_step(because(40,rule_desc('stolen hash for a full domain',cvss_ac(h)),stolenHash(samwell_tarly,north_sevenkingdoms_local),[stolenCredential(robb_stark,north_sevenkingdoms_local),cvss('CVE-2021-42287',h),accessibleHash(samwell_tarly,north_sevenkingdoms_local,north_sevenkingdoms_local),vulnExists(winterfell,'CVE-2021-42287',active_Directory,remoteExploit,hashAccess)])).
+possible_duplicate_trace_step(because(42,rule_desc('remote access hash',cvss_ac(h)),stolenHash(jorah_mormont,meereen),[netAccess(meereen),cvss('ESC3',h),accessibleHash(jorah_mormont,meereen,meereen),vulnExists(meereen,'ESC3',certification,remoteExploit,accessLocalHash)])).
 
-possible_duplicate_trace_step(because(40,rule_desc('stolen hash for a full domain',cvss_ac(h)),stolenHash(brandon_stark,north_sevenkingdoms_local),[stolenCredential(robb_stark,north_sevenkingdoms_local),cvss('CVE-2021-42287',h),accessibleHash(brandon_stark,north_sevenkingdoms_local,north_sevenkingdoms_local),vulnExists(winterfell,'CVE-2021-42287',active_Directory,remoteExploit,hashAccess)])).
+possible_duplicate_trace_step(because(42,rule_desc('remote access hash',cvss_ac(h)),stolenHash(jorah_mormont,meereen),[netAccess(meereen),cvss('ESC3',h),accessibleHash(jorah_mormont,meereen,meereen),vulnExists(meereen,'ESC3',certification,remoteExploit,accessLocalHash)])).
 
-possible_duplicate_trace_step(because(40,rule_desc('stolen hash for a full domain',cvss_ac(h)),stolenHash(brandon_stark,north_sevenkingdoms_local),[stolenCredential(robb_stark,north_sevenkingdoms_local),cvss('CVE-2021-42287',h),accessibleHash(brandon_stark,north_sevenkingdoms_local,north_sevenkingdoms_local),vulnExists(winterfell,'CVE-2021-42287',active_Directory,remoteExploit,hashAccess)])).
+possible_duplicate_trace_step(because(42,rule_desc('remote access hash',cvss_ac(h)),stolenHash(localAdmin,meereen),[netAccess(meereen),cvss('ESC2',h),accessibleHash(localAdmin,meereen,meereen),vulnExists(meereen,'ESC2',certification,remoteExploit,accessLocalHash)])).
 
-possible_duplicate_trace_step(because(29,rule_desc('Kerberoasting part 3',likely),stolenHash(jon_snow,north_sevenkingdoms_local),[stolenCredential(robb_stark,north_sevenkingdoms_local),netAccess(north_sevenkingdoms_local),accessibleHash(jon_snow,north_sevenkingdoms_local,kerberoasting)])).
+possible_duplicate_trace_step(because(42,rule_desc('remote access hash',cvss_ac(h)),stolenHash(guest,meereen),[netAccess(meereen),cvss('ESC2',h),accessibleHash(guest,meereen,meereen),vulnExists(meereen,'ESC2',certification,remoteExploit,accessLocalHash)])).
 
-possible_duplicate_trace_step(because(29,rule_desc('Kerberoasting part 3',likely),stolenHash(jon_snow,north_sevenkingdoms_local),[stolenCredential(robb_stark,north_sevenkingdoms_local),netAccess(north_sevenkingdoms_local),accessibleHash(jon_snow,north_sevenkingdoms_local,kerberoasting)])).
+possible_duplicate_trace_step(because(42,rule_desc('remote access hash',cvss_ac(h)),stolenHash(defaultAccount,meereen),[netAccess(meereen),cvss('ESC2',h),accessibleHash(defaultAccount,meereen,meereen),vulnExists(meereen,'ESC2',certification,remoteExploit,accessLocalHash)])).
 
-possible_duplicate_trace_step(because(28,rule_desc('Username found after authentification',certain),userFound(brandon_stark,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(robb_stark,north_sevenkingdoms_local),userDefined(brandon_stark,north_sevenkingdoms_local,user)])).
+possible_duplicate_trace_step(because(42,rule_desc('remote access hash',cvss_ac(h)),stolenHash(localAdmin,meereen),[netAccess(meereen),cvss('ESC2',h),accessibleHash(localAdmin,meereen,meereen),vulnExists(meereen,'ESC2',certification,remoteExploit,accessLocalHash)])).
 
-possible_duplicate_trace_step(because(28,rule_desc('Username found after authentification',certain),userFound(brandon_stark,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(robb_stark,north_sevenkingdoms_local),userDefined(brandon_stark,north_sevenkingdoms_local,user)])).
+possible_duplicate_trace_step(because(42,rule_desc('remote access hash',cvss_ac(h)),stolenHash(guest,meereen),[netAccess(meereen),cvss('ESC2',h),accessibleHash(guest,meereen,meereen),vulnExists(meereen,'ESC2',certification,remoteExploit,accessLocalHash)])).
 
-possible_duplicate_trace_step(because(28,rule_desc('Username found after authentification',certain),userFound(eddard_stark,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(robb_stark,north_sevenkingdoms_local),userDefined(eddard_stark,north_sevenkingdoms_local,domain_admin)])).
+possible_duplicate_trace_step(because(42,rule_desc('remote access hash',cvss_ac(h)),stolenHash(defaultAccount,meereen),[netAccess(meereen),cvss('ESC2',h),accessibleHash(defaultAccount,meereen,meereen),vulnExists(meereen,'ESC2',certification,remoteExploit,accessLocalHash)])).
 
-possible_duplicate_trace_step(because(28,rule_desc('Username found after authentification',certain),userFound(eddard_stark,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(robb_stark,north_sevenkingdoms_local),userDefined(eddard_stark,north_sevenkingdoms_local,domain_admin)])).
+possible_duplicate_trace_step(because(42,rule_desc('remote access hash',cvss_ac(h)),stolenHash(daenerys_targaryen,meereen),[netAccess(meereen),cvss('ESC2',h),accessibleHash(daenerys_targaryen,meereen,meereen),vulnExists(meereen,'ESC2',certification,remoteExploit,accessLocalHash)])).
 
-possible_duplicate_trace_step(because(28,rule_desc('Username found after authentification',certain),userFound(jon_snow,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(robb_stark,north_sevenkingdoms_local),userDefined(jon_snow,north_sevenkingdoms_local,user)])).
+possible_duplicate_trace_step(because(42,rule_desc('remote access hash',cvss_ac(h)),stolenHash(jorah_mormont,meereen),[netAccess(meereen),cvss('ESC2',h),accessibleHash(jorah_mormont,meereen,meereen),vulnExists(meereen,'ESC2',certification,remoteExploit,accessLocalHash)])).
 
-possible_duplicate_trace_step(because(28,rule_desc('Username found after authentification',certain),userFound(jon_snow,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(robb_stark,north_sevenkingdoms_local),userDefined(jon_snow,north_sevenkingdoms_local,user)])).
+possible_duplicate_trace_step(because(42,rule_desc('remote access hash',cvss_ac(h)),stolenHash(jorah_mormont,meereen),[netAccess(meereen),cvss('ESC2',h),accessibleHash(jorah_mormont,meereen,meereen),vulnExists(meereen,'ESC2',certification,remoteExploit,accessLocalHash)])).
 
-possible_duplicate_trace_step(because(28,rule_desc('Username found after authentification',certain),userFound(catelyn_stark,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(robb_stark,north_sevenkingdoms_local),userDefined(catelyn_stark,north_sevenkingdoms_local,user)])).
+possible_duplicate_trace_step(because(42,rule_desc('remote access hash',cvss_ac(h)),stolenHash(localAdmin,meereen),[netAccess(meereen),cvss('ESC1',h),accessibleHash(localAdmin,meereen,meereen),vulnExists(meereen,'ESC1',certification,remoteExploit,accessLocalHash)])).
 
-possible_duplicate_trace_step(because(28,rule_desc('Username found after authentification',certain),userFound(catelyn_stark,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(robb_stark,north_sevenkingdoms_local),userDefined(catelyn_stark,north_sevenkingdoms_local,user)])).
+possible_duplicate_trace_step(because(42,rule_desc('remote access hash',cvss_ac(h)),stolenHash(guest,meereen),[netAccess(meereen),cvss('ESC1',h),accessibleHash(guest,meereen,meereen),vulnExists(meereen,'ESC1',certification,remoteExploit,accessLocalHash)])).
 
-possible_duplicate_trace_step(because(28,rule_desc('Username found after authentification',certain),userFound(robb_stark,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(robb_stark,north_sevenkingdoms_local),userDefined(robb_stark,north_sevenkingdoms_local,user)])).
+possible_duplicate_trace_step(because(42,rule_desc('remote access hash',cvss_ac(h)),stolenHash(defaultAccount,meereen),[netAccess(meereen),cvss('ESC1',h),accessibleHash(defaultAccount,meereen,meereen),vulnExists(meereen,'ESC1',certification,remoteExploit,accessLocalHash)])).
 
-possible_duplicate_trace_step(because(28,rule_desc('Username found after authentification',certain),userFound(robb_stark,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(robb_stark,north_sevenkingdoms_local),userDefined(robb_stark,north_sevenkingdoms_local,user)])).
+possible_duplicate_trace_step(because(42,rule_desc('remote access hash',cvss_ac(h)),stolenHash(localAdmin,meereen),[netAccess(meereen),cvss('ESC1',h),accessibleHash(localAdmin,meereen,meereen),vulnExists(meereen,'ESC1',certification,remoteExploit,accessLocalHash)])).
 
-possible_duplicate_trace_step(because(28,rule_desc('Username found after authentification',certain),userFound(jeor_mormont,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(robb_stark,north_sevenkingdoms_local),userDefined(jeor_mormont,north_sevenkingdoms_local,user)])).
+possible_duplicate_trace_step(because(42,rule_desc('remote access hash',cvss_ac(h)),stolenHash(guest,meereen),[netAccess(meereen),cvss('ESC1',h),accessibleHash(guest,meereen,meereen),vulnExists(meereen,'ESC1',certification,remoteExploit,accessLocalHash)])).
 
-possible_duplicate_trace_step(because(28,rule_desc('Username found after authentification',certain),userFound(jeor_mormont,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(robb_stark,north_sevenkingdoms_local),userDefined(jeor_mormont,north_sevenkingdoms_local,user)])).
+possible_duplicate_trace_step(because(42,rule_desc('remote access hash',cvss_ac(h)),stolenHash(defaultAccount,meereen),[netAccess(meereen),cvss('ESC1',h),accessibleHash(defaultAccount,meereen,meereen),vulnExists(meereen,'ESC1',certification,remoteExploit,accessLocalHash)])).
 
-possible_duplicate_trace_step(because(28,rule_desc('Username found after authentification',certain),userFound(hodor,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(robb_stark,north_sevenkingdoms_local),userDefined(hodor,north_sevenkingdoms_local,user)])).
+possible_duplicate_trace_step(because(42,rule_desc('remote access hash',cvss_ac(h)),stolenHash(daenerys_targaryen,meereen),[netAccess(meereen),cvss('ESC1',h),accessibleHash(daenerys_targaryen,meereen,meereen),vulnExists(meereen,'ESC1',certification,remoteExploit,accessLocalHash)])).
 
-possible_duplicate_trace_step(because(28,rule_desc('Username found after authentification',certain),userFound(hodor,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(robb_stark,north_sevenkingdoms_local),userDefined(hodor,north_sevenkingdoms_local,user)])).
+possible_duplicate_trace_step(because(42,rule_desc('remote access hash',cvss_ac(h)),stolenHash(jorah_mormont,meereen),[netAccess(meereen),cvss('ESC1',h),accessibleHash(jorah_mormont,meereen,meereen),vulnExists(meereen,'ESC1',certification,remoteExploit,accessLocalHash)])).
 
-possible_duplicate_trace_step(because(28,rule_desc('Username found after authentification',certain),userFound(samwell_tarly,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(robb_stark,north_sevenkingdoms_local),userDefined(samwell_tarly,north_sevenkingdoms_local,user)])).
+possible_duplicate_trace_step(because(42,rule_desc('remote access hash',cvss_ac(h)),stolenHash(jorah_mormont,meereen),[netAccess(meereen),cvss('ESC1',h),accessibleHash(jorah_mormont,meereen,meereen),vulnExists(meereen,'ESC1',certification,remoteExploit,accessLocalHash)])).
 
-possible_duplicate_trace_step(because(28,rule_desc('Username found after authentification',certain),userFound(samwell_tarly,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(robb_stark,north_sevenkingdoms_local),userDefined(samwell_tarly,north_sevenkingdoms_local,user)])).
+possible_duplicate_trace_step(because(42,rule_desc('remote access hash',cvss_ac(h)),stolenHash(localAdmin,meereen),[netAccess(meereen),cvss('ESC8',h),accessibleHash(localAdmin,meereen,meereen),vulnExists(meereen,'ESC8',webEnrollementEnabled,remoteExploit,accessLocalHash)])).
 
-possible_duplicate_trace_step(because(28,rule_desc('Username found after authentification',certain),userFound(brandon_stark,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(robb_stark,north_sevenkingdoms_local),userDefined(brandon_stark,north_sevenkingdoms_local,user)])).
+possible_duplicate_trace_step(because(42,rule_desc('remote access hash',cvss_ac(h)),stolenHash(guest,meereen),[netAccess(meereen),cvss('ESC8',h),accessibleHash(guest,meereen,meereen),vulnExists(meereen,'ESC8',webEnrollementEnabled,remoteExploit,accessLocalHash)])).
 
-possible_duplicate_trace_step(because(28,rule_desc('Username found after authentification',certain),userFound(brandon_stark,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(robb_stark,north_sevenkingdoms_local),userDefined(brandon_stark,north_sevenkingdoms_local,user)])).
+possible_duplicate_trace_step(because(42,rule_desc('remote access hash',cvss_ac(h)),stolenHash(defaultAccount,meereen),[netAccess(meereen),cvss('ESC8',h),accessibleHash(defaultAccount,meereen,meereen),vulnExists(meereen,'ESC8',webEnrollementEnabled,remoteExploit,accessLocalHash)])).
 
-possible_duplicate_trace_step(because(26,rule_desc('asreproasting part2',likely),stolenHash(brandon_stark,north_sevenkingdoms_local),[userFound(brandon_stark,north_sevenkingdoms_local),netAccess(north_sevenkingdoms_local),accessibleHash(brandon_stark,north_sevenkingdoms_local,asreproasting)])).
+possible_duplicate_trace_step(because(42,rule_desc('remote access hash',cvss_ac(h)),stolenHash(localAdmin,meereen),[netAccess(meereen),cvss('ESC8',h),accessibleHash(localAdmin,meereen,meereen),vulnExists(meereen,'ESC8',webEnrollementEnabled,remoteExploit,accessLocalHash)])).
 
-possible_duplicate_trace_step(because(26,rule_desc('asreproasting part2',likely),stolenHash(brandon_stark,north_sevenkingdoms_local),[userFound(brandon_stark,north_sevenkingdoms_local),netAccess(north_sevenkingdoms_local),accessibleHash(brandon_stark,north_sevenkingdoms_local,asreproasting)])).
+possible_duplicate_trace_step(because(42,rule_desc('remote access hash',cvss_ac(h)),stolenHash(guest,meereen),[netAccess(meereen),cvss('ESC8',h),accessibleHash(guest,meereen,meereen),vulnExists(meereen,'ESC8',webEnrollementEnabled,remoteExploit,accessLocalHash)])).
 
-possible_duplicate_trace_step(because(26,rule_desc('asreproasting part2',likely),stolenHash(brandon_stark,north_sevenkingdoms_local),[userFound(brandon_stark,north_sevenkingdoms_local),netAccess(north_sevenkingdoms_local),accessibleHash(brandon_stark,north_sevenkingdoms_local,asreproasting)])).
+possible_duplicate_trace_step(because(42,rule_desc('remote access hash',cvss_ac(h)),stolenHash(defaultAccount,meereen),[netAccess(meereen),cvss('ESC8',h),accessibleHash(defaultAccount,meereen,meereen),vulnExists(meereen,'ESC8',webEnrollementEnabled,remoteExploit,accessLocalHash)])).
 
-possible_duplicate_trace_step(because(27,rule_desc('Use of Hashcat for password crack',likely),stolenCredential(jon_snow,north_sevenkingdoms_local),[weakPassword(jon_snow),stolenHash(jon_snow,north_sevenkingdoms_local)])).
+possible_duplicate_trace_step(because(42,rule_desc('remote access hash',cvss_ac(h)),stolenHash(daenerys_targaryen,meereen),[netAccess(meereen),cvss('ESC8',h),accessibleHash(daenerys_targaryen,meereen,meereen),vulnExists(meereen,'ESC8',webEnrollementEnabled,remoteExploit,accessLocalHash)])).
 
-possible_duplicate_trace_step(because(27,rule_desc('Use of Hashcat for password crack',likely),stolenCredential(robb_stark,north_sevenkingdoms_local),[weakPassword(robb_stark),stolenHash(robb_stark,north_sevenkingdoms_local)])).
+possible_duplicate_trace_step(because(42,rule_desc('remote access hash',cvss_ac(h)),stolenHash(jorah_mormont,meereen),[netAccess(meereen),cvss('ESC8',h),accessibleHash(jorah_mormont,meereen,meereen),vulnExists(meereen,'ESC8',webEnrollementEnabled,remoteExploit,accessLocalHash)])).
 
-possible_duplicate_trace_step(because(27,rule_desc('Use of Hashcat for password crack',likely),stolenCredential(brandon_stark,north_sevenkingdoms_local),[weakPassword(brandon_stark),stolenHash(brandon_stark,north_sevenkingdoms_local)])).
+possible_duplicate_trace_step(because(42,rule_desc('remote access hash',cvss_ac(h)),stolenHash(jorah_mormont,meereen),[netAccess(meereen),cvss('ESC8',h),accessibleHash(jorah_mormont,meereen,meereen),vulnExists(meereen,'ESC8',webEnrollementEnabled,remoteExploit,accessLocalHash)])).
 
-possible_duplicate_trace_step(because(27,rule_desc('Use of Hashcat for password crack',likely),stolenCredential(jon_snow,north_sevenkingdoms_local),[weakPassword(jon_snow),stolenHash(jon_snow,north_sevenkingdoms_local)])).
+possible_duplicate_trace_step(because(42,rule_desc('remote access hash',cvss_ac(m)),stolenHash(localAdmin,meereen),[netAccess(meereen),cvss('CVE-2019-1040',m),accessibleHash(localAdmin,meereen,meereen),vulnExists(meereen,'CVE-2019-1040',removeTheMic,remoteExploit,accessLocalHash)])).
 
-possible_duplicate_trace_step(because(27,rule_desc('Use of Hashcat for password crack',likely),stolenCredential(brandon_stark,north_sevenkingdoms_local),[weakPassword(brandon_stark),stolenHash(brandon_stark,north_sevenkingdoms_local)])).
+possible_duplicate_trace_step(because(42,rule_desc('remote access hash',cvss_ac(m)),stolenHash(guest,meereen),[netAccess(meereen),cvss('CVE-2019-1040',m),accessibleHash(guest,meereen,meereen),vulnExists(meereen,'CVE-2019-1040',removeTheMic,remoteExploit,accessLocalHash)])).
 
-possible_duplicate_trace_step(because(25,rule_desc('password is user or in user description',likely),stolenCredential(samwell_tarly,north_sevenkingdoms_local),[inCompetent(samwell_tarly),userFound(samwell_tarly,north_sevenkingdoms_local)])).
+possible_duplicate_trace_step(because(42,rule_desc('remote access hash',cvss_ac(m)),stolenHash(defaultAccount,meereen),[netAccess(meereen),cvss('CVE-2019-1040',m),accessibleHash(defaultAccount,meereen,meereen),vulnExists(meereen,'CVE-2019-1040',removeTheMic,remoteExploit,accessLocalHash)])).
 
-possible_duplicate_trace_step(because(25,rule_desc('password is user or in user description',likely),stolenCredential(hodor,north_sevenkingdoms_local),[inCompetent(hodor),userFound(hodor,north_sevenkingdoms_local)])).
+possible_duplicate_trace_step(because(42,rule_desc('remote access hash',cvss_ac(m)),stolenHash(localAdmin,meereen),[netAccess(meereen),cvss('CVE-2019-1040',m),accessibleHash(localAdmin,meereen,meereen),vulnExists(meereen,'CVE-2019-1040',removeTheMic,remoteExploit,accessLocalHash)])).
 
-possible_duplicate_trace_step(because(25,rule_desc('password is user or in user description',likely),stolenCredential(samwell_tarly,north_sevenkingdoms_local),[inCompetent(samwell_tarly),userFound(samwell_tarly,north_sevenkingdoms_local)])).
+possible_duplicate_trace_step(because(42,rule_desc('remote access hash',cvss_ac(m)),stolenHash(guest,meereen),[netAccess(meereen),cvss('CVE-2019-1040',m),accessibleHash(guest,meereen,meereen),vulnExists(meereen,'CVE-2019-1040',removeTheMic,remoteExploit,accessLocalHash)])).
 
-possible_duplicate_trace_step(because(25,rule_desc('password is user or in user description',likely),stolenCredential(hodor,north_sevenkingdoms_local),[inCompetent(hodor),userFound(hodor,north_sevenkingdoms_local)])).
+possible_duplicate_trace_step(because(42,rule_desc('remote access hash',cvss_ac(m)),stolenHash(defaultAccount,meereen),[netAccess(meereen),cvss('CVE-2019-1040',m),accessibleHash(defaultAccount,meereen,meereen),vulnExists(meereen,'CVE-2019-1040',removeTheMic,remoteExploit,accessLocalHash)])).
 
-possible_duplicate_trace_step(because(25,rule_desc('password is user or in user description',likely),stolenCredential(hodor,north_sevenkingdoms_local),[inCompetent(hodor),userFound(hodor,north_sevenkingdoms_local)])).
+possible_duplicate_trace_step(because(42,rule_desc('remote access hash',cvss_ac(m)),stolenHash(daenerys_targaryen,meereen),[netAccess(meereen),cvss('CVE-2019-1040',m),accessibleHash(daenerys_targaryen,meereen,meereen),vulnExists(meereen,'CVE-2019-1040',removeTheMic,remoteExploit,accessLocalHash)])).
 
-possible_duplicate_trace_step(because(25,rule_desc('password is user or in user description',likely),stolenCredential(samwell_tarly,north_sevenkingdoms_local),[inCompetent(samwell_tarly),userFound(samwell_tarly,north_sevenkingdoms_local)])).
+possible_duplicate_trace_step(because(42,rule_desc('remote access hash',cvss_ac(m)),stolenHash(jorah_mormont,meereen),[netAccess(meereen),cvss('CVE-2019-1040',m),accessibleHash(jorah_mormont,meereen,meereen),vulnExists(meereen,'CVE-2019-1040',removeTheMic,remoteExploit,accessLocalHash)])).
 
-possible_duplicate_trace_step(because(40,rule_desc('stolen hash for a full domain',cvss_ac(h)),stolenHash(jon_snow,north_sevenkingdoms_local),[stolenCredential(jon_snow,north_sevenkingdoms_local),cvss('CVE-2021-42287',h),accessibleHash(jon_snow,north_sevenkingdoms_local,north_sevenkingdoms_local),vulnExists(winterfell,'CVE-2021-42287',active_Directory,remoteExploit,hashAccess)])).
+possible_duplicate_trace_step(because(42,rule_desc('remote access hash',cvss_ac(m)),stolenHash(jorah_mormont,meereen),[netAccess(meereen),cvss('CVE-2019-1040',m),accessibleHash(jorah_mormont,meereen,meereen),vulnExists(meereen,'CVE-2019-1040',removeTheMic,remoteExploit,accessLocalHash)])).
 
-possible_duplicate_trace_step(because(40,rule_desc('stolen hash for a full domain',cvss_ac(h)),stolenHash(jon_snow,north_sevenkingdoms_local),[stolenCredential(robb_stark,north_sevenkingdoms_local),cvss('CVE-2021-42287',h),accessibleHash(jon_snow,north_sevenkingdoms_local,north_sevenkingdoms_local),vulnExists(winterfell,'CVE-2021-42287',active_Directory,remoteExploit,hashAccess)])).
+possible_duplicate_trace_step(because(27,rule_desc('Use of Hashcat for password crack',likely),stolenCredential(jorah_mormont,meereen),[weakPassword(jorah_mormont),stolenHash(jorah_mormont,meereen)])).
 
-possible_duplicate_trace_step(because(40,rule_desc('stolen hash for a full domain',cvss_ac(h)),stolenHash(jon_snow,north_sevenkingdoms_local),[stolenCredential(brandon_stark,north_sevenkingdoms_local),cvss('CVE-2021-42287',h),accessibleHash(jon_snow,north_sevenkingdoms_local,north_sevenkingdoms_local),vulnExists(winterfell,'CVE-2021-42287',active_Directory,remoteExploit,hashAccess)])).
+possible_duplicate_trace_step(because(40,rule_desc('stolen hash for a full domain',cvss_ac(h)),stolenHash(jorah_mormont,meereen),[stolenCredential(jorah_mormont,meereen),cvss('CVE-2021-42287',h),accessibleHash(jorah_mormont,meereen,meereen),vulnExists(winterfell,'CVE-2021-42287',active_Directory,remoteExploit,accessLocalHash)])).
 
-possible_duplicate_trace_step(because(40,rule_desc('stolen hash for a full domain',cvss_ac(h)),stolenHash(jon_snow,north_sevenkingdoms_local),[stolenCredential(samwell_tarly,north_sevenkingdoms_local),cvss('CVE-2021-42287',h),accessibleHash(jon_snow,north_sevenkingdoms_local,north_sevenkingdoms_local),vulnExists(winterfell,'CVE-2021-42287',active_Directory,remoteExploit,hashAccess)])).
+possible_duplicate_trace_step(because(40,rule_desc('stolen hash for a full domain',cvss_ac(h)),stolenHash(jorah_mormont,meereen),[stolenCredential(jorah_mormont,meereen),cvss('CVE-2021-42287',h),accessibleHash(jorah_mormont,meereen,meereen),vulnExists(winterfell,'CVE-2021-42287',active_Directory,remoteExploit,accessLocalHash)])).
 
-possible_duplicate_trace_step(because(40,rule_desc('stolen hash for a full domain',cvss_ac(h)),stolenHash(jon_snow,north_sevenkingdoms_local),[stolenCredential(hodor,north_sevenkingdoms_local),cvss('CVE-2021-42287',h),accessibleHash(jon_snow,north_sevenkingdoms_local,north_sevenkingdoms_local),vulnExists(winterfell,'CVE-2021-42287',active_Directory,remoteExploit,hashAccess)])).
+possible_duplicate_trace_step(because(40,rule_desc('stolen hash for a full domain',cvss_ac(h)),stolenHash(daenerys_targaryen,meereen),[stolenCredential(jorah_mormont,meereen),cvss('CVE-2021-42287',h),accessibleHash(daenerys_targaryen,meereen,meereen),vulnExists(winterfell,'CVE-2021-42287',active_Directory,remoteExploit,accessLocalHash)])).
 
-possible_duplicate_trace_step(because(40,rule_desc('stolen hash for a full domain',cvss_ac(h)),stolenHash(catelyn_stark,north_sevenkingdoms_local),[stolenCredential(jon_snow,north_sevenkingdoms_local),cvss('CVE-2021-42287',h),accessibleHash(catelyn_stark,north_sevenkingdoms_local,north_sevenkingdoms_local),vulnExists(winterfell,'CVE-2021-42287',active_Directory,remoteExploit,hashAccess)])).
+possible_duplicate_trace_step(because(40,rule_desc('stolen hash for a full domain',cvss_ac(h)),stolenHash(defaultAccount,meereen),[stolenCredential(jorah_mormont,meereen),cvss('CVE-2021-42287',h),accessibleHash(defaultAccount,meereen,meereen),vulnExists(winterfell,'CVE-2021-42287',active_Directory,remoteExploit,accessLocalHash)])).
 
-possible_duplicate_trace_step(because(40,rule_desc('stolen hash for a full domain',cvss_ac(h)),stolenHash(catelyn_stark,north_sevenkingdoms_local),[stolenCredential(robb_stark,north_sevenkingdoms_local),cvss('CVE-2021-42287',h),accessibleHash(catelyn_stark,north_sevenkingdoms_local,north_sevenkingdoms_local),vulnExists(winterfell,'CVE-2021-42287',active_Directory,remoteExploit,hashAccess)])).
+possible_duplicate_trace_step(because(40,rule_desc('stolen hash for a full domain',cvss_ac(h)),stolenHash(guest,meereen),[stolenCredential(jorah_mormont,meereen),cvss('CVE-2021-42287',h),accessibleHash(guest,meereen,meereen),vulnExists(winterfell,'CVE-2021-42287',active_Directory,remoteExploit,accessLocalHash)])).
 
-possible_duplicate_trace_step(because(40,rule_desc('stolen hash for a full domain',cvss_ac(h)),stolenHash(catelyn_stark,north_sevenkingdoms_local),[stolenCredential(brandon_stark,north_sevenkingdoms_local),cvss('CVE-2021-42287',h),accessibleHash(catelyn_stark,north_sevenkingdoms_local,north_sevenkingdoms_local),vulnExists(winterfell,'CVE-2021-42287',active_Directory,remoteExploit,hashAccess)])).
+possible_duplicate_trace_step(because(40,rule_desc('stolen hash for a full domain',cvss_ac(h)),stolenHash(localAdmin,meereen),[stolenCredential(jorah_mormont,meereen),cvss('CVE-2021-42287',h),accessibleHash(localAdmin,meereen,meereen),vulnExists(winterfell,'CVE-2021-42287',active_Directory,remoteExploit,accessLocalHash)])).
 
-possible_duplicate_trace_step(because(40,rule_desc('stolen hash for a full domain',cvss_ac(h)),stolenHash(catelyn_stark,north_sevenkingdoms_local),[stolenCredential(samwell_tarly,north_sevenkingdoms_local),cvss('CVE-2021-42287',h),accessibleHash(catelyn_stark,north_sevenkingdoms_local,north_sevenkingdoms_local),vulnExists(winterfell,'CVE-2021-42287',active_Directory,remoteExploit,hashAccess)])).
+possible_duplicate_trace_step(because(40,rule_desc('stolen hash for a full domain',cvss_ac(h)),stolenHash(defaultAccount,meereen),[stolenCredential(jorah_mormont,meereen),cvss('CVE-2021-42287',h),accessibleHash(defaultAccount,meereen,meereen),vulnExists(winterfell,'CVE-2021-42287',active_Directory,remoteExploit,accessLocalHash)])).
 
-possible_duplicate_trace_step(because(40,rule_desc('stolen hash for a full domain',cvss_ac(h)),stolenHash(catelyn_stark,north_sevenkingdoms_local),[stolenCredential(hodor,north_sevenkingdoms_local),cvss('CVE-2021-42287',h),accessibleHash(catelyn_stark,north_sevenkingdoms_local,north_sevenkingdoms_local),vulnExists(winterfell,'CVE-2021-42287',active_Directory,remoteExploit,hashAccess)])).
+possible_duplicate_trace_step(because(40,rule_desc('stolen hash for a full domain',cvss_ac(h)),stolenHash(guest,meereen),[stolenCredential(jorah_mormont,meereen),cvss('CVE-2021-42287',h),accessibleHash(guest,meereen,meereen),vulnExists(winterfell,'CVE-2021-42287',active_Directory,remoteExploit,accessLocalHash)])).
 
-possible_duplicate_trace_step(because(40,rule_desc('stolen hash for a full domain',cvss_ac(h)),stolenHash(robb_stark,north_sevenkingdoms_local),[stolenCredential(jon_snow,north_sevenkingdoms_local),cvss('CVE-2021-42287',h),accessibleHash(robb_stark,north_sevenkingdoms_local,north_sevenkingdoms_local),vulnExists(winterfell,'CVE-2021-42287',active_Directory,remoteExploit,hashAccess)])).
+possible_duplicate_trace_step(because(40,rule_desc('stolen hash for a full domain',cvss_ac(h)),stolenHash(localAdmin,meereen),[stolenCredential(jorah_mormont,meereen),cvss('CVE-2021-42287',h),accessibleHash(localAdmin,meereen,meereen),vulnExists(winterfell,'CVE-2021-42287',active_Directory,remoteExploit,accessLocalHash)])).
 
-possible_duplicate_trace_step(because(40,rule_desc('stolen hash for a full domain',cvss_ac(h)),stolenHash(robb_stark,north_sevenkingdoms_local),[stolenCredential(robb_stark,north_sevenkingdoms_local),cvss('CVE-2021-42287',h),accessibleHash(robb_stark,north_sevenkingdoms_local,north_sevenkingdoms_local),vulnExists(winterfell,'CVE-2021-42287',active_Directory,remoteExploit,hashAccess)])).
+possible_duplicate_trace_step(because(28,rule_desc('Username found after authentification',certain),userFound(jorah_mormont,meereen),[netAccess(meereen),stolenCredential(jorah_mormont,meereen),userDefined(jorah_mormont,meereen,user)])).
 
-possible_duplicate_trace_step(because(40,rule_desc('stolen hash for a full domain',cvss_ac(h)),stolenHash(robb_stark,north_sevenkingdoms_local),[stolenCredential(brandon_stark,north_sevenkingdoms_local),cvss('CVE-2021-42287',h),accessibleHash(robb_stark,north_sevenkingdoms_local,north_sevenkingdoms_local),vulnExists(winterfell,'CVE-2021-42287',active_Directory,remoteExploit,hashAccess)])).
+possible_duplicate_trace_step(because(27,rule_desc('Use of Hashcat for password crack',likely),stolenCredential(jorah_mormont,meereen),[weakPassword(jorah_mormont),stolenHash(jorah_mormont,meereen)])).
 
-possible_duplicate_trace_step(because(40,rule_desc('stolen hash for a full domain',cvss_ac(h)),stolenHash(robb_stark,north_sevenkingdoms_local),[stolenCredential(samwell_tarly,north_sevenkingdoms_local),cvss('CVE-2021-42287',h),accessibleHash(robb_stark,north_sevenkingdoms_local,north_sevenkingdoms_local),vulnExists(winterfell,'CVE-2021-42287',active_Directory,remoteExploit,hashAccess)])).
+possible_duplicate_trace_step(because(41,rule_desc('remote exploit of a server with account',cvss_ac(h)),execCode(meereen,_h3934),[netAccess(meereen),stolenCredential(jorah_mormont,meereen),networkServiceInfo(meereen,spooler,_h3934),cvss('CVE-2021-1675',h),vulnExists(meereen,'CVE-2021-1675',spooler,remoteExploitWithAccount,privEscalation)])).
 
-possible_duplicate_trace_step(because(40,rule_desc('stolen hash for a full domain',cvss_ac(h)),stolenHash(robb_stark,north_sevenkingdoms_local),[stolenCredential(hodor,north_sevenkingdoms_local),cvss('CVE-2021-42287',h),accessibleHash(robb_stark,north_sevenkingdoms_local,north_sevenkingdoms_local),vulnExists(winterfell,'CVE-2021-42287',active_Directory,remoteExploit,hashAccess)])).
+possible_duplicate_trace_step(because(5,rule_desc('direct network access',certain),netAccess(winterfell),[hacl(intranet,winterfell,_h4615,_h4616),attackerLocated(intranet)])).
 
-possible_duplicate_trace_step(because(40,rule_desc('stolen hash for a full domain',cvss_ac(h)),stolenHash(jeor_mormont,north_sevenkingdoms_local),[stolenCredential(jon_snow,north_sevenkingdoms_local),cvss('CVE-2021-42287',h),accessibleHash(jeor_mormont,north_sevenkingdoms_local,north_sevenkingdoms_local),vulnExists(winterfell,'CVE-2021-42287',active_Directory,remoteExploit,hashAccess)])).
+possible_duplicate_trace_step(because(24,rule_desc('Username found by brutforce',unlikely),userFound(eddard_stark,winterfell),[netAccess(winterfell),userDefined(eddard_stark,winterfell,admin)])).
 
-possible_duplicate_trace_step(because(40,rule_desc('stolen hash for a full domain',cvss_ac(h)),stolenHash(jeor_mormont,north_sevenkingdoms_local),[stolenCredential(robb_stark,north_sevenkingdoms_local),cvss('CVE-2021-42287',h),accessibleHash(jeor_mormont,north_sevenkingdoms_local,north_sevenkingdoms_local),vulnExists(winterfell,'CVE-2021-42287',active_Directory,remoteExploit,hashAccess)])).
+possible_duplicate_trace_step(because(16,rule_desc('Vuln declared',certain),vulnExists(winterfell,'CVE-2021-1675',spooler,remoteExploitWithAccount,privEscalation),[vulProperty('CVE-2021-1675',remoteExploitWithAccount,privEscalation),vulExists(winterfell,'CVE-2021-1675',spooler)])).
 
-possible_duplicate_trace_step(because(40,rule_desc('stolen hash for a full domain',cvss_ac(h)),stolenHash(jeor_mormont,north_sevenkingdoms_local),[stolenCredential(brandon_stark,north_sevenkingdoms_local),cvss('CVE-2021-42287',h),accessibleHash(jeor_mormont,north_sevenkingdoms_local,north_sevenkingdoms_local),vulnExists(winterfell,'CVE-2021-42287',active_Directory,remoteExploit,hashAccess)])).
+possible_duplicate_trace_step(because(16,rule_desc('Vuln declared',certain),vulnExists(meereen,'CVE-2022-26923',certifried,remoteExploit,privEscalation),[vulProperty('CVE-2022-26923',remoteExploit,privEscalation),vulExists(meereen,'CVE-2022-26923',certifried)])).
 
-possible_duplicate_trace_step(because(40,rule_desc('stolen hash for a full domain',cvss_ac(h)),stolenHash(jeor_mormont,north_sevenkingdoms_local),[stolenCredential(samwell_tarly,north_sevenkingdoms_local),cvss('CVE-2021-42287',h),accessibleHash(jeor_mormont,north_sevenkingdoms_local,north_sevenkingdoms_local),vulnExists(winterfell,'CVE-2021-42287',active_Directory,remoteExploit,hashAccess)])).
+possible_duplicate_trace_step(because(2,rule_desc('remote exploit of a server program',cvss_ac(h)),execCode(meereen,shell),[netAccess(meereen),networkServiceInfo(meereen,certifried,shell),cvss('CVE-2022-26923',h),vulnExists(meereen,'CVE-2022-26923',certifried,remoteExploit,privEscalation)])).
 
-possible_duplicate_trace_step(because(40,rule_desc('stolen hash for a full domain',cvss_ac(h)),stolenHash(jeor_mormont,north_sevenkingdoms_local),[stolenCredential(hodor,north_sevenkingdoms_local),cvss('CVE-2021-42287',h),accessibleHash(jeor_mormont,north_sevenkingdoms_local,north_sevenkingdoms_local),vulnExists(winterfell,'CVE-2021-42287',active_Directory,remoteExploit,hashAccess)])).
+possible_duplicate_trace_step(because(16,rule_desc('Vuln declared',certain),vulnExists(meereen,'CVE-2021-1675',spooler,remoteExploitWithAccount,privEscalation),[vulProperty('CVE-2021-1675',remoteExploitWithAccount,privEscalation),vulExists(meereen,'CVE-2021-1675',spooler)])).
 
-possible_duplicate_trace_step(because(40,rule_desc('stolen hash for a full domain',cvss_ac(h)),stolenHash(hodor,north_sevenkingdoms_local),[stolenCredential(jon_snow,north_sevenkingdoms_local),cvss('CVE-2021-42287',h),accessibleHash(hodor,north_sevenkingdoms_local,north_sevenkingdoms_local),vulnExists(winterfell,'CVE-2021-42287',active_Directory,remoteExploit,hashAccess)])).
+possible_duplicate_trace_step(because(41,rule_desc('remote exploit of a server with account',cvss_ac(h)),execCode(meereen,_h3674),[netAccess(meereen),stolenCredential(jorah_mormont,meereen),networkServiceInfo(meereen,spooler,_h3674),cvss('CVE-2021-1675',h),vulnExists(meereen,'CVE-2021-1675',spooler,remoteExploitWithAccount,privEscalation)])).
 
-possible_duplicate_trace_step(because(40,rule_desc('stolen hash for a full domain',cvss_ac(h)),stolenHash(hodor,north_sevenkingdoms_local),[stolenCredential(robb_stark,north_sevenkingdoms_local),cvss('CVE-2021-42287',h),accessibleHash(hodor,north_sevenkingdoms_local,north_sevenkingdoms_local),vulnExists(winterfell,'CVE-2021-42287',active_Directory,remoteExploit,hashAccess)])).
-
-possible_duplicate_trace_step(because(40,rule_desc('stolen hash for a full domain',cvss_ac(h)),stolenHash(hodor,north_sevenkingdoms_local),[stolenCredential(brandon_stark,north_sevenkingdoms_local),cvss('CVE-2021-42287',h),accessibleHash(hodor,north_sevenkingdoms_local,north_sevenkingdoms_local),vulnExists(winterfell,'CVE-2021-42287',active_Directory,remoteExploit,hashAccess)])).
-
-possible_duplicate_trace_step(because(40,rule_desc('stolen hash for a full domain',cvss_ac(h)),stolenHash(hodor,north_sevenkingdoms_local),[stolenCredential(samwell_tarly,north_sevenkingdoms_local),cvss('CVE-2021-42287',h),accessibleHash(hodor,north_sevenkingdoms_local,north_sevenkingdoms_local),vulnExists(winterfell,'CVE-2021-42287',active_Directory,remoteExploit,hashAccess)])).
-
-possible_duplicate_trace_step(because(40,rule_desc('stolen hash for a full domain',cvss_ac(h)),stolenHash(hodor,north_sevenkingdoms_local),[stolenCredential(hodor,north_sevenkingdoms_local),cvss('CVE-2021-42287',h),accessibleHash(hodor,north_sevenkingdoms_local,north_sevenkingdoms_local),vulnExists(winterfell,'CVE-2021-42287',active_Directory,remoteExploit,hashAccess)])).
-
-possible_duplicate_trace_step(because(40,rule_desc('stolen hash for a full domain',cvss_ac(h)),stolenHash(samwell_tarly,north_sevenkingdoms_local),[stolenCredential(jon_snow,north_sevenkingdoms_local),cvss('CVE-2021-42287',h),accessibleHash(samwell_tarly,north_sevenkingdoms_local,north_sevenkingdoms_local),vulnExists(winterfell,'CVE-2021-42287',active_Directory,remoteExploit,hashAccess)])).
-
-possible_duplicate_trace_step(because(40,rule_desc('stolen hash for a full domain',cvss_ac(h)),stolenHash(samwell_tarly,north_sevenkingdoms_local),[stolenCredential(robb_stark,north_sevenkingdoms_local),cvss('CVE-2021-42287',h),accessibleHash(samwell_tarly,north_sevenkingdoms_local,north_sevenkingdoms_local),vulnExists(winterfell,'CVE-2021-42287',active_Directory,remoteExploit,hashAccess)])).
-
-possible_duplicate_trace_step(because(40,rule_desc('stolen hash for a full domain',cvss_ac(h)),stolenHash(samwell_tarly,north_sevenkingdoms_local),[stolenCredential(brandon_stark,north_sevenkingdoms_local),cvss('CVE-2021-42287',h),accessibleHash(samwell_tarly,north_sevenkingdoms_local,north_sevenkingdoms_local),vulnExists(winterfell,'CVE-2021-42287',active_Directory,remoteExploit,hashAccess)])).
-
-possible_duplicate_trace_step(because(40,rule_desc('stolen hash for a full domain',cvss_ac(h)),stolenHash(samwell_tarly,north_sevenkingdoms_local),[stolenCredential(samwell_tarly,north_sevenkingdoms_local),cvss('CVE-2021-42287',h),accessibleHash(samwell_tarly,north_sevenkingdoms_local,north_sevenkingdoms_local),vulnExists(winterfell,'CVE-2021-42287',active_Directory,remoteExploit,hashAccess)])).
-
-possible_duplicate_trace_step(because(40,rule_desc('stolen hash for a full domain',cvss_ac(h)),stolenHash(samwell_tarly,north_sevenkingdoms_local),[stolenCredential(hodor,north_sevenkingdoms_local),cvss('CVE-2021-42287',h),accessibleHash(samwell_tarly,north_sevenkingdoms_local,north_sevenkingdoms_local),vulnExists(winterfell,'CVE-2021-42287',active_Directory,remoteExploit,hashAccess)])).
-
-possible_duplicate_trace_step(because(40,rule_desc('stolen hash for a full domain',cvss_ac(h)),stolenHash(brandon_stark,north_sevenkingdoms_local),[stolenCredential(jon_snow,north_sevenkingdoms_local),cvss('CVE-2021-42287',h),accessibleHash(brandon_stark,north_sevenkingdoms_local,north_sevenkingdoms_local),vulnExists(winterfell,'CVE-2021-42287',active_Directory,remoteExploit,hashAccess)])).
-
-possible_duplicate_trace_step(because(40,rule_desc('stolen hash for a full domain',cvss_ac(h)),stolenHash(brandon_stark,north_sevenkingdoms_local),[stolenCredential(robb_stark,north_sevenkingdoms_local),cvss('CVE-2021-42287',h),accessibleHash(brandon_stark,north_sevenkingdoms_local,north_sevenkingdoms_local),vulnExists(winterfell,'CVE-2021-42287',active_Directory,remoteExploit,hashAccess)])).
-
-possible_duplicate_trace_step(because(40,rule_desc('stolen hash for a full domain',cvss_ac(h)),stolenHash(brandon_stark,north_sevenkingdoms_local),[stolenCredential(brandon_stark,north_sevenkingdoms_local),cvss('CVE-2021-42287',h),accessibleHash(brandon_stark,north_sevenkingdoms_local,north_sevenkingdoms_local),vulnExists(winterfell,'CVE-2021-42287',active_Directory,remoteExploit,hashAccess)])).
-
-possible_duplicate_trace_step(because(40,rule_desc('stolen hash for a full domain',cvss_ac(h)),stolenHash(brandon_stark,north_sevenkingdoms_local),[stolenCredential(samwell_tarly,north_sevenkingdoms_local),cvss('CVE-2021-42287',h),accessibleHash(brandon_stark,north_sevenkingdoms_local,north_sevenkingdoms_local),vulnExists(winterfell,'CVE-2021-42287',active_Directory,remoteExploit,hashAccess)])).
-
-possible_duplicate_trace_step(because(40,rule_desc('stolen hash for a full domain',cvss_ac(h)),stolenHash(brandon_stark,north_sevenkingdoms_local),[stolenCredential(hodor,north_sevenkingdoms_local),cvss('CVE-2021-42287',h),accessibleHash(brandon_stark,north_sevenkingdoms_local,north_sevenkingdoms_local),vulnExists(winterfell,'CVE-2021-42287',active_Directory,remoteExploit,hashAccess)])).
-
-possible_duplicate_trace_step(because(29,rule_desc('Kerberoasting part 3',likely),stolenHash(jon_snow,north_sevenkingdoms_local),[stolenCredential(jon_snow,north_sevenkingdoms_local),netAccess(north_sevenkingdoms_local),accessibleHash(jon_snow,north_sevenkingdoms_local,kerberoasting)])).
-
-possible_duplicate_trace_step(because(29,rule_desc('Kerberoasting part 3',likely),stolenHash(jon_snow,north_sevenkingdoms_local),[stolenCredential(robb_stark,north_sevenkingdoms_local),netAccess(north_sevenkingdoms_local),accessibleHash(jon_snow,north_sevenkingdoms_local,kerberoasting)])).
-
-possible_duplicate_trace_step(because(29,rule_desc('Kerberoasting part 3',likely),stolenHash(jon_snow,north_sevenkingdoms_local),[stolenCredential(brandon_stark,north_sevenkingdoms_local),netAccess(north_sevenkingdoms_local),accessibleHash(jon_snow,north_sevenkingdoms_local,kerberoasting)])).
-
-possible_duplicate_trace_step(because(29,rule_desc('Kerberoasting part 3',likely),stolenHash(jon_snow,north_sevenkingdoms_local),[stolenCredential(samwell_tarly,north_sevenkingdoms_local),netAccess(north_sevenkingdoms_local),accessibleHash(jon_snow,north_sevenkingdoms_local,kerberoasting)])).
-
-possible_duplicate_trace_step(because(29,rule_desc('Kerberoasting part 3',likely),stolenHash(jon_snow,north_sevenkingdoms_local),[stolenCredential(hodor,north_sevenkingdoms_local),netAccess(north_sevenkingdoms_local),accessibleHash(jon_snow,north_sevenkingdoms_local,kerberoasting)])).
-
-possible_duplicate_trace_step(because(28,rule_desc('Username found after authentification',certain),userFound(brandon_stark,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(jon_snow,north_sevenkingdoms_local),userDefined(brandon_stark,north_sevenkingdoms_local,user)])).
-
-possible_duplicate_trace_step(because(28,rule_desc('Username found after authentification',certain),userFound(brandon_stark,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(robb_stark,north_sevenkingdoms_local),userDefined(brandon_stark,north_sevenkingdoms_local,user)])).
-
-possible_duplicate_trace_step(because(28,rule_desc('Username found after authentification',certain),userFound(brandon_stark,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(brandon_stark,north_sevenkingdoms_local),userDefined(brandon_stark,north_sevenkingdoms_local,user)])).
-
-possible_duplicate_trace_step(because(28,rule_desc('Username found after authentification',certain),userFound(brandon_stark,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(samwell_tarly,north_sevenkingdoms_local),userDefined(brandon_stark,north_sevenkingdoms_local,user)])).
-
-possible_duplicate_trace_step(because(28,rule_desc('Username found after authentification',certain),userFound(brandon_stark,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(hodor,north_sevenkingdoms_local),userDefined(brandon_stark,north_sevenkingdoms_local,user)])).
-
-possible_duplicate_trace_step(because(28,rule_desc('Username found after authentification',certain),userFound(eddard_stark,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(jon_snow,north_sevenkingdoms_local),userDefined(eddard_stark,north_sevenkingdoms_local,domain_admin)])).
-
-possible_duplicate_trace_step(because(28,rule_desc('Username found after authentification',certain),userFound(eddard_stark,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(robb_stark,north_sevenkingdoms_local),userDefined(eddard_stark,north_sevenkingdoms_local,domain_admin)])).
-
-possible_duplicate_trace_step(because(28,rule_desc('Username found after authentification',certain),userFound(eddard_stark,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(brandon_stark,north_sevenkingdoms_local),userDefined(eddard_stark,north_sevenkingdoms_local,domain_admin)])).
-
-possible_duplicate_trace_step(because(28,rule_desc('Username found after authentification',certain),userFound(eddard_stark,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(samwell_tarly,north_sevenkingdoms_local),userDefined(eddard_stark,north_sevenkingdoms_local,domain_admin)])).
-
-possible_duplicate_trace_step(because(28,rule_desc('Username found after authentification',certain),userFound(eddard_stark,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(hodor,north_sevenkingdoms_local),userDefined(eddard_stark,north_sevenkingdoms_local,domain_admin)])).
-
-possible_duplicate_trace_step(because(28,rule_desc('Username found after authentification',certain),userFound(jon_snow,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(jon_snow,north_sevenkingdoms_local),userDefined(jon_snow,north_sevenkingdoms_local,user)])).
-
-possible_duplicate_trace_step(because(28,rule_desc('Username found after authentification',certain),userFound(jon_snow,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(robb_stark,north_sevenkingdoms_local),userDefined(jon_snow,north_sevenkingdoms_local,user)])).
-
-possible_duplicate_trace_step(because(28,rule_desc('Username found after authentification',certain),userFound(jon_snow,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(brandon_stark,north_sevenkingdoms_local),userDefined(jon_snow,north_sevenkingdoms_local,user)])).
-
-possible_duplicate_trace_step(because(28,rule_desc('Username found after authentification',certain),userFound(jon_snow,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(samwell_tarly,north_sevenkingdoms_local),userDefined(jon_snow,north_sevenkingdoms_local,user)])).
-
-possible_duplicate_trace_step(because(28,rule_desc('Username found after authentification',certain),userFound(jon_snow,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(hodor,north_sevenkingdoms_local),userDefined(jon_snow,north_sevenkingdoms_local,user)])).
-
-possible_duplicate_trace_step(because(28,rule_desc('Username found after authentification',certain),userFound(catelyn_stark,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(jon_snow,north_sevenkingdoms_local),userDefined(catelyn_stark,north_sevenkingdoms_local,user)])).
-
-possible_duplicate_trace_step(because(28,rule_desc('Username found after authentification',certain),userFound(catelyn_stark,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(robb_stark,north_sevenkingdoms_local),userDefined(catelyn_stark,north_sevenkingdoms_local,user)])).
-
-possible_duplicate_trace_step(because(28,rule_desc('Username found after authentification',certain),userFound(catelyn_stark,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(brandon_stark,north_sevenkingdoms_local),userDefined(catelyn_stark,north_sevenkingdoms_local,user)])).
-
-possible_duplicate_trace_step(because(28,rule_desc('Username found after authentification',certain),userFound(catelyn_stark,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(samwell_tarly,north_sevenkingdoms_local),userDefined(catelyn_stark,north_sevenkingdoms_local,user)])).
-
-possible_duplicate_trace_step(because(28,rule_desc('Username found after authentification',certain),userFound(catelyn_stark,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(hodor,north_sevenkingdoms_local),userDefined(catelyn_stark,north_sevenkingdoms_local,user)])).
-
-possible_duplicate_trace_step(because(28,rule_desc('Username found after authentification',certain),userFound(robb_stark,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(jon_snow,north_sevenkingdoms_local),userDefined(robb_stark,north_sevenkingdoms_local,user)])).
-
-possible_duplicate_trace_step(because(28,rule_desc('Username found after authentification',certain),userFound(robb_stark,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(robb_stark,north_sevenkingdoms_local),userDefined(robb_stark,north_sevenkingdoms_local,user)])).
-
-possible_duplicate_trace_step(because(28,rule_desc('Username found after authentification',certain),userFound(robb_stark,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(brandon_stark,north_sevenkingdoms_local),userDefined(robb_stark,north_sevenkingdoms_local,user)])).
-
-possible_duplicate_trace_step(because(28,rule_desc('Username found after authentification',certain),userFound(robb_stark,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(samwell_tarly,north_sevenkingdoms_local),userDefined(robb_stark,north_sevenkingdoms_local,user)])).
-
-possible_duplicate_trace_step(because(28,rule_desc('Username found after authentification',certain),userFound(robb_stark,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(hodor,north_sevenkingdoms_local),userDefined(robb_stark,north_sevenkingdoms_local,user)])).
-
-possible_duplicate_trace_step(because(28,rule_desc('Username found after authentification',certain),userFound(jeor_mormont,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(jon_snow,north_sevenkingdoms_local),userDefined(jeor_mormont,north_sevenkingdoms_local,user)])).
-
-possible_duplicate_trace_step(because(28,rule_desc('Username found after authentification',certain),userFound(jeor_mormont,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(robb_stark,north_sevenkingdoms_local),userDefined(jeor_mormont,north_sevenkingdoms_local,user)])).
-
-possible_duplicate_trace_step(because(28,rule_desc('Username found after authentification',certain),userFound(jeor_mormont,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(brandon_stark,north_sevenkingdoms_local),userDefined(jeor_mormont,north_sevenkingdoms_local,user)])).
-
-possible_duplicate_trace_step(because(28,rule_desc('Username found after authentification',certain),userFound(jeor_mormont,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(samwell_tarly,north_sevenkingdoms_local),userDefined(jeor_mormont,north_sevenkingdoms_local,user)])).
-
-possible_duplicate_trace_step(because(28,rule_desc('Username found after authentification',certain),userFound(jeor_mormont,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(hodor,north_sevenkingdoms_local),userDefined(jeor_mormont,north_sevenkingdoms_local,user)])).
-
-possible_duplicate_trace_step(because(28,rule_desc('Username found after authentification',certain),userFound(hodor,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(jon_snow,north_sevenkingdoms_local),userDefined(hodor,north_sevenkingdoms_local,user)])).
-
-possible_duplicate_trace_step(because(28,rule_desc('Username found after authentification',certain),userFound(hodor,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(robb_stark,north_sevenkingdoms_local),userDefined(hodor,north_sevenkingdoms_local,user)])).
-
-possible_duplicate_trace_step(because(28,rule_desc('Username found after authentification',certain),userFound(hodor,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(brandon_stark,north_sevenkingdoms_local),userDefined(hodor,north_sevenkingdoms_local,user)])).
-
-possible_duplicate_trace_step(because(28,rule_desc('Username found after authentification',certain),userFound(hodor,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(samwell_tarly,north_sevenkingdoms_local),userDefined(hodor,north_sevenkingdoms_local,user)])).
-
-possible_duplicate_trace_step(because(28,rule_desc('Username found after authentification',certain),userFound(hodor,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(hodor,north_sevenkingdoms_local),userDefined(hodor,north_sevenkingdoms_local,user)])).
-
-possible_duplicate_trace_step(because(28,rule_desc('Username found after authentification',certain),userFound(samwell_tarly,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(jon_snow,north_sevenkingdoms_local),userDefined(samwell_tarly,north_sevenkingdoms_local,user)])).
-
-possible_duplicate_trace_step(because(28,rule_desc('Username found after authentification',certain),userFound(samwell_tarly,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(robb_stark,north_sevenkingdoms_local),userDefined(samwell_tarly,north_sevenkingdoms_local,user)])).
-
-possible_duplicate_trace_step(because(28,rule_desc('Username found after authentification',certain),userFound(samwell_tarly,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(brandon_stark,north_sevenkingdoms_local),userDefined(samwell_tarly,north_sevenkingdoms_local,user)])).
-
-possible_duplicate_trace_step(because(28,rule_desc('Username found after authentification',certain),userFound(samwell_tarly,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(samwell_tarly,north_sevenkingdoms_local),userDefined(samwell_tarly,north_sevenkingdoms_local,user)])).
-
-possible_duplicate_trace_step(because(28,rule_desc('Username found after authentification',certain),userFound(samwell_tarly,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(hodor,north_sevenkingdoms_local),userDefined(samwell_tarly,north_sevenkingdoms_local,user)])).
-
-possible_duplicate_trace_step(because(28,rule_desc('Username found after authentification',certain),userFound(brandon_stark,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(jon_snow,north_sevenkingdoms_local),userDefined(brandon_stark,north_sevenkingdoms_local,user)])).
-
-possible_duplicate_trace_step(because(28,rule_desc('Username found after authentification',certain),userFound(brandon_stark,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(robb_stark,north_sevenkingdoms_local),userDefined(brandon_stark,north_sevenkingdoms_local,user)])).
-
-possible_duplicate_trace_step(because(28,rule_desc('Username found after authentification',certain),userFound(brandon_stark,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(brandon_stark,north_sevenkingdoms_local),userDefined(brandon_stark,north_sevenkingdoms_local,user)])).
-
-possible_duplicate_trace_step(because(28,rule_desc('Username found after authentification',certain),userFound(brandon_stark,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(samwell_tarly,north_sevenkingdoms_local),userDefined(brandon_stark,north_sevenkingdoms_local,user)])).
-
-possible_duplicate_trace_step(because(28,rule_desc('Username found after authentification',certain),userFound(brandon_stark,north_sevenkingdoms_local),[netAccess(north_sevenkingdoms_local),stolenCredential(hodor,north_sevenkingdoms_local),userDefined(brandon_stark,north_sevenkingdoms_local,user)])).
-
-possible_duplicate_trace_step(because(40,rule_desc('stolen hash for a full domain',cvss_ac(h)),stolenHash(catelyn_stark,north_sevenkingdoms_local),[stolenCredential(hodor,north_sevenkingdoms_local),cvss('CVE-2021-42287',h),accessibleHash(catelyn_stark,north_sevenkingdoms_local,north_sevenkingdoms_local),vulnExists(winterfell,'CVE-2021-42287',active_Directory,remoteExploit,hashAccess)])).
-
-possible_duplicate_trace_step(because(40,rule_desc('stolen hash for a full domain',cvss_ac(h)),stolenHash(catelyn_stark,north_sevenkingdoms_local),[stolenCredential(samwell_tarly,north_sevenkingdoms_local),cvss('CVE-2021-42287',h),accessibleHash(catelyn_stark,north_sevenkingdoms_local,north_sevenkingdoms_local),vulnExists(winterfell,'CVE-2021-42287',active_Directory,remoteExploit,hashAccess)])).
-
-possible_duplicate_trace_step(because(40,rule_desc('stolen hash for a full domain',cvss_ac(h)),stolenHash(catelyn_stark,north_sevenkingdoms_local),[stolenCredential(brandon_stark,north_sevenkingdoms_local),cvss('CVE-2021-42287',h),accessibleHash(catelyn_stark,north_sevenkingdoms_local,north_sevenkingdoms_local),vulnExists(winterfell,'CVE-2021-42287',active_Directory,remoteExploit,hashAccess)])).
-
-possible_duplicate_trace_step(because(40,rule_desc('stolen hash for a full domain',cvss_ac(h)),stolenHash(catelyn_stark,north_sevenkingdoms_local),[stolenCredential(jon_snow,north_sevenkingdoms_local),cvss('CVE-2021-42287',h),accessibleHash(catelyn_stark,north_sevenkingdoms_local,north_sevenkingdoms_local),vulnExists(winterfell,'CVE-2021-42287',active_Directory,remoteExploit,hashAccess)])).
-
-possible_duplicate_trace_step(because(40,rule_desc('stolen hash for a full domain',cvss_ac(h)),stolenHash(catelyn_stark,north_sevenkingdoms_local),[stolenCredential(robb_stark,north_sevenkingdoms_local),cvss('CVE-2021-42287',h),accessibleHash(catelyn_stark,north_sevenkingdoms_local,north_sevenkingdoms_local),vulnExists(winterfell,'CVE-2021-42287',active_Directory,remoteExploit,hashAccess)])).
-
-possible_duplicate_trace_step(because(40,rule_desc('stolen hash for a full domain',cvss_ac(h)),stolenHash(catelyn_stark,north_sevenkingdoms_local),[stolenCredential(robb_stark,north_sevenkingdoms_local),cvss('CVE-2021-42287',h),accessibleHash(catelyn_stark,north_sevenkingdoms_local,north_sevenkingdoms_local),vulnExists(winterfell,'CVE-2021-42287',active_Directory,remoteExploit,hashAccess)])).
-
-possible_duplicate_trace_step(because(40,rule_desc('stolen hash for a full domain',cvss_ac(h)),stolenHash(catelyn_stark,north_sevenkingdoms_local),[stolenCredential(robb_stark,north_sevenkingdoms_local),cvss('CVE-2021-42287',h),accessibleHash(catelyn_stark,north_sevenkingdoms_local,north_sevenkingdoms_local),vulnExists(winterfell,'CVE-2021-42287',active_Directory,remoteExploit,hashAccess)])).
+possible_duplicate_trace_step(because(41,rule_desc('remote exploit of a server with account',cvss_ac(h)),execCode(meereen,root),[netAccess(meereen),stolenCredential(jorah_mormont,meereen),networkServiceInfo(meereen,spooler,root),cvss('CVE-2021-1675',h),vulnExists(meereen,'CVE-2021-1675',spooler,remoteExploitWithAccount,privEscalation)])).
 

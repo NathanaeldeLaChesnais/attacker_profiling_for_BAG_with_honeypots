@@ -1,0 +1,8 @@
+attackerLocated(intranet).
+
+attackGoal(stolenCredential(_, winterfell)). /* part5 */
+
+stolenCredential(jeor_mormont, north_sevenkingdoms_local). /* part9 */
+
+hostDefined(winterfell, north_sevenkingdoms_local). /* part7 */
+

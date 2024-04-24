@@ -61,7 +61,8 @@ derived(accessMaliciousInput(_host, _principal, _program)).
 derived(userFound(_user, _domain)).
 derived(vulnExists(_machine,_vulID,_program,_range,_consequence)).
 derived(stolenCredential(_user, _service)).
-derived(stolenCredentialDC(_user, _dc)).
+derived(stolenCredential(_user, _host)).
+derived(stolenCredential(_user, _domain)).
 derived(dnsPoisoning(_host)).
 derived(relayWPAD(_host)).
 derived(stolenHash(_user, _service)).
@@ -114,9 +115,9 @@ interaction_rule(
 
 interaction_rule(
    (execCode(Host, Perm) :-
-    stolenCredential(Victim, windows) ,
-    hasAccount(Victim, Host, Perm),
-    canAccessHost(Host)),
+	stolenCredential(Victim, windows) ,
+	hasAccount(Victim, Host, Perm),
+	canAccessHost(Host)),
    rule_desc('When a principal is compromised any machine he has an account on will also be compromised',
              'likely')).
 
@@ -329,17 +330,6 @@ interaction_rule(
       userDefined(User, DC, user)),
     rule_desc('les hash des comptes DC sont sur le DC', 'certain')).
 
-/* interaction_rule(
-    (stolenCredential(User, H) :-
-      stolenCredentialDC(User, DC),
-      hostDefined(H, DC)),
-    rule_desc('password are common for the same user in a domain', 'certain')).
-
-interaction_rule(
-    (stolenCredentialDC(User, DC) :-
-      stolenCredential(User, H),
-      hostDefined(H, DC)),
-    rule_desc('password are common for the same user in a domain', 'certain')). */
 
 /* Rules for part 2 */
 interaction_rule(
@@ -470,25 +460,12 @@ interaction_rule(
 /* Rulmes for part 5 */
 interaction_rule(
     (stolenHash(User, DC) :-
-      vulnExists(Host, VulID, active_Directory, remoteExploit, accessLocalHash),
+      vulnExists(Host, VulID, active_Directory, remoteExploit, hashAccess),
       accessibleHash(User, DC, DC),
       cvss(VulID, AC),
       stolenCredential(User1, DC)),
     rule_desc('stolen hash for a full domain',
             cvss_ac(AC))). /* SamAccountName */
-
-interaction_rule(
-  (execCode(H, Perm) :-
-	vulnExists(H, VulID, Software, remoteExploitWithAccount, privEscalation),
-        cvss(VulID, AC),
-	networkServiceInfo(H, Software, Perm),
-  stolenCredential(User, H),
-	netAccess(H)),
-  rule_desc('remote exploit of a server with account',
-            cvss_ac(AC))).
-
-
-
 
 interaction_rule(
     (stolenHash(User, Service) :-

@@ -1,0 +1,17 @@
+primitive(hostDefined(_host, _dc)).
+
+derived(stolenCredential(_user, _host)).
+derived(stolenCredentialDC(_user, _dc)).
+
+interaction_rule(
+    (stolenCredential(User, H) :-
+      stolenCredentialDC(User, DC),
+      hostDefined(H, DC)),
+    rule_desc('password are common for the same user in a domain', 'certain')).
+
+interaction_rule(
+    (stolenCredentialDC(User, DC) :-
+      stolenCredential(User, H),
+      hostDefined(H, DC)),
+    rule_desc('password are common for the same user in a domain', 'certain')).
+

@@ -1,355 +1,130 @@
-1,"stolenHash(catelyn_stark,north_sevenkingdoms_local)","OR",0
-2,"RULE 40 (stolen hash for a full domain)","AND",0.2
-3,"stolenCredential(brandon_stark,north_sevenkingdoms_local)","OR",0
-4,"RULE 27 (Use of Hashcat for password crack)","AND",0.8
-5,"weakPassword(brandon_stark)","LEAF",1
+1,"execCode(meereen,root)","OR",0
+2,"RULE 41 (remote exploit of a server with account)","AND",0.2
+3,"netAccess(meereen)","OR",0
+4,"RULE 5 (direct network access)","AND",1
+5,"hacl(intranet,meereen,_,_)","LEAF",1
 4,5,-1
-6,"stolenHash(brandon_stark,north_sevenkingdoms_local)","OR",0
-7,"RULE 26 (asreproasting part2)","AND",0.8
-8,"userFound(brandon_stark,north_sevenkingdoms_local)","OR",0
-9,"RULE 23 (User enumeration anonymously part2)","AND",0.6
-10,"cvss('Enumerate DC properties anonymously',m)","LEAF",1
-9,10,-1
-11,"vulnExists(winterfell,'Enumerate DC properties anonymously',north_sevenkingdoms_local,remoteExploit,accountEnumeration)","OR",0
-12,"RULE 16 (Vuln declared)","AND",1
-13,"vulProperty('Enumerate DC properties anonymously',remoteExploit,accountEnumeration)","LEAF",1
-12,13,-1
-14,"vulExists(winterfell,'Enumerate DC properties anonymously',north_sevenkingdoms_local)","LEAF",1
-12,14,-1
-11,12,-1
-9,11,-1
-15,"netAccess(winterfell)","OR",0
-16,"RULE 5 (direct network access)","AND",1
-17,"hacl(intranet,winterfell,_,_)","LEAF",1
-16,17,-1
-18,"attackerLocated(intranet)","LEAF",1
-16,18,-1
-15,16,-1
-9,15,-1
-19,"userDefined(brandon_stark,north_sevenkingdoms_local,user)","LEAF",1
-9,19,-1
-8,9,-1
-20,"RULE 24 (Username found by brutforce)","AND",0.2
-21,"netAccess(north_sevenkingdoms_local)","OR",0
-22,"RULE 5 (direct network access)","AND",1
-23,"hacl(intranet,north_sevenkingdoms_local,_,_)","LEAF",1
-22,23,-1
-22,18,-1
-21,22,-1
-20,21,-1
-20,19,-1
-8,20,-1
-24,"RULE 28 (Username found after authentification)","AND",1
-24,21,-1
-24,3,-1
-24,19,-1
-8,24,-1
-25,"RULE 28 (Username found after authentification)","AND",1
-25,21,-1
-26,"stolenCredential(hodor,north_sevenkingdoms_local)","OR",0
-27,"RULE 25 (password is user or in user description)","AND",0.8
-28,"inCompetent(hodor)","LEAF",1
-27,28,-1
-29,"userFound(hodor,north_sevenkingdoms_local)","OR",0
-30,"RULE 23 (User enumeration anonymously part2)","AND",0.6
-30,10,-1
-30,11,-1
-30,15,-1
-31,"userDefined(hodor,north_sevenkingdoms_local,user)","LEAF",1
-30,31,-1
-29,30,-1
-32,"RULE 24 (Username found by brutforce)","AND",0.2
-32,21,-1
-32,31,-1
-29,32,-1
-33,"RULE 28 (Username found after authentification)","AND",1
-33,21,-1
-33,3,-1
-33,31,-1
-29,33,-1
-34,"RULE 28 (Username found after authentification)","AND",1
-34,21,-1
-34,26,-1
-34,31,-1
-29,34,-1
-35,"RULE 28 (Username found after authentification)","AND",1
-35,21,-1
-36,"stolenCredential(jon_snow,north_sevenkingdoms_local)","OR",0
-37,"RULE 27 (Use of Hashcat for password crack)","AND",0.8
-38,"weakPassword(jon_snow)","LEAF",1
-37,38,-1
-39,"stolenHash(jon_snow,north_sevenkingdoms_local)","OR",0
-40,"RULE 29 (Kerberoasting part 3)","AND",0.8
-40,3,-1
-40,21,-1
-41,"accessibleHash(jon_snow,north_sevenkingdoms_local,kerberoasting)","LEAF",1
-40,41,-1
-39,40,-1
-42,"RULE 29 (Kerberoasting part 3)","AND",0.8
-42,26,-1
-42,21,-1
-42,41,-1
-39,42,-1
-43,"RULE 29 (Kerberoasting part 3)","AND",0.8
-43,36,-1
-43,21,-1
-43,41,-1
-39,43,-1
-44,"RULE 29 (Kerberoasting part 3)","AND",0.8
-45,"stolenCredential(robb_stark,north_sevenkingdoms_local)","OR",0
-46,"RULE 27 (Use of Hashcat for password crack)","AND",0.8
-47,"weakPassword(robb_stark)","LEAF",1
-46,47,-1
-48,"stolenHash(robb_stark,north_sevenkingdoms_local)","OR",0
-49,"RULE 40 (stolen hash for a full domain)","AND",0.2
-49,3,-1
-50,"cvss('CVE-2021-42287',h)","LEAF",1
-49,50,-1
-51,"accessibleHash(robb_stark,north_sevenkingdoms_local,north_sevenkingdoms_local)","LEAF",1
-49,51,-1
-52,"vulnExists(winterfell,'CVE-2021-42287',active_Directory,remoteExploit,hashAccess)","OR",0
-53,"RULE 16 (Vuln declared)","AND",1
-54,"vulProperty('CVE-2021-42287',remoteExploit,hashAccess)","LEAF",1
-53,54,-1
-55,"vulExists(winterfell,'CVE-2021-42287',active_Directory)","LEAF",1
-53,55,-1
-52,53,-1
-49,52,-1
-48,49,-1
-56,"RULE 40 (stolen hash for a full domain)","AND",0.2
-56,26,-1
-56,50,-1
-56,51,-1
-56,52,-1
-48,56,-1
-57,"RULE 40 (stolen hash for a full domain)","AND",0.2
-57,36,-1
-57,50,-1
-57,51,-1
-57,52,-1
-48,57,-1
-58,"RULE 40 (stolen hash for a full domain)","AND",0.2
-58,45,-1
-58,50,-1
-58,51,-1
-58,52,-1
-48,58,-1
-59,"RULE 40 (stolen hash for a full domain)","AND",0.2
-60,"stolenCredential(samwell_tarly,north_sevenkingdoms_local)","OR",0
-61,"RULE 25 (password is user or in user description)","AND",0.8
-62,"inCompetent(samwell_tarly)","LEAF",1
-61,62,-1
-63,"userFound(samwell_tarly,north_sevenkingdoms_local)","OR",0
-64,"RULE 23 (User enumeration anonymously part2)","AND",0.6
-64,10,-1
-64,11,-1
-64,15,-1
-65,"userDefined(samwell_tarly,north_sevenkingdoms_local,user)","LEAF",1
-64,65,-1
-63,64,-1
-66,"RULE 24 (Username found by brutforce)","AND",0.2
-66,21,-1
-66,65,-1
-63,66,-1
-67,"RULE 28 (Username found after authentification)","AND",1
-67,21,-1
-67,3,-1
-67,65,-1
-63,67,-1
-68,"RULE 28 (Username found after authentification)","AND",1
-68,21,-1
-68,26,-1
-68,65,-1
-63,68,-1
-69,"RULE 28 (Username found after authentification)","AND",1
-69,21,-1
-69,36,-1
-69,65,-1
-63,69,-1
-70,"RULE 28 (Username found after authentification)","AND",1
-70,21,-1
-70,45,-1
-70,65,-1
-63,70,-1
-71,"RULE 28 (Username found after authentification)","AND",1
-71,21,-1
-71,60,-1
-71,65,-1
-63,71,-1
-61,63,-1
-60,61,-1
-59,60,-1
-59,50,-1
-59,51,-1
-59,52,-1
-48,59,-1
-46,48,-1
-45,46,-1
-72,"RULE 31 (hashcat sur NTLM part 4 sachant que le user est trouve en meme temps que le hash)","AND",0.8
-73,"stolenHash(robb_stark,ntlmBot)","OR",0
-74,"RULE 30 (NTLM hash found part 4)","AND",0.8
-74,15,-1
-75,"isRuning(ntlmBot,winterfell)","LEAF",1
-74,75,-1
-76,"userPartOf(robb_stark,runNTLMBot,user)","LEAF",1
-74,76,-1
-73,74,-1
-72,73,-1
-72,47,-1
-77,"userDefined(robb_stark,north_sevenkingdoms_local,user)","LEAF",1
-72,77,-1
-45,72,-1
-78,"RULE 35 (Use of DonPAPI)","AND",0.8
-79,"netAccess(castelblack)","OR",0
-80,"RULE 5 (direct network access)","AND",1
-81,"hacl(intranet,castelblack,_,_)","LEAF",1
-80,81,-1
-80,18,-1
-79,80,-1
-78,79,-1
-82,"credentialInClear(robb_stark,castelblack,north_sevenkingdoms_local)","LEAF",1
-78,82,-1
-45,78,-1
-44,45,-1
-44,21,-1
-44,41,-1
-39,44,-1
-83,"RULE 29 (Kerberoasting part 3)","AND",0.8
-83,60,-1
-83,21,-1
-83,41,-1
-39,83,-1
-84,"RULE 40 (stolen hash for a full domain)","AND",0.2
-84,3,-1
-84,50,-1
-85,"accessibleHash(jon_snow,north_sevenkingdoms_local,north_sevenkingdoms_local)","LEAF",1
-84,85,-1
-84,52,-1
-39,84,-1
-86,"RULE 40 (stolen hash for a full domain)","AND",0.2
-86,26,-1
-86,50,-1
-86,85,-1
-86,52,-1
-39,86,-1
-87,"RULE 40 (stolen hash for a full domain)","AND",0.2
-87,36,-1
-87,50,-1
-87,85,-1
-87,52,-1
-39,87,-1
-88,"RULE 40 (stolen hash for a full domain)","AND",0.2
-88,45,-1
-88,50,-1
-88,85,-1
-88,52,-1
-39,88,-1
-89,"RULE 40 (stolen hash for a full domain)","AND",0.2
-89,60,-1
-89,50,-1
-89,85,-1
-89,52,-1
-39,89,-1
-37,39,-1
-36,37,-1
-35,36,-1
-35,31,-1
-29,35,-1
-90,"RULE 28 (Username found after authentification)","AND",1
-90,21,-1
-90,45,-1
-90,31,-1
-29,90,-1
-91,"RULE 28 (Username found after authentification)","AND",1
-91,21,-1
-91,60,-1
-91,31,-1
-29,91,-1
-27,29,-1
-26,27,-1
-25,26,-1
-25,19,-1
-8,25,-1
-92,"RULE 28 (Username found after authentification)","AND",1
-92,21,-1
-92,36,-1
-92,19,-1
-8,92,-1
-93,"RULE 28 (Username found after authentification)","AND",1
-93,21,-1
-93,45,-1
-93,19,-1
-8,93,-1
-94,"RULE 28 (Username found after authentification)","AND",1
-94,21,-1
-94,60,-1
-94,19,-1
-8,94,-1
-7,8,-1
-7,21,-1
-95,"accessibleHash(brandon_stark,north_sevenkingdoms_local,asreproasting)","LEAF",1
-7,95,-1
-6,7,-1
-96,"RULE 40 (stolen hash for a full domain)","AND",0.2
-96,3,-1
-96,50,-1
-97,"accessibleHash(brandon_stark,north_sevenkingdoms_local,north_sevenkingdoms_local)","LEAF",1
-96,97,-1
-96,52,-1
-6,96,-1
-98,"RULE 40 (stolen hash for a full domain)","AND",0.2
-98,26,-1
-98,50,-1
-98,97,-1
-98,52,-1
-6,98,-1
-99,"RULE 40 (stolen hash for a full domain)","AND",0.2
-99,36,-1
-99,50,-1
-99,97,-1
-99,52,-1
-6,99,-1
-100,"RULE 40 (stolen hash for a full domain)","AND",0.2
-100,45,-1
-100,50,-1
-100,97,-1
-100,52,-1
-6,100,-1
-101,"RULE 40 (stolen hash for a full domain)","AND",0.2
-101,60,-1
-101,50,-1
-101,97,-1
-101,52,-1
-6,101,-1
+6,"attackerLocated(intranet)","LEAF",1
 4,6,-1
 3,4,-1
 2,3,-1
-2,50,-1
-102,"accessibleHash(catelyn_stark,north_sevenkingdoms_local,north_sevenkingdoms_local)","LEAF",1
-2,102,-1
-2,52,-1
+7,"stolenCredential(jorah_mormont,meereen)","OR",0
+8,"RULE 27 (Use of Hashcat for password crack)","AND",0.8
+9,"weakPassword(jorah_mormont)","LEAF",1
+8,9,-1
+10,"stolenHash(jorah_mormont,meereen)","OR",0
+11,"RULE 40 (stolen hash for a full domain)","AND",0.2
+11,7,-1
+12,"cvss('CVE-2021-42287',h)","LEAF",1
+11,12,-1
+13,"accessibleHash(jorah_mormont,meereen,meereen)","LEAF",1
+11,13,-1
+14,"vulnExists(winterfell,'CVE-2021-42287',active_Directory,remoteExploit,accessLocalHash)","OR",0
+15,"RULE 16 (Vuln declared)","AND",1
+16,"vulProperty('CVE-2021-42287',remoteExploit,accessLocalHash)","LEAF",1
+15,16,-1
+17,"vulExists(winterfell,'CVE-2021-42287',active_Directory)","LEAF",1
+15,17,-1
+14,15,-1
+11,14,-1
+10,11,-1
+18,"RULE 42 (remote access hash)","AND",0.2
+18,3,-1
+19,"cvss('ESC1',h)","LEAF",1
+18,19,-1
+18,13,-1
+20,"vulnExists(meereen,'ESC1',certification,remoteExploit,accessLocalHash)","OR",0
+21,"RULE 16 (Vuln declared)","AND",1
+22,"vulProperty('ESC1',remoteExploit,accessLocalHash)","LEAF",1
+21,22,-1
+23,"vulExists(meereen,'ESC1',certification)","LEAF",1
+21,23,-1
+20,21,-1
+18,20,-1
+10,18,-1
+24,"RULE 42 (remote access hash)","AND",0.2
+24,3,-1
+25,"cvss('ESC2',h)","LEAF",1
+24,25,-1
+24,13,-1
+26,"vulnExists(meereen,'ESC2',certification,remoteExploit,accessLocalHash)","OR",0
+27,"RULE 16 (Vuln declared)","AND",1
+28,"vulProperty('ESC2',remoteExploit,accessLocalHash)","LEAF",1
+27,28,-1
+29,"vulExists(meereen,'ESC2',certification)","LEAF",1
+27,29,-1
+26,27,-1
+24,26,-1
+10,24,-1
+30,"RULE 42 (remote access hash)","AND",0.2
+30,3,-1
+31,"cvss('ESC3',h)","LEAF",1
+30,31,-1
+30,13,-1
+32,"vulnExists(meereen,'ESC3',certification,remoteExploit,accessLocalHash)","OR",0
+33,"RULE 16 (Vuln declared)","AND",1
+34,"vulProperty('ESC3',remoteExploit,accessLocalHash)","LEAF",1
+33,34,-1
+35,"vulExists(meereen,'ESC3',certification)","LEAF",1
+33,35,-1
+32,33,-1
+30,32,-1
+10,30,-1
+36,"RULE 42 (remote access hash)","AND",0.2
+36,3,-1
+37,"cvss('ESC8',h)","LEAF",1
+36,37,-1
+36,13,-1
+38,"vulnExists(meereen,'ESC8',webEnrollementEnabled,remoteExploit,accessLocalHash)","OR",0
+39,"RULE 16 (Vuln declared)","AND",1
+40,"vulProperty('ESC8',remoteExploit,accessLocalHash)","LEAF",1
+39,40,-1
+41,"vulExists(meereen,'ESC8',webEnrollementEnabled)","LEAF",1
+39,41,-1
+38,39,-1
+36,38,-1
+10,36,-1
+42,"RULE 42 (remote access hash)","AND",0.2
+42,3,-1
+43,"cvss('ShadowCredential',h)","LEAF",1
+42,43,-1
+42,13,-1
+44,"vulnExists(meereen,'ShadowCredential',essos_local,remoteExploit,accessLocalHash)","OR",0
+45,"RULE 16 (Vuln declared)","AND",1
+46,"vulProperty('ShadowCredential',remoteExploit,accessLocalHash)","LEAF",1
+45,46,-1
+47,"vulExists(meereen,'ShadowCredential',essos_local)","LEAF",1
+45,47,-1
+44,45,-1
+42,44,-1
+10,42,-1
+48,"RULE 42 (remote access hash)","AND",0.6
+48,3,-1
+49,"cvss('CVE-2019-1040',m)","LEAF",1
+48,49,-1
+48,13,-1
+50,"vulnExists(meereen,'CVE-2019-1040',removeTheMic,remoteExploit,accessLocalHash)","OR",0
+51,"RULE 16 (Vuln declared)","AND",1
+52,"vulProperty('CVE-2019-1040',remoteExploit,accessLocalHash)","LEAF",1
+51,52,-1
+53,"vulExists(meereen,'CVE-2019-1040',removeTheMic)","LEAF",1
+51,53,-1
+50,51,-1
+48,50,-1
+10,48,-1
+8,10,-1
+7,8,-1
+2,7,-1
+54,"networkServiceInfo(meereen,spooler,root)","LEAF",1
+2,54,-1
+55,"cvss('CVE-2021-1675',h)","LEAF",1
+2,55,-1
+56,"vulnExists(meereen,'CVE-2021-1675',spooler,remoteExploitWithAccount,privEscalation)","OR",0
+57,"RULE 16 (Vuln declared)","AND",1
+58,"vulProperty('CVE-2021-1675',remoteExploitWithAccount,privEscalation)","LEAF",1
+57,58,-1
+59,"vulExists(meereen,'CVE-2021-1675',spooler)","LEAF",1
+57,59,-1
+56,57,-1
+2,56,-1
 1,2,-1
-103,"RULE 40 (stolen hash for a full domain)","AND",0.2
-103,26,-1
-103,50,-1
-103,102,-1
-103,52,-1
-1,103,-1
-104,"RULE 40 (stolen hash for a full domain)","AND",0.2
-104,36,-1
-104,50,-1
-104,102,-1
-104,52,-1
-1,104,-1
-105,"RULE 40 (stolen hash for a full domain)","AND",0.2
-105,45,-1
-105,50,-1
-105,102,-1
-105,52,-1
-1,105,-1
-106,"RULE 40 (stolen hash for a full domain)","AND",0.2
-106,60,-1
-106,50,-1
-106,102,-1
-106,52,-1
-1,106,-1

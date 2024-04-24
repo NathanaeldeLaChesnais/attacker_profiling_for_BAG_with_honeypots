@@ -3,11 +3,11 @@
 
 ARCHITECTURE=$1
 ARCHITECTURE_FILE=$ARCHITECTURE".P"
-ARCHITECTURE_PATH="$(pwd)/"$ARCHITECTURE_FILE
+ARCHITECTURE_PATH="$(pwd)/Personnal_simulations/"$ARCHITECTURE_FILE
 # RULE_SET="interaction_rules_for_GOAD.P"
 RULE_SET="interaction_rules_with_metrics.P"
-RULE_SET_PATH="$(pwd)/"$RULE_SET 
-OUTPUT_DIR="$(pwd)/output_"$ARCHITECTURE
+RULE_SET_PATH="$(pwd)/Personnal_simulations/"$RULE_SET 
+OUTPUT_DIR="$(pwd)/Personnal_simulations/output_"$ARCHITECTURE
 
 cmd.exe /C taskkill /IM Acrobat.exe /F 2> /dev/null || true
 rm -rf $OUTPUT_DIR && mkdir $OUTPUT_DIR
