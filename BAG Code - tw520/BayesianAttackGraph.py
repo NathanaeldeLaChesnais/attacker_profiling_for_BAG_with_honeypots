@@ -2,6 +2,7 @@ import numpy as np
 import numpy.random as rn
 import matplotlib.pyplot as plt
 import networkx as nx
+import re
 from pgmpy.models import BayesianNetwork
 from createANDtable import create_AND_table
 from createORtable import create_OR_table
@@ -81,9 +82,11 @@ def GenerateBAG(N, max_edges):
 
     # Names of the nodes (in this case, just the number of the node but can easily be modified)
     nodes = list(range(1, N))
-    # plotConnectivityMatrix(DAG)
+    plotConnectivityMatrix(DAG)
     s, t = np.where(DAG > 0)
     edges = list(zip(s, t))
+
+    print(edges)
 
     # Visualise the network
     # G = nx.DiGraph()
@@ -199,25 +202,62 @@ def RunLBP(fg, MAP=False):
     return end_time-start_time
 
 
+def parse_dot(dot_string):
+    nodes = {}
+    edges = []
+
+    # Définir une expression régulière pour extraire les informations de chaque nœud
+    node_pattern = re.compile(r'(\d+)\s+\[\s*label="([^"]+)"\s+shape="ellipse"\s+nodeType="([^"]+)"\s+probArray="([^"]+)"\s*\];')
+
+    # Définir une expression régulière pour extraire les arêtes
+    edge_pattern = re.compile(r'(\d+)\s*->\s*(\d+)\s+\[\s*label="([^"]+)"\s+color="[^"]+"\s*\];')
+
+    # Parcourir chaque ligne du texte
+    for line in dot_string.split('\n'):
+        # Vérifier si la ligne correspond à un nœud
+        node_match = node_pattern.match(line)
+        if node_match:
+            node_id = int(node_match.group(1))
+            label = node_match.group(2)
+            node_type = node_match.group(3)
+            prob_array = node_match.group(4).split()
+            nodes[node_id] = {'label': label, 'type': node_type, 'prob_array': prob_array}
+
+        # Vérifier si la ligne correspond à une arête
+        edge_match = edge_pattern.match(line)
+        if edge_match:
+            source = int(edge_match.group(1))
+            target = int(edge_match.group(2))
+            weight = float(edge_match.group(3))
+            edges.append((source, target, weight))
+
+    return nodes, edges
+
+
 if __name__ == '__main__':
     import scipy.io
     # Example usage:
     N = 5
     max_edges = 3
 
-    # BAG = GenerateBAG(N, max_edges)
-    # print(BAG)
+    BAG = GenerateBAG(N, max_edges)
+    print(BAG)
 
-    path_to_dot = "/mnt/c/Users/docuser/Documents/ImperialWork/Personnal_simulations/output_GOAD_faille sur le noeud 50/attack_paths/BAG-to-42.mat"
+    path_to_dot = "/mnt/c/Users/docuser/Documents/ImperialWork/Personnal_simulations/output_GOAD_faille sur le noeud 50/attack_paths/BAG-to-42.dot"
 
-    mat_data = scipy.io.loadmat(path_to_dot)
+    file = open(path_to_dot, 'r')
 
-    BAG = mat_data['data']
+    print(file.read())
+
+    nodes, edges = parse_dot(file.read())
+
+    print(edges)
+
+    # importFromDot(path_to_dot)
     
     # BAG = nx.nx_pydot.read_dot(path_to_dot)
     
-    MRF = ToMarkov(BAG)
-    FG = CreateFactorGraph(MRF)
-    # FG = CreateFactorGraph(BAG)
+    # MRF = ToMarkov(BAG)
+    # FG = CreateFactorGraph(MRF)
     
-    RunLBP(FG)
+    # RunLBP(FG)
