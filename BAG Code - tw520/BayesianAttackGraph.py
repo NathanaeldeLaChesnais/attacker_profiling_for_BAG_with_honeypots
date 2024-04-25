@@ -3,11 +3,14 @@ import numpy.random as rn
 import matplotlib.pyplot as plt
 import networkx as nx
 import re
+import sys
+import os
 from pgmpy.models import BayesianNetwork
 from createANDtable import create_AND_table
 from createORtable import create_OR_table
 from drawRandomCVSS import draw_random_CVSS
 from pgmpy.factors.discrete import TabularCPD
+from pgmpy.inference.ExactInference import BeliefPropagation
 
 rn.seed(1)
 
@@ -82,7 +85,7 @@ def GenerateBAG(N, max_edges):
 
     # Names of the nodes (in this case, just the number of the node but can easily be modified)
     nodes = list(range(1, N))
-    plotConnectivityMatrix(DAG)
+    # plotConnectivityMatrix(DAG)
     s, t = np.where(DAG > 0)
     edges = list(zip(s, t))
 
@@ -158,7 +161,7 @@ import numpy as np
 # Load PGMax
 from pgmax import fgraph, fgroup, infer, vgroup, factor
 from time import time 
-
+ 
 # My implementation
     
 def CreateFactorGraph(mrf):
@@ -199,7 +202,7 @@ def RunLBP(fg, MAP=False):
 
         print(f'Time for Max-Product LBP: {end_time-start_time} seconds')
 
-    return end_time-start_time
+    return marginals
 
 
 def parse_dot(dot_string):
@@ -207,15 +210,18 @@ def parse_dot(dot_string):
     edges = []
 
     # Définir une expression régulière pour extraire les informations de chaque nœud
-    node_pattern = re.compile(r'(\d+)\s+\[\s*label="([^"]+)"\s+shape="ellipse"\s+nodeType="([^"]+)"\s+probArray="([^"]+)"\s*\];')
+    # node_pattern = re.compile("(\d+)")
+    node_pattern = re.compile(r'\s+(\d+)\s+\[\s*label="([^"]+)"\s+shape="[^"]+"\s+nodeType="([^"]+)"\s+probArray="([^"]+)"\s*\];')
 
     # Définir une expression régulière pour extraire les arêtes
-    edge_pattern = re.compile(r'(\d+)\s*->\s*(\d+)\s+\[\s*label="([^"]+)"\s+color="[^"]+"\s*\];')
+    edge_pattern = re.compile(r'\s+(\d+)\s*->\s*(\d+)\s+\[\s*label="([^"]+)"\s+color="[^"]+"\s*\];')
 
     # Parcourir chaque ligne du texte
     for line in dot_string.split('\n'):
         # Vérifier si la ligne correspond à un nœud
         node_match = node_pattern.match(line)
+        # Vérifier si la ligne correspond à une arête
+        edge_match = edge_pattern.match(line)
         if node_match:
             node_id = int(node_match.group(1))
             label = node_match.group(2)
@@ -223,41 +229,78 @@ def parse_dot(dot_string):
             prob_array = node_match.group(4).split()
             nodes[node_id] = {'label': label, 'type': node_type, 'prob_array': prob_array}
 
-        # Vérifier si la ligne correspond à une arête
-        edge_match = edge_pattern.match(line)
-        if edge_match:
+        elif edge_match:
             source = int(edge_match.group(1))
             target = int(edge_match.group(2))
             weight = float(edge_match.group(3))
             edges.append((source, target, weight))
 
-    return nodes, edges
+    model = BayesianNetwork(edges)
+    
+    for elem in nodes.items():
+        print(elem)
+        probs = elem[1]['prob_array']
+        npa = len(probs)
+        r = elem[1]['type'] == 'OR'
+
+        #We look for the source nodes
+        source = []
+        probs = []
+        for edge in edges:
+            if edge[1] == elem[0]:
+                source.append(edge[0])
+                probs.append(edge[2])
+
+        if len(source) !=npa: # Parents nodes 
+            npa = len(source)
+    
+        #We draw the probability from the distribution of CVSS scores
+        if r:
+            cpt = create_OR_table(probs)
+        else:
+            cpt = create_AND_table(probs)
+        
+        if npa:
+            cpd = TabularCPD(elem[0], 2, cpt.T, source, evidence_card=2*np.ones(npa))
+        else:
+            cpd = TabularCPD(elem[0], 2, cpt.T)
+
+        #Insert the conditional probability table into the Bayesian Network object
+        model.add_cpds(cpd)
+
+    return model, edges, nodes
 
 
 if __name__ == '__main__':
-    import scipy.io
-    # Example usage:
-    N = 5
-    max_edges = 3
 
-    BAG = GenerateBAG(N, max_edges)
-    print(BAG)
+    if len(sys.argv) < 2:
+        print("Please provide the path to the dot file")
+        sys.exit(1)
+    simulation = sys.argv[1]
 
-    path_to_dot = "/mnt/c/Users/docuser/Documents/ImperialWork/Personnal_simulations/output_GOAD_faille sur le noeud 50/attack_paths/BAG-to-42.dot"
+    path = "/mnt/c/Users/docuser/Documents/ImperialWork/Personnal_simulations/output_" + simulation + "/attack_paths/"
 
-    file = open(path_to_dot, 'r')
+    #We do for all the objectives in the folder
+    for file_name in os.listdir(path):
+        if file_name.endswith("bis.dot") and file_name.startswith("BAG-to-"):
+            path_to_dot = path + file_name
+            output_file = path + file_name[:-4] + "_inference.txt"
 
-    print(file.read())
+            BAG, edges, nodes = parse_dot(open(path_to_dot, 'r').read())
 
-    nodes, edges = parse_dot(file.read())
+            #We use the pgmpy library to perform the inference
+            prop = BeliefPropagation(BAG)
 
-    print(edges)
+            #Evidences are the nodes that are compromised
+            print(prop.query([2], evidence = {32:1}))
+            print(prop.query([2]))
+            print(prop.query([1], evidence = {32:1}))
+            print(prop.query([1]))
+            print(prop.query([30], evidence = {32:1}))
+            print(prop.query([30]))
 
-    # importFromDot(path_to_dot)
-    
-    # BAG = nx.nx_pydot.read_dot(path_to_dot)
-    
-    # MRF = ToMarkov(BAG)
-    # FG = CreateFactorGraph(MRF)
-    
-    # RunLBP(FG)
+
+
+            # output = open(output_file, 'w')
+            # for node in nodes.items():
+            #     output.write(f'{nodes[node[0]]["label"]} : {prop.query([node[0]])}\n')
