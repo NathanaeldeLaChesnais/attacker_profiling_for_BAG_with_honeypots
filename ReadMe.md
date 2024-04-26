@@ -6,6 +6,10 @@ Tout doit être relié à une cause source, sinon les probabilités de branches 
 Bibliography for attack graphs latest updates https://www.sciencedirect.com/science/article/pii/S0167404823003206 
 Or this one of 2020 by wilder https://www.sciencedirect.com/science/article/pii/S0167404822004734
 https://ieeexplore.ieee.org/document/9763050 III C sur la Posterior Probability Calculation
+On probability of a CVE exploit https://www.first.org/epss/
+CVE used by threat actors but very old with very few vulnerabilities : https://dl.acm.org/doi/fullHtml/10.1145/3465481.3465758
+Microsoft will now use CWE is CVE publications https://www.cve.org/Media/News/item/news/2024/04/23/Microsoft-CWE-Root-Cause-Mapping-CVEs and it is already on NVD
+Use of the CWE tree to establish corelations https://ieeexplore.ieee.org/document/10172785
 
 # GOAT
 ## Architecture du lab :

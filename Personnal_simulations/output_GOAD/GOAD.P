@@ -1,5 +1,7 @@
 attackerLocated(intranet).
-attackGoal(execCode(meereen, root)).
+/* attackGoal(execCode(meereen, root)). */
+attackGoal(execCode(winterfell, root)).
+/* attackGoal(stolenCredential(jon_snow, _)). */
 /* attackGoal(stolenCredential(_, winterfell)). */ /* part5 */
 /* attackGoal(hasAccount(eddard_stark, castelblack, admin)).
 attackGoal(stolenHash(_, castelblack)). */

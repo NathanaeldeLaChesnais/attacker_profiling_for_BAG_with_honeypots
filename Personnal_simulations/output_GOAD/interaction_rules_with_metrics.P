@@ -487,6 +487,17 @@ interaction_rule(
   rule_desc('remote exploit of a server with account',
             cvss_ac(AC))).
 
+interaction_rule(
+  (execCode(H, Perm) :-
+	vulnExists(H, VulID, Software, remoteExploitWithAccount, privEscalation),
+        cvss(VulID, AC),
+	networkServiceInfo(H, Software, Perm),
+  stolenCredential(User, DC),
+  hostDefined(H, DC),
+	netAccess(H)),
+  rule_desc('remote exploit of a server with account',
+            cvss_ac(AC))).
+
 
 
 
