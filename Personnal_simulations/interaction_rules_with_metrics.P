@@ -542,4 +542,6 @@ interaction_rule(
       userDefined(User, Host, _Perm),
       hostDefined(Host, DC)),
     rule_desc('les hash des comptes locaux sont sur la machine', 'certain')). */
+
+
     

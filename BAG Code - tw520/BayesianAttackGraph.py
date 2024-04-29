@@ -282,7 +282,7 @@ if __name__ == '__main__':
 
     #We do for all the objectives in the folder
     for file_name in os.listdir(path):
-        if file_name.endswith("bis.dot") and file_name.startswith("BAG-to-"):
+        if file_name.endswith(".dot") and file_name.startswith("BAG-to-"):
             path_to_dot = path + file_name
             output_file = path + file_name[:-4] + "_inference.txt"
 
@@ -292,12 +292,12 @@ if __name__ == '__main__':
             prop = BeliefPropagation(BAG)
 
             #Evidences are the nodes that are compromised
-            print(prop.query([2], evidence = {32:1}))
-            print(prop.query([2]))
-            print(prop.query([1], evidence = {32:1}))
-            print(prop.query([1]))
-            print(prop.query([30], evidence = {32:1}))
-            print(prop.query([30]))
+            print(prop.query([2], evidence = {57:1}))
+            print(prop.query([57]))
+            # print(prop.query([1], evidence = {32:1}))
+            # print(prop.query([1]))
+            # print(prop.query([30], evidence = {32:1}))
+            # print(prop.query([30]))
 
 
 

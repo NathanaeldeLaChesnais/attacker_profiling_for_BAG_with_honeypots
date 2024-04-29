@@ -1,9 +1,7 @@
-mulval/*
-dockerised-mulval/*
-
-mulval
-dockerised-mulval
+mulval/
+dockerised-mulval/
 
 .gitignore
 
-Personnal_simulations/output/*
+Personnal_simulations/old
+Personnal_simulations/output*
