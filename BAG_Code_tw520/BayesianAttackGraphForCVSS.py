@@ -283,7 +283,7 @@ def parse_dot(dot_string):
     return model, edges, nodes
 
 
-def change_prob(BAG, edges, nodes, src_node, dst_node, inverted_nodes, cwe_dict, Gcwe, prop0):
+def change_prob(BAG, edges, nodes, src_node, dst_node, inverted_nodes, cwe_dict, Gcwe, prop0, factor):
     for dst_n in dst_node:
         dst_k = inverted_nodes[dst_n]
         dst_cve = nodes[dst_k]['CVE']
@@ -300,7 +300,7 @@ def change_prob(BAG, edges, nodes, src_node, dst_node, inverted_nodes, cwe_dict,
                         src_cwe = cwe_dict[src_cve]
                         if src_cwe != 'NVD-CWE-Other' and src_cwe != "NVD-CWE-noinfo":
                             dist = nx.shortest_path_length(Gcwe, source=src_cwe.split('-')[1], target=dst_cwe.split('-')[1])
-                            tmp_prob = 0.9**(dist+1) * prop0.query([src_k]).values[1]
+                            tmp_prob = factor**(dist+1) * prop0.query([src_k]).values[1]
                             new_prob = tmp_prob + new_prob - new_prob*tmp_prob
                     props = create_OR_table([new_prob])
                     BAG.remove_cpds(dst_k)
