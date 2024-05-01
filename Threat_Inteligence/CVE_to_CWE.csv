@@ -1,21 +1,19 @@
-Vulnerability,weakness
+Vulnerability,weakness,Comment
 CVE-2021-42287,CWE-269,Improper Privilege Management
-CVE-2021-1675,NVD-CWE-Other 
-CVE-2019-1040,NVD-CWE-noinfo 
+CVE-2021-1675,NVD-CWE-Other
+CVE-2019-1040,NVD-CWE-noinfo
 CVE-2022-26923,CWE-295,Improper Certificate Validation
-
 CVE-2022-26925,CWE-306,Missing Authentication for Critical Function	
 CVE-2020-1472,CWE-330,Use of Insufficiently Random Values
 CVE-2008-4037,CWE-287,Improper Authentication
 CVE-2022-33679,NVD-CWE-noinfo
 CVE-2020-0796,CWE-119,Improper Restriction of Operations within the Bounds of a Memory Buffer
 CVE-2021-36934,NVD-CWE-Other
-CVE-2014-6324,CWE-264,"Permissions, Privileges, and Access Controls"
+CVE-2014-6324,NVD-CWE-Other,notInTableUsed,CWE-264,"Permissions, Privileges, and Access Controls"
 CVE-2019-0724,NVD-CWE-noinfo
 CVE-2019-0686,NVD-CWE-noinfo
 CVE-2021-42278,CWE-20,Improper Input Validation
 CVE-2021-34527,CWE-269,Improper Privilege Management
 CVE-2021-40469,NVD-CWE-noinfo
-
 CVE-2017-0147,CWE-200,Exposure of Sensitive Information to an Unauthorized Actor
-CVE-2014-1812,CWE-255,Credentials Management Errors
+CVE-2014-1812,NVD-CWE-Other,notInTableUsed,CWE-255,Credentials Management Errors

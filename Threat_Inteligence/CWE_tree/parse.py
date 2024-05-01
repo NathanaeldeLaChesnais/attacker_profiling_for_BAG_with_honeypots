@@ -24,9 +24,10 @@ def parse_xml(file_path, G):
         # print(f"CWE Name: {cwe_name}")
         # print(f"Parent ID: {parent_id}")
 
-# Appeler la fonction de parsing avec le chemin du fichier XML
-G = nx.Graph()
-parse_xml('1000.xml', G)
+if __name__ == '__main__':
+    # Appeler la fonction de parsing avec le chemin du fichier XML
+    G = nx.Graph()
+    parse_xml('1000.xml', G)
 
-distance = nx.shortest_path_length(G, source='295', target='269')
-print("Distance between nodes '1004' and '732':", distance)
+    distance = nx.shortest_path_length(G, source='295', target='269')
+    print("Distance between nodes '1004' and '732':", distance)

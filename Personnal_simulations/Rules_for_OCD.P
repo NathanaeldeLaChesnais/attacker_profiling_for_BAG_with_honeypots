@@ -1,5 +1,5 @@
 primitive(attackerLocated(_domain)).
-primitive(vulExists(_domain, smb, _cve)).
+primitive(vulExists(_domain, _cve, _mod)).
 primitive(hostDom(_host, _domain)).
 
 derived(mitm(_domain)).
@@ -18,21 +18,21 @@ meta(cvss(_vulID, _ac)).
 interaction_rule(
     (mitm(Domain) :-
         attackerLocated(Domain),
-        vulExists(Domain, smb, CVE),
+        vulExists(Domain, CVE, smb),
         cvss(CVE, AC)),
     rule_desc('mitm attack is possible', cvss_ac(AC))).
 
 interaction_rule(
     (localAdmin(Domain) :-
         mitm(Domain),
-        vulExists(Domain, ms_08_068, CVE),
+        vulExists(Domain, CVE, ms_08_068),
         cvss(CVE, AC)),
     rule_desc('local admin access is possible', cvss_ac(AC))).
 
 interaction_rule(
     (dcSync(Domain) :-
         mitm(Domain),
-        vulExists(Domain, dcSync, CVE),
+        vulExists(Domain, CVE, dcSync),
         cvss(CVE, AC)),
     rule_desc('dc sync attack is possible', cvss_ac(AC))).
 
@@ -45,7 +45,7 @@ interaction_rule(
 interaction_rule(
     (admin(Host) :-
         vulnerableHost(Host),
-        vulExists(Host, host_to_admin, CVE),
+        vulExists(Host, CVE, host_to_admin),
         cvss(CVE, AC)),
     rule_desc('classic quick compromission attack is possible against host or domain', cvss_ac(AC))).
 
@@ -58,13 +58,13 @@ interaction_rule(
 interaction_rule(
     (validCredentials(Domain) :-
         attackerLocated(Domain)),
-    rule_desc('valid credentials may be found', 'likely')).
+    rule_desc('valid credentials may be found', 'unlikely')).
 
 /* Known vulnearbilities */
 interaction_rule(
     (admin(domain) :-
         validCredentials(Domain),
-        vulExists(Domain, cred_to_domadmin, CVE),
+        vulExists(Domain, CVE, cred_to_domadmin),
         cvss(CVE, AC)),
     rule_desc('domain admin access is possible', cvss_ac(AC))).
 
@@ -72,7 +72,7 @@ interaction_rule(
     (admin(Host) :-
         validCredentials(Domain),
         hostDom(Host, Domain),
-        vulExists(Host, cred_to_admin, CVE),
+        vulExists(Host, CVE, cred_to_admin),
         cvss(CVE, AC)),
     rule_desc('admin access is possible', cvss_ac(AC))).
 
@@ -80,6 +80,13 @@ interaction_rule(
 interaction_rule(
     (admin(Host) :-
         lowAccess(Host),
-        vulExists(Host, low_to_admin, CVE),
+        vulExists(Host, CVE, low_to_admin),
         cvss(CVE, AC)),
     rule_desc('privilege escalation', cvss_ac(AC))).
+
+/* Permissions move */
+interaction_rule(
+    (admin(Domain) :-
+        dcSync(Domain),
+        validCredentials(Domain)),
+    rule_desc('permissions move', 'likely')).
