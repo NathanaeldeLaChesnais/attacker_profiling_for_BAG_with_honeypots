@@ -6,7 +6,7 @@ def create_AND_table(probs):
     else:
         npa = len(probs)
         cpt = np.zeros((2, 2 ** npa))
-        cpt[1, -1] = np.prod(probs)
+        cpt[1, -1] = probs[0]
         cpt[0, :] = 1 - cpt[1, :]
         
         return cpt.T

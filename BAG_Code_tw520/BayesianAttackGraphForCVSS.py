@@ -227,6 +227,7 @@ def parse_dot(dot_string):
         if node_match:
             node_id = int(node_match.group(1))
             label = node_match.group(2)
+            print(label)
             node_type = 'AND' if label == "ellipse" else 'OR'
             cveID = node_match.group(3).strip("\'")
             nodes[node_id] = {'label': label, 'type': node_type, 'CVE': cveID}
@@ -247,6 +248,8 @@ def parse_dot(dot_string):
     
     for elem in nodes.items():
         r = elem[1]['type'] == 'OR'
+        print(elem)
+        print(r)
 
         #We look for the source nodes
         source = []
@@ -287,6 +290,8 @@ def change_prob(BAG, edges, nodes, src_node, dst_node, inverted_nodes, cwe_dict,
     for dst_n in dst_node:
         dst_k = inverted_nodes[dst_n]
         dst_cve = nodes[dst_k]['CVE']
+        if dst_cve == "null":
+            continue
         print(dst_cve)
         dst_cwe = cwe_dict[dst_cve]
         if dst_cwe != 'NVD-CWE-Other' and dst_cwe != "NVD-CWE-noinfo":
@@ -297,6 +302,8 @@ def change_prob(BAG, edges, nodes, src_node, dst_node, inverted_nodes, cwe_dict,
                     for s in src_node:
                         src_k = inverted_nodes[s]
                         src_cve = nodes[src_k]['CVE']
+                        if src_cve == "null":
+                            continue
                         src_cwe = cwe_dict[src_cve]
                         if src_cwe != 'NVD-CWE-Other' and src_cwe != "NVD-CWE-noinfo":
                             dist = nx.shortest_path_length(Gcwe, source=src_cwe.split('-')[1], target=dst_cwe.split('-')[1])

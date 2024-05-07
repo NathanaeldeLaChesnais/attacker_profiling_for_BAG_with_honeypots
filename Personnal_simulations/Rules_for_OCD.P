@@ -58,7 +58,7 @@ interaction_rule(
 interaction_rule(
     (validCredentials(Domain) :-
         attackerLocated(Domain)),
-    rule_desc('valid credentials may be found', 'unlikely')).
+    rule_desc('valid credentials may be found', 'likely')).
 
 /* Known vulnearbilities */
 interaction_rule(
