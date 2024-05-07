@@ -1,5 +1,6 @@
 mulval/
 dockerised-mulval/
+Threat_Inteligence/CVE_skills/cves/*
 
 .gitignore
 

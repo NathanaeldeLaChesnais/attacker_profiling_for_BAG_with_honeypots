@@ -24,6 +24,11 @@ A probabilistic study on the relationship of deceptions and attacker skills: htt
 
 ## Exactly what I a, supposed to do:
 Concept for real time attacker profiling with honeypots, by skill based attacker maturity model: https://ieeexplore.ieee.org/document/10432876
+ - objectif: utiliser les honeypots pour du real-time
+ - différences par rapport à ce que je veux faire : les honeypots sont statics, principalement à l'entrée et pas propre à l'AD
+ - en vrai je ne comprends pas ce qu'ils apportent 
+Real-time processing of cybersecurity system data for attacker profiling (Profiling basé sur 7 clusters et de l'apprentissage): https://ieeexplore.ieee.org/document/9119254
+Concept for real time attacker profiling with honeypots, by skill based attacker maturity model: https://jit.ndhu.edu.tw/article/view/1777/1783
 
 # GOAT
 ## Architecture du lab :
