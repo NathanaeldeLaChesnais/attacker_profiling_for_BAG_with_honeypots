@@ -22,11 +22,12 @@ Attacker-parametrised attack graphs (ils font du profilage avant l'attaque mais 
 Towards modelling adaptive attacker’s behaviour: https://link.springer.com/chapter/10.1007/978-3-642-37119-6_23
 A probabilistic study on the relationship of deceptions and attacker skills: https://ieeexplore.ieee.org/abstract/document/8328465
 
-## Exactly what I a, supposed to do:
+## Exactly what I am supposed to do:
 Concept for real time attacker profiling with honeypots, by skill based attacker maturity model: https://ieeexplore.ieee.org/document/10432876
  - objectif: utiliser les honeypots pour du real-time
  - différences par rapport à ce que je veux faire : les honeypots sont statics, principalement à l'entrée et pas propre à l'AD
- - en vrai je ne comprends pas ce qu'ils apportent 
+ - en vrai je ne comprends pas ce qu'ils apportent
+ - ils font une classification statique et des honeypots vraiment génériques 
 Real-time processing of cybersecurity system data for attacker profiling (Profiling basé sur 7 clusters et de l'apprentissage): https://ieeexplore.ieee.org/document/9119254
 Concept for real time attacker profiling with honeypots, by skill based attacker maturity model: https://jit.ndhu.edu.tw/article/view/1777/1783
 
@@ -46,6 +47,6 @@ The attacks done in this project are all from https://mayfly277.github.io/catego
 Some of them are not perfect for my configuration, here are the changes I had to do.
 ### part 5
 Clear the SPNs of our new computer (with dirkjan krbrelayx tool addspn) : bien utiliser https://github.com/dirkjanm/krbrelayx pour addspn.py
-The file renamemachine.py can be fount here : https://github.com/ShutdownRepo/impacket/blob/CVE-2021-42278/examples/renameMachine.py
+The file renamemachine.py can be found here : https://github.com/ShutdownRepo/impacket/blob/CVE-2021-42278/examples/renameMachine.py
 'Reset the computer name back to the original name' : replace samaccount$ by samaccountname$
 

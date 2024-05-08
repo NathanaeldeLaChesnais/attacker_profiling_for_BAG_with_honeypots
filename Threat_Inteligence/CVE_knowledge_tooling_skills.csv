@@ -1,19 +1,19 @@
-Vulnerability,tool,skills,knowledge
-CVE-2021-42287,impacket,L,
-CVE-2021-1675,impacket and CVE-2021-1675.py,L,
-CVE-2019-1040,impacket,H,
-CVE-2022-26923,certipy,L,
-CVE-2022-26925,impacket and PetitPotam.py,H,
-CVE-2020-1472,impacket and CVE-2020-1472-exploit.py,L,
-CVE-2008-4037,Metasploit,/,
-CVE-2022-33679,impacket and CVE-2022-33679.py,H,
-CVE-2020-0796,,L,
-CVE-2021-36934,,L,
-CVE-2014-6324,Responder and ( impacket or Metasploit ),/,
-CVE-2019-0724,impacket and privexchange.py,H,
-CVE-2019-0686,impacket and privexchange.py,H,
-CVE-2021-42278,impacket,L,
-CVE-2021-34527,impacket and CVE-2021-1675.py,L,
-CVE-2021-40469,dnscmd.exe,L,
-CVE-2017-0147,Metasploit,H,
-CVE-2014-1812,Metasploit,/,
+Vulnerability,Note,tool,skills,Credential,Type
+CVE-2008-4037,Ms08-068,Metasploit,/,n,MITM
+CVE-2014-1812,Ms14-025,Metasploit,/,n,CQCM
+CVE-2014-6324,MS14-068,Responder and ( impacket or Metasploit ),/,y,Known vulnerabilities
+CVE-2017-0147,ms17-010,Metasploit,H,n,CQCM
+CVE-2019-0686,,impacket and privexchange.py,H,y,Known vulnerabilities
+CVE-2019-0724,,impacket and privexchange.py,H,y,Known vulnerabilities
+CVE-2019-1040,,impacket,H,n,MITM
+CVE-2020-0796,,,L,n,Privilege escalation
+CVE-2020-1472,,impacket and CVE-2020-1472-exploit.py,L,n,MITM or CQCM
+CVE-2021-1675,,impacket and CVE-2021-1675.py,L,y,Known vulnerabilities
+CVE-2021-34527,,impacket and CVE-2021-1675.py,L,y,Known vulnerabilities
+CVE-2021-36934,,,L,n,Privilege escalation
+CVE-2021-40469,,dnscmd.exe,L,y,Permissions move
+CVE-2021-42278,,impacket,L,y,Known vulnerabilities
+CVE-2021-42287,,impacket,L,y,Known vulnerabilities
+CVE-2022-26923,,certipy,L,y,Known vulnerabilities
+CVE-2022-26925,,impacket and PetitPotam.py,H,n,No credentials
+CVE-2022-33679,,impacket and CVE-2022-33679.py,H,n,got username but no password
