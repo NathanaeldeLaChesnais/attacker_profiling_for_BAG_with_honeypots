@@ -1,8 +1,8 @@
 Vulnerability,Note,tool,skills,Credential,Type
 CVE-2008-4037,Ms08-068,Metasploit,/,n,MITM
 CVE-2014-1812,Ms14-025,Metasploit,/,n,CQCM
-CVE-2014-6324,MS14-068,Responder and ( impacket or Metasploit ),/,y,Known vulnerabilities
-CVE-2017-0147,ms17-010,Metasploit,H,n,CQCM
+CVE-2014-6324,Ms14-068,Responder and ( impacket or Metasploit ),/,y,Known vulnerabilities
+CVE-2017-0147,Ms17-010,Metasploit,H,n,CQCM
 CVE-2019-0686,,impacket and privexchange.py,H,y,Known vulnerabilities
 CVE-2019-0724,,impacket and privexchange.py,H,y,Known vulnerabilities
 CVE-2019-1040,,impacket,H,n,MITM
@@ -17,3 +17,4 @@ CVE-2021-42287,,impacket,L,y,Known vulnerabilities
 CVE-2022-26923,,certipy,L,y,Known vulnerabilities
 CVE-2022-26925,,impacket and PetitPotam.py,H,n,No credentials
 CVE-2022-33679,,impacket and CVE-2022-33679.py,H,n,got username but no password
+DCSYNC,,,,,
