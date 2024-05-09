@@ -90,3 +90,10 @@ interaction_rule(
         dcSync(Domain),
         validCredentials(Domain)),
     rule_desc('permissions move', 'likely')).
+
+/* Lateral move */
+interaction_rule(
+    (dcsync(DC) :-
+        passTheTicket(DC),
+        validCredentials(Domain)),
+    rule_desc('lateral move to dcsync', 'likely')).

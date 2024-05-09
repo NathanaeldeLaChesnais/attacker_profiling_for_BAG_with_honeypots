@@ -1,0 +1,33 @@
+attackerLocated(domain).
+attackGoal(admin(domain)).
+attackGoal(admin(host)).
+attackGoal(dcSync(domain)).
+
+hostDom(host, domain).
+
+vulExists(domain, 'CVE-2022-26925', smb). /* Unauthent PetitPotam */
+cvss('CVE-2022-26925', h).
+
+/* MITM (Listen and relay) */
+vulExists(domain, 'CVE-2019-1040', dcSync). /* remove mic */
+cvss('CVE-2019-1040', h).
+vulExists(domain, 'CVE-2020-1472', dcSync). /* Zero-Logon */
+cvss('CVE-2020-1472', h).
+
+/* Classic quick compromission methods */
+vulExists(host, 'CVE-2020-1472', host_to_admin). /* zerologon (unsafe) */
+cvss('CVE-2020-1472', h).
+vulExists(host, 'CVE-2014-1812', host_to_admin). /* SYSVOL & GPP MS14-025 */
+cvss('CVE-2014-1812', h).
+
+/* Known vulnerabilities */
+vulExists(host, 'CVE-2019-0724', cred_to_admin). /* privexchange */
+cvss('CVE-2019-0724', h).
+vulExists(domain, 'CVE-2021-42287', cred_to_domadmin). /* SamAccountName */
+cvss('CVE-2021-42287', h).
+vulExists(host, 'CVE-2021-1675', cred_to_admin). /* PrintNightmare */
+cvss('CVE-2021-1675', h).
+vulExists(domain, 'CVE-2022-26923', cred_to_domadmin). /* Certifried */
+cvss('CVE-2022-26923', h).
+
+/* Privilege Escalation */
