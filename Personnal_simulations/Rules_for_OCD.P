@@ -44,15 +44,17 @@ interaction_rule(
 
 interaction_rule(
     (admin(Host) :-
-        vulnerableHost(Host),
+        attackerLocated(Domain),
         vulExists(Host, CVE, host_to_admin),
         cvss(CVE, AC)),
-    rule_desc('classic quick compromission attack is possible against host or domain', cvss_ac(AC))).
+    rule_desc('cqc attack is possible against admin host or domain', cvss_ac(AC))).
 
 interaction_rule(
     (lowAccess(Host) :-
-        vulnerableHost(Host)),
-    rule_desc('low access is possible', 'likely')).
+        attackerLocated(domain),
+        vulExists(Host, CVE, vulnerableHost),
+        cvss(CVE, AC)),
+    rule_desc('low access is possible', cvss_ac(AC))).
 
 /* Valid Credentials */
 interaction_rule(
@@ -62,7 +64,7 @@ interaction_rule(
 
 /* Known vulnearbilities */
 interaction_rule(
-    (admin(domain) :-
+    (admin(Domain) :-
         validCredentials(Domain),
         vulExists(Domain, CVE, cred_to_domadmin),
         cvss(CVE, AC)),
@@ -88,8 +90,8 @@ interaction_rule(
 interaction_rule(
     (admin(Domain) :-
         dcSync(Domain),
-        validCredentials(Domain)),
-    rule_desc('permissions move', 'likely')).
+        vulExists(Domain, V, dcSync_to_domadmin)),
+    rule_desc('dc Sync', 'likely')).
 
 /* Lateral move */
 interaction_rule(
