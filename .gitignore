@@ -5,3 +5,5 @@ Threat_Inteligence/CVE_skills/cves/*
 .gitignore
 
 Personnal_simulations/old
+BAG_Code_tw520/__pycache__/*
+
