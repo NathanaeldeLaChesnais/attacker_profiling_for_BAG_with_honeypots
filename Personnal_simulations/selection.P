@@ -1,5 +1,5 @@
 attackerLocated(domain).
-attackGoal(admin(domain)).
+/* attackGoal(admin(domain)). */
 attackGoal(admin(host)).
 
 hostDom(host, domain).
