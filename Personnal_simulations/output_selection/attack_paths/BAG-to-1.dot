@@ -1,0 +1,32 @@
+strict digraph G {
+  1 [ label="Node 20: Node 10" shape="ellipse" nodeType="AND" probArray="1.0" ];
+  2 [ label="Node 18: Node 10" shape="ellipse" nodeType="AND" probArray="1.0" ];
+  3 [ label="Node 17: Node 13" shape="ellipse" nodeType="AND" probArray="1.0" ];
+  4 [ label="Node 16:validCredentials(domain):0" shape="box" nodeType="OR" probArray="0.8" ];
+  5 [ label="Node 14: Node 16" shape="ellipse" nodeType="AND" probArray="1.0" ];
+  6 [ label="Node 13:attackerLocated(domain):1" shape="box" nodeType="AND" probArray="1.0" ];
+  7 [ label="Node 11: Node 13" shape="ellipse" nodeType="AND" probArray="1.0" ];
+  8 [ label="Node 10:mitm(domain):0" shape="box" nodeType="OR" probArray="0.2" ];
+  9 [ label="Node 8: Node 10" shape="ellipse" nodeType="AND" probArray="1.0" ];
+  10 [ label="Node 7:passTheTicket(domain):0" shape="box" nodeType="OR" probArray="0.8 0.2" ];
+  11 [ label="Node 5: Node 7" shape="ellipse" nodeType="AND" probArray="1.0" ];
+  12 [ label="Node 4:dcSync(domain):0" shape="box" nodeType="OR" probArray="0.8 0.2 0.2" ];
+  13 [ label="Node 2: Node 4" shape="ellipse" nodeType="AND" probArray="1.0" ];
+  14 [ label="Node 1:admin(domain):0" shape="box" nodeType="OR" probArray="0.8" ];
+  13 -> 14 [ label="0.8" color="black" ];
+  12 -> 13 [ label="1.0" color="black" ];
+  11 -> 12 [ label="0.8" color="black" ];
+  10 -> 11 [ label="1.0" color="black" ];
+  9 -> 10 [ label="0.8" color="black" ];
+  8 -> 9 [ label="1.0" color="black" ];
+  8 -> 2 [ label="1.0" color="black" ];
+  8 -> 1 [ label="1.0" color="black" ];
+  7 -> 8 [ label="0.2" color="black" ];
+  6 -> 7 [ label="1.0" color="black" ];
+  6 -> 3 [ label="1.0" color="black" ];
+  5 -> 10 [ label="0.2" color="black" ];
+  4 -> 5 [ label="1.0" color="black" ];
+  3 -> 4 [ label="0.8" color="black" ];
+  2 -> 12 [ label="0.2" color="black" ];
+  1 -> 12 [ label="0.2" color="black" ];
+}
