@@ -9,6 +9,8 @@ derived(vulnerableHost(_domain)).
 derived(classicQCM(_domain)).
 derived(validCredentials(_domain)).
 derived(lowAccess(_host)).
+derived(passTheTicket(_domain)).
+
 
 meta(attackGoal(_)).
 meta(cvss(_vulID, _ac)).
@@ -64,9 +66,9 @@ interaction_rule(
 
 /* Known vulnearbilities */
 interaction_rule(
-    (admin(Domain) :-
+    (passTheTicket(Domain) :-
         validCredentials(Domain),
-        vulExists(Domain, CVE, cred_to_domadmin),
+        vulExists(Domain, CVE, cred_to_ticket),
         cvss(CVE, AC)),
     rule_desc('domain admin access is possible', cvss_ac(AC))).
 
@@ -95,7 +97,14 @@ interaction_rule(
 
 /* Lateral move */
 interaction_rule(
-    (dcsync(DC) :-
+    (dcSync(DC) :-
         passTheTicket(DC),
-        validCredentials(Domain)),
+        vulExists(DC, V, passTicket_to_dcsync)),
     rule_desc('lateral move to dcsync', 'likely')).
+
+/* ADCS */
+interaction_rule(
+    (passTheTicket(Domain) :-
+        mitm(Domain),
+        vulExists(Domain, V, adcs)),
+    rule_desc('ECS8 from http to pass the ticket', 'likely')).

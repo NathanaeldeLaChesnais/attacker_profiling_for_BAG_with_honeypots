@@ -1,7 +1,6 @@
 attackerLocated(domain).
 attackGoal(admin(domain)).
 attackGoal(admin(host)).
-attackGoal(lowAccess(host)).
 
 hostDom(host, domain).
 
@@ -25,7 +24,7 @@ cvss('CVE-2021-44228', h).
 /* Known vulnerabilities */
 vulExists(host, 'CVE-2019-0724', cred_to_admin). /* privexchange */
 cvss('CVE-2019-0724', h).
-vulExists(domain, 'CVE-2021-42287', cred_to_domadmin). /* SamAccountName */
+vulExists(domain, 'CVE-2021-42287', cred_to_ticket). /* SamAccountName */
 cvss('CVE-2021-42287', h).
 /* vulExists(host, 'CVE-2021-1675', cred_to_admin). /* PrintNightmare */
 cvss('CVE-2021-1675', h).
@@ -39,3 +38,11 @@ cvss('CVE-2020-0796', h).
 /* Permissions move */
 vulExists(domain, 'CVE-0000-1', dcSync_to_domadmin). /* dcSync */
 cvss('CVE-0000-1', h).
+
+/* Lateral move */
+vulExists(domain, 'CVE-0000-2', passTicket_to_dcsync). /* MSHTML */
+cvss('CVE-0000-2', h).
+
+/* ADCS */
+vulExists(domain, 'CVE-0000-3', adcs). /* ADCS */
+cvss('CVE-0000-3', h).
