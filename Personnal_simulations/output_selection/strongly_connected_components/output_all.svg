@@ -12,18 +12,18 @@
 <!-- 1 -->
 <g id="node1" class="node">
 <title>1</title>
-<polygon fill="none" stroke="#0df200" stroke-width="3" points="258.04,-106 136.04,-53 258.04,0 380.04,-53 258.04,-106"/>
+<polygon fill="none" stroke="#0ef100" stroke-width="3" points="258.04,-106 136.04,-53 258.04,0 380.04,-53 258.04,-106"/>
 <text text-anchor="middle" x="258.04" y="-64.3" font-family="Times,serif" font-size="14.00">1 (1)</text>
 <text text-anchor="middle" x="258.04" y="-49.3" font-family="Times,serif" font-size="14.00">1:admin(domain):0</text>
-<text text-anchor="middle" x="258.04" y="-34.3" font-family="Times,serif" font-size="14.00">0.051</text>
+<text text-anchor="middle" x="258.04" y="-34.3" font-family="Times,serif" font-size="14.00">0.056</text>
 </g>
 <!-- 2 -->
 <g id="node2" class="node">
 <title>2</title>
-<ellipse fill="none" stroke="#10ef00" stroke-width="3" cx="258.04" cy="-179.48" rx="60.62" ry="37.45"/>
+<ellipse fill="none" stroke="#11ee00" stroke-width="3" cx="258.04" cy="-179.48" rx="60.62" ry="37.45"/>
 <text text-anchor="middle" x="258.04" y="-190.78" font-family="Times,serif" font-size="14.00">2 (2)</text>
 <text text-anchor="middle" x="258.04" y="-175.78" font-family="Times,serif" font-size="14.00">CVE&#45;0000&#45;1</text>
-<text text-anchor="middle" x="258.04" y="-160.78" font-family="Times,serif" font-size="14.00">0.064</text>
+<text text-anchor="middle" x="258.04" y="-160.78" font-family="Times,serif" font-size="14.00">0.070</text>
 </g>
 <!-- 2&#45;&gt;1 -->
 <g id="edge18" class="edge">
@@ -34,10 +34,10 @@
 <!-- 3 -->
 <g id="node3" class="node">
 <title>3</title>
-<polygon fill="none" stroke="#20df00" stroke-width="3" points="336.04,-358.95 208.04,-305.95 336.04,-252.95 464.04,-305.95 336.04,-358.95"/>
+<polygon fill="none" stroke="#23dc00" stroke-width="3" points="336.04,-358.95 208.04,-305.95 336.04,-252.95 464.04,-305.95 336.04,-358.95"/>
 <text text-anchor="middle" x="336.04" y="-317.25" font-family="Times,serif" font-size="14.00">3 (4)</text>
 <text text-anchor="middle" x="336.04" y="-302.25" font-family="Times,serif" font-size="14.00">4:dcSync(domain):0</text>
-<text text-anchor="middle" x="336.04" y="-287.25" font-family="Times,serif" font-size="14.00">0.128</text>
+<text text-anchor="middle" x="336.04" y="-287.25" font-family="Times,serif" font-size="14.00">0.141</text>
 </g>
 <!-- 3&#45;&gt;2 -->
 <g id="edge15" class="edge">
@@ -48,10 +48,10 @@
 <!-- 4 -->
 <g id="node4" class="node">
 <title>4</title>
-<ellipse fill="none" stroke="#25da00" stroke-width="3" cx="380.04" cy="-432.43" rx="60.62" ry="37.45"/>
+<ellipse fill="none" stroke="#29d600" stroke-width="3" cx="380.04" cy="-432.43" rx="60.62" ry="37.45"/>
 <text text-anchor="middle" x="380.04" y="-443.73" font-family="Times,serif" font-size="14.00">4 (5)</text>
 <text text-anchor="middle" x="380.04" y="-428.73" font-family="Times,serif" font-size="14.00">CVE&#45;0000&#45;2</text>
-<text text-anchor="middle" x="380.04" y="-413.73" font-family="Times,serif" font-size="14.00">0.147</text>
+<text text-anchor="middle" x="380.04" y="-413.73" font-family="Times,serif" font-size="14.00">0.162</text>
 </g>
 <!-- 4&#45;&gt;3 -->
 <g id="edge14" class="edge">
@@ -62,10 +62,10 @@
 <!-- 5 -->
 <g id="node5" class="node">
 <title>5</title>
-<polygon fill="none" stroke="#4bb400" stroke-width="3" points="623.04,-611.91 456.04,-558.91 623.04,-505.91 790.04,-558.91 623.04,-611.91"/>
+<polygon fill="none" stroke="#52ad00" stroke-width="3" points="623.04,-611.91 456.04,-558.91 623.04,-505.91 790.04,-558.91 623.04,-611.91"/>
 <text text-anchor="middle" x="623.04" y="-570.21" font-family="Times,serif" font-size="14.00">5 (7)</text>
 <text text-anchor="middle" x="623.04" y="-555.21" font-family="Times,serif" font-size="14.00">7:passTheTicket(domain):0</text>
-<text text-anchor="middle" x="623.04" y="-540.21" font-family="Times,serif" font-size="14.00">0.294</text>
+<text text-anchor="middle" x="623.04" y="-540.21" font-family="Times,serif" font-size="14.00">0.324</text>
 </g>
 <!-- 5&#45;&gt;4 -->
 <g id="edge9" class="edge">
@@ -79,7 +79,7 @@
 <ellipse fill="none" stroke="#01fe00" stroke-width="3" cx="623.04" cy="-685.38" rx="60.62" ry="37.45"/>
 <text text-anchor="middle" x="623.04" y="-696.68" font-family="Times,serif" font-size="14.00">6 (8)</text>
 <text text-anchor="middle" x="623.04" y="-681.68" font-family="Times,serif" font-size="14.00">CVE&#45;0000&#45;3</text>
-<text text-anchor="middle" x="623.04" y="-666.68" font-family="Times,serif" font-size="14.00">0.007</text>
+<text text-anchor="middle" x="623.04" y="-666.68" font-family="Times,serif" font-size="14.00">0.008</text>
 </g>
 <!-- 6&#45;&gt;5 -->
 <g id="edge8" class="edge">
@@ -93,7 +93,7 @@
 <polygon fill="none" stroke="#07f800" stroke-width="3" points="445.04,-864.86 320.04,-811.86 445.04,-758.86 570.04,-811.86 445.04,-864.86"/>
 <text text-anchor="middle" x="445.04" y="-823.16" font-family="Times,serif" font-size="14.00">7 (10)</text>
 <text text-anchor="middle" x="445.04" y="-808.16" font-family="Times,serif" font-size="14.00">10:mitm(domain):0</text>
-<text text-anchor="middle" x="445.04" y="-793.16" font-family="Times,serif" font-size="14.00">0.028</text>
+<text text-anchor="middle" x="445.04" y="-793.16" font-family="Times,serif" font-size="14.00">0.031</text>
 </g>
 <!-- 7&#45;&gt;6 -->
 <g id="edge5" class="edge">
@@ -107,7 +107,7 @@
 <ellipse fill="none" stroke="#03fc00" stroke-width="3" cx="115.04" cy="-685.38" rx="75.82" ry="37.45"/>
 <text text-anchor="middle" x="115.04" y="-696.68" font-family="Times,serif" font-size="14.00">13 (18)</text>
 <text text-anchor="middle" x="115.04" y="-681.68" font-family="Times,serif" font-size="14.00">CVE&#45;2019&#45;1040</text>
-<text text-anchor="middle" x="115.04" y="-666.68" font-family="Times,serif" font-size="14.00">0.014</text>
+<text text-anchor="middle" x="115.04" y="-666.68" font-family="Times,serif" font-size="14.00">0.015</text>
 </g>
 <!-- 7&#45;&gt;13 -->
 <g id="edge6" class="edge">
@@ -121,7 +121,7 @@
 <ellipse fill="none" stroke="#02fd00" stroke-width="3" cx="398.04" cy="-685.38" rx="75.82" ry="37.45"/>
 <text text-anchor="middle" x="398.04" y="-696.68" font-family="Times,serif" font-size="14.00">14 (20)</text>
 <text text-anchor="middle" x="398.04" y="-681.68" font-family="Times,serif" font-size="14.00">CVE&#45;2020&#45;1472</text>
-<text text-anchor="middle" x="398.04" y="-666.68" font-family="Times,serif" font-size="14.00">0.010</text>
+<text text-anchor="middle" x="398.04" y="-666.68" font-family="Times,serif" font-size="14.00">0.011</text>
 </g>
 <!-- 7&#45;&gt;14 -->
 <g id="edge7" class="edge">
@@ -132,10 +132,10 @@
 <!-- 8 -->
 <g id="node8" class="node">
 <title>8</title>
-<ellipse fill="none" stroke="#08f700" stroke-width="3" cx="577.04" cy="-938.34" rx="79.81" ry="37.45"/>
+<ellipse fill="none" stroke="#09f600" stroke-width="3" cx="577.04" cy="-938.34" rx="79.81" ry="37.45"/>
 <text text-anchor="middle" x="577.04" y="-949.64" font-family="Times,serif" font-size="14.00">8 (11)</text>
 <text text-anchor="middle" x="577.04" y="-934.64" font-family="Times,serif" font-size="14.00">CVE&#45;2022&#45;26925</text>
-<text text-anchor="middle" x="577.04" y="-919.64" font-family="Times,serif" font-size="14.00">0.035</text>
+<text text-anchor="middle" x="577.04" y="-919.64" font-family="Times,serif" font-size="14.00">0.039</text>
 </g>
 <!-- 8&#45;&gt;7 -->
 <g id="edge4" class="edge">
@@ -146,7 +146,7 @@
 <!-- 9 -->
 <g id="node9" class="node">
 <title>9</title>
-<polygon fill="none" stroke="#ff0000" stroke-width="3" points="1357.54,-1064.81 1176.54,-1064.81 1176.54,-1011.81 1357.54,-1011.81 1357.54,-1064.81"/>
+<polygon fill="none" stroke="#fe0100" stroke-width="3" points="1357.54,-1064.81 1176.54,-1064.81 1176.54,-1011.81 1357.54,-1011.81 1357.54,-1064.81"/>
 <text text-anchor="middle" x="1267.04" y="-1049.61" font-family="Times,serif" font-size="14.00">9 (13)</text>
 <text text-anchor="middle" x="1267.04" y="-1034.61" font-family="Times,serif" font-size="14.00">13:attackerLocated(domain):1</text>
 <text text-anchor="middle" x="1267.04" y="-1019.61" font-family="Times,serif" font-size="14.00">1.000</text>
@@ -160,7 +160,7 @@
 <!-- 12 -->
 <g id="node12" class="node">
 <title>12</title>
-<ellipse fill="none" stroke="#ff0000" stroke-width="3" cx="1267.04" cy="-938.34" rx="130.63" ry="37.45"/>
+<ellipse fill="none" stroke="#fe0100" stroke-width="3" cx="1267.04" cy="-938.34" rx="130.63" ry="37.45"/>
 <text text-anchor="middle" x="1267.04" y="-949.64" font-family="Times,serif" font-size="14.00">12 (17)</text>
 <text text-anchor="middle" x="1267.04" y="-934.64" font-family="Times,serif" font-size="14.00">valid credentials may be found</text>
 <text text-anchor="middle" x="1267.04" y="-919.64" font-family="Times,serif" font-size="14.00">1.000</text>
@@ -174,10 +174,10 @@
 <!-- 19 -->
 <g id="node19" class="node">
 <title>19</title>
-<ellipse fill="none" stroke="#39c600" stroke-width="3" cx="1543.04" cy="-685.38" rx="79.81" ry="37.45"/>
+<ellipse fill="none" stroke="#ff0000" stroke-width="3" cx="1543.04" cy="-685.38" rx="79.81" ry="37.45"/>
 <text text-anchor="middle" x="1543.04" y="-696.68" font-family="Times,serif" font-size="14.00">19 (29)</text>
 <text text-anchor="middle" x="1543.04" y="-681.68" font-family="Times,serif" font-size="14.00">CVE&#45;2021&#45;44228</text>
-<text text-anchor="middle" x="1543.04" y="-666.68" font-family="Times,serif" font-size="14.00">0.227</text>
+<text text-anchor="middle" x="1543.04" y="-666.68" font-family="Times,serif" font-size="14.00">1.000</text>
 </g>
 <!-- 9&#45;&gt;19 -->
 <g id="edge3" class="edge">
@@ -188,10 +188,10 @@
 <!-- 10 -->
 <g id="node10" class="node">
 <title>10</title>
-<ellipse fill="none" stroke="#5ca300" stroke-width="3" cx="839.04" cy="-685.38" rx="79.81" ry="37.45"/>
+<ellipse fill="none" stroke="#659a00" stroke-width="3" cx="839.04" cy="-685.38" rx="79.81" ry="37.45"/>
 <text text-anchor="middle" x="839.04" y="-696.68" font-family="Times,serif" font-size="14.00">10 (14)</text>
 <text text-anchor="middle" x="839.04" y="-681.68" font-family="Times,serif" font-size="14.00">CVE&#45;2021&#45;42287</text>
-<text text-anchor="middle" x="839.04" y="-666.68" font-family="Times,serif" font-size="14.00">0.363</text>
+<text text-anchor="middle" x="839.04" y="-666.68" font-family="Times,serif" font-size="14.00">0.400</text>
 </g>
 <!-- 10&#45;&gt;5 -->
 <g id="edge13" class="edge">
@@ -202,7 +202,7 @@
 <!-- 11 -->
 <g id="node11" class="node">
 <title>11</title>
-<polygon fill="none" stroke="#cb3400" stroke-width="3" points="1267.04,-864.86 1084.04,-811.86 1267.04,-758.86 1450.04,-811.86 1267.04,-864.86"/>
+<polygon fill="none" stroke="#cc3300" stroke-width="3" points="1267.04,-864.86 1084.04,-811.86 1267.04,-758.86 1450.04,-811.86 1267.04,-864.86"/>
 <text text-anchor="middle" x="1267.04" y="-823.16" font-family="Times,serif" font-size="14.00">11 (16)</text>
 <text text-anchor="middle" x="1267.04" y="-808.16" font-family="Times,serif" font-size="14.00">16:validCredentials(domain):0</text>
 <text text-anchor="middle" x="1267.04" y="-793.16" font-family="Times,serif" font-size="14.00">0.800</text>
@@ -219,7 +219,7 @@
 <ellipse fill="none" stroke="#07f800" stroke-width="3" cx="1318.04" cy="-685.38" rx="75.82" ry="37.45"/>
 <text text-anchor="middle" x="1318.04" y="-696.68" font-family="Times,serif" font-size="14.00">16 (23)</text>
 <text text-anchor="middle" x="1318.04" y="-681.68" font-family="Times,serif" font-size="14.00">CVE&#45;2019&#45;0724</text>
-<text text-anchor="middle" x="1318.04" y="-666.68" font-family="Times,serif" font-size="14.00">0.028</text>
+<text text-anchor="middle" x="1318.04" y="-666.68" font-family="Times,serif" font-size="14.00">0.031</text>
 </g>
 <!-- 11&#45;&gt;16 -->
 <g id="edge12" class="edge">
@@ -248,10 +248,10 @@
 <!-- 15 -->
 <g id="node15" class="node">
 <title>15</title>
-<polygon fill="none" stroke="#0ef100" stroke-width="3" points="1150.04,-358.95 1040.04,-305.95 1150.04,-252.95 1260.04,-305.95 1150.04,-358.95"/>
+<polygon fill="none" stroke="#2ed100" stroke-width="3" points="1150.04,-358.95 1040.04,-305.95 1150.04,-252.95 1260.04,-305.95 1150.04,-358.95"/>
 <text text-anchor="middle" x="1150.04" y="-317.25" font-family="Times,serif" font-size="14.00">15 (22)</text>
 <text text-anchor="middle" x="1150.04" y="-302.25" font-family="Times,serif" font-size="14.00">22:admin(host):0</text>
-<text text-anchor="middle" x="1150.04" y="-287.25" font-family="Times,serif" font-size="14.00">0.058</text>
+<text text-anchor="middle" x="1150.04" y="-287.25" font-family="Times,serif" font-size="14.00">0.181</text>
 </g>
 <!-- 16&#45;&gt;15 -->
 <g id="edge19" class="edge">
@@ -262,10 +262,10 @@
 <!-- 17 -->
 <g id="node17" class="node">
 <title>17</title>
-<ellipse fill="none" stroke="#0bf400" stroke-width="3" cx="1215.04" cy="-432.43" rx="75.82" ry="37.45"/>
+<ellipse fill="none" stroke="#32cd00" stroke-width="3" cx="1215.04" cy="-432.43" rx="75.82" ry="37.45"/>
 <text text-anchor="middle" x="1215.04" y="-443.73" font-family="Times,serif" font-size="14.00">17 (26)</text>
 <text text-anchor="middle" x="1215.04" y="-428.73" font-family="Times,serif" font-size="14.00">CVE&#45;2020&#45;0796</text>
-<text text-anchor="middle" x="1215.04" y="-413.73" font-family="Times,serif" font-size="14.00">0.045</text>
+<text text-anchor="middle" x="1215.04" y="-413.73" font-family="Times,serif" font-size="14.00">0.200</text>
 </g>
 <!-- 17&#45;&gt;15 -->
 <g id="edge22" class="edge">
@@ -276,10 +276,10 @@
 <!-- 18 -->
 <g id="node18" class="node">
 <title>18</title>
-<polygon fill="none" stroke="#2ed100" stroke-width="3" points="1522.04,-611.91 1388.04,-558.91 1522.04,-505.91 1656.04,-558.91 1522.04,-611.91"/>
+<polygon fill="none" stroke="#cb3400" stroke-width="3" points="1522.04,-611.91 1388.04,-558.91 1522.04,-505.91 1656.04,-558.91 1522.04,-611.91"/>
 <text text-anchor="middle" x="1522.04" y="-570.21" font-family="Times,serif" font-size="14.00">18 (28)</text>
 <text text-anchor="middle" x="1522.04" y="-555.21" font-family="Times,serif" font-size="14.00">28:lowAccess(host):0</text>
-<text text-anchor="middle" x="1522.04" y="-540.21" font-family="Times,serif" font-size="14.00">0.182</text>
+<text text-anchor="middle" x="1522.04" y="-540.21" font-family="Times,serif" font-size="14.00">0.800</text>
 </g>
 <!-- 18&#45;&gt;17 -->
 <g id="edge21" class="edge">
