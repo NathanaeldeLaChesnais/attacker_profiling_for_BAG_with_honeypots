@@ -8,10 +8,11 @@ vulExists(domain, 'CVE-2022-26925', smb). /* Unauthent PetitPotam */
 cvss('CVE-2022-26925', h).
 
 /* MITM (Listen and relay) */
-vulExists(domain, 'CVE-2019-1040', dcSync). /* remove mic */
+vulExists(domain, 'CVE-2019-1040', coerceSMB_to_dcSync). /* remove mic */
 cvss('CVE-2019-1040', h).
 vulExists(domain, 'CVE-2020-1472', dcSync). /* Zero-Logon */
 cvss('CVE-2020-1472', h).
+vulExists(host, 'CVE-0000-4', coerce_http_to_admin). 
 
 /* Classic quick compromission methods */
 /* vulExists(host, 'CVE-2020-1472', host_to_admin). /* zerologon (unsafe) */
@@ -22,7 +23,7 @@ vulExists(host, 'CVE-2021-44228', vulnerableHost). /* Log4j */
 cvss('CVE-2021-44228', h).
 
 /* Known vulnerabilities */
-vulExists(host, 'CVE-2019-0724', cred_to_admin). /* privexchange */
+vulExists(host, 'CVE-2019-0724', cred_to_coerce_http). /* privexchange */
 cvss('CVE-2019-0724', h).
 vulExists(domain, 'CVE-2021-42287', cred_to_ticket). /* SamAccountName */
 cvss('CVE-2021-42287', h).

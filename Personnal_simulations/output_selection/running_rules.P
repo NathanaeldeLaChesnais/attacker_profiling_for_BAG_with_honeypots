@@ -10,20 +10,23 @@ derived(classicQCM(_domain)).
 derived(validCredentials(_domain)).
 derived(lowAccess(_host)).
 derived(passTheTicket(_domain)).
+derived(coerceHTTP(_domain)).
+derived(coerceSMB(_domain)).
 
 
 meta(attackGoal(_)).
 meta(cvss(_vulID, _ac)).
 
-:- table mitm/1.
 
+/* RIEN */
 interaction_rule(
-    (mitm(Domain) :-
+    (coerceSMB(Domain) :-
         attackerLocated(Domain),
         vulExists(Domain, CVE, smb),
         cvss(CVE, AC)),
-    rule_desc('mitm attack is possible', 'likely')).
+    rule_desc('coerceSMB is possible', 'likely')).
 
+/* MITM */
 interaction_rule(
     (localAdmin(Domain) :-
         mitm(Domain),
@@ -33,10 +36,10 @@ interaction_rule(
 
 interaction_rule(
     (dcSync(Domain) :-
-        mitm(Domain),
-        vulExists(Domain, CVE, dcSync),
+        coerceSMB(Domain),
+        vulExists(Domain, CVE, coerceSMB_to_dcSync),
         cvss(CVE, AC)),
-    rule_desc('dc sync attack is possible', 'likely')).
+    rule_desc('dc sync attack is possible from smb into ldap', 'likely')).
 
 /* Classic Quick Compromission Methods */
 interaction_rule(
@@ -80,6 +83,19 @@ interaction_rule(
         cvss(CVE, AC)),
     rule_desc('admin access is possible', 'likely')).
 
+interaction_rule(
+    (coerceHTTP(Domain) :-
+        validCredentials(Domain),
+        vulExists(Domain, CVE, cred_to_coerce_http),
+        cvss(CVE, AC)),
+    rule_desc('cred_to_coerce_http attack is possible', 'likely')).
+
+interaction_rule(
+    (admin(Host) :-
+        coerceHTTP(Host),
+        vulExists(Host, CVE, coerce_http_to_admin)),
+    rule_desc('admin access is possible', 'likely')).
+
 /* Priviege escalation */
 interaction_rule(
     (admin(Host) :-
@@ -105,6 +121,6 @@ interaction_rule(
 /* ADCS */
 interaction_rule(
     (passTheTicket(Domain) :-
-        mitm(Domain),
+        coerceHTTP(Domain),
         vulExists(Domain, V, adcs)),
     rule_desc('ECS8 from http to pass the ticket', 'likely')).
