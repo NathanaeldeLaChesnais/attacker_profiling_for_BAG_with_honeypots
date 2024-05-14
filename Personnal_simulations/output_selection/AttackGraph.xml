@@ -197,7 +197,7 @@
 <vertex>
 <id>11</id>
 <fact>RULE 0 (mitm attack is possible)</fact>
-<metric>0.2</metric>
+<metric>0.8</metric>
 <type>AND</type>
 </vertex>
 <vertex>
@@ -215,7 +215,7 @@
 <vertex>
 <id>14</id>
 <fact>RULE 7 (domain admin access is possible)</fact>
-<metric>0.2</metric>
+<metric>0.8</metric>
 <type>AND</type>
 </vertex>
 <vertex>
@@ -239,7 +239,7 @@
 <vertex>
 <id>18</id>
 <fact>RULE 2 (dc sync attack is possible)</fact>
-<metric>0.2</metric>
+<metric>0.8</metric>
 <type>AND</type>
 </vertex>
 <vertex>
@@ -251,7 +251,7 @@
 <vertex>
 <id>20</id>
 <fact>RULE 2 (dc sync attack is possible)</fact>
-<metric>0.2</metric>
+<metric>0.8</metric>
 <type>AND</type>
 </vertex>
 <vertex>
@@ -269,7 +269,7 @@
 <vertex>
 <id>23</id>
 <fact>RULE 8 (admin access is possible)</fact>
-<metric>0.2</metric>
+<metric>0.8</metric>
 <type>AND</type>
 </vertex>
 <vertex>
@@ -287,7 +287,7 @@
 <vertex>
 <id>26</id>
 <fact>RULE 9 (privilege escalation)</fact>
-<metric>0.2</metric>
+<metric>0.8</metric>
 <type>AND</type>
 </vertex>
 <vertex>
@@ -305,7 +305,7 @@
 <vertex>
 <id>29</id>
 <fact>RULE 5 (low access is possible)</fact>
-<metric>0.2</metric>
+<metric>0.8</metric>
 <type>AND</type>
 </vertex>
 <vertex>

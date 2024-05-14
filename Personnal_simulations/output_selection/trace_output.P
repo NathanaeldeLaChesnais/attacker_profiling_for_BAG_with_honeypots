@@ -16,17 +16,17 @@ attack(admin(domain)).
 
 possible_duplicate_trace_step(because(6,rule_desc('valid credentials may be found',likely),validCredentials(domain),[attackerLocated(domain)])).
 
-possible_duplicate_trace_step(because(0,rule_desc('mitm attack is possible',cvss_ac(h)),mitm(domain),[cvss('CVE-2022-26925',h),vulExists(domain,'CVE-2022-26925',smb),attackerLocated(domain)])).
+possible_duplicate_trace_step(because(0,rule_desc('mitm attack is possible',likely),mitm(domain),[cvss('CVE-2022-26925',h),vulExists(domain,'CVE-2022-26925',smb),attackerLocated(domain)])).
 
-possible_duplicate_trace_step(because(2,rule_desc('dc sync attack is possible',cvss_ac(h)),dcSync(domain),[cvss('CVE-2019-1040',h),vulExists(domain,'CVE-2019-1040',dcSync),mitm(domain)])).
+possible_duplicate_trace_step(because(2,rule_desc('dc sync attack is possible',likely),dcSync(domain),[cvss('CVE-2019-1040',h),vulExists(domain,'CVE-2019-1040',dcSync),mitm(domain)])).
 
-possible_duplicate_trace_step(because(2,rule_desc('dc sync attack is possible',cvss_ac(h)),dcSync(domain),[cvss('CVE-2020-1472',h),vulExists(domain,'CVE-2020-1472',dcSync),mitm(domain)])).
+possible_duplicate_trace_step(because(2,rule_desc('dc sync attack is possible',likely),dcSync(domain),[cvss('CVE-2020-1472',h),vulExists(domain,'CVE-2020-1472',dcSync),mitm(domain)])).
 
-possible_duplicate_trace_step(because(2,rule_desc('dc sync attack is possible',cvss_ac(h)),dcSync(domain),[cvss('CVE-2020-1472',h),vulExists(domain,'CVE-2020-1472',dcSync),mitm(domain)])).
+possible_duplicate_trace_step(because(2,rule_desc('dc sync attack is possible',likely),dcSync(domain),[cvss('CVE-2020-1472',h),vulExists(domain,'CVE-2020-1472',dcSync),mitm(domain)])).
 
 possible_duplicate_trace_step(because(6,rule_desc('valid credentials may be found',likely),validCredentials(domain),[attackerLocated(domain)])).
 
-possible_duplicate_trace_step(because(7,rule_desc('domain admin access is possible',cvss_ac(h)),passTheTicket(domain),[cvss('CVE-2021-42287',h),vulExists(domain,'CVE-2021-42287',cred_to_ticket),validCredentials(domain)])).
+possible_duplicate_trace_step(because(7,rule_desc('domain admin access is possible',likely),passTheTicket(domain),[cvss('CVE-2021-42287',h),vulExists(domain,'CVE-2021-42287',cred_to_ticket),validCredentials(domain)])).
 
 possible_duplicate_trace_step(because(12,rule_desc('ECS8 from http to pass the ticket',likely),passTheTicket(domain),[vulExists(domain,'CVE-0000-3',adcs),mitm(domain)])).
 
@@ -48,11 +48,11 @@ attack(admin(domain)).
 
 attack(admin(host)).
 
-possible_duplicate_trace_step(because(8,rule_desc('admin access is possible',cvss_ac(h)),admin(host),[cvss('CVE-2019-0724',h),vulExists(host,'CVE-2019-0724',cred_to_admin),hostDom(host,domain),validCredentials(domain)])).
+possible_duplicate_trace_step(because(8,rule_desc('admin access is possible',likely),admin(host),[cvss('CVE-2019-0724',h),vulExists(host,'CVE-2019-0724',cred_to_admin),hostDom(host,domain),validCredentials(domain)])).
 
-possible_duplicate_trace_step(because(5,rule_desc('low access is possible',cvss_ac(h)),lowAccess(host),[cvss('CVE-2021-44228',h),vulExists(host,'CVE-2021-44228',vulnerableHost),attackerLocated(domain)])).
+possible_duplicate_trace_step(because(5,rule_desc('low access is possible',likely),lowAccess(host),[cvss('CVE-2021-44228',h),vulExists(host,'CVE-2021-44228',vulnerableHost),attackerLocated(domain)])).
 
-possible_duplicate_trace_step(because(9,rule_desc('privilege escalation',cvss_ac(h)),admin(host),[cvss('CVE-2020-0796',h),vulExists(host,'CVE-2020-0796',low_to_admin),lowAccess(host)])).
+possible_duplicate_trace_step(because(9,rule_desc('privilege escalation',likely),admin(host),[cvss('CVE-2020-0796',h),vulExists(host,'CVE-2020-0796',low_to_admin),lowAccess(host)])).
 
 attack(admin(host)).
 

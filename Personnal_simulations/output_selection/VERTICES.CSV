@@ -8,23 +8,23 @@
 8,"RULE 12 (ECS8 from http to pass the ticket)","AND",0.8
 9,"vulExists(domain,'CVE-0000-3',adcs)","LEAF",1
 10,"mitm(domain)","OR",0
-11,"RULE 0 (mitm attack is possible)","AND",0.2
+11,"RULE 0 (mitm attack is possible)","AND",0.8
 12,"vulExists(domain,'CVE-2022-26925',smb)","LEAF",1
 13,"attackerLocated(domain)","LEAF",1
-14,"RULE 7 (domain admin access is possible)","AND",0.2
+14,"RULE 7 (domain admin access is possible)","AND",0.8
 15,"vulExists(domain,'CVE-2021-42287',cred_to_ticket)","LEAF",1
 16,"validCredentials(domain)","OR",0
 17,"RULE 6 (valid credentials may be found)","AND",0.8
-18,"RULE 2 (dc sync attack is possible)","AND",0.2
+18,"RULE 2 (dc sync attack is possible)","AND",0.8
 19,"vulExists(domain,'CVE-2019-1040',dcSync)","LEAF",1
-20,"RULE 2 (dc sync attack is possible)","AND",0.2
+20,"RULE 2 (dc sync attack is possible)","AND",0.8
 21,"vulExists(domain,'CVE-2020-1472',dcSync)","LEAF",1
 22,"admin(host)","OR",0
-23,"RULE 8 (admin access is possible)","AND",0.2
+23,"RULE 8 (admin access is possible)","AND",0.8
 24,"vulExists(host,'CVE-2019-0724',cred_to_admin)","LEAF",1
 25,"hostDom(host,domain)","LEAF",1
-26,"RULE 9 (privilege escalation)","AND",0.2
+26,"RULE 9 (privilege escalation)","AND",0.8
 27,"vulExists(host,'CVE-2020-0796',low_to_admin)","LEAF",1
 28,"lowAccess(host)","OR",0
-29,"RULE 5 (low access is possible)","AND",0.2
+29,"RULE 5 (low access is possible)","AND",0.8
 30,"vulExists(host,'CVE-2021-44228',vulnerableHost)","LEAF",1
