@@ -1,19 +1,35 @@
 import numpy as np
+from itertools import product
 
 def create_AND_table(probs):
     if len(probs) == 0:
         return np.array([[0, 1]])
     else:
         npa = len(probs)
+        pop = np.full(npa, 0.01)
+        q = np.array(probs)
         cpt = np.zeros((2, 2 ** npa))
-        cpt[1, -1] = probs[0]
+        
+        vals = list(product([0, 1], repeat=npa))
+        print(vals)
+        
+        for i in range(2 ** npa):
+            c = [j for j, val in enumerate(vals[i]) if val == 1]
+            c_prime = [j for j, val in enumerate(vals[i]) if val == 0]
+            print(list(enumerate(vals[i])))
+            print(f"c= {c}")
+            print(f"q[c] = {q[c]}")
+            print(f"pop= {pop[c_prime]}")
+            tmp = np.prod(q[c]) * np.prod(pop[c_prime])
+            cpt[1, i] = tmp
+        
         cpt[0, :] = 1 - cpt[1, :]
         
         return cpt.T
 
 if __name__ == '__main__':
     # Example usage:
-    probabilities = [0.7, 0.8]  # Example probabilities
+    probabilities = [0.7, 0.8, 0.6]  # Example probabilities
     result_table = create_AND_table(probabilities)
 
     # Printing the resulting table

@@ -10,18 +10,25 @@ def create_OR_table(probs):
         cpt = np.zeros((2, 2 ** npa))
         
         vals = list(product([0, 1], repeat=npa))
+        print(vals)
         
         for i in range(2 ** npa):
             c = [j for j, val in enumerate(vals[i]) if val == 1]
-            cpt[0, i] = np.prod(q[c])
+            tmp = np.prod(q[c])
+            if tmp == 1:
+                cpt[0, i] = 0.99
+            else:
+                cpt[0, i] = tmp
         
+        print(cpt)
+
         cpt[1, :] = 1 - cpt[0, :]
         
         return cpt.T
 
 if __name__ == '__main__':
     # Example usage:
-    probabilities = [0.3, 0.6, 0.8]  # Example probabilities
+    probabilities = [0.3, 0.8]  # Example probabilities
     result_table = create_OR_table(probabilities)
 
     # Printing the resulting table
