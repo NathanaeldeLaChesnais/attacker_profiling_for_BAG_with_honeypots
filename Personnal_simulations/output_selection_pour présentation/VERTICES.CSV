@@ -1,46 +1,28 @@
 1,"admin(domain)","OR",0
 2,"RULE 12 (dc Sync)","AND",0.8
 3,"vulExists(domain,'CVE-0000-1',dcSync_to_domadmin)","LEAF",1
-2,3,-1
 4,"dcSync(domain)","OR",0
 5,"RULE 13 (lateral move to dcsync)","AND",0.8
 6,"vulExists(domain,'CVE-0000-2',passTicket_to_dcsync)","LEAF",1
-5,6,-1
 7,"passTheTicket(domain)","OR",0
 8,"RULE 7 (domain admin access is possible)","AND",0.8
 9,"vulExists(domain,'CVE-2021-42287',cred_to_ticket)","LEAF",1
-8,9,-1
 10,"validCredentials(domain)","OR",0
 11,"RULE 6 (valid credentials may be found)","AND",0.8
 12,"attackerLocated(domain)","LEAF",1
-11,12,-1
-10,11,-1
-8,10,-1
-7,8,-1
-5,7,-1
-4,5,-1
 13,"RULE 2 (dc sync attack is possible from smb into ldap)","AND",0.8
 14,"vulExists(domain,'CVE-2019-1040',coerceSMB_to_dcSync)","LEAF",1
-13,14,-1
 15,"coerceSMB(domain)","OR",0
 16,"RULE 0 (coerceSMB is possible)","AND",0.8
 17,"vulExists(domain,'CVE-2022-26925',smb)","LEAF",1
-16,17,-1
-16,12,-1
-15,16,-1
-13,15,-1
-4,13,-1
-2,4,-1
-1,2,-1
 18,"admin(host)","OR",0
-19,"RULE 11 (privilege escalation)","AND",0.8
-20,"vulExists(host,'CVE-2020-0796',low_to_admin)","LEAF",1
-19,20,-1
-21,"lowAccess(host)","OR",0
-22,"RULE 5 (low access is possible)","AND",0.8
-23,"vulExists(host,'CVE-2021-44228',vulnerableHost)","LEAF",1
-22,23,-1
-22,12,-1
-21,22,-1
-19,21,-1
-18,19,-1
+19,"RULE 10 (admin access is possible)","AND",0.8
+20,"vulExists(host,'CVE-0000-4',coerce_http_to_admin)","LEAF",1
+21,"coerceHTTP(host)","OR",0
+22,"RULE 9 (cred_to_coerce_http attack is possible)","AND",0.8
+23,"vulExists(host,'CVE-2019-0724',cred_to_coerce_http)","LEAF",1
+24,"RULE 11 (privilege escalation)","AND",0.8
+25,"vulExists(host,'CVE-2020-0796',low_to_admin)","LEAF",1
+26,"lowAccess(host)","OR",0
+27,"RULE 5 (low access is possible)","AND",0.8
+28,"vulExists(host,'CVE-2021-44228',vulnerableHost)","LEAF",1

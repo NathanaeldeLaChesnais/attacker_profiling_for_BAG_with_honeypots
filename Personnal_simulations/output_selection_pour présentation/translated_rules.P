@@ -16,7 +16,7 @@
 
 :-(mvTrc(admin(_h3279,8)),','(mvTrc(validCredentials(_h3284,_h3335)),','(hostDom(_h3279,_h3284),','(vulExists(_h3279,_h3296,cred_to_admin),','(cvss(_h3296,_h3300),assert_trace(because(8,rule_desc('admin access is possible',likely),admin(_h3279),[cvss(_h3296,_h3300),vulExists(_h3279,_h3296,cred_to_admin),hostDom(_h3279,_h3284),validCredentials(_h3284)]))))))).
 
-:-(mvTrc(coerceHTTP(_h3279,9)),','(mvTrc(validCredentials(_h3279,_h3329)),','(vulExists(_h3279,_h3290,cred_to_coerce_http),','(cvss(_h3290,_h3294),assert_trace(because(9,rule_desc('cred_to_coerce_http attack is possible',likely),coerceHTTP(_h3279),[cvss(_h3290,_h3294),vulExists(_h3279,_h3290,cred_to_coerce_http),validCredentials(_h3279)])))))).
+:-(mvTrc(coerceHTTP(_h3279,9)),','(mvTrc(validCredentials(_h3284,_h3329)),','(vulExists(_h3279,_h3290,cred_to_coerce_http),','(cvss(_h3290,_h3294),assert_trace(because(9,rule_desc('cred_to_coerce_http attack is possible',likely),coerceHTTP(_h3279),[cvss(_h3290,_h3294),vulExists(_h3279,_h3290,cred_to_coerce_http),validCredentials(_h3284)])))))).
 
 :-(mvTrc(admin(_h3279,10)),','(mvTrc(coerceHTTP(_h3279,_h3323)),','(vulExists(_h3279,_h3287,coerce_http_to_admin),assert_trace(because(10,rule_desc('admin access is possible',likely),admin(_h3279),[vulExists(_h3279,_h3287,coerce_http_to_admin),coerceHTTP(_h3279)]))))).
 

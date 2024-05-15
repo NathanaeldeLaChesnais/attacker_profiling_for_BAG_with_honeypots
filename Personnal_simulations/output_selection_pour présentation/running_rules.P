@@ -84,9 +84,9 @@ interaction_rule(
     rule_desc('admin access is possible', 'likely')).
 
 interaction_rule(
-    (coerceHTTP(Domain) :-
+    (coerceHTTP(Host) :-
         validCredentials(Domain),
-        vulExists(Domain, CVE, cred_to_coerce_http),
+        vulExists(Host, CVE, cred_to_coerce_http),
         cvss(CVE, AC)),
     rule_desc('cred_to_coerce_http attack is possible', 'likely')).
 

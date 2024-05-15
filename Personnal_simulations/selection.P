@@ -1,6 +1,7 @@
 attackerLocated(domain).
 attackGoal(admin(domain)).
 attackGoal(admin(host)).
+/* attackGoal(coerceHTTP(host)). */
 
 hostDom(host, domain).
 
