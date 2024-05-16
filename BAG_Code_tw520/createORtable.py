@@ -20,8 +20,6 @@ def create_OR_table(probs):
             else:
                 cpt[0, i] = tmp
         
-        print(cpt)
-
         cpt[1, :] = 1 - cpt[0, :]
         
         return cpt.T

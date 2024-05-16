@@ -28,8 +28,21 @@ Concept for real time attacker profiling with honeypots, by skill based attacker
  - différences par rapport à ce que je veux faire : les honeypots sont statics, principalement à l'entrée et pas propre à l'AD
  - en vrai je ne comprends pas ce qu'ils apportent
  - ils font une classification statique et des honeypots vraiment génériques 
+
 Real-time processing of cybersecurity system data for attacker profiling (Profiling basé sur 7 clusters et de l'apprentissage): https://ieeexplore.ieee.org/document/9119254
+
 Concept for real time attacker profiling with honeypots, by skill based attacker maturity model: https://jit.ndhu.edu.tw/article/view/1777/1783
+
+## Honeypots:
+Approaches for Preventing Honeypot Detection and Compromise (avoir une known vulnerability shows that it is a honeypot, en revanche présentes différentes techniques de randomness qui le rendent moins détectable): https://ieeexplore.ieee.org/document/8635603
+
+HoneyTrack: An improved honeypot(Ils renvoient tout le trafic annormal vers une voie de sortie différente, mais c'est implémenté au niveau du firewall : est-ce que c'est possible de récupérer toutes les actions du hacker et que ses packets soient traités differement ?): https://ieeexplore.ieee.org/document/10063105
+
+Engaging Attackers with a Highly Interactive Honeypot System Using ChatGPT(The proposed approach involves using ChatGPT, a large language model, to create a highly interactive honeypot that engages attackers in conversations and tricks them into revealing their tactics and motives. Peut-etre simuler des humains dans les compôrtements de bots avec de l'IA générative ? ): https://ieeexplore.ieee.org/document/10392228
+
+Honeypot-based intrusion detection system: A performance analysis(Encore une fois, c'est basé sur une redirection générale de tous les paquets du hacker sur le honeynet): https://ieeexplore.ieee.org/document/7724682
+
+Deceptive directories and “vulnerable” logs: a honeypot study of the LDAP and log4j attack landscape (Vraiment orienté LDAP): https://ieeexplore.ieee.org/document/9799363
 
 # GOAT
 ## Architecture du lab :

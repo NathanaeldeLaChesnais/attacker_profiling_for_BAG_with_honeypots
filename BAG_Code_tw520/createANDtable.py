@@ -16,10 +16,6 @@ def create_AND_table(probs):
         for i in range(2 ** npa):
             c = [j for j, val in enumerate(vals[i]) if val == 1]
             c_prime = [j for j, val in enumerate(vals[i]) if val == 0]
-            print(list(enumerate(vals[i])))
-            print(f"c= {c}")
-            print(f"q[c] = {q[c]}")
-            print(f"pop= {pop[c_prime]}")
             tmp = np.prod(q[c]) * np.prod(pop[c_prime])
             cpt[1, i] = tmp
         
