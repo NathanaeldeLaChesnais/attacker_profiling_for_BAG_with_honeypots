@@ -11,7 +11,6 @@ def create_AND_table(probs):
         cpt = np.zeros((2, 2 ** npa))
         
         vals = list(product([0, 1], repeat=npa))
-        print(vals)
         
         for i in range(2 ** npa):
             c = [j for j, val in enumerate(vals[i]) if val == 1]
