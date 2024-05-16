@@ -1,0 +1,15 @@
+[submodule "ag-tools"]
+    path = ag-tools
+    url = https://github.com/ecleipteon/ag-tools.git
+
+[submodule "mulval"]
+    path = mulval
+    url = https://github.com/risksense/mulval.git
+
+[submodule "bag-exact-approximate-inference"]
+    path = bag-exact-approximate-inference
+    url = https://github.com/rissgrouphub/bag-exact-approximate-inference.git
+
+[submodule "dockerised-mulval"]
+    path = dockerised-mulval
+    url = https://github.com/rissgrouphub/dockerised-mulval.git
