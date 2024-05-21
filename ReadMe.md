@@ -38,7 +38,7 @@ Approaches for Preventing Honeypot Detection and Compromise (avoir une known vul
 
 HoneyTrack: An improved honeypot(Ils renvoient tout le trafic annormal vers une voie de sortie différente, mais c'est implémenté au niveau du firewall : est-ce que c'est possible de récupérer toutes les actions du hacker et que ses packets soient traités differement ?): https://ieeexplore.ieee.org/document/10063105
 
-Engaging Attackers with a Highly Interactive Honeypot System Using ChatGPT(The proposed approach involves using ChatGPT, a large language model, to create a highly interactive honeypot that engages attackers in conversations and tricks them into revealing their tactics and motives. Peut-etre simuler des humains dans les compôrtements de bots avec de l'IA générative ? ): https://ieeexplore.ieee.org/document/10392228
+Engaging Attackers with a Highly Interactive Honeypot System Using ChatGPT(The proposed approach involves using ChatGPT, a large language model, to create a highly interactive honeypot that engages attackers in conversations and tricks them into revealing their tactics and motives. Peut-etre simuler des humains dans les compôrtements de bots avec de l'IA générative ? En vrai je pense plus simple de faire un truc de l'ordre du random bien calibré): https://ieeexplore.ieee.org/document/10392228
 
 Honeypot-based intrusion detection system: A performance analysis(Encore une fois, c'est basé sur une redirection générale de tous les paquets du hacker sur le honeynet): https://ieeexplore.ieee.org/document/7724682
 

@@ -1,24 +1,28 @@
-Vulnerability,Note,tool,skills,Credential,Type,
-CVE-2008-4037,Ms08-068,Metasploit,u,n,MITM,
-CVE-2014-1812,Ms14-025,Metasploit,u,n,CQCM,
-CVE-2014-6324,Ms14-068,Responder & ( Impacket | Metasploit ),u,y,Known vulnerabilities,
-CVE-2017-0147,Ms17-010,Metasploit,H,n,CQCM,
-CVE-2019-0686,,Impacket & privexchange.py,H,y,Known vulnerabilities,
-CVE-2019-0724,,Impacket & privexchange.py,H,y,Known vulnerabilities,
-CVE-2019-1040,,Impacket,H,n,MITM,
-CVE-2020-0796,,Unknown,L,n,Privilege escalation,
-CVE-2020-1472,,Impacket & CVE-2020-1472-exploit.py,L,n,MITM,CQCM
-CVE-2021-1675,,Impacket & CVE-2021-1675.py,L,y,Known vulnerabilities,
-CVE-2021-34527,,Impacket & CVE-2021-1675.py,L,y,Known vulnerabilities,
-CVE-2021-36934,,Unknown,L,n,Privilege escalation,
-CVE-2021-40469,,dnscmd.exe,L,y,Permissions move,
-CVE-2021-42278,,Impacket,L,y,Known vulnerabilities,
-CVE-2021-42287,,Impacket,L,y,Known vulnerabilities,
-CVE-2022-26923,,certipy,L,y,Known vulnerabilities,
-CVE-2022-26925,,Impacket & PetitPotam.py,H,n,No credentials,
-CVE-2022-33679,,Impacket & CVE-2022-33679.py,H,n,got username but no password,
-CVE-2021-44228,L4j,Unknown,L,n,CQCM,
-CVE-0000-1,dcSync,Impacket,L,,Permissions move,
-CVE-0000-2,Ticket,Impacket,L,,Lateral move,
-CVE-0000-3,ESC8,certipy,L,,ADCS,
-CVE-0000-4,Coerce HTTP,Unknown,L,,MITM,
+Vulnerability,Note,tool,skills,Credential,Type
+CVE-2008-4037,Ms08-068,Metasploit,u,n,MITM
+CVE-2014-1812,Ms14-025,Metasploit,u,n,CQCM
+CVE-2014-6324,Ms14-068,Responder & ( Impacket | Metasploit ),u,y,KnownVulnerabilities
+CVE-2017-0147,Ms17-010,Metasploit,H,n,CQCM
+CVE-2019-0686,,Impacket & privexchange.py,H,y,KnownVulnerabilities
+CVE-2019-0724,,Impacket & privexchange.py,H,y,KnownVulnerabilities
+CVE-2019-1040,,Impacket,H,n,MITM
+CVE-2020-0796,,Unknown,L,n,PrivilegeEscalation
+CVE-2020-1472,,Impacket & CVE-2020-1472-exploit.py,L,n,MITM | CQCM
+CVE-2021-1675,,Impacket & CVE-2021-1675.py,L,y,KnownVulnerabilities
+CVE-2021-34527,,Impacket & CVE-2021-1675.py,L,y,KnownVulnerabilities
+CVE-2021-36934,,Unknown,L,n,PrivilegeEscalation
+CVE-2021-40469,,dnscmd.exe,L,y,PermissionsMove
+CVE-2021-42278,,Impacket,L,y,KnownVulnerabilities
+CVE-2021-42287,,Impacket,L,y,KnownVulnerabilities
+CVE-2022-26923,,Certipy,L,y,KnownVulnerabilities
+CVE-2022-26925,,Impacket & PetitPotam.py,H,n,NoCredentials
+CVE-2022-33679,,Impacket & CVE-2022-33679.py,H,n,gotUsernameButNoPassword
+CVE-2021-44228,L4j,Unknown,L,n,CQCM
+CVE-0000-1,dcSync,Impacket,L,,PermissionsMove
+CVE-0000-2,Ticket,Impacket,L,,LateralMove
+CVE-0000-3,ESC8,Certipy,L,,ADCS
+CVE-0000-4,Coerce HTTP,Unknown,L,,MITM
+CVE-0000-5,Kerberos ASREP,Hashcat,L,,CrackingHash
+CVE-0000-6,no_krb_preauth ,Impacket | Rubeus,L,,gotUsernameButNoPassword
+CVE-0000-7,Ntlm bots,Responder,,,NoCredentials
+CVE-0000-8,NetNTLMv2,Hashcat | John,,,CrackingHash

@@ -1,4 +1,0 @@
-:-(mvTrc(stolenCredential(_h3279,_h3280,0)),','(mvTrc(stolenCredentialDC(_h3279,_h3286,_h3324)),','(hostDefined(_h3280,_h3286),assert_trace(because(0,rule_desc('password are common for the same user in a domain',certain),stolenCredential(_h3279,_h3280),[hostDefined(_h3280,_h3286),stolenCredentialDC(_h3279,_h3286)]))))).
-
-:-(mvTrc(stolenCredentialDC(_h3279,_h3280,1)),','(mvTrc(stolenCredential(_h3279,_h3286,_h3324)),','(hostDefined(_h3286,_h3280),assert_trace(because(1,rule_desc('password are common for the same user in a domain',certain),stolenCredentialDC(_h3279,_h3280),[hostDefined(_h3286,_h3280),stolenCredential(_h3279,_h3286)]))))).
-

@@ -2,7 +2,7 @@ import re
 
 # Définir les types de tokens
 TOKENS = [
-    ('VAR', r'[a-zA-Z][a-zA-Z0-9.\-]*'),
+    ('VAR', r'[a-zA-Z][a-zA-Z0-9.\-\_]*'),
     ('LPAREN', r'\('),
     ('RPAREN', r'\)'),
     ('AND', r'&'),
