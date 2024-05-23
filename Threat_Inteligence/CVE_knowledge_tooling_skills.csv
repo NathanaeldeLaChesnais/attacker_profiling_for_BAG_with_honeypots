@@ -24,5 +24,10 @@ CVE-0000-3,ESC8,Certipy,L,,ADCS
 CVE-0000-4,Coerce HTTP,Unknown,L,,MITM
 CVE-0000-5,Kerberos ASREP,Hashcat,L,,CrackingHash
 CVE-0000-6,no_krb_preauth ,Impacket | Rubeus,L,,gotUsernameButNoPassword
-CVE-0000-7,Ntlm bots,Responder,,,NoCredentials
-CVE-0000-8,NetNTLMv2,Hashcat | John,,,CrackingHash
+CVE-0000-7,Ntlm bots,Responder,L,,NoCredentials
+CVE-0000-8,NetNTLMv2,Hashcat | John,L,,CrackingHash
+CVE-0000-9,Coerce SMB,Impacket,L,,MITM
+CVE-0000-10,ntlmsock to host admin,Impacket & Proxychain,L,,LateralMove
+CVE-0000-11,Kerberos 5 TGS,Impacket | Rubeus,L,,Kerberos
+CVE-0000-12,Kerberos 5 TGS,Hashcat | John,L,,CrackingHash
+CVE-0000-13,,,,,

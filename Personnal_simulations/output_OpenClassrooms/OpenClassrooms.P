@@ -1,0 +1,9 @@
+attackerLocated(intranet).
+/* attackGoal(execCode(meereen, root)). */
+attackGoal(hashKRB(user3)).
+
+/* User */
+validUser(user).
+
+/* Kerberos */
+vulExists(user3, 'CVE-0000-11', kerberoasting).

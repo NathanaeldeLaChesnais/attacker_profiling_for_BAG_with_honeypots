@@ -1,13 +1,14 @@
 primitive(attackerLocated(_domain)).
 primitive(vulExists(_domain, _cve, _mod)).
 primitive(hostDom(_host, _domain)).
+meta(user(_user)).
 
 derived(mitm(_domain)).
 derived(admin(_domain)).
 derived(dcSync(_domain)).
 derived(vulnerableHost(_domain)).
 derived(classicQCM(_domain)).
-derived(validCredentials(_domain)).
+derived(validCredential(_domain)).
 derived(lowAccess(_host)).
 derived(passTheTicket(_domain)).
 derived(coerceHTTP(_domain)).
@@ -15,7 +16,9 @@ derived(coerceSMB(_domain)).
 derived(userName(_user)).
 derived(hash(_user)).
 derived(hashNTLM(_user)).
-
+derived(validUser(_)).
+derived(socksNTLM(_host)).
+derived(hashKRB(_user)).
 
 
 meta(attackGoal(_)).
@@ -27,6 +30,21 @@ interaction_rule(
         hashNTLM(User)),
     rule_desc('hashntlm gives hash', 'likely')).
 
+interaction_rule(
+    (hash(User) :-
+        hashKRB(User)),
+    rule_desc('hashkrb gives hash', 'likely')).
+
+interaction_rule(
+    (validUser(_) :-
+        validCredential(User),
+        user(User)),
+    rule_desc('rassemblement des comptes user en 1', 'certain')).
+
+interaction_rule(
+    (hashNTLM(admin) :-
+        hashNTLM(domadmin)),
+    rule_desc('domadmin is admin', 'certain')).
 
 /* No credential */
 interaction_rule(
@@ -62,6 +80,11 @@ interaction_rule(
         cvss(CVE, AC)),
     rule_desc('dc sync attack is possible from smb into ldap', 'likely')).
 
+interaction_rule(
+    (socksNTLM(Host) :-
+        vulExists(Host, CVE, unsigned_smb)),
+    rule_desc('SMB is not signed', 'likely')).
+
 /* Classic Quick Compromission Methods */
 interaction_rule(
     (vulnerableHost(_) :-
@@ -86,27 +109,34 @@ interaction_rule(
 interaction_rule(
     (hash(User) :-
         userName(User),
+        attackerLocated(Domain),
         vulExists(User, CVE, no_krb_preauth)),
     rule_desc('hash found asrep', 'likely')).
 
 /* Valid Credentials */
 interaction_rule(
-    (validCredentials(User) :-
+    (validCredential(User) :-
         hash(User),
         vulExists(User, CVE, weak_hash)),
     rule_desc('cracking hash', 'probable')).
 
+/* interaction_rule(
+    (validCredential(User) :-
+        hashKRB(User),
+        vulExists(User, CVE, weak_hash)),
+    rule_desc('cracking hash', 'probable')). */
+
 /* Known vulnearbilities */
 interaction_rule(
     (passTheTicket(Domain) :-
-        validCredentials(Domain),
+        validCredential(Domain),
         vulExists(Domain, CVE, cred_to_ticket),
         cvss(CVE, AC)),
     rule_desc('domain admin access is possible', 'likely')).
 
 interaction_rule(
     (admin(Host) :-
-        validCredentials(Domain),
+        validCredential(Domain),
         hostDom(Host, Domain),
         vulExists(Host, CVE, cred_to_admin),
         cvss(CVE, AC)),
@@ -114,7 +144,7 @@ interaction_rule(
 
 interaction_rule(
     (coerceHTTP(Host) :-
-        validCredentials(Domain),
+        validCredential(Domain),
         vulExists(Host, CVE, cred_to_coerce_http),
         cvss(CVE, AC)),
     rule_desc('cred_to_coerce_http attack is possible', 'likely')).
@@ -147,9 +177,23 @@ interaction_rule(
         vulExists(DC, V, passTicket_to_dcsync)),
     rule_desc('lateral move to dcsync', 'likely')).
 
+interaction_rule(
+    (admin(Host) :-
+        socksNTLM(Host),
+        hashNTLM(admin),
+        vulExists(Host, V, ntlmsock_to_hostadmin)),
+    rule_desc('lateral move to host admin', 'likely')).
+
 /* ADCS */
 interaction_rule(
     (passTheTicket(Domain) :-
         coerceHTTP(Domain),
         vulExists(Domain, V, adcs)),
     rule_desc('ECS8 from http to pass the ticket', 'likely')).
+
+/* Kerberos */
+interaction_rule(
+    (hashKRB(User) :-
+        validCredential(User1),
+        vulExists(User, V, kerberoasting)),
+    rule_desc('kerberos attack', 'likely')).

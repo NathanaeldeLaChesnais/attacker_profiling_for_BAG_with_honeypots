@@ -1,6 +1,10 @@
 attackerLocated(intranet).
 /* attackGoal(execCode(meereen, root)). */
-attackGoal(validCredentials(_)).
+attackGoal(hashKRB(user3)).
+
+/* User */
+user(user2).
+user(user1).
 
 /* No credential */
 vulExists(user1, 'CVE-0000-7', ntlm_bot).
@@ -8,9 +12,18 @@ vulExists(domadmin, 'CVE-0000-7', ntlm_bot).
 
 
 /* Got username but no password */
-vulExists(user, 'CVE-0000-6', no_krb_preauth).
+vulExists(user2, 'CVE-0000-6', no_krb_preauth).
 
 /* Cracking Hash */
-vulExists(user, 'CVE-0000-5', weak_hash).
+vulExists(user2, 'CVE-0000-5', weak_hash).
 vulExists(user1, 'CVE-0000-8', weak_hash).
+vulExists(user3, 'CVE-0000-12', weak_hash).
 
+/* MITM */
+vulExists(host, 'CVE-0000-9', unsigned_smb).
+
+/* Lateral move */
+vulExists(host, 'CVE-0000-10', ntlmsock_to_hostadmin).
+
+/* Kerberos */
+vulExists(user3, 'CVE-0000-11', kerberoasting).

@@ -18,7 +18,6 @@ derived(hash(_user)).
 derived(hashNTLM(_user)).
 derived(validUser(_)).
 derived(socksNTLM(_host)).
-derived(hashKRB(_user)).
 
 
 meta(attackGoal(_)).
@@ -31,12 +30,7 @@ interaction_rule(
     rule_desc('hashntlm gives hash', 'likely')).
 
 interaction_rule(
-    (hash(User) :-
-        hashKRB(User)),
-    rule_desc('hashkrb gives hash', 'likely')).
-
-interaction_rule(
-    (validUser(user) :-
+    (validUser(_) :-
         validCredential(User),
         user(User)),
     rule_desc('rassemblement des comptes user en 1', 'certain')).
@@ -120,11 +114,11 @@ interaction_rule(
         vulExists(User, CVE, weak_hash)),
     rule_desc('cracking hash', 'probable')).
 
-/* interaction_rule(
+interaction_rule(
     (validCredential(User) :-
         hashKRB(User),
         vulExists(User, CVE, weak_hash)),
-    rule_desc('cracking hash', 'probable')). */
+    rule_desc('cracking hash', 'probable')).
 
 /* Known vulnearbilities */
 interaction_rule(
@@ -194,6 +188,6 @@ interaction_rule(
 /* Kerberos */
 interaction_rule(
     (hashKRB(User) :-
-        validCredential(User1),
+        validUser(user),
         vulExists(User, V, kerberoasting)),
     rule_desc('kerberos attack', 'likely')).
