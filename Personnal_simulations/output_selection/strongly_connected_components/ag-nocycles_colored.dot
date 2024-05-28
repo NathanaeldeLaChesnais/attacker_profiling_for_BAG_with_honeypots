@@ -7,7 +7,7 @@ digraph G {
   6 [label="6 (8)\nCVE-2021-42287\n0.453", color="#738C00", penwidth=3, shape="ellipse"];
   7 [label="7 (10)\n10:validCredentials(domain):0\n0.866", color="#DC2300", penwidth=3, shape="diamond"];
   8 [label="8 (11)\nvalid credentials may be found\n1.000", color="#FF0000", penwidth=3, shape="ellipse"];
-  9 [label="9 (12)\n12:attackerLocated(domain):1\n1.000", color="#FF0000", penwidth=3, shape="box"];
+  9 [label="9 (12)\n12:attackerLocated(domain):1\n1.000", color="#FE0100", penwidth=3, shape="box"];
   10 [label="10 (13)\nCVE-2019-1040\n0.073", color="#12ED00", penwidth=3, shape="ellipse"];
   11 [label="11 (15)\n15:coerceSMB(domain):0\n0.079", color="#14EB00", penwidth=3, shape="diamond"];
   12 [label="12 (16)\nCVE-2022-26925\n0.087", color="#16E900", penwidth=3, shape="ellipse"];

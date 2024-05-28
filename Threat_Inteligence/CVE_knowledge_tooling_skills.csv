@@ -31,3 +31,17 @@ CVE-0000-10,ntlmsock to host admin,Impacket & Proxychain,L,,LateralMove
 CVE-0000-11,Kerberos 5 TGS,Impacket | Rubeus,L,,Kerberos
 CVE-0000-12,Kerberos 5 TGS,Hashcat | John,L,,CrackingHash
 CVE-0000-13,,,,,
+bad_password,,Hashcat | John,L,,CrackingHash
+ntlm_bot,,Responder,L,,MITM
+tgs,,lsassy,L,,Kerberos
+ptt,,Impacket,L,,PrivilegeEscalation
+cve,,Impacket,L,,KnownVulnerabilities
+zero_day,,Unknown,L,,NoCredentials
+kerberoasting,,Impacket,L,,Kerberos
+cracking,,Hashcat,L,,CrackingHash
+ntlm_hash,,Cme,L,,Exploring
+default_admin,,Cme,L,,LateralMove
+shares,,Impacket,L,,LateralMove
+clear_password,,Snafler | Donpapi,L,,Exploring
+non_constraint_delegation,,Impacket,,,LateralMove
+asks_kerberos_ticket,,Rubeus,,,PrivilegeEscalation

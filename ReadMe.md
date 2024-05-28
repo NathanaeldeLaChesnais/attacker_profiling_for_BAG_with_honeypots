@@ -3,6 +3,15 @@
 Tout doit être relié à une cause source, sinon les probabilités de branches locales ne sont pas prises en compte.
 
 # Attack graphs
+## Packet attacks on mulval
+Extending Attack Graphs to Represent Cyber-Attacks in Communication Protocols and Modern IT Networks https://ieeexplore.ieee.org/document/9277665
+
+## Honeypots on AAD or honeytockens
+Proposing and Deployment of Attractive Azure AD Honeypot With Varying Security Measures To Evaluate Their Performance Against Real Attacks https://essay.utwente.nl/85992/1/Khan_MA_faculty.pdf
+Honey Infiltrator: Injecting Honeytoken Using Netfilter https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=10190694&tag=1
+
+
+## Others 
 Bibliography for attack graphs latest updates https://www.sciencedirect.com/science/article/pii/S0167404823003206 
 Or this one of 2020 by wilder https://www.sciencedirect.com/science/article/pii/S0167404822004734
 https://ieeexplore.ieee.org/document/9763050 III C sur la Posterior Probability Calculation
