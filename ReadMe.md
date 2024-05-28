@@ -44,6 +44,10 @@ Honeypot-based intrusion detection system: A performance analysis(Encore une foi
 
 Deceptive directories and “vulnerable” logs: a honeypot study of the LDAP and log4j attack landscape (Vraiment orienté LDAP): https://ieeexplore.ieee.org/document/9799363
 
+## Windows on mulval
+Windows Access Control Demystified (s'interresse plus particulièrement aux accès sur une machine windows à partir de mulval) : https://www.cs.princeton.edu/~appel/papers/winval.pdf 
+Automatic Configuration Vulnerability Analysis (encore sur windows mais s'étend aux logiciels installés) https://www.cs.princeton.edu/techreports/2007/773.pdf
+
 # GOAT
 ## Architecture du lab :
 Installation classique de GOAD

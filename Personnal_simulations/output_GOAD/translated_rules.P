@@ -2,7 +2,7 @@
 
 :-(mvTrc(hash(_h3279,1)),','(mvTrc(hashKRB(_h3279,_h3325)),assert_trace(because(1,rule_desc('hashkrb gives hash',likely),hash(_h3279),[hashKRB(_h3279)])))).
 
-:-(mvTrc(validUser(_h3279,2)),','(mvTrc(validCredential(_h3284,_h3321)),','(user(_h3284),assert_trace(because(2,rule_desc('rassemblement des comptes user en 1',certain),validUser(_h3279),[user(_h3284),validCredential(_h3284)]))))).
+:-(mvTrc(validUser(user,2)),','(mvTrc(validCredential(_h3284,_h3321)),','(user(_h3284),assert_trace(because(2,rule_desc('rassemblement des comptes user en 1',certain),validUser(user),[user(_h3284),validCredential(_h3284)]))))).
 
 :-(mvTrc(hashNTLM(admin,3)),','(mvTrc(hashNTLM(domadmin,_h3325)),assert_trace(because(3,rule_desc('domadmin is admin',certain),hashNTLM(admin),[hashNTLM(domadmin)])))).
 

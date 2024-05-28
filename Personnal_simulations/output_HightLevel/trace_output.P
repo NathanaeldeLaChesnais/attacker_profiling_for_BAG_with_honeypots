@@ -1,0 +1,131 @@
+primitive(attackerLocated,1).
+primitive(vulExists,3).
+primitive(vulExists,4).
+primitive(host,1).
+derived(stolenCred,1).
+derived(stolenCred,2).
+derived(corrupted,1).
+derived(stolenHashNTLM,1).
+derived(stolenHashKRB,1).
+derived(accessData,1).
+derived(tgt,1).
+derived(stolenCredPriv,1).
+derived(tgs,1).
+meta(attackGoal,1).
+
+attack(stolenCred(newAdmin,dc)).
+
+possible_duplicate_trace_step(because(1,rule_desc('vulnerability exploit or default password',likely),stolenCred(user1),[vulExists(user1,bad_password,bad_password),attackerLocated(domain)])).
+
+possible_duplicate_trace_step(because(0,rule_desc('logic rule',certain),stolenCredPriv(user),[stolenCred(user1)])).
+
+possible_duplicate_trace_step(because(2,rule_desc('zero day on machine',likely),corrupted(host1),[vulExists(host1,cve,zero_day),host(host1),attackerLocated(domain)])).
+
+possible_duplicate_trace_step(because(3,rule_desc('relai ntlm or coerce it',likely),corrupted(host1),[vulExists(host1,ntlm_bot,ntlm_bot),host(host1),attackerLocated(domain)])).
+
+possible_duplicate_trace_step(because(8,rule_desc('find a ticket',cap_l),tgs(host2),[vulExists(host1,host2,kerberos,tgt),corrupted(host1)])).
+
+possible_duplicate_trace_step(because(8,rule_desc('find a ticket',cap_l),tgs(fake_host),[vulExists(host1,fake_host,kerberos,tgt),corrupted(host1)])).
+
+possible_duplicate_trace_step(because(8,rule_desc('find a ticket',cap_l),tgs(host2),[vulExists(host1,host2,kerberos,tgt),corrupted(host1)])).
+
+possible_duplicate_trace_step(because(8,rule_desc('find a ticket',cap_l),tgs(fake_host),[vulExists(host1,fake_host,kerberos,tgt),corrupted(host1)])).
+
+possible_duplicate_trace_step(because(18,rule_desc('pass the ticket redirected',likely),corrupted(fake_host),[tgs(host2)])).
+
+possible_duplicate_trace_step(because(18,rule_desc('pass the ticket redirected',likely),corrupted(fake_host),[tgs(fake_host)])).
+
+possible_duplicate_trace_step(because(9,rule_desc('pass the ticket',likely),corrupted(host2),[tgs(host2)])).
+
+possible_duplicate_trace_step(because(9,rule_desc('pass the ticket',likely),corrupted(fake_host),[tgs(fake_host)])).
+
+possible_duplicate_trace_step(because(10,rule_desc('network share',likely),accessData(file),[vulExists(file,user,cve,shares),stolenCredPriv(user)])).
+
+possible_duplicate_trace_step(because(0,rule_desc('logic rule',certain),stolenCredPriv(user),[stolenCred(user1)])).
+
+possible_duplicate_trace_step(because(12,rule_desc('privilege escalation',likely),tgt(dc),[vulExists(host2,dc,cve,asks_kerberos_ticket),vulExists(host2,cve,non_constraint_delegation),corrupted(host2)])).
+
+possible_duplicate_trace_step(because(12,rule_desc('privilege escalation',likely),tgt(dc),[vulExists(host2,dc,cve,asks_kerberos_ticket),vulExists(host2,cve,non_constraint_delegation),corrupted(host2)])).
+
+possible_duplicate_trace_step(because(11,rule_desc('credential on a network share',cvss_ac_m),stolenCred(user3),[vulExists(file,user3,cve,clear_password),accessData(file)])).
+
+possible_duplicate_trace_step(because(15,rule_desc('certificat abuse',cvss_ac_m),tgt(dc),[vulExists(dc,cve,esc),stolenCredPriv(user)])).
+
+possible_duplicate_trace_step(because(4,rule_desc('get ntlm hash',likely),stolenHashNTLM(admin),[vulExists(admin,cve,ntlm_hash),stolenCredPriv(user)])).
+
+possible_duplicate_trace_step(because(15,rule_desc('certificat abuse',cvss_ac_m),tgt(dc),[vulExists(dc,cve,esc),stolenCredPriv(user)])).
+
+possible_duplicate_trace_step(because(6,rule_desc('kerberoasting attack',cvss_ac_m),stolenHashKRB(userSrv),[vulExists(userSrv,cve,kerberos),stolenCredPriv(user)])).
+
+possible_duplicate_trace_step(because(13,rule_desc('privilege escalation',cvss_ac_m),corrupted(dc),[tgt(dc)])).
+
+possible_duplicate_trace_step(because(13,rule_desc('privilege escalation',cvss_ac_m),corrupted(dc),[tgt(dc)])).
+
+possible_duplicate_trace_step(because(13,rule_desc('privilege escalation',cvss_ac_m),corrupted(dc),[tgt(dc)])).
+
+possible_duplicate_trace_step(because(13,rule_desc('privilege escalation',cvss_ac_m),corrupted(dc),[tgt(dc)])).
+
+possible_duplicate_trace_step(because(7,rule_desc('kerberoasting attack',cvss_ac_m),stolenCred(userSrv),[vulExists(userSrv,cve,cracking),stolenHashKRB(userSrv)])).
+
+possible_duplicate_trace_step(because(0,rule_desc('logic rule',certain),stolenCredPriv(user),[stolenCred(user3)])).
+
+possible_duplicate_trace_step(because(0,rule_desc('logic rule',certain),stolenCredPriv(user),[stolenCred(userSrv)])).
+
+possible_duplicate_trace_step(because(0,rule_desc('logic rule',certain),stolenCredPriv(user),[stolenCred(user3)])).
+
+possible_duplicate_trace_step(because(0,rule_desc('logic rule',certain),stolenCredPriv(user),[stolenCred(userSrv)])).
+
+possible_duplicate_trace_step(because(5,rule_desc('pass the hash',likely),corrupted(host2),[vulExists(host2,cve,default_admin),stolenHashNTLM(admin)])).
+
+possible_duplicate_trace_step(because(12,rule_desc('privilege escalation',likely),tgt(dc),[vulExists(host2,dc,cve,asks_kerberos_ticket),vulExists(host2,cve,non_constraint_delegation),corrupted(host2)])).
+
+possible_duplicate_trace_step(because(14,rule_desc('secretdump or donpapi',likely),stolenCred(domadmin),[vulExists(dc,domadmin,cve,credential_dump),corrupted(dc)])).
+
+possible_duplicate_trace_step(because(12,rule_desc('privilege escalation',likely),tgt(dc),[vulExists(host2,dc,cve,asks_kerberos_ticket),vulExists(host2,cve,non_constraint_delegation),corrupted(host2)])).
+
+possible_duplicate_trace_step(because(0,rule_desc('logic rule',certain),stolenCredPriv(user),[stolenCred(domadmin)])).
+
+possible_duplicate_trace_step(because(0,rule_desc('logic rule',certain),stolenCredPriv(user),[stolenCred(domadmin)])).
+
+possible_duplicate_trace_step(because(16,rule_desc('persistence throug new account',cap_l),stolenCred(newAdmin,dc),[vulExists(dc,cve,newAdmin),corrupted(dc)])).
+
+attack(corrupted(host1)).
+
+possible_duplicate_trace_step(because(2,rule_desc('zero day on machine',likely),corrupted(host1),[vulExists(host1,cve,zero_day),host(host1),attackerLocated(domain)])).
+
+possible_duplicate_trace_step(because(3,rule_desc('relai ntlm or coerce it',likely),corrupted(host1),[vulExists(host1,ntlm_bot,ntlm_bot),host(host1),attackerLocated(domain)])).
+
+attack(corrupted(host1)).
+
+attack(corrupted(host2)).
+
+possible_duplicate_trace_step(because(5,rule_desc('pass the hash',likely),corrupted(host2),[vulExists(host2,cve,default_admin),stolenHashNTLM(admin)])).
+
+possible_duplicate_trace_step(because(8,rule_desc('find a ticket',cap_l),tgs(host2),[vulExists(host1,host2,kerberos,tgt),corrupted(host1)])).
+
+possible_duplicate_trace_step(because(8,rule_desc('find a ticket',cap_l),tgs(host2),[vulExists(host1,host2,kerberos,tgt),corrupted(host1)])).
+
+possible_duplicate_trace_step(because(9,rule_desc('pass the ticket',likely),corrupted(host2),[tgs(host2)])).
+
+attack(corrupted(fake_host)).
+
+possible_duplicate_trace_step(because(8,rule_desc('find a ticket',cap_l),tgs(fake_host),[vulExists(host1,fake_host,kerberos,tgt),corrupted(host1)])).
+
+possible_duplicate_trace_step(because(8,rule_desc('find a ticket',cap_l),tgs(fake_host),[vulExists(host1,fake_host,kerberos,tgt),corrupted(host1)])).
+
+possible_duplicate_trace_step(because(9,rule_desc('pass the ticket',likely),corrupted(fake_host),[tgs(fake_host)])).
+
+possible_duplicate_trace_step(because(18,rule_desc('pass the ticket redirected',likely),corrupted(fake_host),[tgs(fake_host)])).
+
+possible_duplicate_trace_step(because(18,rule_desc('pass the ticket redirected',likely),corrupted(fake_host),[tgs(host2)])).
+
+attack(corrupted(host2)).
+
+attack(corrupted(dc)).
+
+attack(corrupted(fake_host)).
+
+attack(corrupted(fake_host)).
+
+attack(tgt(dc)).
+

@@ -36,7 +36,7 @@ interaction_rule(
     rule_desc('hashkrb gives hash', 'likely')).
 
 interaction_rule(
-    (validUser(_) :-
+    (validUser(user) :-
         validCredential(User),
         user(User)),
     rule_desc('rassemblement des comptes user en 1', 'certain')).
