@@ -10,6 +10,10 @@ Extending Attack Graphs to Represent Cyber-Attacks in Communication Protocols an
 Proposing and Deployment of Attractive Azure AD Honeypot With Varying Security Measures To Evaluate Their Performance Against Real Attacks https://essay.utwente.nl/85992/1/Khan_MA_faculty.pdf
 Honey Infiltrator: Injecting Honeytoken Using Netfilter https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=10190694&tag=1
 
+## Decoys 
+Resource-aware Cyber Deception for Microservice-based Applications (Une des premieres ressources d'Emil - uses a legacy cloned version of a service so that it is realistic and with vulnerabilities - optimisation of the positions of the decoys due to the probability that an attacker go throught (prend-il en compte le fait que le but soit que l'attacker passe par 1 et pas par un maximum ?)) https://arxiv.org/pdf/2303.03151
+Deception Maze: A Stackelberg Game-Theoretic Defense Mechanism for Intranet Threats (à regarder plus en détails mais réfléchit à une façon optimale de mettre des honeytockens credentials sur des hosts pour que l'attackant finisse dans le honeypot) https://ieeexplore.ieee.org/document/9500765
+
 
 ## Others 
 Bibliography for attack graphs latest updates https://www.sciencedirect.com/science/article/pii/S0167404823003206 

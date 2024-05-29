@@ -43,5 +43,5 @@ ntlm_hash,,Cme,L,,Exploring
 default_admin,,Cme,L,,LateralMove
 shares,,Impacket,L,,LateralMove
 clear_password,,Snafler | Donpapi,L,,Exploring
-non_constraint_delegation,,Impacket,,,LateralMove
-asks_kerberos_ticket,,Rubeus,,,PrivilegeEscalation
+non_constraint_delegation,,Impacket,L,,LateralMove
+asks_kerberos_ticket,,Rubeus,L,,PrivilegeEscalation
