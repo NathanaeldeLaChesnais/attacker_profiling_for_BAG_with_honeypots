@@ -1,0 +1,3 @@
+strict digraph G {
+  1 [ label="Node 19:attackerLocated(domain):1" shape="box" nodeType="AND" probArray="1.0" ];
+}

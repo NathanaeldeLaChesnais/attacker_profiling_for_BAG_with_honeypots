@@ -1,4 +1,8 @@
 import re
+import numpy as np
+from pgmpy.factors.discrete import TabularCPD
+from BAG_Code_tw520.createANDtable import create_AND_table
+from BAG_Code_tw520.createORtable import create_OR_table
 
 # Définir les types de tokens
 TOKENS = [
@@ -107,6 +111,24 @@ def compile_ast(ast):
         return f'({left} {ast.value} {right})'
     else:
         raise ValueError(f'Unknown AST node type: {ast.type}')
+    
+def build_tools_tree(BAG, ast, id, ONE):
+    if ast.type == 'AND':
+        BAG.add_edge(ast.__repr__(), id)
+        for child in ast.children:
+            build_tools_tree(BAG, child, ast.__repr__(), ONE)
+        if BAG.get_cpds(ast.__repr__()) == None:
+            BAG.add_cpds(TabularCPD(ast.__repr__(), 2, create_AND_table([ONE, ONE]).T, [child.__repr__() for child in ast.children], evidence_card=2*np.ones(len(ast.children))))
+    elif ast.type == 'OR':
+        BAG.add_edge(ast.__repr__(), id)
+        for child in ast.children:
+            build_tools_tree(BAG, child, ast.__repr__(), ONE)
+        if BAG.get_cpds(ast.__repr__()) == None:
+            BAG.add_cpds(TabularCPD(ast.__repr__(), 2, create_OR_table([ONE, ONE]).T, [child.__repr__() for child in ast.children], evidence_card=2*np.ones(len(ast.children))))
+    else:
+        BAG.add_edge(ast.__repr__(), id)
+        if BAG.get_cpds(ast.__repr__()) == None:
+            BAG.add_cpds(TabularCPD(ast.__repr__(), 2, [[0.5], [0.5]]))
 
 # Exemple d'utilisation
 expression = "Responder & ( impacket | Metasploit )"

@@ -1,9 +1,9 @@
 import numpy as np
 from itertools import product
 
-def create_OR_table(probs):
+def create_OR_table(probs, ONE = 0.999):
     if len(probs) == 0:
-        return np.array([[0, 1]])
+        return np.array([[1 - 0.99999, 0.99999]])
     else:
         npa = len(probs)
         q = 1 - np.array(probs)
@@ -15,7 +15,7 @@ def create_OR_table(probs):
             c = [j for j, val in enumerate(vals[i]) if val == 1]
             tmp = np.prod(q[c])
             if tmp == 1:
-                cpt[0, i] = 0.99
+                cpt[0, i] = ONE
             else:
                 cpt[0, i] = tmp
         

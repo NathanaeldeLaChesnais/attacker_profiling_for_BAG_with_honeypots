@@ -49,8 +49,8 @@ interaction_rule(
     (corrupted(Host) :-
         attackerLocated(Domain),
         host(Host),
-        vulExists(Host, Host, CVE, ntlm_bot)),
-    rule_desc('relai ntlm or coerce it', 'likely')).
+        vulExists(Host, Host, CVE, relay_ntlm_bot)),
+    rule_desc('relay ntlm or coerce it', 'likely')).
 
 interaction_rule(
     (stolenHashNTLM(admin) :-
@@ -111,8 +111,9 @@ interaction_rule(
     rule_desc('privilege escalation', 'likely')).
 
 interaction_rule(
-    (corrupted(Host) :-
-        tgt(Host)),
+    (corrupted(Host2) :-
+        tgt(Host1),
+        vulExists(Host1, Host2, CVE, exploit_tgt)),
     rule_desc('privilege escalation', 'cvss_ac_m')).
 
 interaction_rule(

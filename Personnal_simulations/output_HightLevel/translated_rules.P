@@ -24,7 +24,7 @@
 
 :-(mvTrc(tgt(_h3279,12)),','(mvTrc(corrupted(_h3284,_h3332)),','(vulExists(_h3284,_h3284,_h3291,non_constraint_delegation),','(vulExists(_h3284,_h3279,_h3296,asks_kerberos_ticket),assert_trace(because(12,rule_desc('privilege escalation',likely),tgt(_h3279),[vulExists(_h3284,_h3279,_h3296,asks_kerberos_ticket),vulExists(_h3284,_h3284,_h3291,non_constraint_delegation),corrupted(_h3284)])))))).
 
-:-(mvTrc(corrupted(_h3279,13)),','(mvTrc(tgt(_h3279,_h3325)),assert_trace(because(13,rule_desc('privilege escalation',cvss_ac_m),corrupted(_h3279),[tgt(_h3279)])))).
+:-(mvTrc(corrupted(_h3279,13)),','(mvTrc(tgt(_h3279,_h3324)),','(vulExists(_h3279,_h3279,_h3288,exploit_tgt),assert_trace(because(13,rule_desc('privilege escalation',cvss_ac_m),corrupted(_h3279),[vulExists(_h3279,_h3279,_h3288,exploit_tgt),tgt(_h3279)]))))).
 
 :-(mvTrc(stolenCred(_h3279,14)),','(mvTrc(corrupted(_h3284,_h3324)),','(vulExists(_h3284,_h3279,_h3288,credential_dump),assert_trace(because(14,rule_desc('secretdump or donpapi',likely),stolenCred(_h3279),[vulExists(_h3284,_h3279,_h3288,credential_dump),corrupted(_h3284)]))))).
 

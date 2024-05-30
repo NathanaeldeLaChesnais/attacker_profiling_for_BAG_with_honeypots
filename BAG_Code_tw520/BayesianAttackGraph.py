@@ -7,7 +7,7 @@ from BAG_Code_tw520.createORtable import create_OR_table
 from pgmpy.factors.discrete import TabularCPD
 
 
-def parse_dot(dot_string, MAX):
+def parse_dot(dot_string, ONE):
     nodes = {}
     edges = []
 
@@ -58,7 +58,7 @@ def parse_dot(dot_string, MAX):
                     if tmp != 0:
                         probs.append(float(tmp))
                     else: 
-                        probs.append(MAX)
+                        probs.append(ONE)
         npa = len(source)
         #We draw the probability from the distribution of CVSS scores
         if r:

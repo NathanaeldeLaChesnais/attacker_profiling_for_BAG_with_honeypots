@@ -112,7 +112,8 @@ interaction_rule(
 
 interaction_rule(
     (corrupted(Host) :-
-        tgt(Host)),
+        tgt(Host),
+        vulExists(Host, Host, CVE, exploit_tgt)),
     rule_desc('privilege escalation', 'cvss_ac_m')).
 
 interaction_rule(
