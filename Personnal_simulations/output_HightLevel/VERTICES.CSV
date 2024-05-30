@@ -1,52 +1,46 @@
 1,"corrupted(dc)","OR",0
-2,"RULE 13 (privilege escalation)","AND",0.6
+2,"RULE 13 (privilege escalation)","AND",0.9
 3,"vulExists(dc,dc,exploit_tgt,exploit_tgt)","LEAF",1
 4,"tgt(dc)","OR",0
-5,"RULE 12 (privilege escalation)","AND",0.8
+5,"RULE 12 (privilege escalation)","AND",0.9
 6,"vulExists(host2,dc,asks_kerberos_ticket,asks_kerberos_ticket)","LEAF",1
-7,"vulExists(host2,host2,non_constraint_delegation,non_constraint_delegation)","LEAF",1
-8,"corrupted(host2)","OR",0
-9,"RULE 5 (pass the hash)","AND",0.8
-10,"vulExists(host2,host2,default_admin,default_admin)","LEAF",1
-11,"stolenHashNTLM(admin)","OR",0
-12,"RULE 4 (get ntlm hash)","AND",0.8
-13,"vulExists(admin,admin,ntlm_hash,ntlm_hash)","LEAF",1
-14,"stolenCredPriv(user)","OR",0
-15,"RULE 0 (logic rule)","AND",1
-16,"stolenCred(user1)","OR",0
-17,"RULE 1 (vulnerability exploit or default password)","AND",0.8
-18,"vulExists(user1,user1,bad_password,bad_password)","LEAF",1
-19,"attackerLocated(domain)","LEAF",1
-20,"RULE 9 (pass the ticket)","AND",0.8
-21,"vulExists(host2,_,ptt,ptt)","LEAF",1
-22,"tgs(host2)","OR",0
-23,"RULE 8 (find a ticket)","AND",0.4
-24,"vulExists(host1,host2,tgs,tgs)","LEAF",1
-25,"corrupted(host1)","OR",0
-26,"RULE 2 (zero day on machine)","AND",0.8
-27,"vulExists(host1,host1,zero_day,zero_day)","LEAF",1
-28,"host(host1)","LEAF",1
-29,"RULE 3 (relai ntlm or coerce it)","AND",0.8
-30,"vulExists(host1,host1,ntlm_bot,ntlm_bot)","LEAF",1
-31,"corrupted(fake_dc)","OR",0
-32,"RULE 13 (privilege escalation)","AND",0.6
-33,"vulExists(fake_dc,fake_dc,exploit_tgt,exploit_tgt)","LEAF",1
-34,"tgt(fake_dc)","OR",0
-35,"RULE 12 (privilege escalation)","AND",0.8
-36,"vulExists(fake_host,fake_dc,asks_kerberos_ticket,asks_kerberos_ticket)","LEAF",1
-37,"vulExists(fake_host,fake_host,non_constraint_delegation,non_constraint_delegation)","LEAF",1
-38,"corrupted(fake_host)","OR",0
-39,"RULE 18 (pass the ticket redirected)","AND",0.8
-40,"vulExists(host2,fake_host,ptt,ptt)","LEAF",1
-41,"host(host2)","LEAF",1
-42,"RULE 5 (pass the hash)","AND",0.8
-43,"vulExists(fake_host,fake_host,default_admin,default_admin)","LEAF",1
-44,"RULE 9 (pass the ticket)","AND",0.8
-45,"vulExists(fake_host,_,ptt,ptt)","LEAF",1
-46,"tgs(fake_host)","OR",0
-47,"RULE 8 (find a ticket)","AND",0.4
-48,"vulExists(host1,fake_host,tgs,tgs)","LEAF",1
-49,"RULE 12 (privilege escalation)","AND",0.8
-50,"vulExists(host2,fake_dc,asks_kerberos_ticket,asks_kerberos_ticket)","LEAF",1
-51,"RULE 19 (redirected privilege escalation)","AND",0.6
-52,"host(dc)","LEAF",1
+7,"corrupted(host2)","OR",0
+8,"RULE 5 (pass the hash)","AND",0.9
+9,"vulExists(host2,host2,default_admin,default_admin)","LEAF",1
+10,"stolenHashNTLM(admin)","OR",0
+11,"RULE 4 (get ntlm hash)","AND",0.9
+12,"vulExists(admin,admin,ntlm_hash,ntlm_hash)","LEAF",1
+13,"stolenCred(user1)","OR",0
+14,"RULE 1 (default password or unsafe one)","AND",0.9
+15,"vulExists(user1,user1,bad_password,bad_password)","LEAF",1
+16,"attackerLocated(domain)","LEAF",1
+17,"RULE 9 (pass the ticket)","AND",0.9
+18,"vulExists(host2,_,ptt,ptt)","LEAF",1
+19,"tgs(host2)","OR",0
+20,"RULE 8 (find a ticket)","AND",0.8
+21,"vulExists(host1,host2,tgs,tgs)","LEAF",1
+22,"corrupted(host1)","OR",0
+23,"RULE 3 (relay ntlm or coerce it)","AND",0.8
+24,"vulExists(host1,host1,relay_ntlm_bot,relay_ntlm_bot)","LEAF",1
+25,"host(host1)","LEAF",1
+26,"corrupted(fake_dc)","OR",0
+27,"RULE 13 (privilege escalation)","AND",0.9
+28,"vulExists(fake_dc,fake_dc,exploit_tgt,exploit_tgt)","LEAF",1
+29,"tgt(fake_dc)","OR",0
+30,"RULE 12 (privilege escalation)","AND",0.9
+31,"vulExists(fake_host,fake_dc,asks_kerberos_ticket,asks_kerberos_ticket)","LEAF",1
+32,"corrupted(fake_host)","OR",0
+33,"RULE 18 (pass the ticket redirected)","AND",0.9
+34,"vulExists(host2,fake_host,ptt,ptt)","LEAF",1
+35,"host(host2)","LEAF",1
+36,"RULE 5 (pass the hash)","AND",0.9
+37,"vulExists(fake_host,fake_host,default_admin,default_admin)","LEAF",1
+38,"RULE 9 (pass the ticket)","AND",0.9
+39,"vulExists(fake_host,_,ptt,ptt)","LEAF",1
+40,"tgs(fake_host)","OR",0
+41,"RULE 8 (find a ticket)","AND",0.8
+42,"vulExists(host1,fake_host,tgs,tgs)","LEAF",1
+43,"RULE 12 (privilege escalation)","AND",0.9
+44,"vulExists(host2,fake_dc,asks_kerberos_ticket,asks_kerberos_ticket)","LEAF",1
+45,"RULE 19 (redirected privilege escalation)","AND",0.9
+46,"host(dc)","LEAF",1

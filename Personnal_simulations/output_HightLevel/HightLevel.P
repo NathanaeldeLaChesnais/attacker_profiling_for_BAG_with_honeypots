@@ -8,10 +8,10 @@ host(host2).
 host(dc).
 
 vulExists(user1, user1, bad_password, bad_password).
-vulExists(host1, host1, ntlm_bot, ntlm_bot).
+vulExists(host1, host1, relay_ntlm_bot, relay_ntlm_bot).
 vulExists(host1, host2, tgs, tgs).
 vulExists(_, _, ptt, ptt).
-vulExists(host1, host1, zero_day, zero_day).
+/* vulExists(host1, host1, zero_day, zero_day). */
 /* vulExists(userSrv, userSrv, kerberoasting, kerberoasting).
 vulExists(userSrv, userSrv, cracking, cracking). */
 vulExists(admin, admin, ntlm_hash, ntlm_hash).

@@ -35,7 +35,7 @@ interaction_rule(
     (stolenCred(User) :-
         attackerLocated(Domain),
         vulExists(User, User, Cve, bad_password)),
-    rule_desc('vulnerability exploit or default password', 'likely')).
+    rule_desc('default password or unsafe one', 'cvss_ac_l')).
 
 interaction_rule(
     (corrupted(Host) :-
@@ -49,20 +49,20 @@ interaction_rule(
     (corrupted(Host) :-
         attackerLocated(Domain),
         host(Host),
-        vulExists(Host, Host, CVE, ntlm_bot)),
-    rule_desc('relai ntlm or coerce it', 'likely')).
+        vulExists(Host, Host, CVE, relay_ntlm_bot)),
+    rule_desc('relay ntlm or coerce it', 'likely')).
 
 interaction_rule(
     (stolenHashNTLM(admin) :-
-        stolenCredPriv(user),
+        stolenCred(User),
         vulExists(admin, admin, CVE, ntlm_hash)),
-    rule_desc('get ntlm hash', 'likely')).
+    rule_desc('get ntlm hash', 'cvss_ac_l')).
 
 interaction_rule(
     (corrupted(Host) :-
         stolenHashNTLM(admin),
         vulExists(Host, Host, CVE, default_admin)),
-    rule_desc('pass the hash', 'likely')).
+    rule_desc('pass the hash', 'cvss_ac_l')).
 
 /* Kerberos */
 interaction_rule(
@@ -81,13 +81,13 @@ interaction_rule(
     (tgs(Host2) :-
         corrupted(Host1),
         vulExists(Host1, Host2, CVE, tgs)),
-    rule_desc('find a ticket', 'cap_l')).
+    rule_desc('find a ticket', 'likely')).
 
 interaction_rule(
     (corrupted(Host1) :-
         tgs(Host1),
         vulExists(Host1, Host2, CVE, ptt)),
-    rule_desc('pass the ticket', 'likely')).
+    rule_desc('pass the ticket', 'cvss_ac_l')).
 
 /* Network shares */
 interaction_rule(
@@ -106,15 +106,15 @@ interaction_rule(
 interaction_rule(
     (tgt(Host) :-
         corrupted(Host2),
-        vulExists(Host2, Host2, CVE1, non_constraint_delegation),
+        /* vulExists(Host2, Host2, CVE1, non_constraint_delegation), */
         vulExists(Host2, Host, CVE2, asks_kerberos_ticket)),
-    rule_desc('privilege escalation', 'likely')).
+    rule_desc('privilege escalation', 'cvss_ac_l')).
 
 interaction_rule(
-    (corrupted(Host) :-
-        tgt(Host),
-        vulExists(Host, Host, CVE, exploit_tgt)),
-    rule_desc('privilege escalation', 'cvss_ac_m')).
+    (corrupted(Host1) :-
+        tgt(Host1),
+        vulExists(Host1, Host1, CVE, exploit_tgt)),
+    rule_desc('privilege escalation', 'cvss_ac_l')).
 
 interaction_rule(
     (stolenCred(User) :-
@@ -148,10 +148,10 @@ interaction_rule(
         tgs(Host1),
         host(Host1),
         vulExists(Host1, fake_host, CVE, ptt)),
-    rule_desc('pass the ticket redirected', 'likely')).
+    rule_desc('pass the ticket redirected', 'cvss_ac_l')).
 
 interaction_rule(
     (corrupted(fake_dc) :-
         tgt(Host),
         host(Host)),
-    rule_desc('redirected privilege escalation', 'cvss_ac_m')).
+    rule_desc('redirected privilege escalation', 'cvss_ac_l')).

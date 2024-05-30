@@ -15,89 +15,75 @@ meta(attackGoal,1).
 
 attack(corrupted(host1)).
 
-possible_duplicate_trace_step(because(2,rule_desc('zero day on machine',likely),corrupted(host1),[vulExists(host1,host1,zero_day,zero_day),host(host1),attackerLocated(domain)])).
+possible_duplicate_trace_step(because(3,rule_desc('relay ntlm or coerce it',likely),corrupted(host1),[vulExists(host1,host1,relay_ntlm_bot,relay_ntlm_bot),host(host1),attackerLocated(domain)])).
 
-possible_duplicate_trace_step(because(3,rule_desc('relai ntlm or coerce it',likely),corrupted(host1),[vulExists(host1,host1,ntlm_bot,ntlm_bot),host(host1),attackerLocated(domain)])).
-
-possible_duplicate_trace_step(because(1,rule_desc('vulnerability exploit or default password',likely),stolenCred(user1),[vulExists(user1,user1,bad_password,bad_password),attackerLocated(domain)])).
+possible_duplicate_trace_step(because(1,rule_desc('default password or unsafe one',cvss_ac_l),stolenCred(user1),[vulExists(user1,user1,bad_password,bad_password),attackerLocated(domain)])).
 
 possible_duplicate_trace_step(because(0,rule_desc('logic rule',certain),stolenCredPriv(user),[stolenCred(user1)])).
 
-possible_duplicate_trace_step(because(2,rule_desc('zero day on machine',likely),corrupted(host1),[vulExists(host1,host1,zero_day,zero_day),host(host1),attackerLocated(domain)])).
-
-possible_duplicate_trace_step(because(3,rule_desc('relai ntlm or coerce it',likely),corrupted(host1),[vulExists(host1,host1,ntlm_bot,ntlm_bot),host(host1),attackerLocated(domain)])).
-
-possible_duplicate_trace_step(because(8,rule_desc('find a ticket',cap_l),tgs(host2),[vulExists(host1,host2,tgs,tgs),corrupted(host1)])).
-
-possible_duplicate_trace_step(because(8,rule_desc('find a ticket',cap_l),tgs(fake_host),[vulExists(host1,fake_host,tgs,tgs),corrupted(host1)])).
-
-possible_duplicate_trace_step(because(8,rule_desc('find a ticket',cap_l),tgs(host2),[vulExists(host1,host2,tgs,tgs),corrupted(host1)])).
-
-possible_duplicate_trace_step(because(8,rule_desc('find a ticket',cap_l),tgs(fake_host),[vulExists(host1,fake_host,tgs,tgs),corrupted(host1)])).
-
-possible_duplicate_trace_step(because(18,rule_desc('pass the ticket redirected',likely),corrupted(fake_host),[vulExists(host2,fake_host,ptt,ptt),host(host2),tgs(host2)])).
-
-possible_duplicate_trace_step(because(12,rule_desc('privilege escalation',likely),tgt(fake_dc),[vulExists(fake_host,fake_dc,asks_kerberos_ticket,asks_kerberos_ticket),vulExists(fake_host,fake_host,non_constraint_delegation,non_constraint_delegation),corrupted(fake_host)])).
-
-possible_duplicate_trace_step(because(13,rule_desc('privilege escalation',cvss_ac_m),corrupted(fake_dc),[vulExists(fake_dc,fake_dc,exploit_tgt,exploit_tgt),tgt(fake_dc)])).
-
-possible_duplicate_trace_step(because(9,rule_desc('pass the ticket',likely),corrupted(host2),[vulExists(host2,_h3859,ptt,ptt),tgs(host2)])).
-
-possible_duplicate_trace_step(because(9,rule_desc('pass the ticket',likely),corrupted(fake_host),[vulExists(fake_host,_h3859,ptt,ptt),tgs(fake_host)])).
-
 possible_duplicate_trace_step(because(0,rule_desc('logic rule',certain),stolenCredPriv(user),[stolenCred(user1)])).
 
-possible_duplicate_trace_step(because(12,rule_desc('privilege escalation',likely),tgt(dc),[vulExists(host2,dc,asks_kerberos_ticket,asks_kerberos_ticket),vulExists(host2,host2,non_constraint_delegation,non_constraint_delegation),corrupted(host2)])).
+possible_duplicate_trace_step(because(3,rule_desc('relay ntlm or coerce it',likely),corrupted(host1),[vulExists(host1,host1,relay_ntlm_bot,relay_ntlm_bot),host(host1),attackerLocated(domain)])).
 
-possible_duplicate_trace_step(because(12,rule_desc('privilege escalation',likely),tgt(dc),[vulExists(host2,dc,asks_kerberos_ticket,asks_kerberos_ticket),vulExists(host2,host2,non_constraint_delegation,non_constraint_delegation),corrupted(host2)])).
+possible_duplicate_trace_step(because(8,rule_desc('find a ticket',likely),tgs(host2),[vulExists(host1,host2,tgs,tgs),corrupted(host1)])).
 
-possible_duplicate_trace_step(because(12,rule_desc('privilege escalation',likely),tgt(fake_dc),[vulExists(host2,fake_dc,asks_kerberos_ticket,asks_kerberos_ticket),vulExists(host2,host2,non_constraint_delegation,non_constraint_delegation),corrupted(host2)])).
+possible_duplicate_trace_step(because(8,rule_desc('find a ticket',likely),tgs(fake_host),[vulExists(host1,fake_host,tgs,tgs),corrupted(host1)])).
 
-possible_duplicate_trace_step(because(12,rule_desc('privilege escalation',likely),tgt(fake_dc),[vulExists(fake_host,fake_dc,asks_kerberos_ticket,asks_kerberos_ticket),vulExists(fake_host,fake_host,non_constraint_delegation,non_constraint_delegation),corrupted(fake_host)])).
+possible_duplicate_trace_step(because(18,rule_desc('pass the ticket redirected',cvss_ac_l),corrupted(fake_host),[vulExists(host2,fake_host,ptt,ptt),host(host2),tgs(host2)])).
 
-possible_duplicate_trace_step(because(4,rule_desc('get ntlm hash',likely),stolenHashNTLM(admin),[vulExists(admin,admin,ntlm_hash,ntlm_hash),stolenCredPriv(user)])).
+possible_duplicate_trace_step(because(12,rule_desc('privilege escalation',cvss_ac_l),tgt(fake_dc),[vulExists(fake_host,fake_dc,asks_kerberos_ticket,asks_kerberos_ticket),corrupted(fake_host)])).
 
-possible_duplicate_trace_step(because(5,rule_desc('pass the hash',likely),corrupted(host2),[vulExists(host2,host2,default_admin,default_admin),stolenHashNTLM(admin)])).
+possible_duplicate_trace_step(because(13,rule_desc('privilege escalation',cvss_ac_l),corrupted(fake_dc),[vulExists(fake_dc,fake_dc,exploit_tgt,exploit_tgt),tgt(fake_dc)])).
 
-possible_duplicate_trace_step(because(5,rule_desc('pass the hash',likely),corrupted(fake_host),[vulExists(fake_host,fake_host,default_admin,default_admin),stolenHashNTLM(admin)])).
+possible_duplicate_trace_step(because(9,rule_desc('pass the ticket',cvss_ac_l),corrupted(host2),[vulExists(host2,_h3856,ptt,ptt),tgs(host2)])).
 
-possible_duplicate_trace_step(because(13,rule_desc('privilege escalation',cvss_ac_m),corrupted(dc),[vulExists(dc,dc,exploit_tgt,exploit_tgt),tgt(dc)])).
+possible_duplicate_trace_step(because(9,rule_desc('pass the ticket',cvss_ac_l),corrupted(fake_host),[vulExists(fake_host,_h3856,ptt,ptt),tgs(fake_host)])).
 
-possible_duplicate_trace_step(because(19,rule_desc('redirected privilege escalation',cvss_ac_m),corrupted(fake_dc),[host(dc),tgt(dc)])).
+possible_duplicate_trace_step(because(4,rule_desc('get ntlm hash',cvss_ac_l),stolenHashNTLM(admin),[vulExists(admin,admin,ntlm_hash,ntlm_hash),stolenCred(user1)])).
 
-possible_duplicate_trace_step(because(13,rule_desc('privilege escalation',cvss_ac_m),corrupted(dc),[vulExists(dc,dc,exploit_tgt,exploit_tgt),tgt(dc)])).
+possible_duplicate_trace_step(because(5,rule_desc('pass the hash',cvss_ac_l),corrupted(host2),[vulExists(host2,host2,default_admin,default_admin),stolenHashNTLM(admin)])).
 
-possible_duplicate_trace_step(because(12,rule_desc('privilege escalation',likely),tgt(dc),[vulExists(host2,dc,asks_kerberos_ticket,asks_kerberos_ticket),vulExists(host2,host2,non_constraint_delegation,non_constraint_delegation),corrupted(host2)])).
+possible_duplicate_trace_step(because(5,rule_desc('pass the hash',cvss_ac_l),corrupted(fake_host),[vulExists(fake_host,fake_host,default_admin,default_admin),stolenHashNTLM(admin)])).
 
-possible_duplicate_trace_step(because(12,rule_desc('privilege escalation',likely),tgt(dc),[vulExists(host2,dc,asks_kerberos_ticket,asks_kerberos_ticket),vulExists(host2,host2,non_constraint_delegation,non_constraint_delegation),corrupted(host2)])).
+possible_duplicate_trace_step(because(12,rule_desc('privilege escalation',cvss_ac_l),tgt(dc),[vulExists(host2,dc,asks_kerberos_ticket,asks_kerberos_ticket),corrupted(host2)])).
 
-possible_duplicate_trace_step(because(12,rule_desc('privilege escalation',likely),tgt(fake_dc),[vulExists(host2,fake_dc,asks_kerberos_ticket,asks_kerberos_ticket),vulExists(host2,host2,non_constraint_delegation,non_constraint_delegation),corrupted(host2)])).
+possible_duplicate_trace_step(because(12,rule_desc('privilege escalation',cvss_ac_l),tgt(dc),[vulExists(host2,dc,asks_kerberos_ticket,asks_kerberos_ticket),corrupted(host2)])).
 
-possible_duplicate_trace_step(because(12,rule_desc('privilege escalation',likely),tgt(fake_dc),[vulExists(fake_host,fake_dc,asks_kerberos_ticket,asks_kerberos_ticket),vulExists(fake_host,fake_host,non_constraint_delegation,non_constraint_delegation),corrupted(fake_host)])).
+possible_duplicate_trace_step(because(12,rule_desc('privilege escalation',cvss_ac_l),tgt(dc),[vulExists(host2,dc,asks_kerberos_ticket,asks_kerberos_ticket),corrupted(host2)])).
 
-attack(corrupted(host1)).
+possible_duplicate_trace_step(because(12,rule_desc('privilege escalation',cvss_ac_l),tgt(fake_dc),[vulExists(host2,fake_dc,asks_kerberos_ticket,asks_kerberos_ticket),corrupted(host2)])).
+
+possible_duplicate_trace_step(because(12,rule_desc('privilege escalation',cvss_ac_l),tgt(fake_dc),[vulExists(fake_host,fake_dc,asks_kerberos_ticket,asks_kerberos_ticket),corrupted(fake_host)])).
+
+possible_duplicate_trace_step(because(12,rule_desc('privilege escalation',cvss_ac_l),tgt(dc),[vulExists(host2,dc,asks_kerberos_ticket,asks_kerberos_ticket),corrupted(host2)])).
+
+possible_duplicate_trace_step(because(12,rule_desc('privilege escalation',cvss_ac_l),tgt(fake_dc),[vulExists(host2,fake_dc,asks_kerberos_ticket,asks_kerberos_ticket),corrupted(host2)])).
+
+possible_duplicate_trace_step(because(12,rule_desc('privilege escalation',cvss_ac_l),tgt(fake_dc),[vulExists(fake_host,fake_dc,asks_kerberos_ticket,asks_kerberos_ticket),corrupted(fake_host)])).
+
+possible_duplicate_trace_step(because(13,rule_desc('privilege escalation',cvss_ac_l),corrupted(dc),[vulExists(dc,dc,exploit_tgt,exploit_tgt),tgt(dc)])).
+
+possible_duplicate_trace_step(because(19,rule_desc('redirected privilege escalation',cvss_ac_l),corrupted(fake_dc),[host(dc),tgt(dc)])).
+
+possible_duplicate_trace_step(because(13,rule_desc('privilege escalation',cvss_ac_l),corrupted(dc),[vulExists(dc,dc,exploit_tgt,exploit_tgt),tgt(dc)])).
 
 attack(corrupted(host2)).
 
-possible_duplicate_trace_step(because(5,rule_desc('pass the hash',likely),corrupted(host2),[vulExists(host2,host2,default_admin,default_admin),stolenHashNTLM(admin)])).
+possible_duplicate_trace_step(because(5,rule_desc('pass the hash',cvss_ac_l),corrupted(host2),[vulExists(host2,host2,default_admin,default_admin),stolenHashNTLM(admin)])).
 
-possible_duplicate_trace_step(because(8,rule_desc('find a ticket',cap_l),tgs(host2),[vulExists(host1,host2,tgs,tgs),corrupted(host1)])).
+possible_duplicate_trace_step(because(8,rule_desc('find a ticket',likely),tgs(host2),[vulExists(host1,host2,tgs,tgs),corrupted(host1)])).
 
-possible_duplicate_trace_step(because(8,rule_desc('find a ticket',cap_l),tgs(host2),[vulExists(host1,host2,tgs,tgs),corrupted(host1)])).
-
-possible_duplicate_trace_step(because(9,rule_desc('pass the ticket',likely),corrupted(host2),[vulExists(host2,_h3684,ptt,ptt),tgs(host2)])).
+possible_duplicate_trace_step(because(9,rule_desc('pass the ticket',cvss_ac_l),corrupted(host2),[vulExists(host2,_h3647,ptt,ptt),tgs(host2)])).
 
 attack(corrupted(fake_host)).
 
-possible_duplicate_trace_step(because(5,rule_desc('pass the hash',likely),corrupted(fake_host),[vulExists(fake_host,fake_host,default_admin,default_admin),stolenHashNTLM(admin)])).
+possible_duplicate_trace_step(because(5,rule_desc('pass the hash',cvss_ac_l),corrupted(fake_host),[vulExists(fake_host,fake_host,default_admin,default_admin),stolenHashNTLM(admin)])).
 
-possible_duplicate_trace_step(because(8,rule_desc('find a ticket',cap_l),tgs(fake_host),[vulExists(host1,fake_host,tgs,tgs),corrupted(host1)])).
+possible_duplicate_trace_step(because(8,rule_desc('find a ticket',likely),tgs(fake_host),[vulExists(host1,fake_host,tgs,tgs),corrupted(host1)])).
 
-possible_duplicate_trace_step(because(8,rule_desc('find a ticket',cap_l),tgs(fake_host),[vulExists(host1,fake_host,tgs,tgs),corrupted(host1)])).
+possible_duplicate_trace_step(because(9,rule_desc('pass the ticket',cvss_ac_l),corrupted(fake_host),[vulExists(fake_host,_h3718,ptt,ptt),tgs(fake_host)])).
 
-possible_duplicate_trace_step(because(9,rule_desc('pass the ticket',likely),corrupted(fake_host),[vulExists(fake_host,_h3755,ptt,ptt),tgs(fake_host)])).
-
-possible_duplicate_trace_step(because(18,rule_desc('pass the ticket redirected',likely),corrupted(fake_host),[vulExists(host2,fake_host,ptt,ptt),host(host2),tgs(host2)])).
+possible_duplicate_trace_step(because(18,rule_desc('pass the ticket redirected',cvss_ac_l),corrupted(fake_host),[vulExists(host2,fake_host,ptt,ptt),host(host2),tgs(host2)])).
 
 attack(corrupted(fake_host)).
 
@@ -105,19 +91,19 @@ attack(corrupted(host2)).
 
 attack(corrupted(fake_dc)).
 
-possible_duplicate_trace_step(because(12,rule_desc('privilege escalation',likely),tgt(fake_dc),[vulExists(host2,fake_dc,asks_kerberos_ticket,asks_kerberos_ticket),vulExists(host2,host2,non_constraint_delegation,non_constraint_delegation),corrupted(host2)])).
+possible_duplicate_trace_step(because(12,rule_desc('privilege escalation',cvss_ac_l),tgt(fake_dc),[vulExists(host2,fake_dc,asks_kerberos_ticket,asks_kerberos_ticket),corrupted(host2)])).
 
-possible_duplicate_trace_step(because(12,rule_desc('privilege escalation',likely),tgt(fake_dc),[vulExists(host2,fake_dc,asks_kerberos_ticket,asks_kerberos_ticket),vulExists(host2,host2,non_constraint_delegation,non_constraint_delegation),corrupted(host2)])).
+possible_duplicate_trace_step(because(12,rule_desc('privilege escalation',cvss_ac_l),tgt(fake_dc),[vulExists(host2,fake_dc,asks_kerberos_ticket,asks_kerberos_ticket),corrupted(host2)])).
 
-possible_duplicate_trace_step(because(12,rule_desc('privilege escalation',likely),tgt(fake_dc),[vulExists(fake_host,fake_dc,asks_kerberos_ticket,asks_kerberos_ticket),vulExists(fake_host,fake_host,non_constraint_delegation,non_constraint_delegation),corrupted(fake_host)])).
+possible_duplicate_trace_step(because(12,rule_desc('privilege escalation',cvss_ac_l),tgt(fake_dc),[vulExists(fake_host,fake_dc,asks_kerberos_ticket,asks_kerberos_ticket),corrupted(fake_host)])).
 
-possible_duplicate_trace_step(because(12,rule_desc('privilege escalation',likely),tgt(fake_dc),[vulExists(fake_host,fake_dc,asks_kerberos_ticket,asks_kerberos_ticket),vulExists(fake_host,fake_host,non_constraint_delegation,non_constraint_delegation),corrupted(fake_host)])).
+possible_duplicate_trace_step(because(12,rule_desc('privilege escalation',cvss_ac_l),tgt(fake_dc),[vulExists(fake_host,fake_dc,asks_kerberos_ticket,asks_kerberos_ticket),corrupted(fake_host)])).
 
-possible_duplicate_trace_step(because(12,rule_desc('privilege escalation',likely),tgt(fake_dc),[vulExists(fake_host,fake_dc,asks_kerberos_ticket,asks_kerberos_ticket),vulExists(fake_host,fake_host,non_constraint_delegation,non_constraint_delegation),corrupted(fake_host)])).
+possible_duplicate_trace_step(because(12,rule_desc('privilege escalation',cvss_ac_l),tgt(fake_dc),[vulExists(fake_host,fake_dc,asks_kerberos_ticket,asks_kerberos_ticket),corrupted(fake_host)])).
 
-possible_duplicate_trace_step(because(13,rule_desc('privilege escalation',cvss_ac_m),corrupted(fake_dc),[vulExists(fake_dc,fake_dc,exploit_tgt,exploit_tgt),tgt(fake_dc)])).
+possible_duplicate_trace_step(because(13,rule_desc('privilege escalation',cvss_ac_l),corrupted(fake_dc),[vulExists(fake_dc,fake_dc,exploit_tgt,exploit_tgt),tgt(fake_dc)])).
 
-possible_duplicate_trace_step(because(19,rule_desc('redirected privilege escalation',cvss_ac_m),corrupted(fake_dc),[host(dc),tgt(dc)])).
+possible_duplicate_trace_step(because(19,rule_desc('redirected privilege escalation',cvss_ac_l),corrupted(fake_dc),[host(dc),tgt(dc)])).
 
 attack(corrupted(dc)).
 
