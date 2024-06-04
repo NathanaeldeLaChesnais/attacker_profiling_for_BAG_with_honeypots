@@ -15,9 +15,9 @@ digraph G {
   14 [label="14 (20)\ntgs\n1.000", color="#FF0000", penwidth=3, shape="ellipse"];
   15 [label="15 (22)\n22:corrupted(host1):0\n1.000", color="#FF0000", penwidth=3, shape="diamond"];
   16 [label="16 (23)\nrelay_ntlm_bot\n1.000", color="#FF0000", penwidth=3, shape="ellipse"];
-  17 [label="17 (26)\n26:corrupted(fake_dc):0\n1.000", color="#FF0000", penwidth=3, shape="diamond"];
-  18 [label="18 (27)\nexploit_tgt\n1.000", color="#FF0000", penwidth=3, shape="ellipse"];
-  19 [label="19 (29)\n29:tgt(fake_dc):0\n1.000", color="#FF0000", penwidth=3, shape="diamond"];
+  17 [label="17 (26)\n26:corrupted(fake_dc):0\n1.000", color="blue", penwidth=3, shape="diamond"];
+  18 [label="18 (27)\nexploit_tgt\n1.000", color="blue", penwidth=3, shape="ellipse"];
+  19 [label="19 (29)\n29:tgt(fake_dc):0\n1.000", color="blue", penwidth=3, shape="diamond"];
   20 [label="20 (30)\nasks_kerberos_ticket\n1.000", color="blue", penwidth=3, shape="ellipse"];
   21 [label="21 (32)\n32:corrupted(fake_host):0\n1.000", color="blue", penwidth=3, shape="diamond"];
   22 [label="22 (33)\nptt\n1.000", color="blue", penwidth=3, shape="ellipse"];

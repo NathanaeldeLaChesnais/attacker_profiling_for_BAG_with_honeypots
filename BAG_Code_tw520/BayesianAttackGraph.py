@@ -25,15 +25,18 @@ def parse_dot(dot_string, ONE):
         # Vérifier si la ligne correspond à une arête
         edge_match = edge_pattern.match(line)
         if node_match:
-            node_id = int(node_match.group(1))
+            # node_id = int(node_match.group(1))
+            node_id = node_match.group(1)
             label = node_match.group(2)
             shape = node_match.group(3)
             node_type = 'AND' if shape == "ellipse" else 'OR'
             cveID = node_match.group(4).strip("\'")
             nodes[node_id] = {'label': label, 'type': node_type, 'CVE': cveID, 'shape': shape}
         elif edge_match:
-            source = int(edge_match.group(1))
-            target = int(edge_match.group(2))
+            # source = int(edge_match.group(1))
+            # target = int(edge_match.group(2))
+            source = edge_match.group(1)
+            target = edge_match.group(2)
             edges.append((source, target))
     model = BayesianNetwork(edges)
     # Read the probabilities for each CVE

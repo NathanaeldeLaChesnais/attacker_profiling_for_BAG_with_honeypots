@@ -32,13 +32,13 @@ CVE-0000-11,Kerberos 5 TGS,Impacket | Rubeus,L,,Kerberos
 CVE-0000-12,Kerberos 5 TGS,Hashcat | John,L,,CrackingHash
 CVE-0000-13,,,,,
 bad_password,,Hashcat | John,L,,CrackingHash
-relay_ntlm_bot,,Responder,H,,MITM
-tgs,,lsassy,H,,Kerberos
+relay_ntlm_bot,,Responder & Impacket,H,,LateralMove
+tgs,,Lsassy | Impacket,H,,Kerberos
 ptt,,Impacket,L,,PrivilegeEscalation
-ntlm_hash,,Cme,L,,Exploring
+ntlm_hash,,Cme,L,,LateralMove
 default_admin,,Cme,L,,LateralMove
 asks_kerberos_ticket,,Rubeus,L,,Kerberos
-exploit_tgt,,Impacket,H,,PrivilegeEscalation
+exploit_tgt,,Impacket | Rubeus,H,,PrivilegeEscalation
 ,,,,,
 clear_password,,Snafler | Donpapi,L,,Exploring
 non_constraint_delegation,,Impacket,H,,LateralMove

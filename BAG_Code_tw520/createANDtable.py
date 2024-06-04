@@ -2,7 +2,9 @@ import numpy as np
 from itertools import product
 
 def create_AND_table(probs):
-    if len(probs) == 0:
+    if probs == [0]:
+        return np.array([[1, 0]])
+    elif len(probs) == 0:
         return np.array([[0, 1]])
     else:
         npa = len(probs)
