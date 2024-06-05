@@ -65,8 +65,9 @@ def CreateFactorGraph(mrf):
 def RunLBP(fg, evidence, MAP=False):
     if not MAP:
         bp = infer.build_inferer(fg.bp_state, backend="bp")
+        variables = fg.variable_groups[0]
         start_time=time()
-        bp_arrays = bp.run(bp.init(), num_iters=5, damping=0.5, temperature=1.0)
+        bp_arrays = bp.run(bp.init(evidence_updates={variables[n]:np.array([1-v, v]) for n,v in evidence.items() }), num_iters=5, damping=0.5, temperature=1.0)
         beliefs = bp.get_beliefs(bp_arrays)
         marginals = infer.get_marginals(beliefs)
         end_time=time()
