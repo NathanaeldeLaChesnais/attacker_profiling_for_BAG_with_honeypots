@@ -36,8 +36,8 @@ relay_ntlm_bot,,Responder & Impacket,H,,LateralMove
 tgs,,Lsassy | Impacket,H,,Kerberos
 ptt,,Impacket,L,,PrivilegeEscalation
 ntlm_hash,,Cme,L,,LateralMove
-default_admin,,Cme,L,,LateralMove
-asks_kerberos_ticket,,Rubeus,L,,Kerberos
+default_admin_pth,,Cme,L,,LateralMove
+asks_kerberos_ticket,,Rubeus,H,,Kerberos
 exploit_tgt,,Impacket | Rubeus,H,,PrivilegeEscalation
 ,,,,,
 clear_password,,Snafler | Donpapi,L,,Exploring

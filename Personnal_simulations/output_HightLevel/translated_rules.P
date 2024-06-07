@@ -6,9 +6,9 @@
 
 :-(mvTrc(corrupted(_h3279,3)),','(attackerLocated(_h3284),','(host(_h3279),','(vulExists(_h3279,_h3279,_h3293,relay_ntlm_bot),assert_trace(because(3,rule_desc('relay ntlm or coerce it',likely),corrupted(_h3279),[vulExists(_h3279,_h3279,_h3293,relay_ntlm_bot),host(_h3279),attackerLocated(_h3284)])))))).
 
-:-(mvTrc(stolenHashNTLM(admin,4)),','(mvTrc(stolenCred(_h3284,_h3324)),','(vulExists(admin,admin,_h3288,ntlm_hash),assert_trace(because(4,rule_desc('get ntlm hash',cvss_ac_l),stolenHashNTLM(admin),[vulExists(admin,admin,_h3288,ntlm_hash),stolenCred(_h3284)]))))).
+:-(mvTrc(stolenHashNTLM(admin,4)),','(mvTrc(corrupted(_h3284,_h3324)),','(vulExists(_h3284,admin,_h3288,ntlm_hash),assert_trace(because(4,rule_desc('get ntlm hash',cvss_ac_l),stolenHashNTLM(admin),[vulExists(_h3284,admin,_h3288,ntlm_hash),corrupted(_h3284)]))))).
 
-:-(mvTrc(corrupted(_h3279,5)),','(mvTrc(stolenHashNTLM(admin,_h3324)),','(vulExists(_h3279,_h3279,_h3288,default_admin),assert_trace(because(5,rule_desc('pass the hash',cvss_ac_l),corrupted(_h3279),[vulExists(_h3279,_h3279,_h3288,default_admin),stolenHashNTLM(admin)]))))).
+:-(mvTrc(corrupted(_h3279,5)),','(mvTrc(stolenHashNTLM(admin,_h3324)),','(vulExists(_h3279,_h3279,_h3288,default_admin_pth),assert_trace(because(5,rule_desc('pass the hash',cvss_ac_l),corrupted(_h3279),[vulExists(_h3279,_h3279,_h3288,default_admin_pth),stolenHashNTLM(admin)]))))).
 
 :-(mvTrc(stolenHashKRB(_h3279,6)),','(mvTrc(stolenCredPriv(user,_h3324)),','(vulExists(_h3279,_h3279,_h3288,kerberoasting),assert_trace(because(6,rule_desc('kerberoasting attack',cvss_ac_m),stolenHashKRB(_h3279),[vulExists(_h3279,_h3279,_h3288,kerberoasting),stolenCredPriv(user)]))))).
 
@@ -34,7 +34,9 @@
 
 :-(mvTrc(tgt(dc,17)),','(mvTrc(corrupted(dc,_h3324)),','(vulExists(dc,dc,_h3288,c),assert_trace(because(17,rule_desc('golden ticket',cvss_ac_m),tgt(dc),[vulExists(dc,dc,_h3288,c),corrupted(dc)]))))).
 
-:-(mvTrc(corrupted(fake_host,18)),','(mvTrc(tgs(_h3284,_h3329)),','(host(_h3284),','(vulExists(_h3284,fake_host,_h3293,ptt),assert_trace(because(18,rule_desc('pass the ticket redirected',cvss_ac_l),corrupted(fake_host),[vulExists(_h3284,fake_host,_h3293,ptt),host(_h3284),tgs(_h3284)])))))).
+:-(mvTrc(corrupted(fake_host,18)),','(mvTrc(tgs(_h3284,_h3329)),','(host(_h3284),','(vulExists(_h3284,fake_host,_h3293,ptt),assert_trace(because(18,rule_desc('redirected pass the ticket',cvss_ac_l),corrupted(fake_host),[vulExists(_h3284,fake_host,_h3293,ptt),host(_h3284),tgs(_h3284)])))))).
 
-:-(mvTrc(corrupted(fake_dc,19)),','(mvTrc(tgt(_h3284,_h3321)),','(host(_h3284),assert_trace(because(19,rule_desc('redirected privilege escalation',cvss_ac_l),corrupted(fake_dc),[host(_h3284),tgt(_h3284)]))))).
+:-(mvTrc(corrupted(fake_host,19)),','(mvTrc(stolenHashNTLM(admin,_h3324)),','(vulExists(_h3286,_h3286,_h3288,default_admin_pth),assert_trace(because(19,rule_desc('redirected pass the hash',cvss_ac_l),corrupted(fake_host),[vulExists(_h3286,_h3286,_h3288,default_admin_pth),stolenHashNTLM(admin)]))))).
+
+:-(mvTrc(corrupted(fake_dc,20)),','(mvTrc(tgt(_h3284,_h3329)),','(host(_h3284),','(vulExists(_h3284,_h3284,_h3293,exploit_tgt),assert_trace(because(20,rule_desc('redirected privilege escalation',cvss_ac_l),corrupted(fake_dc),[vulExists(_h3284,_h3284,_h3293,exploit_tgt),host(_h3284),tgt(_h3284)])))))).
 

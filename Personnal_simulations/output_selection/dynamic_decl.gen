@@ -1,8 +1,0 @@
-:-(dynamic(attackerLocated(_h2948))).
-
-:-(dynamic(vulExists(_h2948,_h2949,_h2950))).
-
-:-(dynamic(hostDom(_h2948,_h2949))).
-
-:-(dynamic(trace_step(_h2883,_h2884))).
-

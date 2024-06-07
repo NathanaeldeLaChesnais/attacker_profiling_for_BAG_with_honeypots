@@ -54,14 +54,14 @@ interaction_rule(
 
 interaction_rule(
     (stolenHashNTLM(admin) :-
-        stolenCred(User),
-        vulExists(admin, admin, CVE, ntlm_hash)),
+        corrupted(Host),
+        vulExists(Host, admin, CVE, ntlm_hash)),
     rule_desc('get ntlm hash', 'cvss_ac_l')).
 
 interaction_rule(
     (corrupted(Host) :-
         stolenHashNTLM(admin),
-        vulExists(Host, Host, CVE, default_admin)),
+        vulExists(Host, Host, CVE, default_admin_pth)),
     rule_desc('pass the hash', 'cvss_ac_l')).
 
 /* Kerberos */
@@ -148,10 +148,17 @@ interaction_rule(
         tgs(Host1),
         host(Host1),
         vulExists(Host1, fake_host, CVE, ptt)),
-    rule_desc('pass the ticket redirected', 'cvss_ac_l')).
+    rule_desc('redirected pass the ticket', 'cvss_ac_l')).
+
+interaction_rule(
+    (corrupted(fake_host) :-
+        stolenHashNTLM(admin),
+        vulExists(Host, Host, CVE, default_admin_pth)),
+    rule_desc('redirected pass the hash', 'cvss_ac_l')).
 
 interaction_rule(
     (corrupted(fake_dc) :-
         tgt(Host),
-        host(Host)),
+        host(Host),
+        vulExists(Host, Host, CVE, exploit_tgt)),
     rule_desc('redirected privilege escalation', 'cvss_ac_l')).

@@ -14,8 +14,8 @@ vulExists(_, _, ptt, ptt).
 /* vulExists(host1, host1, zero_day, zero_day). */
 /* vulExists(userSrv, userSrv, kerberoasting, kerberoasting).
 vulExists(userSrv, userSrv, cracking, cracking). */
-vulExists(admin, admin, ntlm_hash, ntlm_hash).
-vulExists(host2, host2, default_admin, default_admin).
+vulExists(host1, admin, ntlm_hash, ntlm_hash).
+vulExists(host2, host2, default_admin_pth, default_admin_pth).
 
 /* vulExists(file, user, shares, shares).
 vulExists(file, user3, clear_password, clear_password). */
