@@ -1,3 +1,9 @@
+# TODO
+[] Partie 4
+[] Partie 5
+[] Comprendre la backpropagation
+[] Vérifier que j'ai parlé de l'article qui fait la même chose que moi
+
 # Rules for Mulval:
 'Error in parsing trace_output.P' -> check if there is a space in each rule_description, don't use coma, pas d'accents non plus.
 Tout doit être relié à une cause source, sinon les probabilités de branches locales ne sont pas prises en compte.
