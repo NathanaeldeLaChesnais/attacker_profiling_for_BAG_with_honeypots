@@ -1,0 +1,164 @@
+primitive(attackerLocated(_domain)).
+primitive(vulExists(_domain, _cve, _mod)).
+primitive(vulExists(_files, _user, _cve, _mod)).
+primitive(host(_host)).
+
+derived(stolenCred(_user)).
+derived(stolenCred(_user, _host)).
+derived(corrupted(_host)).
+derived(stolenHashNTLM(_user)).
+derived(stolenHashKRB(_user)).
+derived(accessData(_files)).
+derived(tgt(_host)).
+derived(stolenCredPriv(_user)).
+derived(tgs(_host)).
+
+meta(attackGoal(_)).
+
+:- table stolenCred/4.
+:- table corrupted/5.
+:- table stolenHashKRB/1.
+:- table stolenHashNTLM/1.
+:- table accessData/1.
+:- table tgt/1.
+:- table stolenCredPriv/1.
+:- table tgs/1.
+
+/* Logic */
+interaction_rule(
+    (stolenCredPriv(user) :-
+        stolenCred(User)),
+    rule_desc('logic rule', 'certain')).
+
+/* First Compromission */
+interaction_rule(
+    (stolenCred(User) :-
+        attackerLocated(Domain),
+        vulExists(User, User, Cve, bad_password)),
+    rule_desc('default password or unsafe one', 'cvss_ac_l')).
+
+interaction_rule(
+    (corrupted(Host) :-
+        attackerLocated(Domain),
+        host(Host),
+        vulExists(Host, Host, Cve, zero_day)),
+    rule_desc('zero day on machine', 'likely')).
+
+/* NTLM */
+interaction_rule(
+    (corrupted(Host) :-
+        attackerLocated(Domain),
+        host(Host),
+        vulExists(Host, Host, CVE, relay_ntlm_bot)),
+    rule_desc('relay ntlm or coerce it', 'likely')).
+
+interaction_rule(
+    (stolenHashNTLM(admin) :-
+        corrupted(Host),
+        vulExists(Host, admin, CVE, ntlm_hash)),
+    rule_desc('get ntlm hash', 'cvss_ac_l')).
+
+interaction_rule(
+    (corrupted(Host) :-
+        stolenHashNTLM(admin),
+        vulExists(Host, Host, CVE, default_admin_pth)),
+    rule_desc('pass the hash', 'cvss_ac_l')).
+
+/* Kerberos */
+interaction_rule(
+    (stolenHashKRB(User) :-
+        stolenCredPriv(user),
+        vulExists(User, User, CVE, kerberoasting)),
+    rule_desc('kerberoasting attack', 'cvss_ac_m')).
+
+interaction_rule(
+    (stolenCred(User) :-
+        stolenHashKRB(User),
+        vulExists(User, User, CVE, cracking)),
+    rule_desc('cracking a medium hash', 'cvss_ac_m')).
+
+interaction_rule(
+    (tgs(Host2) :-
+        corrupted(Host1),
+        vulExists(Host1, Host2, CVE, tgs)),
+    rule_desc('find a ticket', 'likely')).
+
+interaction_rule(
+    (corrupted(Host1) :-
+        tgs(Host1),
+        vulExists(Host1, Host2, CVE, ptt)),
+    rule_desc('pass the ticket', 'cvss_ac_l')).
+
+/* Network shares */
+interaction_rule(
+    (accessData(Files) :-
+        stolenCredPriv(User),
+        vulExists(Files, User, CVE, shares)),
+    rule_desc('network share', 'likely')).
+
+interaction_rule(
+    (stolenCred(User) :-
+        accessData(Files),
+        vulExists(Files, User, CVE, clear_password)),
+    rule_desc('credential on a network share', 'cvss_ac_m')).
+
+/* Privilege escalation */
+interaction_rule(
+    (tgt(Host) :-
+        corrupted(Host2),
+        /* vulExists(Host2, Host2, CVE1, non_constraint_delegation), */
+        vulExists(Host2, Host, CVE2, asks_kerberos_ticket)),
+    rule_desc('privilege escalation', 'cvss_ac_l')).
+
+interaction_rule(
+    (corrupted(Host1) :-
+        tgt(Host1),
+        vulExists(Host1, Host1, CVE, exploit_tgt)),
+    rule_desc('privilege escalation', 'cvss_ac_l')).
+
+interaction_rule(
+    (stolenCred(User) :-
+        corrupted(Host),
+        vulExists(Host, User, CVE, credential_dump)),
+    rule_desc('secretdump or donpapi', 'likely')).
+
+interaction_rule(
+    (tgt(Host) :-
+        stolenCredPriv(user),
+        vulExists(Host, Host, CVE, esc)),
+    rule_desc('certificat abuse', 'cvss_ac_m')).
+
+/* Persistance */
+interaction_rule(
+    (stolenCred(newAdmin, Host) :-
+        corrupted(Host),
+        vulExists(Host, Host, CVE, newAdmin)),
+    rule_desc('persistence throug new account', 'cap_l')).
+
+interaction_rule(
+    (tgt(dc) :-
+        corrupted(dc),
+        vulExists(dc, dc, CVE, c)),
+    rule_desc('golden ticket', 'cvss_ac_m')).
+
+/* Proxyfication */
+
+interaction_rule(
+    (corrupted(fake_host) :-
+        tgs(Host1),
+        host(Host1),
+        vulExists(Host1, fake_host, CVE, ptt)),
+    rule_desc('redirected pass the ticket', 'cvss_ac_l')).
+
+interaction_rule(
+    (corrupted(fake_host) :-
+        stolenHashNTLM(admin),
+        vulExists(Host, Host, CVE, default_admin_pth)),
+    rule_desc('redirected pass the hash', 'cvss_ac_l')).
+
+interaction_rule(
+    (corrupted(fake_dc) :-
+        tgt(Host),
+        host(Host),
+        vulExists(Host, Host, CVE, exploit_tgt)),
+    rule_desc('redirected privilege escalation', 'cvss_ac_l')).

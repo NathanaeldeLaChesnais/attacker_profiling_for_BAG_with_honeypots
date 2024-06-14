@@ -1,0 +1,15 @@
+kts,base_score
+Hashcat,0.9
+Responder,0.9
+Lsassy,0.7
+Cme,0.9
+Rubeus,0.7
+Impacket,0.9
+John,0.9
+L,0.9
+H,0.1
+CrackingHash,0.8
+LateralMove,0.7
+Kerberos,0.6
+PrivilegeEscalation,0.8
+A,0

@@ -112,23 +112,23 @@ def compile_ast(ast):
     else:
         raise ValueError(f'Unknown AST node type: {ast.type}')
     
-def build_tools_tree(BAG, ast, id, ONE):
+def build_tools_tree(BAG, ast, id, ONE, kts_base_score):
     if ast.type == 'AND':
         BAG.add_edge(ast.__repr__(), id)
         for child in ast.children:
-            build_tools_tree(BAG, child, ast.__repr__(), ONE)
+            build_tools_tree(BAG, child, ast.__repr__(), ONE, kts_base_score)
         if BAG.get_cpds(ast.__repr__()) == None:
             BAG.add_cpds(TabularCPD(ast.__repr__(), 2, create_AND_table([ONE, ONE]).T, [child.__repr__() for child in ast.children], evidence_card=2*np.ones(len(ast.children))))
     elif ast.type == 'OR':
         BAG.add_edge(ast.__repr__(), id)
         for child in ast.children:
-            build_tools_tree(BAG, child, ast.__repr__(), ONE)
+            build_tools_tree(BAG, child, ast.__repr__(), ONE, kts_base_score)
         if BAG.get_cpds(ast.__repr__()) == None:
             BAG.add_cpds(TabularCPD(ast.__repr__(), 2, create_OR_table([ONE, ONE]).T, [child.__repr__() for child in ast.children], evidence_card=2*np.ones(len(ast.children))))
     else:
         BAG.add_edge(ast.__repr__(), id)
         if BAG.get_cpds(ast.__repr__()) == None:
-            BAG.add_cpds(TabularCPD(ast.__repr__(), 2, [[0.5], [0.5]]))
+            BAG.add_cpds(TabularCPD(ast.__repr__(), 2, [[1 - kts_base_score[ast.__repr__()]], [kts_base_score[ast.__repr__()]]]))
 
 # Exemple d'utilisation
 expression = "Responder & ( impacket | Metasploit )"

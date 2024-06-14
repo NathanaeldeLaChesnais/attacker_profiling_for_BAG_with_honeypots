@@ -1,0 +1,40 @@
+attackerLocated(domain).
+attackGoal(stolenCred(_, _)).
+attackGoal(corrupted(_)).
+attackGoal(tgt(dc)).
+
+host(host1).
+host(host2).
+host(dc).
+
+vulExists(user1, user1, bad_password, bad_password).
+vulExists(host1, host1, relay_ntlm_bot, relay_ntlm_bot).
+vulExists(host1, host2, tgs, tgs).
+vulExists(_, _, ptt, ptt).
+/* vulExists(host1, host1, zero_day, zero_day). */
+/* vulExists(userSrv, userSrv, kerberoasting, kerberoasting).
+vulExists(userSrv, userSrv, cracking, cracking). */
+vulExists(host1, admin, ntlm_hash, ntlm_hash).
+vulExists(host2, host2, default_admin_pth, default_admin_pth).
+
+/* vulExists(file, user, shares, shares).
+vulExists(file, user3, clear_password, clear_password). */
+
+vulExists(host2, host2, non_constraint_delegation, non_constraint_delegation).
+vulExists(host2, dc, asks_kerberos_ticket, asks_kerberos_ticket).
+vulExists(dc, dc, exploit_tgt, exploit_tgt).
+
+/* vulExists(dc, domadmin, cve, credential_dump).
+vulExists(dc, dc, cve, esc).
+
+vulExists(dc, dc, cve, newAdmin).
+vulExists(dc, dc, cve, golden_ticket). */
+
+/* Honeytokens */
+vulExists(host1, fake_host, tgs, tgs).
+vulExists(fake_host, fake_host, default_admin, default_admin).
+vulExists(fake_host, fake_host, non_constraint_delegation, non_constraint_delegation).
+vulExists(fake_host, fake_dc, asks_kerberos_ticket, asks_kerberos_ticket).
+vulExists(host2, fake_dc, asks_kerberos_ticket, asks_kerberos_ticket).
+vulExists(dc, fake_dc, exploit_tgt, exploit_tgt).
+vulExists(fake_dc, fake_dc, exploit_tgt, exploit_tgt).
