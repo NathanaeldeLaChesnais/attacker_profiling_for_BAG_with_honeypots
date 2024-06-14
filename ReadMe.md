@@ -1,8 +1,9 @@
 # TODO
-[] Partie 4
-[] Partie 5
+[] Partie 5 dont l'environement de travail
+[] Partie 6
 [] Comprendre la backpropagation
 [] Vérifier que j'ai parlé de l'article qui fait la même chose que moi
+[] Inclure le fait que je vais me baser sur AD dans l'intro
 
 # Rules for Mulval:
 'Error in parsing trace_output.P' -> check if there is a space in each rule_description, don't use coma, pas d'accents non plus.
