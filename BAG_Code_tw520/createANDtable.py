@@ -8,7 +8,7 @@ def create_AND_table(probs):
         return np.array([[0, 1]])
     else:
         npa = len(probs)
-        pop = np.full(npa, 0.01)
+        pop = np.full(npa, 0.1)
         q = np.array(probs)
         cpt = np.zeros((2, 2 ** npa))
         

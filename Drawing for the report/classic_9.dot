@@ -1,0 +1,13 @@
+digraph G {
+  "9" [label="9 (13)\n13:corrupted(host1):0\n1.0000", color="#FF0000", penwidth=3, shape="diamond"];
+  "8" [label="8 (11)\nntlm_hash\n0.6981", color="#B24D00", penwidth=3, shape="ellipse"];
+  "7" [label="7 (10)\n10:stolenHashNTLM(admin):0\n0.6286", color="#A05F00", penwidth=3, shape="diamond"];
+  "Cme" [label="Cme\n0.8000", color="#CC3300", penwidth=3, shape=""];
+  "Lskills" [label="Lskills\n0.9000", color="#E51A00", penwidth=3, shape=""];
+  "LateralMove" [label="LateralMove\n0.9326", color="#ED1200", penwidth=3, shape=""];
+  "9" -> "8";
+  "8" -> "7";
+  "Cme" -> "8";
+  "Lskills" -> "8";
+  "LateralMove" -> "8";
+}
