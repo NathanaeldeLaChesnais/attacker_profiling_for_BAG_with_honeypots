@@ -25,3 +25,23 @@ print(bayesian_model.get_cpds('Imp'))
 print(belief_propagation.query(variables=['D'], show_progress=True))
 
 nx.drawing.nx_pydot.write_dot(bayesian_model, 'bayesian_model.dot')
+
+from pgmpy.models import BayesianNetwork
+bayesian_model = BayesianNetwork([('A', 'C'), ('B', 'C')])
+
+cpt_a =[[0.2], [0.8]]
+cpd_a = TabularCPD('A', 2, cpt_a)
+cpd_b = TabularCPD('B', 2, [[0.3], [0.7]])
+cpd_c = TabularCPD('C', 2, create_OR_table([0.5, 0.8]).T, ['A','B'], evidence_card=2*np.ones(2))
+# cpd_virtual = TabularCPD('B', 2, [[0.2],[0.8]])
+
+bayesian_model.add_cpds(cpd_a, cpd_b, cpd_c)
+print( bayesian_model.get_cpds('C').values)
+belief_propagation = BeliefPropagation(bayesian_model)
+print(belief_propagation.get_cliques())
+belief_propagation.calibrate()
+# for elem in belief_propagation.get_clique_beliefs().values():
+#     print(elem)
+print(belief_propagation.query(variables=['A'], evidence={'C' : 1}))
+for elem in belief_propagation.get_clique_beliefs().values():
+    print(elem)
