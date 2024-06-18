@@ -1,0 +1,31 @@
+digraph G {
+ranksep=0.2;
+  "1" [label="1\ncorrupted(dc)\n1.0000", color="#FF0000", penwidth=3, shape="diamond"];
+  "2" [label="2\nexploit_tgt\n1.0000", color="#FF0000", penwidth=3, shape="ellipse"];
+  "3" [label="3\ntgt(dc)\n1.0000", color="#FF0000", penwidth=3, shape="diamond"];
+  "4" [label="4\nasks_kerberos_ticket\n1.0000", color="#FF0000", penwidth=3, shape="ellipse"];
+  "5" [label="5\ncorrupted(host2)\n1.0000", color="#FF0000", penwidth=3, shape="diamond"];
+  "6" [label="6\ndefault_admin_pth\n1.0000", color="#FF0000", penwidth=3, shape="ellipse"];
+  "7" [label="7\nstolenHashNTLM(admin)\n1.0000", color="#FF0000", penwidth=3, shape="diamond"];
+  "8" [label="8\nntlm_hash\n1.0000", color="#FF0000", penwidth=3, shape="ellipse"];
+  "9" [label="9\ncorrupted(host1)\n1.0000", color="#FF0000", penwidth=3, shape="diamond"];
+  "10" [label="10\nrelay_ntlm_bot\n1.0000", color="#FF0000", penwidth=3, shape="ellipse"];
+  "11" [label="11\nattackerLocated(domain)\n1.0000", color="#FF0000", penwidth=3, shape="box"];
+  "12" [label="12\nptt\n1.0000", color="#FF0000", penwidth=3, shape="ellipse"];
+  "13" [label="13\ntgs(host2)\n1.0000", color="#FF0000", penwidth=3, shape="diamond"];
+  "14" [label="14\ntgs\n1.0000", color="#FF0000", penwidth=3, shape="ellipse"];
+  "11" -> "10";
+  "10" -> "9";
+  "9" -> "8";
+  "9" -> "14";
+  "8" -> "7";
+  "7" -> "6";
+  "6" -> "5";
+  "5" -> "4";
+  "14" -> "13";
+  "13" -> "12";
+  "12" -> "5";
+  "4" -> "3";
+  "3" -> "2";
+  "2" -> "1";
+}
