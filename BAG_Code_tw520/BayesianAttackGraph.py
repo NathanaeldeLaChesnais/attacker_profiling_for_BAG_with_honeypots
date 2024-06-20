@@ -76,3 +76,10 @@ def parse_dot(dot_string, ONE):
         model.add_cpds(cpd)
     return model, edges, nodes
 
+def rmv_node(BAG, node):
+    edge = [(u,node) for u in BAG.get_parents(node)]
+    BAG.remove_edges_from(edge)
+    BAG.add_cpds(TabularCPD(node, 2, create_AND_table([0]).T))
+
+def evidences_to_string(evidences):
+    return ''.join([f'_{k}' for k, v in evidences.items()])
