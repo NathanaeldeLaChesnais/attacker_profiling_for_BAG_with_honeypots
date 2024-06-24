@@ -12,4 +12,11 @@ CrackingHash,0.7
 LateralMove,0.6
 Kerberos,0.5
 PrivilegeEscalation,0.7
+Autre,0.5
+Unknown,0.4
+NoCredentials,0.8
+KnownVulnerabilities,0.8
+Snafler,0.8
+Donpapi,0.8
+Exploring,0.8
 A,0

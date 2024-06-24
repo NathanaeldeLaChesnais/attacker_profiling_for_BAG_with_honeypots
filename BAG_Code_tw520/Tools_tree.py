@@ -103,7 +103,6 @@ class Parser:
 
         
 def compile_ast(ast):
-    print(ast.value)
     if ast.type == 'VAR':
         return ast.value
     elif ast.type in ('AND', 'OR'):
@@ -226,13 +225,14 @@ def kts_layer_static(BAG, ONE, nodes):
             BAG.add_cpds(cpd)
 
 # Exemple d'utilisation
-expression = "Responder & ( impacket | Metasploit )"
-tokens = tokenizer(expression)
-print("Tokens:", tokens)
+if __name__ == '__main__':
+    expression = "Responder & ( impacket | Metasploit )"
+    tokens = tokenizer(expression)
+    print("Tokens:", tokens)
 
-parser = Parser(tokens)
-ast = parser.parse()
-print("AST:", ast)
+    parser = Parser(tokens)
+    ast = parser.parse()
+    print("AST:", ast)
 
-compiled_expression = compile_ast(ast)
-print("Compiled Expression:", compiled_expression)
+    compiled_expression = compile_ast(ast)
+    print("Compiled Expression:", compiled_expression)
