@@ -114,12 +114,12 @@ inverted_nodes = {int(v['label'].split(':')[0]): k for k, v in nodes.items()}
 kts_layer_original(BAG, ONE, nodes)
 
 
-evidences = [[11]]
+evidence = [11]
 import time
 for i in range(1, 6):
     timer = time.time()
-    BAG_changeant, edges, nodes = parse_dot(open(path / ("ag-nocycles" + str(i) +".dot" ), 'r').read(), ONE)
+    BAG_changeant, edges, nodes = parse_dot(open(path / ("ag-nocycles" + str(1) +".dot" ), 'r').read(), ONE)
     kts_layer_original(BAG_changeant, ONE, nodes)
-    for evidence in evidences:
-        to_dot(BAG_changeant, nodes, evidence, path, basename, display_kts=False, calculate_probabilities=True)
-    print("Time for the iteration", i, "and bag:", BAG_changeant, "is ", time.time() - timer)
+    to_dot(BAG_changeant, nodes, evidence, path, basename, display_kts=False, calculate_probabilities=True)
+    timer2 = time.time()
+    print("Time for the iteration", i, "and bag:", BAG_changeant, "is ", timer2 - timer)
