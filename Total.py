@@ -118,7 +118,7 @@ evidence = [11]
 import time
 for i in range(1, 6):
     timer = time.time()
-    BAG_changeant, edges, nodes = parse_dot(open(path / ("ag-nocycles" + str(1) +".dot" ), 'r').read(), ONE)
+    BAG_changeant, edges, nodes = parse_dot(open(path / ("ag-nocycles" + str(2) +".dot" ), 'r').read(), ONE)
     kts_layer_original(BAG_changeant, ONE, nodes)
     to_dot(BAG_changeant, nodes, evidence, path, basename, display_kts=False, calculate_probabilities=True)
     timer2 = time.time()
