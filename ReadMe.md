@@ -19,12 +19,12 @@ To get started with the project, clone the repository to your local machine usin
 ### Prerequisites
 Ensure you have Python installed on your machine. You can download it from python.org.
 Additionally, install the necessary Python packages by running:
-'pip install -r requirements.txt'
+' pip install -r requirements.txt '
 
 Make sure you also have a distribution of graphviz https://graphviz.org/download/ to draw the graphs.
 
 ### Running the Project
-To build the graph, place your mulval file in the Personnal_simulation folder and run './Scripts/Build_graph.psi'
+To build the graph, place your mulval file in the Personnal_simulation folder and run ' ./Scripts/Build_graph.psi '
 Then you can exploit the graph and run all inferences on it through the playbooks
 
 ## Acknoledgements
