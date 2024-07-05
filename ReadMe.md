@@ -1,5 +1,5 @@
 # Research Project on Honeypots deployment for real time risk assessment
-Welcome to the repository of our research project on threat intelligence and simulation. This repository contains various utilities, scripts, data utilities, and simulations related to our research.
+Welcome to the repository of my research project on Honeypots deployment for real time risk assessment. This repository contains various utilities, scripts, and simulations related to my research. It is the resulting code of my research project at Imperial College.
 
 ## Repository Structure
 BAG_Code: Contains various Python utilities for runing Bayesian inference.
