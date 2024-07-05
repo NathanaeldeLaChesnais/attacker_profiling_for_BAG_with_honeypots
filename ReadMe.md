@@ -19,16 +19,22 @@ To get started with the project, clone the repository to your local machine usin
 ### Prerequisites
 Ensure you have Python installed on your machine. You can download it from python.org.
 Additionally, install the necessary Python packages by running:
-' pip install -r requirements.txt '
+`pip install -r requirements.txt`
 
 Make sure you also have a distribution of graphviz https://graphviz.org/download/ to draw the graphs.
 
 ### Running the Project
-To build the graph, place your mulval file in the Personnal_simulation folder and run ' ./Scripts/Build_graph.psi '
+To build the graph, place your mulval file in the Personnal_simulation folder and run `./Scripts/Build_graph.ps1`
 Then you can exploit the graph and run all inferences on it through the playbooks
 
 ## Acknoledgements
+I am deeply grateful to Professor Emil Lupu, who accompanied me throughout the project as my supervisor. He introduced me to attack graph, the base of the development of my project and oriented my research all along. He kept me in the right direction without restraining me from exploring new tracks.
 
+Special thanks to Luca Castiglione for his explanations more in depth for the use of tools to produce Bayesian inference, as well as for the discussion we had on how to use attack graphs and how to extend them for new use cases.
+
+I would also like to thank Tao Wang for his help with the python libraries for Bayesian inference and his opening on Markov random field.
+
+At last, I would like to thank the Institute for Security Science and Technology (ISST) for hosting me during these four months at Imperial College.
 
 ## License
 This project is licensed under the GNU General Public License. See the LICENSE file for more details.
