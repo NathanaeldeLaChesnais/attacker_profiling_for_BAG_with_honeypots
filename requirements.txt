@@ -6,3 +6,6 @@ pgmpy
 itertools
 networkx
 matplotlib
+pgmax
+time
+jax

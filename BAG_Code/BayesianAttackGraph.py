@@ -2,8 +2,8 @@ import numpy as np
 import re
 import csv
 from pgmpy.models import BayesianNetwork
-from BAG_Code_tw520.createANDtable import create_AND_table
-from BAG_Code_tw520.createORtable import create_OR_table
+from BAG_Code.createANDtable import create_AND_table
+from BAG_Code.createORtable import create_OR_table
 from pgmpy.factors.discrete import TabularCPD
 
 
@@ -39,12 +39,6 @@ def parse_dot(dot_string, ONE):
             target = edge_match.group(2)
             edges.append((source, target))
     model = BayesianNetwork(edges)
-    # Read the probabilities for each CVE
-    cvss_dict = {}
-    with open('./Threat_Inteligence/epss_scores-2024-04-25.csv', mode='r') as csvfile:
-        reader = csv.DictReader(csvfile)
-        for row in reader:
-            cvss_dict[row['cve']] = row['epss']
     for elem in nodes.items():
         r = elem[1]['type'] == 'OR'
         #We look for the source nodes
@@ -53,15 +47,12 @@ def parse_dot(dot_string, ONE):
         for edge in edges:
             if edge[1] == elem[0]:
                 source.append(edge[0])
-                if elem[1]['CVE'] in cvss_dict.keys():
-                    probs.append(float(cvss_dict[elem[1]['CVE']]))
-                else:
-                    # We use the probability associated to the rule if not null
-                    tmp = float(nodes[edge[0]]['label'].split(':')[2])
-                    if tmp != 0:
-                        probs.append(float(tmp))
-                    else: 
-                        probs.append(ONE)
+                # We use the probability associated to the rule if not null
+                tmp = float(nodes[edge[0]]['label'].split(':')[2])
+                if tmp != 0:
+                    probs.append(float(tmp))
+                else: 
+                    probs.append(ONE)
         npa = len(source)
         #We draw the probability from the distribution of CVSS scores
         if r:

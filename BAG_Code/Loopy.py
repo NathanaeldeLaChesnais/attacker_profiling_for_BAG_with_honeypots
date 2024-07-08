@@ -3,8 +3,8 @@ import numpy.random as rn
 import matplotlib.pyplot as plt
 import networkx as nx
 from pgmpy.models import BayesianNetwork
-from BAG_Code_tw520.createANDtable import create_AND_table
-from BAG_Code_tw520.createORtable import create_OR_table
+from BAG_Code.createANDtable import create_AND_table
+from BAG_Code.createORtable import create_OR_table
 from pgmpy.factors.discrete import TabularCPD
 
 rn.seed(1)

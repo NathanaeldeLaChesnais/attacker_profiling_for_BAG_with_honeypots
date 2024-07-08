@@ -2,8 +2,8 @@ import re
 import numpy as np
 import csv
 from pgmpy.factors.discrete import TabularCPD
-from BAG_Code_tw520.createANDtable import create_AND_table
-from BAG_Code_tw520.createORtable import create_OR_table
+from BAG_Code.createANDtable import create_AND_table
+from BAG_Code.createORtable import create_OR_table
 
 # Définir les types de tokens
 TOKENS = [
