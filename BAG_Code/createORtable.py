@@ -1,14 +1,24 @@
 import numpy as np
 from itertools import product
 
-def create_OR_table(probs, ONE = 0.999):
+def create_OR_table(probs, ONE=0.999):
+    """
+    Create an OR table based on the given probabilities.
+
+    Parameters:
+    probs (list): A list of probabilities.
+    ONE (float): 1 - the value to be assigned at the place of a zero probability to represent zero-days.
+
+    Returns:
+    numpy.ndarray: The OR table as a numpy array.
+
+    """
     if len(probs) == 0:
         return np.array([[1 - 0.99999, 0.99999]])
     else:
         npa = len(probs)
         q = 1 - np.array(probs)
         cpt = np.zeros((2, 2 ** npa))
-        
         vals = list(product([0, 1], repeat=npa))
         
         for i in range(2 ** npa):

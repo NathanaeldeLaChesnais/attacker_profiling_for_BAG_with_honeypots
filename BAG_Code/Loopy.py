@@ -1,11 +1,5 @@
 import numpy as np
 import numpy.random as rn
-import matplotlib.pyplot as plt
-import networkx as nx
-from pgmpy.models import BayesianNetwork
-from BAG_Code.createANDtable import create_AND_table
-from BAG_Code.createORtable import create_OR_table
-from pgmpy.factors.discrete import TabularCPD
 
 rn.seed(1)
 
@@ -18,11 +12,6 @@ def ToMarkov(model):
     factors = mrf.get_factors()
     # print(len(factors))
     for f in factors:
-        # # print(f)
-        # print(f.variables)
-        # print(f.values)
-        # print(np.log(f.values))
-        # print(f.values.flatten())
         continue
 
     return mrf
@@ -32,11 +21,8 @@ def ToMarkov(model):
 # -----------------------------------------------------------------------------
 # 6. Begin inference 
 
-import functools
 import itertools
 
-import jax
-import matplotlib.pyplot as plt
 import numpy as np
 
 # Load PGMax

@@ -1,0 +1,17 @@
+strict digraph  {
+A;
+B;
+C;
+D;
+Imp;
+PE;
+MITM;
+A -> B  [weight=None];
+A -> C  [weight=None];
+B -> D  [weight=None];
+C -> D  [weight=None];
+Imp -> B  [weight=None];
+Imp -> C  [weight=None];
+PE -> B  [weight=None];
+MITM -> C  [weight=None];
+}

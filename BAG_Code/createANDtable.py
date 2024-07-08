@@ -1,7 +1,19 @@
 import numpy as np
 from itertools import product
 
+import numpy as np
+from itertools import product
+
 def create_AND_table(probs):
+    """
+    Create an AND table based on the given probabilities.
+
+    Args:
+        probs (list): A list of probabilities.
+
+    Returns:
+        numpy.ndarray: The AND table as a numpy array.
+    """
     if probs == [0]:
         return np.array([[1, 0]])
     elif len(probs) == 0:
@@ -10,8 +22,7 @@ def create_AND_table(probs):
         npa = len(probs)
         pop = np.full(npa, 0.01)
         q = np.array(probs)
-        cpt = np.zeros((2, 2 ** npa))
-        
+        cpt = np.zeros((2, 2 ** npa))              
         vals = list(product([0, 1], repeat=npa))
         
         for i in range(2 ** npa):

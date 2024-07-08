@@ -6,8 +6,8 @@ Cme,0.8
 Rubeus,0.6
 Impacket,0.8
 John,0.8
-L,0.9
-H,0.1
+Lskills,0.9
+Hskills,0.1
 CrackingHash,0.7
 LateralMove,0.6
 Kerberos,0.5

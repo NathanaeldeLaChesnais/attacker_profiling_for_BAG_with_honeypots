@@ -4,6 +4,7 @@ from pgmpy.inference import BeliefPropagation
 from createANDtable import create_AND_table
 from createORtable import create_OR_table
 import networkx as nx
+import numpy as np
 
 bayesian_model = BayesianNetwork([('A', 'B'), ('A', 'C'), ('B', 'D'), ('C', 'D'), ('Imp', 'B'), ('Imp', 'C'), ('PE', 'B'), ('MITM', 'C')])
 

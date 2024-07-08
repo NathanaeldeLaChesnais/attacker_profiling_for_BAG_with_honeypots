@@ -1,49 +1,49 @@
-Vulnerability,Note,tool,skills,Credential,Type
+Vulnerability,Note,tool,skills,Credential,knowledge
 CVE-2008-4037,Ms08-068,Metasploit,u,n,MITM
 CVE-2014-1812,Ms14-025,Metasploit,u,n,CQCM
 CVE-2014-6324,Ms14-068,Responder & ( Impacket | Metasploit ),u,y,KnownVulnerabilities
-CVE-2017-0147,Ms17-010,Metasploit,H,n,CQCM
-CVE-2019-0686,,Impacket & privexchange.py,H,y,KnownVulnerabilities
-CVE-2019-0724,,Impacket & privexchange.py,H,y,KnownVulnerabilities
-CVE-2019-1040,,Impacket,H,n,MITM
-CVE-2020-0796,,Unknown,L,n,PrivilegeEscalation
-CVE-2020-1472,,Impacket & CVE-2020-1472-exploit.py,L,n,MITM | CQCM
-CVE-2021-1675,,Impacket & CVE-2021-1675.py,L,y,KnownVulnerabilities
-CVE-2021-34527,,Impacket & CVE-2021-1675.py,L,y,KnownVulnerabilities
-CVE-2021-36934,,Unknown,L,n,PrivilegeEscalation
-CVE-2021-40469,,dnscmd.exe,L,y,PermissionsMove
-CVE-2021-42278,,Impacket,L,y,KnownVulnerabilities
-CVE-2021-42287,,Impacket,L,y,KnownVulnerabilities
-CVE-2022-26923,,Certipy,L,y,KnownVulnerabilities
-CVE-2022-26925,,Impacket & PetitPotam.py,H,n,NoCredentials
-CVE-2022-33679,,Impacket & CVE-2022-33679.py,H,n,gotUsernameButNoPassword
-CVE-2021-44228,L4j,Unknown,L,n,CQCM
-CVE-0000-1,dcSync,Impacket,L,,PermissionsMove
-CVE-0000-2,Ticket,Impacket,L,,LateralMove
-CVE-0000-3,ESC8,Certipy,L,,ADCS
-CVE-0000-4,Coerce HTTP,Unknown,L,,MITM
-CVE-0000-5,Kerberos ASREP,Hashcat,L,,CrackingHash
-CVE-0000-6,no_krb_preauth ,Impacket | Rubeus,L,,gotUsernameButNoPassword
-CVE-0000-7,Ntlm bots,Responder,L,,NoCredentials
-CVE-0000-8,NetNTLMv2,Hashcat | John,L,,CrackingHash
-CVE-0000-9,Coerce SMB,Impacket,L,,MITM
-CVE-0000-10,ntlmsock to host admin,Impacket & Proxychain,L,,LateralMove
-CVE-0000-11,Kerberos 5 TGS,Impacket | Rubeus,L,,Kerberos
-CVE-0000-12,Kerberos 5 TGS,Hashcat | John,L,,CrackingHash
+CVE-2017-0147,Ms17-010,Metasploit,Hskills,n,CQCM
+CVE-2019-0686,,Impacket & privexchange.py,Hskills,y,KnownVulnerabilities
+CVE-2019-0724,,Impacket & privexchange.py,Hskills,y,KnownVulnerabilities
+CVE-2019-1040,,Impacket,Hskills,n,MITM
+CVE-2020-0796,,Unknown,Lskills,n,PrivilegeEscalation
+CVE-2020-1472,,Impacket & CVE-2020-1472-exploit.py,Lskills,n,MITM | CQCM
+CVE-2021-1675,,Impacket & CVE-2021-1675.py,Lskills,y,KnownVulnerabilities
+CVE-2021-34527,,Impacket & CVE-2021-1675.py,Lskills,y,KnownVulnerabilities
+CVE-2021-36934,,Unknown,Lskills,n,PrivilegeEscalation
+CVE-2021-40469,,dnscmd.exe,Lskills,y,PermissionsMove
+CVE-2021-42278,,Impacket,Lskills,y,KnownVulnerabilities
+CVE-2021-42287,,Impacket,Lskills,y,KnownVulnerabilities
+CVE-2022-26923,,Certipy,Lskills,y,KnownVulnerabilities
+CVE-2022-26925,,Impacket & PetitPotam.py,Hskills,n,NoCredentials
+CVE-2022-33679,,Impacket & CVE-2022-33679.py,Hskills,n,gotUsernameButNoPassword
+CVE-2021-44228,L4j,Unknown,Lskills,n,CQCM
+CVE-0000-1,dcSync,Impacket,Lskills,,PermissionsMove
+CVE-0000-2,Ticket,Impacket,Lskills,,LateralMove
+CVE-0000-3,ESC8,Certipy,Lskills,,ADCS
+CVE-0000-4,Coerce HTTP,Unknown,Lskills,,MITM
+CVE-0000-5,Kerberos ASREP,Hashcat,Lskills,,CrackingHash
+CVE-0000-6,no_krb_preauth ,Impacket | Rubeus,Lskills,,gotUsernameButNoPassword
+CVE-0000-7,Ntlm bots,Responder,Lskills,,NoCredentials
+CVE-0000-8,NetNTLMv2,Hashcat | John,Lskills,,CrackingHash
+CVE-0000-9,Coerce SMB,Impacket,Lskills,,MITM
+CVE-0000-10,ntlmsock to host admin,Impacket & Proxychain,Lskills,,LateralMove
+CVE-0000-11,Kerberos 5 TGS,Impacket | Rubeus,Lskills,,Kerberos
+CVE-0000-12,Kerberos 5 TGS,Hashcat | John,Lskills,,CrackingHash
 CVE-0000-13,,,,,
-bad_password,,Hashcat | John,L,,CrackingHash
-relay_ntlm_bot,,Responder & Impacket,H,,LateralMove
-tgs,,Lsassy | Impacket,H,,Kerberos
-ptt,,Impacket,L,,PrivilegeEscalation
-ntlm_hash,,Cme,L,,LateralMove
-default_admin_pth,,Cme,L,,LateralMove
-asks_kerberos_ticket,,Rubeus,H,,Kerberos
-exploit_tgt,,Impacket | Rubeus,H,,PrivilegeEscalation
+bad_password,,Hashcat | John,Lskills,,CrackingHash
+relay_ntlm_bot,,Responder & Impacket,Hskills,,LateralMove
+tgs,,Lsassy | Impacket,Hskills,,Kerberos
+ptt,,Impacket,Lskills,,PrivilegeEscalation
+ntlm_hash,,Cme,Lskills,,LateralMove
+default_admin_pth,,Cme,Lskills,,LateralMove
+asks_kerberos_ticket,,Rubeus,Hskills,,Kerberos
+exploit_tgt,,Impacket | Rubeus,Hskills,,PrivilegeEscalation
 ,,,,,
-clear_password,,Snafler | Donpapi,L,,Exploring
-non_constraint_delegation,,Impacket,H,,LateralMove
-shares,,Impacket,H,,LateralMove
-cracking,,Hashcat,L,,CrackingHash
-kerberoasting,,Impacket,L,,Kerberos
-cve,,Impacket,H,,KnownVulnerabilities
-zero_day,,Unknown,H,,NoCredentials
+clear_password,,Snafler | Donpapi,Lskills,,Exploring
+non_constraint_delegation,,Impacket,Hskills,,LateralMove
+shares,,Impacket,Hskills,,LateralMove
+cracking,,Hashcat,Lskills,,CrackingHash
+kerberoasting,,Impacket,Lskills,,Kerberos
+cve,,Impacket,Hskills,,KnownVulnerabilities
+zero_day,,Unknown,Hskills,,NoCredentials
