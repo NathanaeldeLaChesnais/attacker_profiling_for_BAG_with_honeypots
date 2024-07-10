@@ -1,10 +1,6 @@
-mulval/
-dockerised-mulval/
-Threat_Inteligence/CVE_skills/cves/*
-
 .gitignore
-
-Personnal_simulations/old
+Personnal_simulations/old/*
 BAG_Code_tw520/__pycache__/*
+.vscode/*
 
-Threat_Inteligence/.~lock.CVE_knowledge_tooling_skills.csv#
+
