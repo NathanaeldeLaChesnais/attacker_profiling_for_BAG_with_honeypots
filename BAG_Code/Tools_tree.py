@@ -259,17 +259,25 @@ def kts_layer_original(BAG, ONE, nodes):
                 BAG.add_cpds(TabularCPD(id, 2, cpt_l4.T, parents, evidence_card=2*np.ones(len(parents))))
 
 def kts_layer_static(BAG, ONE, nodes):
+    """
+    Applies the KTS (Knowledge, Tools, Skills) layer to the Bayesian Attack Graph (BAG).
+
+    Args:
+        BAG (BayesianAttackGraph): The Bayesian Attack Graph to which the KTS layer will be applied.
+        ONE (int): A constant value representing the number 0.99999.
+        nodes (dict): A dictionary containing the nodes in the BAG.
+
+    Returns:
+        None
+
+    Raises:
+        None
+    """
     with open('./Threat_Inteligence/kts_base_score.csv', mode='r') as kts_basescore_file:
         reader = csv.DictReader(kts_basescore_file)
         kts_base_score = {}
         for row in reader:
             kts_base_score[row['kts']] = float(row['base_score'])
-    # The skills layer:
-    cpd_Lskills = TabularCPD('Lskills', 2, [[1-kts_base_score['L']], [kts_base_score['L']]])
-    cpd_Hskills = TabularCPD('Hskills', 2, [[1-kts_base_score['H']], [kts_base_score['H']]])
-    
-    # The knowledge layer:
-    cpd_knowledge = [TabularCPD(knowledge, 2, [[0.3], [0.7]]) for knowledge in ['Known vulnerabilities', 'CQCM', 'No credentials', 'MITM', 'Permissions move', 'Privilege escalation', 'Lateral move', 'ADCS']]
 
     # Import all the dependencies
     cpt_l4 = create_AND_table([ONE, ONE, ONE, ONE])
@@ -282,11 +290,11 @@ def kts_layer_static(BAG, ONE, nodes):
             kts_dict[cve] = tmp
     for node in nodes.items():
             id = node[0]
-            node = node[1]
-            if node['CVE'] != "null":
-                row = kts_dict[node['CVE']]
+            node_characteristics = node[1]
+            if node_characteristics['CVE'] != "null":
+                row = kts_dict[node_characteristics['CVE']]
                 tool_score = build_tools_tree_static(BAG, Parser(tokenizer(row['tool'])).parse(), id, ONE, kts_base_score)
-                skills_score = kts_base_score[row['skills']]
+                skills_score = build_tools_tree_static(BAG, Parser(tokenizer(row['skills'])).parse(), id, ONE, kts_base_score)
                 k_score = build_tools_tree_static(BAG, Parser(tokenizer(row['knowledge'])).parse(), id, ONE, kts_base_score)
                 prob = tool_score * skills_score * k_score
                 prob = prob + 0.01 - prob*0.01
@@ -294,10 +302,6 @@ def kts_layer_static(BAG, ONE, nodes):
                 parents = BAG.get_parents(id)
                 BAG.remove_cpds(id)
                 BAG.add_cpds(TabularCPD(id, 2, cpt_l4, parents, evidence_card=2*np.ones(len(parents))))
-    # We add all the necessary CPDs to the BAG
-    for cpd in [cpd_Lskills, cpd_Hskills] + cpd_knowledge:
-        if BAG.__contains__(cpd.variable):
-            BAG.add_cpds(cpd)
 
 # Exemple d'utilisation
 if __name__ == '__main__':

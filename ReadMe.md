@@ -21,7 +21,12 @@ Ensure you have Python installed on your machine. You can download it from pytho
 Additionally, install the necessary Python packages by running:
 `pip install -r requirements.txt`
 
-Make sure you also have a distribution of graphviz https://graphviz.org/download/ to draw the graphs.
+Make sure you also have a distribution of:
+ - graphviz https://graphviz.org/download/ to draw the graphs;
+ - windows subsystem for linux https://learn.microsoft.com/en-us/windows/wsl/install;
+ - Docker desktop https://www.docker.com/products/docker-desktop/.
+
+Some scripts are designed to be run on the wsl system, but they re easily adaptable to a general version of Linux.
 
 ### Running the Project
 To build the graph, place your mulval file in the Personnal_simulation folder and run `./Scripts/Build_graph.ps1`
