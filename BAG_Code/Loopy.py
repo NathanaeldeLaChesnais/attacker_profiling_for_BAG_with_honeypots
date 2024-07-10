@@ -1,5 +1,10 @@
 import numpy as np
 import numpy.random as rn
+import itertools
+from pgmax import fgraph, fgroup, infer, vgroup, factor
+from time import time
+from BAG_Code.BayesianAttackGraph import parse_dot
+from pathlib import Path
 
 rn.seed(1)
 
@@ -16,20 +21,7 @@ def ToMarkov(model):
 
     return mrf
 
-# 5. Check the factors and try to derive relationship between them
-
-# -----------------------------------------------------------------------------
-# 6. Begin inference 
-
-import itertools
-
-import numpy as np
-
-# Load PGMax
-from pgmax import fgraph, fgroup, infer, vgroup, factor
-from time import time 
-
-# My implementation
+# TAO implementation
     
 def CreateFactorGraph(mrf):
     variables = vgroup.VarDict(num_states=2, variable_names=tuple(mrf.nodes))
@@ -79,7 +71,7 @@ if __name__ == '__main__':
     N = 5
     max_edges = 3
 
-    BAG = GenerateBAG(N, max_edges)
+    BAG = parse_dot(open(Path.cwd() / ("Personnal_simulations/output_HighLevel/strongly_connected_components/"), 'r').read(), 0.9999)
     print(BAG)
     MRF = ToMarkov(BAG)
     FG = CreateFactorGraph(MRF)
